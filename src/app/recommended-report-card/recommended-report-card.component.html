@@ -1,0 +1,60 @@
+<!--
+ Copyright 2022 Google LLC
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<mat-card>
+  <div class="report-data-contents">
+    <img [src]="reportData.icon" [alt]="getAltText(reportData.icon)">
+    <div class="report-data-description">
+      <h2>{{reportName}}</h2>
+      <div class="description">
+        <span>{{description}}</span>
+        <span class="unscored-definition"
+              *ngIf="reportData.name === 'Unable to score'"
+              #tooltip="matTooltip"
+              matTooltip="Sometimes there can be errors when coming up with a toxicity score. This can happen if the language isn't recognized or reasons that could be listed here."
+              matTooltipClass="unscored-tooltip"
+              matTooltipPosition="above"
+              tabindex="0">
+          scored <mat-icon>info_outline</mat-icon>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="horizontal-divider"></div>
+
+  <div class="buttons"
+       [class.two-buttons]="reportData.name==='High'">
+    <button mat-button
+            color="primary"
+            class="view-comments-button"
+            (click)="handleViewCommentsClicked()">
+      <mat-icon [class.loading-color]="loading" >view_list</mat-icon>
+      <span *ngIf="loading" class="loading-span loading-color">Loading comments...</span>
+      <span *ngIf="!loading">{{viewCommentTextCommentCount}}</span>
+    </button>
+    <button mat-button
+        class="add-all-to-report-button"
+        color="primary"
+        [disabled]="loading || addAllWasClicked || reportCommentsEmpty"
+        (click)="handleAddToReportClicked()"
+        *ngIf="!loading && reportData.name==='High'">
+      <mat-icon [svgIcon]="addAllIcon"></mat-icon>
+      <span *ngIf="!addAllWasClicked">Add All to Report</span>
+      <span *ngIf="addAllWasClicked">Added to Report</span>
+    </button>
+  </div>
+</mat-card>

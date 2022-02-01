@@ -1,0 +1,116 @@
+/**
+ * Copyright 2022 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.message-container {
+  background-color: #682449;
+  border-radius: 20px;
+  color: #ffffff;
+  height: 520px;
+  position: relative;
+  text-align: center;
+  width: 560px;
+}
+
+.message-container h2 {
+  font-size: 24px;
+  line-height: 28px;
+}
+
+.message-container .message {
+  font-size: 16px;
+  line-height: 24px;
+  margin-top: 25px;
+  margin-left: 28px;
+  margin-right: 28px;
+}
+
+.message-container .image-container {
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 20px 20px 0 0;
+  display: flex;
+  height: 360px;
+  justify-content: center;
+  width: 560px;
+}
+
+.image1 {
+  height: 218px;
+  width: 288px;
+}
+
+.image2 {
+  height: 282px;
+  width: 286px;
+}
+
+.image3 {
+  height: 260;
+  width: 298;
+}
+
+.progress-circles {
+  display: flex;
+  justify-content: center;
+  margin-top: 14px;
+}
+
+.circle {
+  background-color: #bdbdbd;
+  border-radius: 50%;
+  height: 8px;
+  margin-right: 16px;
+  width: 8px;
+}
+
+.circle.fill {
+  background-color: #ffffff;
+}
+
+.arrow {
+  background-color: #fff;
+  color: #b23c66;
+  height: 56px;
+  width: 56px;
+}
+
+.arrow.forward {
+  margin-left: 36px;
+}
+
+.arrow.back {
+  margin-right: 36px;
+}
+
+.close-button {
+  color: #682449;
+  position: absolute;
+  right: 16px;
+  top: 8px;
+}
+
+.close-button mat-icon {
+  font-size: 32px;
+}
+
+.invisible {
+  visibility: hidden;
+}

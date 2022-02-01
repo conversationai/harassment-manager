@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "google.com:harassment-documentation-tool": {
+      "hosting": {
+        "harassment-manager": [
+          "google.com:harassment-documentation-tool"
+        ]
+      }
+    }
+  }
+}

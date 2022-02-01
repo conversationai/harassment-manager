@@ -1,0 +1,39 @@
+<!--
+ Copyright 2022 Google LLC
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<mat-form-field class="search-input" appearance="outline">
+  <mat-icon matPrefix class="search-icon">search</mat-icon>
+  <mat-chip-list #includeChipList>
+    <ng-container *ngFor="let regexFilter of regexFilters">
+      <mat-chip *ngIf="regexFilter.include"
+                [attr.aria-label]="regexFilter.regex + ' filter chip'"
+                [removable]="true"
+                (removed)="removeRegexFilter(regexFilter)"
+                class="regex-chip">
+        {{regexFilter.regex}}
+        <button matChipRemove [attr.aria-label]="'Remove ' + regexFilter.regex + ' filter chip'">
+          <mat-icon>clear</mat-icon>
+        </button>
+      </mat-chip>
+    </ng-container>
+    <input matInput placeholder="Search by keyword, hashtag, user..."
+           [ngModel]="initialFilterInput"
+           [matChipInputFor]="includeChipList"
+           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+           [matChipInputAddOnBlur]="true"
+           (matChipInputTokenEnd)="addIncludeFilter($event)">
+  </mat-chip-list>
+</mat-form-field>

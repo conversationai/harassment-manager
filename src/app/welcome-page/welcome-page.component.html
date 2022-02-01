@@ -1,0 +1,107 @@
+<!--
+ Copyright 2022 Google LLC
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<div class="login-header">
+  <a class="title" routerLink="/home">
+    <div class="text">Harassment Manager</div>
+  </a>
+  <div class="login-section">
+    <div class="hero-container left">
+      <img src="/header_images_Left_image.svg" alt="Decorative shapes.">
+    </div>
+    <div class="description">
+      <h1>Control Your Online Harassment</h1>
+      <p>Document harmful content on social media.</p>
+      <div class="login-buttons">
+        <button mat-raised-button class="twitter-button" (click)="loginWithTwitter()">
+          <span>
+            <mat-icon class="product-icon" svgIcon="twitter_icon"></mat-icon>
+            Start with Twitter
+          </span>
+        </button>
+      </div>
+      <div class="horizontal-divider"></div>
+      <p class="privacy-message">
+        Learn more about how this tool uses your data. Check our
+        <!-- TODO: provide link for privacy policy -->
+        <a href="" target="_blank" rel="noopener">privacy policy</a>.
+      </p>
+    </div>
+    <div class="hero-container right">
+      <img src="/header_images_Right_image.svg" alt="Decorative shapes.">
+    </div>
+  </div>
+</div>
+
+<div class="info-section">
+  <div class="panel">
+    <div class="box">
+      <h2>Document harmful content anywhere, anytime</h2>
+      <p>
+        Access Harassment Manager to document harmful content as soon as it happens. No download necessary.
+      </p>
+    </div>
+    <img src="/alert_sign_stake.svg"
+          alt="A woman stakes a circular traffic sign with an alert symbol on the sign. There are
+              geometric shapes with varying textures on the ground.">
+  </div>
+  <div class="panel grey-bg">
+    <img src="/walking_in_clutter.svg"
+          alt="A woman walks among geometric shapes strewn about the floor. She is holding a
+          large circular shape in her arm.">
+    <div class="box">
+      <h2>Clear the clutter and focus on sensitive comments</h2>
+      <p>
+        Advanced technology helps us prioritize only the comments you might want to document. You can filter, sort, and customize how you view comments.
+      </p>
+    </div>
+  </div>
+  <div class="panel" *ngIf="false">
+    <div class="box">
+      <h2>Make removal easier by adding context</h2>
+      <p>
+        To make sure social media moderators take down harmful comments, we share the details needed to paint a bigger picture of the situation.
+      </p>
+    </div>
+    <img src="/writing_on_document.svg"
+          alt="A man with a cap stands and writes on a very large document hanging on a wall.
+          There are geometric shapes with varying textures on the ground" >
+  </div>
+</div>
+
+<div class="faq-section">
+  <!-- TODO: Provide FAQ section. -->
+  <h2>Harassment Manager FAQs</h2>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header collapsedHeight="82px" expandedHeight="82px">
+      <mat-panel-title>
+        Question #1
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p>Answer #1</p>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header collapsedHeight="82px" expandedHeight="82px">
+      <mat-panel-title>
+        Question #2
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p>Answer #2</p>
+  </mat-expansion-panel>
+  <a class="help-center-link" routerLink="/help-center">
+    <button mat-button class="action-button">Explore Help Center</button>
+  </a>
+</div>

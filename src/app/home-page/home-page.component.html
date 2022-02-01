@@ -1,0 +1,158 @@
+<!--
+ Copyright 2022 Google LLC
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<!-- Include the intro stepper as a template to use in a TemplatePortal, which
+     will get attached to the overlay. -->
+<ng-template #templatePortalContent>
+  <app-intro-stepper (introCompleted)="closeStepper()"></app-intro-stepper>
+</ng-template>
+
+<mat-card *ngIf="shouldShowWelcomeBackCard" class="welcome-back-card">
+  <div>
+    <h1>Welcome back<span *ngIf="name">, {{name}}</span>!</h1>
+    <div class="welcome-back-subtitle">Continue from where you left off.</div>
+    <app-report-progress-bar></app-report-progress-bar>
+    <button mat-button
+            class="action-button continue-report-button"
+            (click)="continueReport()">
+      Continue report
+    </button>
+    <button mat-button
+            class="action-button-stroked start-over-button"
+            (click)="openClearReportDialog()">
+      Start over
+    </button>
+  </div>
+  <img class="welcome-back-image"
+       src="/placing_circle.svg"
+       alt="A man steps onto a rectangular block and places a circle shape on top of a stack of
+       geometric shapes with varying textures.">
+</mat-card>
+
+<section class="jumbotron">
+  <h1>Add from today's comments</h1>
+  <div class="subtitle">
+    Add comments that are categorized by
+    <span class="additional-definition"
+          #tooltip="matTooltip"
+          matTooltip="Machine learning is the processs of using computers to learn based on data.
+          This tool uses machine learning developed by Perspective API, which has been tested and
+          trained to score comments based on their possible impact."
+          matTooltipClass="toxicity-tooltip"
+          matTooltipPosition="right"
+          tabindex="0">
+          machine learning <mat-icon>info_outline</mat-icon>
+    </span>
+    based on their likeliness of containing
+    <span class="additional-definition"
+          #tooltip="matTooltip"
+          matTooltip="Harmful content is rude, disrespectful, or unreasonable content that is likely to make you leave a discussion. We use this definition as a guideline when grouping and scoring comments."
+          matTooltipClass="toxicity-tooltip"
+          matTooltipPosition="right"
+          tabindex="0">
+          harmful content <mat-icon>info_outline</mat-icon>
+    </span>
+    .
+  </div>
+  <div class="recommended-cards-wrapper">
+    <div class="highlight-card"
+         *ngIf="currentOnboardingStep === OnboardingStep.HIGHLIGHT_CARD">
+    </div>
+    <div class="recommended-report-cards" #cardsContainer>
+      <!-- Separate the first two cards from the rest of the *ngFor so that
+           overlay directives can be applied to them. -->
+      <app-recommended-report-card
+        *ngIf="recommendedReports.length > 0"
+        [reportData]="recommendedReports[0]"
+        [loading]="loadingRecommendedReports"
+        [error]="errorRecommendedReports"
+        (addAllClicked)="handleAddAllToReportClicked()"
+        (viewCommentsClicked)="viewCommentsWithToxicityFilter(recommendedReports[0])">
+      </app-recommended-report-card>
+      <!-- No *ngIf here because a cdkOverlayOrigin won't work properly if it's
+           behind an *ngIf. We just have to assume there will be a second card. -->
+      <app-recommended-report-card
+        cdkOverlayOrigin
+        #secondRecommendedCard="cdkOverlayOrigin"
+        [class.elevate]="currentOnboardingStep === OnboardingStep.HIGHLIGHT_CARD"
+        [reportData]="recommendedReports[1]"
+        [loading]="loadingRecommendedReports"
+        [error]="errorRecommendedReports"
+        (viewCommentsClicked)="handleHighlightedCardViewCommentsClick()">
+      </app-recommended-report-card>
+
+      <app-recommended-report-card
+        [reportData]="recommendedReports[2]"
+        [loading]="loadingRecommendedReports"
+        [error]="errorRecommendedReports"
+        (viewCommentsClicked)="viewCommentsWithToxicityFilter(recommendedReports[2])">
+      </app-recommended-report-card>
+
+      <!-- This template displays the overlay content and is connected to the
+           second recommended report card.
+           Note: CSS for this is in the main styles.scss file since it appears
+           as part of the overlay. -->
+      <ng-template
+        cdkConnectedOverlay
+        cdkConnectedOverlayHasBackdrop
+        [cdkConnectedOverlayPositions]="connectedOverlayPositions"
+        [cdkConnectedOverlayScrollStrategy]="overlayScrollStrategy"
+        cdkConnectedOverlayBackdropClass='onboarding-backdrop'
+        [cdkConnectedOverlayOrigin]="secondRecommendedCard"
+        [cdkConnectedOverlayOpen]="currentOnboardingStep === OnboardingStep.HIGHLIGHT_CARD">
+        <div class="onboarding-recommended-reports">
+          <h1>Start a report with grouped comments</h1>
+          <div class="message">
+            Comments are grouped based on priority. Use these groups to start building a report.
+          </div>
+          <button mat-button
+                  color="primary"
+                  (click)="nextOnboardingStep()">Got it</button>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+  <div class="subtitle subtitle-bottom">
+    <h2>Already know what you're looking for?</h2>
+    Use keywords and filters to find the comments you want to report.
+  </div>
+  <app-recommended-report-card
+    [reportData]="recommendedReports[3]"
+    [loading]="loadingRecommendedReports"
+    [error]="errorRecommendedReports"
+    [name]="recommendedReports[3].description"
+    (viewCommentsClicked)="viewCommentsWithToxicityFilter(recommendedReports[3])">
+  </app-recommended-report-card>
+</section>
+<section class="content">
+  <div>
+    <h2>You're not alone</h2>
+    <div>
+      Dealing with harmful content can be tough.
+    </div>
+    <div>
+      Discover resources to help you along the way.
+    </div>
+    <button mat-flat-button
+            class="action-button"
+            routerLink="/find-support">
+      View Support Resources
+    </button>
+  </div>
+  <img class="not-alone-image"
+       src="/climb_mountain.svg"
+       alt="Someone reaching out a hand to help someone else climb up a mountain of shapes.">
+</section>

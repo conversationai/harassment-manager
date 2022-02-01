@@ -1,0 +1,190 @@
+/**
+ * Copyright 2022 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+.centered-col {
+  text-align: center;
+}
+
+.harassment-title {
+  margin-bottom: 0px;
+}
+
+.header {
+  color: white;
+  background: #A54167;
+  display: flex;
+  font-family: 'Google Sans', Arial, sans-serif;
+  flex-direction: column;
+  margin-left: 120px;
+  margin-right: 120px;
+  margin-top: 120px;
+  padding-bottom: 30px;
+  padding-left: 50px;
+  padding-top: 20px;
+}
+
+hr {
+ background-color: #A54167;
+ color: #A54167;
+ height: 2px;
+ margin-left: 150px;
+ margin-right: 150px;
+}
+
+img {
+  height: 30px;
+  margin-top: 15px;
+}
+
+.mat-cell {
+  border-left: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+  font-size: 13px;
+  padding: 2px;
+  word-wrap: break-word;
+}
+
+.mat-header-cell {
+  border-left: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+  font-size: 11px;
+  padding: 2px;
+}
+
+// Overrides .mat-cell
+.border-right {
+  border-right: 4px solid #A54167;
+}
+
+.large-col {
+  width: 225px;
+}
+
+.medium-col {
+  width: 75px;
+}
+
+.page-break-cell {
+  border-left: 0;
+  border-right: 0;
+  color: white;
+  height: 100px;
+}
+
+.perspective-symbol-image {
+  height: 30px;
+  margin-right: 5px;
+  margin-top: 20px;
+}
+
+.report-title {
+  display: flex;
+  margin-bottom: 0px;
+}
+
+.report-details {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  max-width: 1250px;
+  min-width: 1250px;
+  padding-top: 350px;
+}
+
+.report-summary {
+  max-width: 1250px;
+  min-width: 1250px;
+}
+
+.small-col {
+  text-align: center;
+  width: 50px;
+}
+
+.summary-bar {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto auto auto;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  margin-left: 175px;
+}
+
+.summary-body {
+  margin-left: 175px;
+  margin-right: 175px;
+
+  .summary-label {
+    margin-bottom: 5px;
+    margin-top: 25px;
+  }
+}
+
+.summary-label {
+  font-weight: 500;
+}
+
+.summary-title {
+  font-weight: bold;
+  margin-bottom: 5px;
+  margin-top: 0px;
+}
+
+table {
+  box-shadow: none;
+  margin-top: 0px;
+  max-width: 1100px;
+  table-layout: fixed;
+  width: 1100px;
+}
+
+.table-header {
+  background: #A54167;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Google Sans', Arial, sans-serif;
+  margin-top: 30px;
+  padding: 10px;
+  padding-left: 30px;
+  width: 1060px;
+  h1 {
+    font-size: 23px;
+  }
+  h2 {
+    font-size: 18px;
+    align-self: center;
+  }
+}
+
+th {
+  color: #A54167;
+  font-weight: bold;
+}
+
+th.mat-header-cell:last-of-type, th.mat-header-cell:first-of-type, td.mat-cell:last-of-type, td.mat-cell:first-of-type {
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+.time-posted-col {
+  width: 55px;
+}
+
+.x-small-col {
+  text-align: center;
+  width: 30px;
+}

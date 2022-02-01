@@ -1,0 +1,197 @@
+<!--
+ Copyright 2022 Google LLC
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<app-report-pdf id="report"></app-report-pdf>
+<div class="container">
+  <div class="report-preview">
+    <span *ngIf="pdfLoading" class="spinner-container">
+      <mat-spinner diameter="50"></mat-spinner>
+    </span>
+    <pdf-viewer *ngIf="!pdfLoading"
+                [src]="saveOptions[downloadPdfOptionIndex].buffer"
+                [stick-to-page]="true"
+                [show-all]="true"
+                [original-size]="false"
+                [autoresize]="true"
+                [fit-to-page]="false"
+                tabIndex="0"
+                >
+    </pdf-viewer>
+  </div>
+  <div class="actions-container">
+    <div class="summary-text">
+      <h2>Take next steps</h2>
+
+      <div>
+        You can block or mute accounts, hide replies, or save and share your report.
+      </div>
+    </div>
+
+    <!-- Hide this card for now since we are not enabling directly sending to Twitter. -->
+    <mat-card class="card twitter-card" *ngIf="false">
+      <div class="image-container">
+        <mat-icon *ngIf="actions.includes(ReportAction.REPORT_TO_TWITTER)" class="prefix-icon checkmark">check_circle_filled</mat-icon>
+        <mat-icon *ngIf="!actions.includes(ReportAction.REPORT_TO_TWITTER)" class="prefix-icon">share</mat-icon>
+      </div>
+      <div>
+        <div class="card-title">Send Report to Twitter</div>
+
+        <div class="card-body">
+          Inform Twitter's moderator of your harassment. <a href="" target="_blank" rel="noopener">Learn More</a>
+        </div>
+
+        <div>
+          <a mat-button
+             class="send-to-twitter-button"
+             color="primary"
+             (click)="addAction(ReportAction.REPORT_TO_TWITTER)">
+            <mat-icon *ngIf="actions.includes(ReportAction.REPORT_TO_TWITTER)" class="prefix-icon checkmark">check_circle_filled</mat-icon>
+            <mat-icon *ngIf="!actions.includes(ReportAction.REPORT_TO_TWITTER)" class="prefix-icon">share</mat-icon>
+            Send to Twitter
+          </a>
+        </div>
+      </div>
+    </mat-card>
+
+    <mat-card class="card twitter-moderation-card">
+      <div class="image-container">
+        <mat-icon class="prefix-icon">block</mat-icon>
+      </div>
+      <div>
+        <div class="card-title">Manage your audience on Twitter</div>
+
+        <div class="card-body">
+          Block or mute the accounts listed in your report. <a href="https://help.twitter.com/en/using-twitter#blocking-and-muting" target="_blank" rel="noopener">Learn more</a>
+        </div>
+
+        <app-dropdown-button
+            class="twitter-actions-button"
+            [actionOptions]="twitterActionOptions"
+            dropdownButtonAriaLabel="Manage your audience on Twitter pop-up"
+            [selectedActionOptionIndex]="selectedTwitterActionOptionIndex"
+            [actions]="actions"
+            (clickActionOption)="handleClickActionOption($event)">
+        </app-dropdown-button>
+
+      </div>
+    </mat-card>
+
+    <mat-card class="card twitter-hide-replies-card">
+      <div class="image-container">
+        <mat-icon class="prefix-icon">visibility_off</mat-icon>
+      </div>
+      <div>
+        <div class="card-title">Hide replies on Twitter</div>
+
+        <div class="card-body">
+          Direct replies to your tweets will be hidden. <a href="https://help.twitter.com/en/using-twitter/mentions-and-replies#:~:text=Hidden%20replies&text=When%20a%20Tweet%20author%20hides,reply%20will%20not%20be%20notified.&text=From%20a%20reply%20to%20one,right%20of%20your%20original%20Tweet." target="_blank" rel="noopener">Learn more</a>
+        </div>
+        <hr>
+        <div class="card-body small-text">
+          Only 50 replies can be hidden every 15 minutes. We recommend dividing the replies across
+          multiple reports.
+        </div>
+
+        <div>
+          <button mat-button
+             class="hide-replies-button"
+             color="primary"
+             (click)="addAction(ReportAction.HIDE_REPLIES_TWITTER)"
+             [disabled]="muteActionInProgress">
+            <ng-container *ngIf="muteActionInProgress">
+              <mat-icon class="prefix-icon">visibility_off</mat-icon>
+              Hiding replies...
+            </ng-container>
+            <ng-container *ngIf="!muteActionInProgress">
+              <ng-container *ngIf="actions.includes(ReportAction.HIDE_REPLIES_TWITTER)">
+                <mat-icon class="prefix-icon checkmark">check_circle_filled</mat-icon>
+                Replies hidden
+              </ng-container>
+              <ng-container *ngIf="!actions.includes(ReportAction.HIDE_REPLIES_TWITTER)">
+                <mat-icon class="prefix-icon">visibility_off</mat-icon>
+                Hide replies
+              </ng-container>
+            </ng-container>
+          </button>
+        </div>
+      </div>
+    </mat-card>
+
+    <mat-card class="card">
+      <div class="image-container">
+        <img class="save-locally-image" src="/spreadsheet.png" alt="Spreadsheet">
+      </div>
+      <div>
+        <div class="card-title">Save locally</div>
+
+        <div class="card-body">
+          Download a PDF, print a copy, or save CSV file to review later.
+        </div>
+        <hr>
+        <div class="card-body small-text">
+          Text may be rendered differently depending on the file format.
+        </div>
+
+        <app-dropdown-button
+            class="save-actions-button"
+            [actionOptions]="saveOptions"
+            dropdownButtonAriaLabel="Save locally pop-up"
+            [selectedActionOptionIndex]="selectedSaveOptionIndex"
+            [actions]="actions"
+            (clickActionOption)="handleClickActionOption($event)">
+        </app-dropdown-button>
+
+      </div>
+    </mat-card>
+
+    <mat-card class="card">
+      <div class="image-container">
+        <img class="drive-logo" src="/product_logos_drive_24dp.svg" alt="Google Drive Logo">
+      </div>
+      <div>
+        <div class="card-title">Save on Google Drive</div>
+
+        <div class="card-body">
+          View, share, download, or print your report with Google sheets anytime.
+          <a href="https://www.google.com/sheets/about/" rel="noopener" target="_blank">Learn More</a>
+        </div>
+
+        <button class="save-button save-to-sheets-button"
+                mat-button
+                [disabled]="driveReportUrl"
+                color="primary"
+                (click)="saveToGoogleSheets()">
+          <mat-icon *ngIf="actions.includes(ReportAction.SAVE_TO_DRIVE)" class="prefix-icon checkmark">check_circle_filled</mat-icon>
+          <mat-icon *ngIf="!actions.includes(ReportAction.SAVE_TO_DRIVE)" class="prefix-icon">add_to_drive</mat-icon>
+          <span *ngIf="!driveReportUrl">Save on Drive</span>
+          <span *ngIf="driveReportUrl">Saved on Drive</span>
+          <mat-icon *ngIf="!driveReportUrl" class="suffix-icon">launch</mat-icon>
+        </button>
+
+        <a *ngIf="driveReportUrl"
+           [href]="driveReportUrl"
+           target="_blank"
+           rel="noopener"
+           mat-button
+           color="primary">
+          <span>View in Drive</span>
+          <mat-icon class="suffix-icon">launch</mat-icon>
+        </a>
+
+      </div>
+    </mat-card>
+  </div>
+</div>

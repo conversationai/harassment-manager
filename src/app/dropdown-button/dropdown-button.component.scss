@@ -1,0 +1,74 @@
+/**
+ * Copyright 2022 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+.save-button {
+  border: 1px solid #DADCE0;
+  box-sizing: border-box;
+  border-radius: 20px;
+}
+
+.icon-and-text {
+  align-items: center;
+  display: inline-flex;
+}
+
+.prefix-icon {
+  margin-right: 8px;
+}
+
+.save-options-dropdown {
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.12);
+
+  .save-option {
+    align-items: center;
+    color: #A54167;
+    display: flex;
+    font-size: 14px;
+    padding: 14px;
+  }
+
+  .save-option:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+  }
+}
+
+.dropdown-backdrop {
+  background-color: transparent;
+}
+
+.dropdown-button {
+  align-items: center;
+  display: inline-flex;
+  width: inherit;
+
+  .divider {
+    align-items: center;
+    background-color: #DADCE0;
+    display: inline-flex;
+    height: 14px;
+    margin-left: auto;
+    width: 1px;
+  }
+}
+
+.save-locally-button {
+  border-radius: 20px;
+  text-align: left;
+  width: 100%;
+}

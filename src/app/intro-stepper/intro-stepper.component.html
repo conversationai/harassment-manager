@@ -1,0 +1,90 @@
+<!--
+ Copyright 2022 Google LLC
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<div class="container" cdkTrapFocus cdkTrapFocusAutoCapture>
+  <button mat-fab
+          class="back arrow"
+          [class.invisible]="currentStepIndex === 0"
+          color="primary"
+          (click)="previousStep()"
+          aria-label="Previous">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+
+  <div>
+    <div class="message-container">
+      <button mat-icon-button
+              class="close-button"
+              (click)="getStartedClicked()"
+              aria-label="close">
+        <mat-icon>close</mat-icon>
+      </button>
+      <div class="intro-step"
+           *ngIf="introSteps[currentStepIndex] === IntroStep.INTRO">
+        <div class="image-container">
+          <img src="/alert_sign_stake.svg"
+               alt="A woman stakes a circular traffic sign with an alert symbol on the sign. There
+                are geometric shapes with varying textures on the ground.">
+        </div>
+        <div class="message">
+          <h2>Introducing Harassment Manager</h2>
+          Use this tool to document harmful content
+        </div>
+      </div>
+
+      <div class="create-report-step"
+           *ngIf="introSteps[currentStepIndex] === IntroStep.CREATE_REPORT">
+        <div class="image-container">
+          <img src="/writing_on_document.svg"
+               alt="A man with a cap stands and writes on a very large document hanging on a wall.
+                 There are geometric shapes with varying textures on the ground" >
+        </div>
+        <div class="message">
+          <h2>Create Report</h2>
+          Select comments, add context, and download your report.
+        </div>
+      </div>
+
+      <div class="save-share-report-step"
+           *ngIf="introSteps[currentStepIndex] === IntroStep.SAVE_SHARE_REPORT">
+        <div class="image-container">
+          <img alt="A woman placing a huge, person-sized document in a similarly huge folder."
+               src="/filing_report.svg">
+        </div>
+        <div class="message">
+          <h2>Take Action</h2>
+          Block or mute accounts and hide replies. Download your reports to save or share.
+        </div>
+      </div>
+    </div>
+
+    <div class="progress-circles">
+      <div *ngFor="let step of introSteps; let i = index"
+           class="circle"
+           [class.fill]="currentStepIndex === i">
+      </div>
+    </div>
+  </div>
+
+  <button mat-fab
+          class="forward arrow"
+          [class.invisible]="currentStepIndex === introSteps.length - 1"
+          color="primary"
+          (click)="nextStep();"
+          aria-label="Next">
+    <mat-icon>arrow_forward</mat-icon>
+  </button>
+</div>

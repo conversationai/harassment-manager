@@ -1,0 +1,86 @@
+/**
+ * Copyright 2022 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+.subtitle {
+  color: #202124;
+  font-size: 18px;
+}
+
+.resources {
+  background-color: #f9f9f9;
+  min-height: 542px;
+  padding: 32px 150px;
+}
+
+.resources h2 {
+  color: #202124;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 21px;
+  text-align: center;
+}
+
+.resources h3 {
+  color: #202124;
+  font-size: 18px;
+  line-height: 25px;
+  text-align: center;
+}
+
+.resources mat-expansion-panel {
+  margin-bottom: 30px;
+}
+
+.mountain-flag-image {
+  height: 204px;
+  width: 224px;
+}
+
+.success-message {
+  background-color: rgba(209, 179, 195, 0.15);
+  padding-bottom: 24px;
+  padding-top: 24px;
+  text-align: center;
+
+  h2 {
+    margin-top: 0px;
+  }
+}
+
+.report-actions {
+  display: flex;
+  justify-content: center;
+
+  .chip {
+    align-items: center;
+    background-color: transparent;
+    border: 1px solid #dadce0;
+    border-radius: 17px;
+    box-sizing: border-box;
+    color: #b23c66;
+    display: flex;
+    font-size: 14px;
+    height: 34px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-left: 12px;
+    padding-right: 12px;
+
+    mat-icon {
+      padding-right: 6px;
+    }
+  }
+}

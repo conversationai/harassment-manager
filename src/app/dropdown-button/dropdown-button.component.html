@@ -1,0 +1,118 @@
+<!--
+ Copyright 2022 Google LLC
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<div class="save-button dropdown-button">
+  <ng-content></ng-content>
+  <a hrefOnlyDownload
+     mat-button
+     class="dropdown-action-button"
+     color="primary"
+     cdkOverlayOrigin
+     role="button"
+     #saveButton="cdkOverlayOrigin"
+     [noActionHref]="'#'"
+     [href]="selectedActionOption.href || '#'"
+     [disabled]="getActionOptionDropdownDisabled() || actionInProgress"
+     [downloadRef]="selectedActionOption.downloadFilename"
+     (click)="handleButtonClick($event, selectedActionOption)">
+    <span class="icon-and-text">
+      <!-- Note: In this context, using a binding for svgIcon
+           conditionally seems to sometimes prevent the iconText from
+           being displayed when there is no svgIcon; could this be an
+           Angular bug? It's odd because it works in the template below
+           when the icon is not nested inside of a link. As a workaround,
+           we use two different mat-icon elements for each case. -->
+      <ng-container *ngIf="actionInProgress && selectedActionOption.actionInProgressText">
+        <mat-icon *ngIf="selectedActionOption.svgIcon"
+                  class="prefix-icon"
+                  [svgIcon]="selectedActionOption.svgIcon">
+        </mat-icon>
+        <mat-icon *ngIf="!selectedActionOption.svgIcon"
+                  class="prefix-icon">
+          {{selectedActionOption.iconText || ''}}
+        </mat-icon>
+        {{selectedActionOption.actionInProgressText}}
+      </ng-container>
+      <ng-container *ngIf="!actionInProgress">
+        <ng-container *ngIf="actions.includes(selectedActionOption.action)">
+          <mat-icon class="prefix-icon checkmark">check_circle_filled</mat-icon>
+          {{selectedActionOption.actionCompletedText || selectedActionOption.text}}
+        </ng-container>
+        <ng-container *ngIf="!actions.includes(selectedActionOption.action)">
+          <ng-container *ngIf="!actionInProgress">
+            <mat-icon *ngIf="selectedActionOption.svgIcon"
+                      class="prefix-icon"
+                      [svgIcon]="selectedActionOption.svgIcon">
+            </mat-icon>
+            <mat-icon *ngIf="!selectedActionOption.svgIcon"
+                      class="prefix-icon">
+              {{selectedActionOption.iconText || ''}}
+            </mat-icon>
+            {{selectedActionOption.text}}
+          </ng-container>
+        </ng-container>
+      </ng-container>
+    </span>
+  </a>
+
+  <span class="divider"></span>
+  <button mat-icon-button
+          class="dropdown-toggle-button"
+          [attr.aria-label]="getDropdownButtonAriaLabel()"
+          (click)="toggleActionOptionsMenu()"
+          [disabled]="actionInProgress">
+    <mat-icon *ngIf="!actionOptionsMenuOpen">arrow_drop_down</mat-icon>
+    <mat-icon *ngIf="actionOptionsMenuOpen">arrow_drop_up</mat-icon>
+  </button>
+
+  <!-- This template displays the dropdown content and is connected to the save button. -->
+   <ng-template
+     cdkConnectedOverlay
+     cdkConnectedOverlayHasBackdrop
+     (backdropClick)="toggleActionOptionsMenu(false)"
+     cdkConnectedOverlayBackdropClass='dropdown-backdrop'
+     [cdkConnectedOverlayOffsetY]="10"
+     [cdkConnectedOverlayScrollStrategy]="dropdownScrollStrategy"
+     [cdkConnectedOverlayPositions]="dropdownConnectedOverlayPositions"
+     [cdkConnectedOverlayOrigin]="saveButton"
+     [cdkConnectedOverlayOpen]="actionOptionsMenuOpen">
+     <div class="save-options-dropdown"
+          role="listbox"
+          [cdkTrapFocus]="actionOptionsMenuOpen"
+          [cdkTrapFocusAutoCapture]="actionOptionsMenuOpen">
+       <span class="save-option"
+             role="option"
+             tabindex="0"
+             *ngFor="let option of actionOptions"
+             (click)="selectActionOption(option)"
+             (keydown.space)="selectActionOption(option)"
+             (keydown.enter)="selectActionOption(option, $event)">
+         <ng-container *ngIf="actions.includes(option.action)">
+           <mat-icon class="prefix-icon checkmark">check_circle_filled</mat-icon>
+           {{option.actionCompletedText || option.text}}
+         </ng-container>
+
+         <ng-container *ngIf="!actions.includes(option.action)">
+           <mat-icon class="prefix-icon"
+                     [svgIcon]="option.svgIcon || ''">
+             {{option.iconText || ''}}
+           </mat-icon>
+           {{option.text}}
+         </ng-container>
+       </span>
+    </div>
+  </ng-template>
+</div>

@@ -1,0 +1,62 @@
+<!--
+ Copyright 2022 Google LLC
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<mat-form-field appearance="outline"
+                class="chip-option-select"
+                [class.filter-active]="isFilterActive()">
+  <!-- Note: We use [aria-label] and not [attr.aria-label] below because
+       aria-label is an @Input() property on a MatSelect, not a native
+       attribute property. -->
+  <mat-select *ngIf="!multi"
+              [aria-label]="getMatSelectTriggerLabelAndA11yText()"
+              [formControl]="selectedOption"
+              (openedChange)="onOpenedChange($event)"
+              [placeholder]="label"
+              name="optionsSelect"
+              #optionsSelect
+              panelClass="chip-option">
+    <mat-select-trigger>
+      {{getMatSelectTriggerLabelAndA11yText()}}
+    </mat-select-trigger>
+    <mat-option *ngIf="!selectFirstOption">None</mat-option>
+    <mat-option *ngFor="let option of options" [value]="option">
+      {{option.displayText}}
+    </mat-option>
+  </mat-select>
+  <!-- Slight UI variation for multiple selection. -->
+  <mat-select *ngIf="multi"
+              [aria-label]="getMatSelectTriggerLabelAndA11yText()"
+              [formControl]="selectedOptions"
+              [placeholder]="label"
+              name="optionsSelect"
+              multiple
+              panelClass="chip-option">
+    <mat-select-trigger>
+      {{getMatSelectTriggerLabelAndA11yText()}}
+    </mat-select-trigger>
+    <ng-container *ngFor="let option of options">
+      <mat-option *ngIf="!option.customOption" [class.black-on-select]="!colorChangeOnSelect" [value]="option">
+        <mat-icon *ngIf="option.matIcon" [ngClass]="option.cssClass ? option.cssClass : ''">{{option.matIcon}}</mat-icon>
+        {{option.displayText}}
+      </mat-option>
+      <mat-option *ngIf="option.customOption"
+                  class="custom-option-multi-select"
+                  [value]="option">
+        <mat-icon class="custom-option-mat-icon">tune</mat-icon> {{option.displayText}}
+      </mat-option>
+    </ng-container>
+  </mat-select>
+</mat-form-field>

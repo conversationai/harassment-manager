@@ -1,0 +1,187 @@
+/**
+ * Copyright 2022 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+.toolbar {
+  background: white;
+  box-shadow: 0 2px 4px rgba(60 64 67 / 0.06);
+  color: #5f6368;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.sign-out-button-wrapper {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.title {
+  align-self: center;
+  color: #5f6368;
+  font-size: 22px;
+  margin-right: 30px;
+}
+
+.title-wrapper {
+  cursor: pointer;
+  display: flex;
+  flex: 1;
+  text-decoration: none;
+}
+
+.navigation-links {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+
+.navigation-links a {
+  align-items: center;
+  color: #4a4a4a;
+  display: flex;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0 20px;
+  text-decoration: none;
+
+  &.active-router-link {
+    color: #b23c66;
+  }
+
+  &:focus {
+    background: rgba(0, 0, 0, 0.12);
+  }
+
+  &:hover {
+    color: #121112;
+  }
+}
+
+.continue-section {
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.continue-button {
+  background-color: #9da1a3;
+  border-radius: 18px;
+  color: #ffffff;
+  z-index: 2; // above the stepper
+}
+
+.continue-button[disabled] {
+  color: #ffffff;
+}
+
+.continue-button.active-router-link {
+  background-color: #bd2c66;
+}
+
+.continue-button span {
+  align-items: center;
+  display: flex;
+  position: relative;
+}
+
+.continue-button .report-draft-comment-count {
+  color: #9da1a3;
+  font-size: 12px;
+  position: absolute;
+  text-align: center;
+  top: 1px;
+  width: 24px;
+}
+
+.continue-button.active-router-link .report-draft-comment-count {
+  color: #bd2c66;
+}
+
+.back-button {
+  color: #a54167;
+  margin-right: 10px;
+  z-index: 2; // above the stepper
+}
+
+.forward-icon,
+.close-icon,
+.report-icon {
+  color: #ffffff;
+  display: flex;
+}
+
+.close-icon,
+.report-icon {
+  margin-right: 4px;
+}
+
+.forward-icon {
+  margin-left: 4px;
+}
+
+.report-icon {
+  height: 20px;
+}
+
+.dropdown {
+  background-color: #ffffff;
+  border-radius: 2px;
+  box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.24);
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 16px;
+  padding: 16px;
+  width: 345px;
+}
+
+.dropdown .title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.toolbar-row {
+  border-bottom: 1px solid #dadce0;
+  justify-content: space-between;
+  padding-left: 30px;
+  padding-right: 30px;
+  position: relative;
+}
+
+.highlight-continue-button {
+  background-color: #ffffff;
+  border-radius: 30px;
+  height: 60px;
+  position: absolute;
+  right: 14px;
+  width: 178px;
+  z-index: 1001; // Above the overlay backdrop.
+}
+
+.elevate {
+  position: relative;
+  z-index: 1002; // Above the overlay backdrop and the highlight card.
+}
+
+.last-edited {
+  color: #70757a;
+  font-size: 14px;
+  font-style: italic;
+  line-height: 16px;
+  margin-right: 12px;
+  text-align: right;
+}

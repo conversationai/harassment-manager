@@ -1,0 +1,15 @@
+{
+  "hosting": [
+    {
+      "target": "harassment-manager",
+      "public": "dist/harassment-manager",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

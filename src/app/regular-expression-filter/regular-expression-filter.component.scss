@@ -1,0 +1,43 @@
+/**
+ * Copyright 2022 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+.regex-filter-chip-list-container {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.chip-list {
+  display: block;
+}
+
+.regex-chip {
+  background-color: rgba(209, 179, 195, 0.2);
+  color: #b23c66;
+  min-height: 1.5em;
+}
+
+.regex-chip mat-icon {
+  color: #b23c66;
+  opacity: 1;
+}
+
+.apply-filter-button {
+  min-width: fit-content;
+}
+
+.title {
+  margin-bottom: 16px;
+}

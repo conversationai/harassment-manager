@@ -1,0 +1,57 @@
+/**
+ * Copyright 2022 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+.details {
+  color: #4a4a4a;
+  display: flex;
+  justify-content: space-around;
+  max-height: 14em;
+  overflow: hidden;
+  transition: max-height 0.3s;
+  width: 50%;
+}
+
+.details h2 {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.details .score,
+.details .metric {
+  font-size: 16px;
+  font-weight: 400;
+  padding-top: 8px;
+}
+
+.expanded-content {
+  display: flex;
+  height: 100%;
+  margin-left: 47.5px; // Checkbox width.
+  // Width - checkbox width - expansion arrow button width
+  width: calc(100% - 47.5px - 24px);
+}
+
+.vertical-divider {
+  background-color: #eceff1;
+  height: 100%;
+  margin-left: 16px;
+  margin-right: 16px;
+  width: 2px;
+}
+
+.comment-extras {
+  width: 50%;
+}

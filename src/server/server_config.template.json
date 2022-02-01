@@ -1,0 +1,11 @@
+{
+  "port": "3000",
+  "staticPath": "dist/harassment-manager",
+  "googleCloudApiKey": "enter your API key here",
+  "cloudProjectId": "enter your cloud project id here",
+  "twitterApiCredentials": {
+    "accountName": "",
+    "username": "",
+    "password": ""
+  }
+}

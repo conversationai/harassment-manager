@@ -1,0 +1,116 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "harassment-manager": {
+      "root": "",
+      "sourceRoot": "src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "allowedCommonJsDependencies": [
+              "@babel/runtime-corejs3",
+              "raf",
+              "rxjs-ratelimiter"
+            ],
+            "outputPath": "dist/harassment-manager",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "src/tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "*",
+                "input": "src/assets/",
+                "output": "/"
+              }
+            ],
+            "styles": [
+              "src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "harassment-manager:build",
+            "proxyConfig": "proxy.conf.js"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "harassment-manager:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "harassment-manager:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/test.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "src/tsconfig.spec.json",
+            "karmaConfig": "src/karma.conf.js",
+            "styles": [
+              "src/styles.scss"
+            ],
+            "scripts": [],
+            "assets": [
+              "src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
+        }
+      }
+    }
+  },
+  "defaultProject": "harassment-manager",
+  "cli": {
+    "analytics": false,
+    "defaultCollection": "@angular-eslint/schematics"
+  }
+}

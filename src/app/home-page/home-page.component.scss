@@ -1,0 +1,192 @@
+/**
+ * Copyright 2022 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+.action-button {
+  margin-top: 30px;
+}
+
+section {
+  display: flex;
+}
+
+h1,
+h2 {
+  font-weight: 500;
+}
+
+.jumbotron {
+  background: #f7f8f8;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 0 150px 50px 150px;
+
+  h1 {
+    font-size: 30px;
+  }
+
+  h1,
+  h2 {
+    margin-bottom: 10px;
+    padding-top: 30px;
+  }
+}
+
+.welcome-back-card {
+  align-self: stretch;
+  background: rgba(209, 179, 195, 0.15);
+  box-shadow: none;
+  display: flex;
+  padding: 50px 150px 20px 150px;
+
+  h1 {
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    padding-top: 14px;
+  }
+
+  app-report-progress-bar {
+    display: block;
+    margin: 25px 0;
+  }
+
+  button {
+    margin-right: 12px;
+  }
+}
+
+.welcome-back-image {
+  height: 312px;
+  margin-left: auto;
+  width: 600px;
+}
+
+.not-alone-image {
+  height: 330px;
+  width: 505px;
+}
+
+.subtitle {
+  color: #202124;
+  font-size: 14px;
+  padding-bottom: 15px;
+
+  .subtitle-header {
+    font-size: 18px;
+    font-weight: 500;
+    padding-bottom: 5px;
+  }
+}
+
+.content {
+  padding: 50px 150px;
+
+  img {
+    align-self: center;
+    max-width: 100%;
+    padding-left: 5%;
+  }
+}
+
+.view-comments-from-today-button {
+  margin-top: 32px;
+}
+
+.recommended-report-cards {
+  display: flex;
+  padding-bottom: 8px; // Temp fix for container height too small for child's shadow.
+  padding-left: 2px; //  Temp fix for container width too small for child's shadow.
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* Firefox */
+  width: 100%;
+}
+
+// If the screen is small enough, wrap the cards.
+@media screen and (max-width: 1340px) {
+  .recommended-report-cards {
+    flex-wrap: wrap;
+  }
+}
+
+
+.recommended-report-cards::-webkit-scrollbar {
+  background: transparent; /* Optional: just make scrollbar invisible */
+  width: 0px; /* Remove scrollbar space */
+}
+
+app-recommended-report-card {
+  margin-right: 24px;
+}
+
+.arrow {
+  background-color: #fff;
+  color: #b23c66;
+  position: absolute;
+  top: 50px;
+}
+
+.arrow.forward {
+  right: 16px;
+}
+
+.arrow.back {
+  left: 16px;
+}
+
+.additional-definition {
+  align-items: center;
+  color: #b23c66;
+  display: inline-flex;
+}
+
+.additional-definition mat-icon {
+  font-size: 16px;
+  height: 16px;
+  padding-left: 2px;
+  width: 16px;
+}
+
+.highlight-card {
+  background: #d8d8d8;
+  border-radius: 38px;
+  height: 200px;
+  left: 415px;
+  position: absolute;
+  top: -1em;
+  width: 442px;
+  z-index: 1001; // Above the overlay backdrop
+}
+
+// Once all the cards don't fit on the screen, reduce the width.
+@media screen and (max-width: 1440px) {
+  .highlight-card {
+    left: 400px;
+    width: 390px;
+  }
+}
+
+.elevate {
+  position: relative;
+  z-index: 1002; // Above the overlay backdrop and the highlight card.
+}
+
+.recommended-cards-wrapper {
+  overflow: visible;
+  position: relative;
+  width: 100%;
+}

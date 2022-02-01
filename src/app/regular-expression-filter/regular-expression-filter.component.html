@@ -1,0 +1,60 @@
+<!--
+ Copyright 2022 Google LLC
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<div class="regex-filter-chip-list-container">
+  <div>
+    Include all of these terms:
+    <mat-form-field class="chip-list">
+      <mat-chip-list #includeChipList>
+        <ng-container *ngFor="let regexFilter of regexFilters">
+          <mat-chip *ngIf="regexFilter.include"
+                    [removable]="true"
+                    (removed)="removeRegexFilter(regexFilter)"
+                    class="regex-chip">
+            {{regexFilter.regex}}
+            <mat-icon matChipRemove>cancel</mat-icon>
+          </mat-chip>
+        </ng-container>
+        <input placeholder="New filter..."
+               [matChipInputFor]="includeChipList"
+               [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+               [matChipInputAddOnBlur]="true"
+               (matChipInputTokenEnd)="addRegexFilter($event, true)">
+      </mat-chip-list>
+    </mat-form-field>
+  </div>
+  <div>
+    Exclude all of these terms:
+    <mat-form-field class="chip-list">
+      <mat-chip-list #excludeChipList>
+        <ng-container *ngFor="let regexFilter of regexFilters">
+          <mat-chip *ngIf="!regexFilter.include"
+                    [removable]="true"
+                    (removed)="removeRegexFilter(regexFilter)"
+                    class="regex-chip exclude">
+            {{regexFilter.regex}}
+            <mat-icon matChipRemove>cancel</mat-icon>
+          </mat-chip>
+        </ng-container>
+        <input placeholder="New filter..."
+               [matChipInputFor]="excludeChipList"
+               [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+               [matChipInputAddOnBlur]="true"
+               (matChipInputTokenEnd)="addRegexFilter($event, false)">
+      </mat-chip-list>
+    </mat-form-field>
+  </div>
+</div>

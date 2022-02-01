@@ -1,0 +1,61 @@
+/**
+ * Copyright 2022 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+app-toolbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+// We need to change the position and z-index properties of the toolbar during
+// onboarding in order for the z-index of the highlight card and highlighted
+// element to work properly (they need to be in the same stacking context as
+// the overlay). For more info see https://coder-coder.com/z-index-isnt-working/
+app-toolbar.onboarding {
+  position: relative;
+  z-index: unset;
+}
+
+.send-feedback-button {
+  align-items: center;
+  background: #000000;
+  border-radius: 100px;
+  bottom: 24px;
+  box-shadow: 0px 4px 8px 3px rgba(60, 64, 67, 0.15),
+    0px 1px 3px rgba(60, 64, 67, 0.3);
+  color: #ffffff;
+  display: flex;
+  font-size: 16px;
+  height: 56px;
+  justify-content: center;
+  left: 25px;
+  padding: 14px 12px;
+  position: fixed;
+  width: 198px;
+  z-index: 2;
+
+  mat-icon {
+    padding-right: 12px;
+  }
+}

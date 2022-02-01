@@ -1,0 +1,90 @@
+/**
+ * Copyright 2022 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+.container {
+  background-color: #fafafa;
+  border-top: 1px solid #b9b9b9;
+  color: #40444f;
+  padding: 36px 150px 32px 150px;
+}
+
+.summary-container {
+  width: 50%;
+}
+
+a {
+  color: #b23b66;
+  font-size: 18px;
+  line-height: 24px;
+  text-decoration: none;
+}
+
+.title {
+  color: #5f6368;
+  display: flex;
+  font-size: 22px;
+  line-height: 36px;
+}
+
+.summary {
+  font-size: 18px;
+  line-height: 21px;
+  margin-top: 22px;
+}
+
+.vertical-divider {
+  background-color: #dcddde;
+  height: 1px;
+  margin-bottom: 14px;
+  margin-top: 40px;
+  width: 100%;
+}
+
+.links {
+  display: flex;
+  justify-content: space-around;
+  width: 50%;
+}
+
+.link-column {
+  display: flex;
+  flex-direction: column;
+
+  a {
+    margin-top: 18px;
+  }
+
+  .header {
+    color: #232528;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 20px;
+    text-transform: uppercase;
+  }
+}
+
+.top-row {
+  display: flex;
+}
+
+.bottom-row {
+  align-items: center;
+  display: flex;
+
+  * {
+    margin-right: 28px;
+  }
+}

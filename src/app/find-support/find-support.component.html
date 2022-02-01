@@ -1,0 +1,116 @@
+<!--
+ Copyright 2022 Google LLC
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<div class="header">
+  <h1>Support Resources</h1>
+  <div class="subtitle">
+    Processing harmful content can be tough, but you're not alone in this process. There are people and tools to support you each step of the way.
+  </div>
+</div>
+
+<!-- Note: Wrapper div is required to prevent the side menu "sticky" layout
+     option from continuing beyond the bounds of the wrapper. -->
+<div class="content-wrapper">
+  <app-scrollable-side-menu class="side-menu"
+                            [sideMenuSections]="sideMenuSections">
+  </app-scrollable-side-menu>
+
+  <div class="content">
+
+    <div class="get-informed">
+      <h1>Get Informed</h1>
+
+      <app-find-support-list-item
+        title="Online SOS Action Center"
+        url="https://onlinesos.org/action-center">
+      </app-find-support-list-item>
+
+      <app-find-support-list-item
+        title="PEN Online Harassment Field Manual"
+        url="https://onlineharassmentfieldmanual.pen.org/">
+      </app-find-support-list-item>
+    </div>
+
+    <div class="explore-digital-tools">
+      <h1>Explore Digital Tools</h1>
+
+      <app-find-support-list-item
+         title="Block Party"
+         url="https://www.blockpartyapp.com/">
+      </app-find-support-list-item>
+
+      <app-find-support-list-item
+         title="iHeartMob"
+         url="https://iheartmob.org/">
+      </app-find-support-list-item>
+
+      <app-find-support-list-item
+         title="JSafe"
+         url="https://womeninjournalism.org/jsafe">
+      </app-find-support-list-item>
+
+      <app-find-support-list-item
+         title="Squad Box"
+         url="https://squadbox.org/">
+      </app-find-support-list-item>
+    </div>
+
+    <div class="connect-with-organizations">
+       <!-- TODO: Add organizations here. -->
+      <h1>Connect with Organizations</h1>
+
+      <div class="tile-row">
+        <app-find-support-tile
+           title="Organization #1"
+           url=""
+           >
+        </app-find-support-tile>
+
+        <app-find-support-tile
+           title="Organization #2"
+           url=""
+           >
+        </app-find-support-tile>
+
+        <app-find-support-tile
+           title="Organization #3"
+           url=""
+           >
+        </app-find-support-tile>
+      </div>
+
+      <div class="tile-row">
+        <app-find-support-tile
+           title="Organization #4"
+           url=""
+           >
+        </app-find-support-tile>
+
+        <app-find-support-tile
+           title="Organization #5"
+           url=""
+           >
+        </app-find-support-tile>
+
+        <app-find-support-tile
+           title="Organization #6"
+           url=""
+           >
+        </app-find-support-tile>
+      </div>
+    </div>
+  </div>
+</div>
