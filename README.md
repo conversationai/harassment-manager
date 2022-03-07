@@ -6,11 +6,13 @@ already marginalized people offline.
 **Harassment Manager** is a web application that aims to empower users to
 document and take action on abuse targeted at them on online platforms. It is
 designed for anyone that experiences significant online harassment, which can be
-episodic or an ongoing challenge. The tool has been tested with active Twitter
-users that experience significant and/or frequent harassment. Target users
-include, but are not limited to: women and other marginalized groups, who are
-disproportionately impacted by online harassment; journalists; activists; and
-politicians.
+episodic or an ongoing challenge. The tool has been built and tested using a
+community based research and design process with active Twitter users that
+experience significant and/or frequent harassment (more details about our
+research process and published results are available on
+[Arxiv](https://arxiv.org/abs/2202.11168)). Target users include folks who are
+disproportionately impacted by online harassment such as women and other
+marginalized groups, journalists, activists, and politicians.
 
 This web app was built by [Jigsaw](http://jigsaw.google.com), a unit within
 Google that explores threats to open societies and builds technology that
