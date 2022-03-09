@@ -20,7 +20,7 @@ inspires scalable solutions, in collaboration with Twitter. To detect
 potentially harmful comments, it uses Jigsaw’s [Perspective
 API](http://www.perspectiveapi.com), which uses machine learning to identify
 “toxic” language. We define toxicity as language that is rude, disrespectful or
-likely to make someone read a conversation. You can read our [model
+likely to make someone leave a conversation. You can read our [model
 cards](https://developers.perspectiveapi.com/s/about-the-api-model-cards) to
 learn more about how our machine learning models are trained.
 
