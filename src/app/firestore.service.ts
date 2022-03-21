@@ -16,8 +16,8 @@
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
-import firebase from 'firebase/app';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import firebase from 'firebase/compat/app';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import {

@@ -19,6 +19,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { csvFormatRows } from 'd3-dsv';
+import { firstValueFrom } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { CreatePdfResponse, CsvFileTemplate, Tweet } from '../../common-types';
 import { ActionWarningDialogComponent } from '../action-warning-dialog/action-warning-dialog.component';
@@ -202,7 +203,7 @@ export class ShareReportComponent implements AfterViewInit {
         throw new Error('Missing author screenname for comment ' + comment);
       }
     }
-    return comments.map(comment => comment.item.authorScreenName!);
+    return comments.map((comment) => comment.item.authorScreenName!);
   }
 
   handleClickActionOption(option: ActionButtonOption) {
@@ -253,10 +254,10 @@ export class ShareReportComponent implements AfterViewInit {
         .subscribe(async (result: boolean) => {
           if (result) {
             this.actionService.startAction(ReportAction.BLOCK_TWITTER);
-            await this.twitterApiService
-              .blockUsers(this.getUsersInReport())
-              .toPromise()
-              .then(response => {
+            await firstValueFrom(
+              this.twitterApiService.blockUsers(this.getUsersInReport())
+            )
+              .then((response) => {
                 const failures = response.failedScreennames;
                 if (failures?.length) {
                   this.dialog.open(ApiErrorDialogComponent, {
@@ -275,7 +276,7 @@ export class ShareReportComponent implements AfterViewInit {
                 }
                 resolve(true);
               })
-              .catch(_ => {
+              .catch((_) => {
                 this.dialog.open(ApiErrorDialogComponent, {
                   panelClass: 'api-error-dialog-container',
                   data: {
@@ -316,10 +317,10 @@ export class ShareReportComponent implements AfterViewInit {
         .subscribe(async (result: boolean) => {
           if (result) {
             this.actionService.startAction(ReportAction.MUTE_TWITTER);
-            await this.twitterApiService
-              .muteUsers(this.getUsersInReport())
-              .toPromise()
-              .then(response => {
+            await firstValueFrom(
+              this.twitterApiService.muteUsers(this.getUsersInReport())
+            )
+              .then((response) => {
                 const failures = response.failedScreennames;
                 if (failures?.length) {
                   this.dialog.open(ApiErrorDialogComponent, {
@@ -338,7 +339,7 @@ export class ShareReportComponent implements AfterViewInit {
                 }
                 resolve(true);
               })
-              .catch(_ => {
+              .catch((_) => {
                 this.dialog.open(ApiErrorDialogComponent, {
                   panelClass: 'api-error-dialog-container',
                   data: {
@@ -378,10 +379,10 @@ export class ShareReportComponent implements AfterViewInit {
         .subscribe(async (result: boolean) => {
           if (result) {
             this.muteActionInProgress = true;
-            await this.twitterApiService
-              .hideReplies(this.getTwitterReplyIds())
-              .toPromise()
-              .then(response => {
+            await firstValueFrom(
+              this.twitterApiService.hideReplies(this.getTwitterReplyIds())
+            )
+              .then((response) => {
                 const numQuotaFailures = response.numQuotaFailures;
                 const numOtherFailures = response.numOtherFailures;
                 if (numQuotaFailures) {
@@ -424,7 +425,7 @@ export class ShareReportComponent implements AfterViewInit {
                 }
                 resolve(true);
               })
-              .catch(_ => {
+              .catch((_) => {
                 this.dialog.open(ApiErrorDialogComponent, {
                   panelClass: 'api-error-dialog-container',
                   data: {
@@ -455,13 +456,12 @@ export class ShareReportComponent implements AfterViewInit {
             this.reportService.getContext()
           )
           .subscribe((reportUrl: string) => {
-            this.driveReportUrl = this.sanitizer.bypassSecurityTrustUrl(
-              reportUrl
-            );
+            this.driveReportUrl =
+              this.sanitizer.bypassSecurityTrustUrl(reportUrl);
             this.actions.push(ReportAction.SAVE_TO_DRIVE);
           });
       })
-      .catch(error => {
+      .catch((error) => {
         throw new Error(`Error authenticating with Google sheets: ${error}`);
       });
   }
@@ -529,7 +529,7 @@ export class ShareReportComponent implements AfterViewInit {
   private getTwitterReplyIds(): string[] {
     const comments = this.reportService.getCommentsForReport();
     return comments
-      .filter(comment => !!(comment.item as Tweet).in_reply_to_status_id)
-      .map(comment => comment.item.id_str);
+      .filter((comment) => !!(comment.item as Tweet).in_reply_to_status_id)
+      .map((comment) => comment.item.id_str);
   }
 }

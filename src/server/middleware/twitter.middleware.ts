@@ -17,7 +17,7 @@
 import axios, { AxiosBasicCredentials, AxiosError, AxiosInstance } from 'axios';
 import addOAuthInterceptor from 'axios-oauth-1.0a';
 import { Request, Response } from 'express';
-import firebase from 'firebase/app';
+import firebase from 'firebase/compat/app';
 import * as fs from 'fs';
 import {
   BlockTwitterUsersRequest,
@@ -83,11 +83,7 @@ export async function blockTwitterUsers(
   }
 
   const request = req.body as BlockTwitterUsersRequest;
-  const userCredential = firebase.auth.AuthCredential.fromJSON(
-    request.credential
-  ) as firebase.auth.OAuthCredential;
-
-  const response = await blockUsers(apiCredentials, userCredential, request);
+  const response = await blockUsers(apiCredentials, request);
   if (response.error) {
     // All block API requests failed. Send an error.
     res.status(500).send(response);
@@ -107,11 +103,7 @@ export async function muteTwitterUsers(
   }
 
   const request = req.body as MuteTwitterUsersRequest;
-  const userCredential = firebase.auth.AuthCredential.fromJSON(
-    request.credential
-  ) as firebase.auth.OAuthCredential;
-
-  const response = await muteUsers(apiCredentials, userCredential, request);
+  const response = await muteUsers(apiCredentials, request);
   if (response.error) {
     // All mute API requests failed. Send an error.
     res.status(500).send(response);
@@ -131,11 +123,7 @@ export async function hideTwitterReplies(
   }
 
   const request = req.body as HideRepliesTwitterRequest;
-  const userCredential = firebase.auth.AuthCredential.fromJSON(
-    request.credential
-  ) as firebase.auth.OAuthCredential;
-
-  const response = await hideReplies(apiCredentials, userCredential, request);
+  const response = await hideReplies(apiCredentials, request);
   if (response.error) {
     // All hide reply API requests failed. Send an error.
     res.status(500).send(response);
@@ -146,20 +134,19 @@ export async function hideTwitterReplies(
 
 async function blockUsers(
   apiCredentials: TwitterApiCredentials,
-  userCredential: firebase.auth.OAuthCredential,
   request: BlockTwitterUsersRequest
 ): Promise<BlockTwitterUsersResponse> {
-  const client = createAxiosInstance(apiCredentials, userCredential);
+  const client = createAxiosInstance(apiCredentials, request.credential);
   const requestUrl = 'https://api.twitter.com/1.1/blocks/create.json';
   const response: BlockTwitterUsersResponse = {};
-  const requests = request.users.map(user =>
+  const requests = request.users.map((user) =>
     client
       .post<BlockTwitterUsersResponse>(
         requestUrl,
         {},
         { params: { screen_name: user } }
       )
-      .catch(e => {
+      .catch((e) => {
         console.error(`Unable to block Twitter user: @${user} because ${e}`);
         response.failedScreennames = [
           ...(response.failedScreennames ?? []),
@@ -177,20 +164,19 @@ async function blockUsers(
 
 async function muteUsers(
   apiCredentials: TwitterApiCredentials,
-  userCredential: firebase.auth.OAuthCredential,
   request: MuteTwitterUsersRequest
 ): Promise<MuteTwitterUsersResponse> {
-  const client = createAxiosInstance(apiCredentials, userCredential);
+  const client = createAxiosInstance(apiCredentials, request.credential);
   const requestUrl = 'https://api.twitter.com/1.1/mutes/users/create.json';
   const response: MuteTwitterUsersResponse = {};
-  const requests = request.users.map(user =>
+  const requests = request.users.map((user) =>
     client
       .post<MuteTwitterUsersResponse>(
         requestUrl,
         {},
         { params: { screen_name: user } }
       )
-      .catch(e => {
+      .catch((e) => {
         console.error(`Unable to mute Twitter user: @${user} because ${e}`);
         response.failedScreennames = [
           ...(response.failedScreennames ?? []),
@@ -208,14 +194,13 @@ async function muteUsers(
 
 async function hideReplies(
   apiCredentials: TwitterApiCredentials,
-  userCredential: firebase.auth.OAuthCredential,
   request: HideRepliesTwitterRequest
 ): Promise<HideRepliesTwitterResponse> {
-  const client = createAxiosInstance(apiCredentials, userCredential);
+  const client = createAxiosInstance(apiCredentials, request.credential);
   const response: HideRepliesTwitterResponse = {};
   let quotaExhaustedErrors = 0;
   let otherErrors = 0;
-  const requests = request.tweetIds.map(id =>
+  const requests = request.tweetIds.map((id) =>
     client
       .put<HideRepliesTwitterResponse>(
         `https://api.twitter.com/2/tweets/${id}/hidden`,
@@ -275,8 +260,8 @@ function loadTwitterData(
 
   return axios
     .post<TwitterApiResponse>(requestUrl, twitterApiRequest, { auth })
-    .then(response => response.data)
-    .catch(error => {
+    .then((response) => response.data)
+    .catch((error) => {
       const errorStr =
         `Error while fetching tweets with request ` +
         `${JSON.stringify(request)}: ${error}`;
@@ -341,10 +326,10 @@ function createAxiosInstance(
 function parseTweet(tweetObject: TweetObject): Tweet {
   // Still pass the rest of the metadata in case we want to use it
   // later, but surface the comment in a top-level field.
-  // 
+  //
   // Firestore doesn't support writing nested arrays, so we have to
   // manually build the Tweet object to avoid accidentally including the nested
-  // arrays in the TweetObject from the Twitter API response. 
+  // arrays in the TweetObject from the Twitter API response.
   const tweet: Tweet = {
     created_at: tweetObject.created_at,
     date: new Date(),

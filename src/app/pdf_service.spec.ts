@@ -16,7 +16,7 @@
 
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import firebase from 'firebase/app';
+import firebase from 'firebase/compat/app';
 import { BehaviorSubject, ReplaySubject } from 'rxjs';
 import { CreatePdfRequest, SocialMediaItem } from 'src/common-types';
 import { OauthApiService } from './oauth_api.service';

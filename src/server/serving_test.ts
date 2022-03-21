@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import firebase from 'firebase/app';
+import firebase from 'firebase/compat/app';
 import { OAuth2Client } from 'googleapis-common';
 import * as supertest from 'supertest';
 import { CreateSpreadsheetRequest, Tweet } from '../common-types';
@@ -104,7 +104,7 @@ describe('Server', () => {
     credentials: mockCredentials,
   };
 
-  beforeEach(done => {
+  beforeEach((done) => {
     const config: serving.Config = {
       port: '8080',
       staticPath: 'static',
@@ -123,23 +123,19 @@ describe('Server', () => {
     server.start().then(done);
   });
 
-  afterEach(done => {
+  afterEach((done) => {
     server.stop().then(done);
   });
 
-  it('200 to /', done => {
-    supertest(server.app)
-      .get('/')
-      .expect(200, done);
+  it('200 to /', (done) => {
+    supertest(server.app).get('/').expect(200, done);
   });
 
   // This responds with a 200 because we return index.html for any
   // non-existant paths.
-  xit('404 to non-existent path /foo/bar', done => {
+  xit('404 to non-existent path /foo/bar', (done) => {
     console.log('test 404');
-    supertest(server.app)
-      .get('/foo/bar')
-      .expect(404, done);
+    supertest(server.app).get('/foo/bar').expect(404, done);
   });
 
   it('creates CSV rows for Twitter', () => {

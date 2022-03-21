@@ -15,8 +15,8 @@
  */
 
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
-import firebase from 'firebase/app';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import firebase from 'firebase/compat/app';
 import { Credentials } from 'google-auth-library';
 import { Observable, ReplaySubject } from 'rxjs';
 import { GapiService } from './gapi.service';

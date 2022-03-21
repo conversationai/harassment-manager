@@ -16,7 +16,7 @@
 
 import { TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
-import firebase from 'firebase/app';
+import firebase from 'firebase/compat/app';
 import { ReplaySubject } from 'rxjs';
 import { AuthGuardService } from './auth-guard.service';
 import { MockOauthApiService } from './common/test_utils';

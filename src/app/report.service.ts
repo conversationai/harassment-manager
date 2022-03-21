@@ -15,7 +15,7 @@
  */
 
 import { Injectable } from '@angular/core';
-import firebase from 'firebase/app';
+import firebase from 'firebase/compat/app';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { BuildReportStep, ScoredItem, SocialMediaItem } from '../common-types';
 import { FirestoreService, Report } from './firestore.service';
