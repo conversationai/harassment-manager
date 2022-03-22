@@ -19,7 +19,7 @@ import {
   HttpTestingController,
 } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import firebase from 'firebase/app';
+import firebase from 'firebase/compat/app';
 import { ScoredItem, SocialMediaItem } from '../common-types';
 import { OauthApiService } from './oauth_api.service';
 import { SheetsApiService } from './sheets_api.service';

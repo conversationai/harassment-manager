@@ -74,8 +74,7 @@ const tweets: Array<ScoredItem<Tweet>> = [
   {
     item: {
       id_str: 'b',
-      text:
-        'Strange women lying in ponds distributing swords is no basis for a system of government.',
+      text: 'Strange women lying in ponds distributing swords is no basis for a system of government.',
       date: new Date(),
     },
     scores: {
@@ -145,9 +144,10 @@ const tweets: Array<ScoredItem<Tweet>> = [
 ];
 
 describe('HomePageComponent', () => {
-  const mockSocialMediaItemsService = jasmine.createSpyObj<
-    SocialMediaItemService
-  >('socialMediaItemsService', ['fetchItems']);
+  const mockSocialMediaItemsService =
+    jasmine.createSpyObj<SocialMediaItemService>('socialMediaItemsService', [
+      'fetchItems',
+    ]);
   const twitterSignInTestSubject = new ReplaySubject<boolean>(1);
   const mockOauthApiService = {
     twitterSignInChange: twitterSignInTestSubject.asObservable(),
@@ -631,7 +631,7 @@ describe('HomePageComponent', () => {
 
     expect(mockSnackBar.open).toHaveBeenCalled();
     mockSnackBarActionSubject.next();
-    mockSnackBarDismissedSubject.next();
+    mockSnackBarDismissedSubject.next({ dismissedByAction: true });
     expect(mockRouter.navigate).toHaveBeenCalledWith(['/review-report']);
   });
 

@@ -19,8 +19,7 @@ import * as compression from 'compression';
 import * as express from 'express';
 import * as admin from 'firebase-admin';
 import { ServiceAccount } from 'firebase-admin';
-import firebase from 'firebase/app';
-import 'firebase/auth';
+import firebase from 'firebase/compat/app';
 import * as fs from 'fs';
 import { Credentials } from 'google-auth-library';
 import { GoogleApis } from 'googleapis';
@@ -38,7 +37,6 @@ import {
   AnalyzeCommentData,
   AnalyzeCommentRequest,
   AnalyzeCommentResponse,
-  AttributeScores,
   RequestedAttributes,
   ResponseData,
   ResponseError,
@@ -204,9 +202,8 @@ export class Server {
     });
 
     this.app.post('/create_twitter_report', (req, res) => {
-      const createSpreadsheetRequest = req.body as CreateSpreadsheetRequest<
-        Tweet
-      >;
+      const createSpreadsheetRequest =
+        req.body as CreateSpreadsheetRequest<Tweet>;
 
       if (!createSpreadsheetRequest.credentials) {
         res.status(400).send(new Error('Missing credentials'));
@@ -238,7 +235,7 @@ export class Server {
         this.appCredentials = credentials;
         this.log.write('Authorization load completed');
       })
-      .catch(e => {
+      .catch((e) => {
         console.log(e);
       });
     loadFirebaseServiceAccountKey()
@@ -255,7 +252,7 @@ export class Server {
 
         this.log.write('Firebase app initialized successfully');
       })
-      .catch(e => {
+      .catch((e) => {
         console.log(e);
       });
     return this.createCommentAnalyzerClient(COMMENT_ANALYZER_DISCOVERY_URL)
@@ -278,7 +275,7 @@ export class Server {
           }
         );
       })
-      .catch(e => {
+      .catch((e) => {
         console.error(`Failed to start: ` + e.message);
         throw e;
       });
@@ -357,7 +354,7 @@ export class Server {
             this.analyzeApiClient = client;
             resolve();
           })
-          .catch(discoverErr => {
+          .catch((discoverErr) => {
             console.error('ERROR: discoverAPI failed.');
             reject(discoverErr);
             return;

@@ -23,7 +23,7 @@ import {
   TestBed,
   tick,
 } from '@angular/core/testing';
-import { AngularFireModule } from '@angular/fire';
+import { AngularFireModule } from '@angular/fire/compat';
 import { FormsModule } from '@angular/forms';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -38,7 +38,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import firebase from 'firebase/app';
+import firebase from 'firebase/compat/app';
 import { ReplaySubject } from 'rxjs';
 import { environment } from '../environments/environment';
 import { CustomRouteReuseStrategy, routes } from './app-routing.module';

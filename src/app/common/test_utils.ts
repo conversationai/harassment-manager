@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import firebase from 'firebase/app';
+import firebase from 'firebase/compat/app';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { ScoredItem, SocialMediaItem } from '../../common-types';
 import { Report } from '../firestore.service';

@@ -15,7 +15,7 @@
  */
 
 import { SafeUrl } from '@angular/platform-browser';
-import firebase from 'firebase/app';
+import firebase from 'firebase/compat/app';
 import { Credentials } from 'google-auth-library';
 import { AttributeSummaryScores } from './perspectiveapi-types';
 

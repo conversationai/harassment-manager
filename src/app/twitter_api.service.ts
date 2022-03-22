@@ -14,22 +14,22 @@
  * limitations under the License.
  */
 
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, firstValueFrom, Observable } from 'rxjs';
+import RateLimiter from 'rxjs-ratelimiter';
+import { take } from 'rxjs/operators';
 import {
-  GetTweetsRequest,
-  GetTweetsResponse,
   BlockTwitterUsersRequest,
   BlockTwitterUsersResponse,
-  MuteTwitterUsersRequest,
-  MuteTwitterUsersResponse,
+  GetTweetsRequest,
+  GetTweetsResponse,
   HideRepliesTwitterRequest,
   HideRepliesTwitterResponse,
+  MuteTwitterUsersRequest,
+  MuteTwitterUsersResponse,
 } from '../common-types';
-import { Observable, BehaviorSubject, of, throwError } from 'rxjs';
-import { take } from 'rxjs/operators';
 import { OauthApiService } from './oauth_api.service';
-import RateLimiter from 'rxjs-ratelimiter';
 
 // Number of times to retry getting Tweets after error. This is per batch.
 const MAX_RETRIES = 25;
@@ -68,13 +68,13 @@ export class TwitterApiService {
     let retryCount = 0;
     while (!haveFullResponse) {
       try {
-        curResponse = await this.rateLimiter
-          .limit(
+        curResponse = await firstValueFrom(
+          this.rateLimiter.limit(
             this.httpClient.post<GetTweetsResponse>('/get_tweets', request, {
               headers,
             })
           )
-          .toPromise();
+        );
       } catch (error) {
         // If there's an error with a batch, retry it up to MAX_RETRIES times.
         retryCount += 1;

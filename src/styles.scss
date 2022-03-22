@@ -18,7 +18,7 @@
 
 // Include CSS from the nouislider library, which doesn't seem to get included
 // automatically.
-@import url(../node_modules/nouislider/distribute/nouislider.css);
+@import url(../node_modules/nouislider/dist/nouislider.css);
 
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/theming';
