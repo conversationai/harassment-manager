@@ -105,12 +105,6 @@ export class SheetsApiService {
 
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
-
-    // For reasons that aren't clear or documented, the toJSON() function
-    // on firebase.auth.OAuthCredentials appends the prefix "oauth" to the
-    // accessToken and idToken fields in the credentials, so on the server they
-    // become oauthAcessToken and oauthIdToken. This is fixable on the server by
-    // calling fromJSON.
     return this.httpClient
       .post<CreateSpreadsheetResponse>('/create_twitter_report', request, {
         headers,
