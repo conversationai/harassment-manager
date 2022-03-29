@@ -38,3 +38,36 @@ learn more about how our machine learning models are trained.
 For any technical issues, please create an issue in this repository. For
 additional support and to contact us, see
 https://developers.perspectiveapi.com/s/contact-us.
+
+## Resources
+
+There are many organizations, tools, and resources to support people who are
+experiencing online harassment. Below, we've included a few sources of
+information, as well as organizations and tools that can be used to help
+navigate.
+
+### Get Informed
+
+- [OnlineSoS Action Center](https://onlinesos.org/action-cente)
+- [PEN America Online Harassment Field Manual](https://onlineharassmentfieldmanual.pen.org/)
+
+### Explore Digital Tools
+
+- [Block Party](https://www.blockpartyapp.com/)
+- [HeartMob](https://iheartmob.org/)
+- [Squadbox](https://squadbox.org/)
+
+### Connect with Organizations
+
+- [Cyber Civil Rights Initiative](https://cybercivilrights.org/faqs-usvictims/)
+- [Coalition Against Online Violence](https://onlineviolenceresponsehub.org/)
+- [Coalition for Women in Journalism](https://www.womeninjournalism.org/)
+- [Committee to Protect Journalists](https://cpj.org/campaigns/safety-women-nonbinary-journalists-online-offline/)
+- [Crash Override Network](http://www.crashoverridenetwork.com/)
+- [Glitch](https://fixtheglitch.org/)
+- [OnlineSOS](https://onlinesos.org/)
+- [PEN America](https://onlineharassmentfieldmanual.pen.org)
+- [Reporters' Committee for Freedom of Press Hotline](https://www.rcfp.org/legal-hotline/")
+- [Right to Be](https://righttobe.org/)
+- [Squadbox](https://squadbox.org/)
+- [Tall Poppy](https://www.tallpoppy.com/)
