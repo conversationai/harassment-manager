@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+import { HttpStatusCode } from '@angular/common/http';
 import axios, { AxiosBasicCredentials, AxiosError, AxiosInstance } from 'axios';
 import addOAuthInterceptor from 'axios-oauth-1.0a';
 import { Request, Response } from 'express';
@@ -153,7 +154,7 @@ async function blockUsers(
       )
       .catch((e: AxiosError) => {
         if (
-          e.response?.status === 429 ||
+          e.response?.status === HttpStatusCode.TooManyRequests ||
           e.response?.statusText.includes('Too Many Requests')
         ) {
           quotaExhaustedErrors += 1;
@@ -226,7 +227,7 @@ async function hideReplies(
       .catch((e: AxiosError) => {
         console.error(`Unable to hide tweet ID: ${id} because ${e}`);
         if (
-          e.response?.status === 429 ||
+          e.response?.status === HttpStatusCode.TooManyRequests ||
           e.response?.statusText.includes('Too Many Requests')
         ) {
           quotaExhaustedErrors += 1;
