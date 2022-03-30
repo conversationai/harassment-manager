@@ -28,6 +28,7 @@ import {
   HideRepliesTwitterResponse,
   MuteTwitterUsersRequest,
   MuteTwitterUsersResponse,
+  TwitterUser,
 } from '../common-types';
 import { OauthApiService } from './oauth_api.service';
 
@@ -96,7 +97,7 @@ export class TwitterApiService {
     return fullResponse;
   }
 
-  blockUsers(users: string[]): Observable<BlockTwitterUsersResponse> {
+  blockUsers(users: TwitterUser[]): Observable<BlockTwitterUsersResponse> {
     const request: Partial<BlockTwitterUsersRequest> = { users };
     const credential = this.oauthApiService.getTwitterOauthCredential();
 

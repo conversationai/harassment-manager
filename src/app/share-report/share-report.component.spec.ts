@@ -77,6 +77,7 @@ describe('ShareReportComponent', () => {
         id_str: 'a',
         text: 'your mother was a hamster',
         date: new Date(),
+        authorId: '1234567891011',
         authorScreenName: 'testing1',
         in_reply_to_status_id: '123',
       },
@@ -89,6 +90,7 @@ describe('ShareReportComponent', () => {
         id_str: 'b',
         text: 'and your father smelt of elderberries',
         date: new Date(),
+        authorId: '1234567891012',
         authorScreenName: 'testing2',
       },
       scores: {
@@ -360,8 +362,8 @@ describe('ShareReportComponent', () => {
       )
     ).toBeFalsy();
     expect(mockTwitterApiService.blockUsers).not.toHaveBeenCalledWith([
-      'testing1',
-      'testing2',
+      { id_str: '1234567891011', screen_name: 'testing1' },
+      { id_str: '1234567891012', screen_name: 'testing2' },
     ]);
     mockTwitterApiService.blockUsers.calls.reset();
 
@@ -382,8 +384,8 @@ describe('ShareReportComponent', () => {
       )
     ).toBeFalsy();
     expect(mockTwitterApiService.blockUsers).toHaveBeenCalledWith([
-      'testing1',
-      'testing2',
+      { id_str: '1234567891011', screen_name: 'testing1' },
+      { id_str: '1234567891012', screen_name: 'testing2' },
     ]);
     mockTwitterApiService.blockUsers.calls.reset();
 
@@ -402,8 +404,8 @@ describe('ShareReportComponent', () => {
       )
     ).toBeTruthy();
     expect(mockTwitterApiService.blockUsers).toHaveBeenCalledWith([
-      'testing1',
-      'testing2',
+      { id_str: '1234567891011', screen_name: 'testing1' },
+      { id_str: '1234567891012', screen_name: 'testing2' },
     ]);
   }));
 

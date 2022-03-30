@@ -21,7 +21,12 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { csvFormatRows } from 'd3-dsv';
 import { firstValueFrom } from 'rxjs';
 import { take } from 'rxjs/operators';
-import { CreatePdfResponse, CsvFileTemplate, Tweet } from '../../common-types';
+import {
+  CreatePdfResponse,
+  CsvFileTemplate,
+  Tweet,
+  TwitterUser,
+} from '../../common-types';
 import { ActionWarningDialogComponent } from '../action-warning-dialog/action-warning-dialog.component';
 import { ActionService } from '../action.service';
 import { ApiErrorDialogComponent } from '../api-error-dialog/api-error-dialog.component';
@@ -206,6 +211,24 @@ export class ShareReportComponent implements AfterViewInit {
     return comments.map((comment) => comment.item.authorScreenName!);
   }
 
+  getTwitterUsersInReport(): TwitterUser[] {
+    const comments = this.reportService.getCommentsForReport();
+    for (const comment of comments) {
+      if (!comment.item.authorId) {
+        throw new Error('Missing author ID for comment ' + comment);
+      }
+      if (!comment.item.authorScreenName) {
+        throw new Error('Missing author screenname for comment: ' + comment);
+      }
+    }
+    return comments.map(
+      (comment): TwitterUser => ({
+        id_str: comment.item.authorId!,
+        screen_name: comment.item.authorScreenName!,
+      })
+    );
+  }
+
   handleClickActionOption(option: ActionButtonOption) {
     this.addAction(option.action);
   }
@@ -255,24 +278,51 @@ export class ShareReportComponent implements AfterViewInit {
           if (result) {
             this.actionService.startAction(ReportAction.BLOCK_TWITTER);
             await firstValueFrom(
-              this.twitterApiService.blockUsers(this.getUsersInReport())
+              this.twitterApiService.blockUsers(this.getTwitterUsersInReport())
             )
               .then((response) => {
-                const failures = response.failedScreennames;
-                if (failures?.length) {
+                const numQuotaFailures = response.numQuotaFailures;
+                const numOtherFailures = response.numOtherFailures;
+                if (numQuotaFailures) {
+                  // Some of the errors were quota issues, so we combine those
+                  // with any other issues to keep things straightforward for
+                  // users.
+                  const numFailures =
+                    numQuotaFailures + (numOtherFailures ?? 0);
                   this.dialog.open(ApiErrorDialogComponent, {
                     panelClass: 'api-error-dialog-container',
                     data: {
-                      failures,
                       message:
-                        'The following users could not be blocked. These accounts ' +
-                        'may no longer be active or an unknown error may have ' +
-                        'occurred.',
-                      title: `${failures.length} ${
-                        failures.length === 1 ? 'user' : 'users'
+                        "Only 50 users can be blocked every 15 minutes. If you'd " +
+                        'like to block more than 50 users, you have a couple ' +
+                        'of options. You can either divide the users across ' +
+                        'multiple reports or you can resend the report to have ' +
+                        'up to another 50 users blocked. Note that with both ' +
+                        "options you'll need to wait 15 minutes, remove the " +
+                        'previously submitted users, and select up to 50 ' +
+                        'additional new users.',
+                      title: `${numFailures} ${
+                        numFailures === 1 ? 'user' : 'users'
                       } could not be blocked`,
                     },
                   });
+                } else if (numOtherFailures) {
+                  const failures = response.failedScreennames;
+                  if (failures?.length) {
+                    this.dialog.open(ApiErrorDialogComponent, {
+                      panelClass: 'api-error-dialog-container',
+                      data: {
+                        failures,
+                        message:
+                          'The following users could not be blocked. These accounts ' +
+                          'may no longer be active or an unknown error may have ' +
+                          'occurred.',
+                        title: `${failures.length} ${
+                          failures.length === 1 ? 'user' : 'users'
+                        } could not be blocked`,
+                      },
+                    });
+                  }
                 }
                 resolve(true);
               })

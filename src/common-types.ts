@@ -26,6 +26,7 @@ export interface SocialMediaItem {
   text: string;
   date: Date;
   url?: string;
+  authorId?: string;
   authorName?: string;
   authorScreenName?: string;
   authorUrl?: string;
@@ -89,12 +90,14 @@ export interface GetTweetsResponse {
 
 export interface BlockTwitterUsersRequest {
   credential: firebase.auth.OAuthCredential;
-  users: string[];
+  users: TwitterUser[];
 }
 
 export interface BlockTwitterUsersResponse {
   error?: string;
   failedScreennames?: string[]; // Twitter screen names
+  numQuotaFailures?: number;
+  numOtherFailures?: number;
 }
 
 export interface MuteTwitterUsersRequest {
@@ -169,7 +172,7 @@ export interface TweetObject {
   source?: string;
 }
 
-interface TwitterUser {
+export interface TwitterUser {
   id_str: string;
   screen_name: string;
 
