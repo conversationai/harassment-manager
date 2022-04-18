@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+import { HttpStatusCode } from '@angular/common/http';
 import axios, { AxiosBasicCredentials, AxiosError, AxiosInstance } from 'axios';
 import addOAuthInterceptor from 'axios-oauth-1.0a';
 import { Request, Response } from 'express';
@@ -75,15 +76,15 @@ export async function getTweets(
 export async function blockTwitterUsers(
   req: Request,
   res: Response,
-  apiCredentials: TwitterApiCredentials
+  credentials: TwitterApiCredentials
 ) {
-  if (!standardApiCredentialsAreValid(apiCredentials)) {
+  if (!standardApiCredentialsAreValid(credentials)) {
     res.send(new Error('Invalid Twitter Standard API credentials'));
     return;
   }
 
   const request = req.body as BlockTwitterUsersRequest;
-  const response = await blockUsers(apiCredentials, request);
+  const response = await blockUsers(credentials, request);
   if (response.error) {
     // All block API requests failed. Send an error.
     res.status(500).send(response);
@@ -133,30 +134,47 @@ export async function hideTwitterReplies(
 }
 
 async function blockUsers(
-  apiCredentials: TwitterApiCredentials,
+  credentials: TwitterApiCredentials,
   request: BlockTwitterUsersRequest
 ): Promise<BlockTwitterUsersResponse> {
-  const client = createAxiosInstance(apiCredentials, request.credential);
-  const requestUrl = 'https://api.twitter.com/1.1/blocks/create.json';
+  const client = createAxiosInstance(credentials, request.credential);
   const response: BlockTwitterUsersResponse = {};
+  const id = getUserIdFromCredential(request.credential);
+  if (!id) {
+    response.error = 'Missing Twitter user ID in access token';
+    return response;
+  }
+  let quotaExhaustedErrors = 0;
+  let otherErrors = 0;
   const requests = request.users.map((user) =>
     client
       .post<BlockTwitterUsersResponse>(
-        requestUrl,
-        {},
-        { params: { screen_name: user } }
+        `https://api.twitter.com/2/users/${id}/blocking`,
+        { target_user_id: user.id_str }
       )
-      .catch((e) => {
-        console.error(`Unable to block Twitter user: @${user} because ${e}`);
+      .catch((e: AxiosError) => {
+        if (
+          e.response?.status === HttpStatusCode.TooManyRequests ||
+          e.response?.statusText.includes('Too Many Requests')
+        ) {
+          quotaExhaustedErrors += 1;
+        } else {
+          otherErrors += 1;
+        }
+        console.error(
+          `Unable to block Twitter user @${user.screen_name} because ${e}`
+        );
         response.failedScreennames = [
           ...(response.failedScreennames ?? []),
-          user,
+          user.screen_name,
         ];
       })
   );
 
   await Promise.all(requests);
-  if (request.users.length === response.failedScreennames?.length) {
+  response.numQuotaFailures = quotaExhaustedErrors;
+  response.numOtherFailures = otherErrors;
+  if (otherErrors == request.users.length) {
     response.error = 'Unable to block Twitter users';
   }
   return response;
@@ -209,7 +227,7 @@ async function hideReplies(
       .catch((e: AxiosError) => {
         console.error(`Unable to hide tweet ID: ${id} because ${e}`);
         if (
-          e.response?.status === 429 ||
+          e.response?.status === HttpStatusCode.TooManyRequests ||
           e.response?.statusText.includes('Too Many Requests')
         ) {
           quotaExhaustedErrors += 1;
@@ -358,6 +376,7 @@ function parseTweet(tweetObject: TweetObject): Tweet {
     tweet.date = new Date(tweetObject.created_at);
   }
   if (tweetObject.user) {
+    tweet.authorId = tweetObject.user.id_str;
     tweet.authorName = tweetObject.user.name;
     tweet.authorScreenName = tweetObject.user.screen_name;
     tweet.authorUrl = `https://twitter.com/${tweetObject.user.screen_name}`;
@@ -368,4 +387,10 @@ function parseTweet(tweetObject: TweetObject): Tweet {
     tweet.hasImage = true;
   }
   return tweet;
+}
+
+function getUserIdFromCredential(credential: firebase.auth.OAuthCredential) {
+  // The numeric part of the Twitter Access Token is the user ID.
+  const match = credential.accessToken?.match('[0-9]+');
+  return match && match.length ? match[0] : null;
 }
