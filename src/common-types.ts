@@ -102,12 +102,14 @@ export interface BlockTwitterUsersResponse {
 
 export interface MuteTwitterUsersRequest {
   credential: firebase.auth.OAuthCredential;
-  users: string[];
+  users: TwitterUser[];
 }
 
 export interface MuteTwitterUsersResponse {
   error?: string;
   failedScreennames?: string[]; // Twitter screen names
+  numQuotaFailures?: number;
+  numOtherFailures?: number;
 }
 
 export interface HideRepliesTwitterRequest {

@@ -53,20 +53,19 @@ export interface ActionButtonOption {
 })
 export class DropdownButtonComponent implements OnChanges {
   @Output() clickActionOption = new EventEmitter<ActionButtonOption>();
+  @Output() selectActionOptionEvent = new EventEmitter<ActionButtonOption>();
 
   @Input() actionOptions: ActionButtonOption[] = [];
   @Input() selectedActionOptionIndex = 0;
-  selectedActionOption: ActionButtonOption = this.actionOptions[
-    this.selectedActionOptionIndex
-  ];
+  selectedActionOption: ActionButtonOption =
+    this.actionOptions[this.selectedActionOptionIndex];
   @Input() actions: ReportAction[] = [];
   @Input() dropdownButtonAriaLabel = '';
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['actionOptions'] || changes['selectedActionOptionIndex']) {
-      this.selectedActionOption = this.actionOptions[
-        this.selectedActionOptionIndex
-      ];
+      this.selectedActionOption =
+        this.actionOptions[this.selectedActionOptionIndex];
     }
   }
 
@@ -88,7 +87,7 @@ export class DropdownButtonComponent implements OnChanges {
     private readonly actionService: ActionService,
     private readonly scrollStrategyOptions: ScrollStrategyOptions
   ) {
-    this.actionService.actionState.subscribe(state => {
+    this.actionService.actionState.subscribe((state) => {
       if (state.action === this.selectedActionOption.action) {
         this.actionInProgress = state.inProgress;
       }
@@ -132,6 +131,7 @@ export class DropdownButtonComponent implements OnChanges {
     }
     this.selectedActionOption = option;
     this.toggleActionOptionsMenu(false);
+    this.selectActionOptionEvent.next(this.selectedActionOption);
   }
 
   getActionOptionDropdownDisabled(): boolean {
@@ -153,7 +153,7 @@ export class DropdownButtonComponent implements OnChanges {
  * the same <a> element for both downloading CSV/PDF and as a print button.
  */
 @Directive({
-  selector: '[hrefOnlyDownload]',  // eslint-disable-line  @angular-eslint/directive-selector
+  selector: '[hrefOnlyDownload]', // eslint-disable-line  @angular-eslint/directive-selector
 })
 export class HrefOnlyDownloadDirective implements OnChanges {
   @Input() downloadRef = '';

@@ -96,15 +96,15 @@ export async function blockTwitterUsers(
 export async function muteTwitterUsers(
   req: Request,
   res: Response,
-  apiCredentials: TwitterApiCredentials
+  credentials: TwitterApiCredentials
 ) {
-  if (!standardApiCredentialsAreValid(apiCredentials)) {
+  if (!standardApiCredentialsAreValid(credentials)) {
     res.send(new Error('Invalid Twitter Standard API credentials'));
     return;
   }
 
   const request = req.body as MuteTwitterUsersRequest;
-  const response = await muteUsers(apiCredentials, request);
+  const response = await muteUsers(credentials, request);
   if (response.error) {
     // All mute API requests failed. Send an error.
     res.status(500).send(response);
@@ -181,30 +181,47 @@ async function blockUsers(
 }
 
 async function muteUsers(
-  apiCredentials: TwitterApiCredentials,
+  credentials: TwitterApiCredentials,
   request: MuteTwitterUsersRequest
 ): Promise<MuteTwitterUsersResponse> {
-  const client = createAxiosInstance(apiCredentials, request.credential);
-  const requestUrl = 'https://api.twitter.com/1.1/mutes/users/create.json';
+  const client = createAxiosInstance(credentials, request.credential);
   const response: MuteTwitterUsersResponse = {};
+  const id = getUserIdFromCredential(request.credential);
+  if (!id) {
+    response.error = 'Missing Twitter user ID in access token';
+    return response;
+  }
+  let quotaExhaustedErrors = 0;
+  let otherErrors = 0;
   const requests = request.users.map((user) =>
     client
       .post<MuteTwitterUsersResponse>(
-        requestUrl,
-        {},
-        { params: { screen_name: user } }
+        `https://api.twitter.com/2/users/${id}/muting`,
+        { target_user_id: user.id_str }
       )
-      .catch((e) => {
-        console.error(`Unable to mute Twitter user: @${user} because ${e}`);
+      .catch((e: AxiosError) => {
+        if (
+          e.response?.status === HttpStatusCode.TooManyRequests ||
+          e.response?.statusText.includes('Too Many Requests')
+        ) {
+          quotaExhaustedErrors += 1;
+        } else {
+          otherErrors += 1;
+        }
+        console.error(
+          `Unable to mute Twitter user @${user.screen_name} because ${e}`
+        );
         response.failedScreennames = [
           ...(response.failedScreennames ?? []),
-          user,
+          user.screen_name,
         ];
       })
   );
 
   await Promise.all(requests);
-  if (request.users.length === response.failedScreennames?.length) {
+  response.numQuotaFailures = quotaExhaustedErrors;
+  response.numOtherFailures = otherErrors;
+  if (otherErrors == request.users.length) {
     response.error = 'Unable to mute Twitter users';
   }
   return response;
