@@ -117,7 +117,7 @@ export class TwitterApiService {
       .pipe(take(1));
   }
 
-  muteUsers(users: string[]): Observable<MuteTwitterUsersResponse> {
+  muteUsers(users: TwitterUser[]): Observable<MuteTwitterUsersResponse> {
     const request: Partial<MuteTwitterUsersRequest> = { users };
     const credential = this.oauthApiService.getTwitterOauthCredential();
 

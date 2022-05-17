@@ -118,6 +118,8 @@ export class ShareReportComponent implements AfterViewInit {
     },
   ];
   selectedTwitterActionOptionIndex = 0;
+  selectedTwitterAction =
+    this.twitterActionOptions[this.selectedTwitterActionOptionIndex].action;
 
   adblockErrorOpen = false;
 
@@ -201,16 +203,6 @@ export class ShareReportComponent implements AfterViewInit {
       });
   }
 
-  getUsersInReport(): string[] {
-    const comments = this.reportService.getCommentsForReport();
-    for (const comment of comments) {
-      if (!comment.item.authorScreenName) {
-        throw new Error('Missing author screenname for comment ' + comment);
-      }
-    }
-    return comments.map((comment) => comment.item.authorScreenName!);
-  }
-
   getTwitterUsersInReport(): TwitterUser[] {
     const comments = this.reportService.getCommentsForReport();
     for (const comment of comments) {
@@ -221,16 +213,27 @@ export class ShareReportComponent implements AfterViewInit {
         throw new Error('Missing author screenname for comment: ' + comment);
       }
     }
-    return comments.map(
+    const users = comments.map(
       (comment): TwitterUser => ({
         id_str: comment.item.authorId!,
         screen_name: comment.item.authorScreenName!,
       })
     );
+    // Remove duplicate user IDs.
+    const userIds = new Set();
+    return users.filter((user) => {
+      const hasId = userIds.has(user.id_str);
+      userIds.add(user.id_str);
+      return !hasId;
+    });
   }
 
   handleClickActionOption(option: ActionButtonOption) {
     this.addAction(option.action);
+  }
+
+  handleSelectActionOption(option: ActionButtonOption) {
+    this.selectedTwitterAction = option.action;
   }
 
   async addAction(action: ReportAction) {
@@ -287,18 +290,17 @@ export class ShareReportComponent implements AfterViewInit {
                   // Some of the errors were quota issues, so we combine those
                   // with any other issues to keep things straightforward for
                   // users.
-                  const numFailures =
-                    numQuotaFailures + (numOtherFailures ?? 0);
+                  const numFailures = numQuotaFailures + (numOtherFailures ?? 0);
                   this.dialog.open(ApiErrorDialogComponent, {
                     panelClass: 'api-error-dialog-container',
                     data: {
                       message:
-                        "Only 50 users can be blocked every 15 minutes. If you'd " +
+                        'Only 50 users can be blocked every 15 minutes. If you\'d ' +
                         'like to block more than 50 users, you have a couple ' +
                         'of options. You can either divide the users across ' +
                         'multiple reports or you can resend the report to have ' +
                         'up to another 50 users blocked. Note that with both ' +
-                        "options you'll need to wait 15 minutes, remove the " +
+                        'options you\'ll need to wait 15 minutes, remove the ' +
                         'previously submitted users, and select up to 50 ' +
                         'additional new users.',
                       title: `${numFailures} ${
@@ -368,24 +370,50 @@ export class ShareReportComponent implements AfterViewInit {
           if (result) {
             this.actionService.startAction(ReportAction.MUTE_TWITTER);
             await firstValueFrom(
-              this.twitterApiService.muteUsers(this.getUsersInReport())
+              this.twitterApiService.muteUsers(this.getTwitterUsersInReport())
             )
               .then((response) => {
-                const failures = response.failedScreennames;
-                if (failures?.length) {
+                const numQuotaFailures = response.numQuotaFailures;
+                const numOtherFailures = response.numOtherFailures;
+                if (numQuotaFailures) {
+                  // Some of the errors were quota issues, so we combine those
+                  // with any other issues to keep things straightforward for
+                  // users.
+                  const numFailures = numQuotaFailures + (numOtherFailures ?? 0);
                   this.dialog.open(ApiErrorDialogComponent, {
                     panelClass: 'api-error-dialog-container',
                     data: {
-                      failures,
                       message:
-                        'The following users could not be muted. These accounts ' +
-                        'may no longer be active or an unknown error may have ' +
-                        'occurred.',
-                      title: `${failures.length} ${
-                        failures.length === 1 ? 'user' : 'users'
+                        'Only 50 users can be muted every 15 minutes. If you\'d ' +
+                        'like to mute more than 50 users, you have a couple ' +
+                        'of options. You can either divide the users across ' +
+                        'multiple reports or you can resend the report to have ' +
+                        'up to another 50 users muted. Note that with both ' +
+                        'options you\'ll need to wait 15 minutes, remove the ' +
+                        'previously submitted users, and select up to 50 ' +
+                        'additional new users.',
+                      title: `${numFailures} ${
+                        numFailures === 1 ? 'user' : 'users'
                       } could not be muted`,
                     },
                   });
+                } else if (numOtherFailures) {
+                  const failures = response.failedScreennames;
+                  if (failures?.length) {
+                    this.dialog.open(ApiErrorDialogComponent, {
+                      panelClass: 'api-error-dialog-container',
+                      data: {
+                        failures,
+                        message:
+                          'The following users could not be muted. These accounts ' +
+                          'may no longer be active or an unknown error may have ' +
+                          'occurred.',
+                        title: `${failures.length} ${
+                          failures.length === 1 ? 'user' : 'users'
+                        } could not be muted`,
+                      },
+                    });
+                  }
                 }
                 resolve(true);
               })
@@ -445,12 +473,12 @@ export class ShareReportComponent implements AfterViewInit {
                     panelClass: 'api-error-dialog-container',
                     data: {
                       message:
-                        "Only 50 replies can be hidden every 15 minutes. If you'd " +
+                        'Only 50 replies can be hidden every 15 minutes. If you\'d ' +
                         'like to hide more than 50 replies, you have a couple ' +
                         'of options. You can either divide the replies across ' +
                         'multiple reports or you can resend the report to have ' +
                         'up to another 50 replies removed. Note that with both ' +
-                        "options you'll need to wait 15 minutes, remove the " +
+                        'options you\'ll need to wait 15 minutes, remove the ' +
                         'previously submitted replies, and select up to 50 ' +
                         'additional new replies.',
                       title: `${numFailures} ${

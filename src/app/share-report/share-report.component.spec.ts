@@ -435,8 +435,8 @@ describe('ShareReportComponent', () => {
       )
     ).toBeFalsy();
     expect(mockTwitterApiService.muteUsers).not.toHaveBeenCalledWith([
-      'testing1',
-      'testing2',
+      { id_str: '1234567891011', screen_name: 'testing1' },
+      { id_str: '1234567891012', screen_name: 'testing2' },
     ]);
     mockTwitterApiService.muteUsers.calls.reset();
 
@@ -457,8 +457,8 @@ describe('ShareReportComponent', () => {
       )
     ).toBeFalsy();
     expect(mockTwitterApiService.muteUsers).toHaveBeenCalledWith([
-      'testing1',
-      'testing2',
+      { id_str: '1234567891011', screen_name: 'testing1' },
+      { id_str: '1234567891012', screen_name: 'testing2' },
     ]);
     mockTwitterApiService.muteUsers.calls.reset();
 
@@ -478,8 +478,8 @@ describe('ShareReportComponent', () => {
       )
     ).toBeTruthy();
     expect(mockTwitterApiService.muteUsers).toHaveBeenCalledWith([
-      'testing1',
-      'testing2',
+      { id_str: '1234567891011', screen_name: 'testing1' },
+      { id_str: '1234567891012', screen_name: 'testing2' },
     ]);
   }));
 
