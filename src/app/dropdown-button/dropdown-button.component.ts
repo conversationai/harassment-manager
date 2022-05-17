@@ -131,7 +131,7 @@ export class DropdownButtonComponent implements OnChanges {
     }
     this.selectedActionOption = option;
     this.toggleActionOptionsMenu(false);
-    this.selectActionOptionEvent.next(this.selectedActionOption);
+    this.selectActionOptionEvent.emit(this.selectedActionOption);
   }
 
   getActionOptionDropdownDisabled(): boolean {

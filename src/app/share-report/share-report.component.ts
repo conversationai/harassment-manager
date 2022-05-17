@@ -119,7 +119,7 @@ export class ShareReportComponent implements AfterViewInit {
   ];
   selectedTwitterActionOptionIndex = 0;
   selectedTwitterAction =
-    this.twitterActionOptions[this.selectedSaveOptionIndex].action;
+    this.twitterActionOptions[this.selectedTwitterActionOptionIndex].action;
 
   adblockErrorOpen = false;
 
@@ -290,18 +290,17 @@ export class ShareReportComponent implements AfterViewInit {
                   // Some of the errors were quota issues, so we combine those
                   // with any other issues to keep things straightforward for
                   // users.
-                  const numFailures =
-                    numQuotaFailures + (numOtherFailures ?? 0);
+                  const numFailures = numQuotaFailures + (numOtherFailures ?? 0);
                   this.dialog.open(ApiErrorDialogComponent, {
                     panelClass: 'api-error-dialog-container',
                     data: {
                       message:
-                        "Only 50 users can be blocked every 15 minutes. If you'd " +
+                        'Only 50 users can be blocked every 15 minutes. If you\'d ' +
                         'like to block more than 50 users, you have a couple ' +
                         'of options. You can either divide the users across ' +
                         'multiple reports or you can resend the report to have ' +
                         'up to another 50 users blocked. Note that with both ' +
-                        "options you'll need to wait 15 minutes, remove the " +
+                        'options you\'ll need to wait 15 minutes, remove the ' +
                         'previously submitted users, and select up to 50 ' +
                         'additional new users.',
                       title: `${numFailures} ${
@@ -380,18 +379,17 @@ export class ShareReportComponent implements AfterViewInit {
                   // Some of the errors were quota issues, so we combine those
                   // with any other issues to keep things straightforward for
                   // users.
-                  const numFailures =
-                    numQuotaFailures + (numOtherFailures ?? 0);
+                  const numFailures = numQuotaFailures + (numOtherFailures ?? 0);
                   this.dialog.open(ApiErrorDialogComponent, {
                     panelClass: 'api-error-dialog-container',
                     data: {
                       message:
-                        "Only 50 users can be muted every 15 minutes. If you'd " +
+                        'Only 50 users can be muted every 15 minutes. If you\'d ' +
                         'like to mute more than 50 users, you have a couple ' +
                         'of options. You can either divide the users across ' +
                         'multiple reports or you can resend the report to have ' +
                         'up to another 50 users muted. Note that with both ' +
-                        "options you'll need to wait 15 minutes, remove the " +
+                        'options you\'ll need to wait 15 minutes, remove the ' +
                         'previously submitted users, and select up to 50 ' +
                         'additional new users.',
                       title: `${numFailures} ${
@@ -475,12 +473,12 @@ export class ShareReportComponent implements AfterViewInit {
                     panelClass: 'api-error-dialog-container',
                     data: {
                       message:
-                        "Only 50 replies can be hidden every 15 minutes. If you'd " +
+                        'Only 50 replies can be hidden every 15 minutes. If you\'d ' +
                         'like to hide more than 50 replies, you have a couple ' +
                         'of options. You can either divide the replies across ' +
                         'multiple reports or you can resend the report to have ' +
                         'up to another 50 replies removed. Note that with both ' +
-                        "options you'll need to wait 15 minutes, remove the " +
+                        'options you\'ll need to wait 15 minutes, remove the ' +
                         'previously submitted replies, and select up to 50 ' +
                         'additional new replies.',
                       title: `${numFailures} ${
