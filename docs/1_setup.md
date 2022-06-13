@@ -26,20 +26,21 @@ search](https://developer.twitter.com/en/docs/twitter-api/enterprise/search-api/
 additionally requires an [enterprise
 account](https://developer.twitter.com/en/docs/twitter-api/enterprise/search-api/overview).**
 
-**NOTE: We plan to migrate the app to Twitter API v2 in the future. We will
-update this documentation accordingly.**
+**NOTE: We plan to migrate the Enterprise Full-Archive Search API to the v2 Search Tweets
+in the future. We will update this documentation accordingly.**
 
 The app makes use of several Twitter APIs, including:
 
 - [The Enterprise Full-Archive Search
-  API](https://developer.twitter.com/en/docs/twitter-api/enterprise/search-api/overview)
-  to fetch tweets directed at the logged in user.
-- [The v1.1 blocks and
-  mutes](https://developer.twitter.com/en/docs/twitter-api/v1/accounts-and-users/mute-block-report-users/overview)
-  endpoints to block or mute users on behalf of the authenticated user.
-- [The v2.0 hide
+  API](https://developer.twitter.com/en/docs/twitter-api/enterprise/search-api/overview) to fetch
+  tweets directed at the logged in user
+- The v2 [blocks](https://developer.twitter.com/en/docs/twitter-api/users/blocks/introduction)
+  endpoint to block users on behalf of the authenticated user
+- The v2 [mutes](https://developer.twitter.com/en/docs/twitter-api/users/mutes/introduction)
+  endpoint to mute users on behalf of the authenticated user
+- The v2 [hide
   replies](https://developer.twitter.com/en/docs/twitter-api/tweets/hide-replies/introduction)
-  endpoint to hide replies on behalf of the authenticated user.
+  endpoint to hide replies on behalf of the authenticated user
 
 To support all this functionality, you'll need to [get access to the Twitter
 API](https://developer.twitter.com/en/docs/twitter-api/getting-started/getting-access-to-the-twitter-api)
