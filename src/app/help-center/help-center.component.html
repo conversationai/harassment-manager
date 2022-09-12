@@ -16,19 +16,16 @@
 
 <div class="header">
   <h1>Help Center</h1>
-  <div class="subtitle">Get answers and advice on your questions for Harassment Manager.</div>
+  <div class="subtitle">Get answers and advice on your questions for SafetyNet.</div>
 </div>
 
 <!-- Note: Wrapper div is required to prevent the side menu "sticky" layout
      option from continuing beyond the bounds of the wrapper. -->
 <div class="content-wrapper">
-  <app-scrollable-side-menu class="side-menu"
-                            [sideMenuSections]="sideMenuSections">
+  <app-scrollable-side-menu class="side-menu" [sideMenuSections]="sideMenuSections">
     <div class="contact-us-menu-section">
       <!-- TODO: Provide 'Contact Us' link. -->
-      <a href=""
-         rel="noopener"
-         target="_blank" >
+      <a href="" rel="noopener" target="_blank">
         <button mat-button class="action-button contact-us-button">Contact Us</button>
       </a>
     </div>
@@ -40,7 +37,7 @@
 
       <mat-expansion-panel>
         <mat-expansion-panel-header [collapsedHeight]="expansionPanelHeaderHeight"
-                                    [expandedHeight]="expansionPanelHeaderHeight">
+          [expandedHeight]="expansionPanelHeaderHeight">
           <mat-panel-title>
             Add comments to your report
           </mat-panel-title>
@@ -49,7 +46,7 @@
         <div class="panel-content">
           <div class="text">
             <ol>
-              <li>Sign into Harassment Manager with the platform of your choice to document and
+              <li>Sign into SafetyNet with the platform of your choice to document and
                 report online harassment targeted at you on that platform.</li>
               <li>Not sure where to start? Select from grouped comments that are categorized based
                 on their likeliness of containing harmful content.</li>
@@ -64,7 +61,7 @@
 
       <mat-expansion-panel>
         <mat-expansion-panel-header [collapsedHeight]="expansionPanelHeaderHeight"
-                                    [expandedHeight]="expansionPanelHeaderHeight">
+          [expandedHeight]="expansionPanelHeaderHeight">
           <mat-panel-title>
             Sharing or saving your report
           </mat-panel-title>
@@ -75,7 +72,8 @@
             <li>You can export your report and save it locally by downloading a PDF, printing a copy,
               or saving a CSV file to review later.</li>
             <li>You can also save your report as a spreadsheet on Google Drive. View, share, download,
-              or print your report with Google Sheets on Drive. <a href="https://www.google.com/sheets/about/" target="_blank" rel="noopener">Learn More</a></li>
+              or print your report with Google Sheets on Drive. <a href="https://www.google.com/sheets/about/"
+                target="_blank" rel="noopener">Learn More</a></li>
           </ul>
         </div>
       </mat-expansion-panel>

@@ -54,7 +54,7 @@ import { ONE_HOUR_MS, ONE_MIN_MS, ToolbarComponent } from './toolbar.component';
  * back.
  */
 class DialogRefStub<T> {
-  constructor(private dialogCloseTrigger: Subject<T>) {}
+  constructor(private dialogCloseTrigger: Subject<T>) { }
 
   afterClosed() {
     return this.dialogCloseTrigger.asObservable();
@@ -192,7 +192,7 @@ describe('ToolbarComponent', () => {
     const componentElement = fixture.debugElement.nativeElement;
 
     expect(componentElement.querySelector('.title').textContent).toContain(
-      'Harassment Manager'
+      'SafetyNet'
     );
   });
 
