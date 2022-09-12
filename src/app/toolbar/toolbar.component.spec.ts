@@ -192,7 +192,7 @@ describe('ToolbarComponent', () => {
     const componentElement = fixture.debugElement.nativeElement;
 
     expect(componentElement.querySelector('.title').textContent).toContain(
-      'SafetyNet'
+      'SafeNet'
     );
   });
 
