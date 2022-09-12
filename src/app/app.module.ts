@@ -101,6 +101,7 @@ import { ToxicityRangeSelectorDialogComponent } from './toxicity-range-selector-
 import { TweetImageComponent } from './tweet-image/tweet-image.component';
 import { TwitterApiService } from './twitter_api.service';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
+import { PrivacyPageComponent } from './privacy-page/privacy-page.component';
 
 @NgModule({
   declarations: [
@@ -142,6 +143,7 @@ import { WelcomePageComponent } from './welcome-page/welcome-page.component';
     ToxicityRangeSelectorDialogComponent,
     TweetImageComponent,
     WelcomePageComponent,
+    PrivacyPageComponent,
   ],
   imports: [
     A11yModule,
