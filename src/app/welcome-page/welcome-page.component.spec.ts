@@ -98,7 +98,7 @@ describe('WelcomePageComponent', () => {
     const componentElement = fixture.debugElement.nativeElement;
     expect(
       componentElement.querySelector('.description').textContent
-    ).toContain('Control Your Online Harassment');
+    ).toContain('Say goodbye to online trolls');
   });
 
   it('routes to the home page on successful Twitter authentication', fakeAsync(() => {

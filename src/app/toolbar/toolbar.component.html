@@ -16,49 +16,35 @@
 
 <mat-toolbar class="toolbar">
   <mat-toolbar-row class="toolbar-row">
-    <a routerLink="/home"
-         class="title-wrapper">
+    <a routerLink="/home" class="title-wrapper">
       <div class="icon-placeholder"></div>
-      <span class="title">Harassment Manager</span>
+      <span class="title">SafeNet</span>
     </a>
     <ng-container *ngIf="userIsSignedIn">
       <!-- Note: This is how the spec for aria-current specifies it should be used, but this does not seem to be read by the Chrome screenreader at this point in time. This should be revisited later.-->
       <div class="navigation-links" aria-label="navigation">
-        <a routerLinkActive="active-router-link"
-           routerLink="/home"
-           #homeLink
-           role="link"
-           [attr.aria-current]="homeLink.routerLinkActive ? 'page' : false">Home</a>
-        <a routerLinkActive="active-router-link"
-           [routerLink]="getCreateReportRouterLink()"
-           #createReportLink
-           [attr.aria-current]="createReportLink.routerLinkActive ? 'page' : false">Create Report</a>
-        <a routerLinkActive="active-router-link"
-           routerLink="/find-support"
-           #findSupportLink
-           [attr.aria-current]="findSupportLink.routerLinkActive ? 'page' : false">Find Support</a>
+        <a routerLinkActive="active-router-link" routerLink="/home" #homeLink role="link"
+          [attr.aria-current]="homeLink.routerLinkActive ? 'page' : false">Home</a>
+        <a routerLinkActive="active-router-link" [routerLink]="getCreateReportRouterLink()" #createReportLink
+          [attr.aria-current]="createReportLink.routerLinkActive ? 'page' : false">Create Report</a>
+        <a routerLinkActive="active-router-link" routerLink="/find-support" #findSupportLink
+          [attr.aria-current]="findSupportLink.routerLinkActive ? 'page' : false">Find Support</a>
       </div>
       <div class="sign-out-button-wrapper">
-        <button class="sign-out-button"
-                mat-stroked-button
-                (click)="revokeAuthorization()">
+        <button class="sign-out-button" mat-stroked-button (click)="revokeAuthorization()">
           <span>Sign out</span>
         </button>
       </div>
     </ng-container>
     <ng-container *ngIf="!userIsSignedIn">
       <span class="spacer"></span>
-      <button mat-button
-              class="action-button get-started-button"
-              routerLink="/">Get Started</button>
+      <button mat-button class="action-button get-started-button" routerLink="/">Get Started</button>
     </ng-container>
   </mat-toolbar-row>
   <mat-toolbar-row class="toolbar-row" *ngIf="showBuildReportStepper">
     <div class="spacer">
-      <button mat-button
-              [routerLink]="getBackButtonRouterLink()"
-              class="box back-button"
-              *ngIf="currentStep > BuildReportStep.ADD_COMMENTS">
+      <button mat-button [routerLink]="getBackButtonRouterLink()" class="box back-button"
+        *ngIf="currentStep > BuildReportStep.ADD_COMMENTS">
         <mat-icon class="back-icon">arrow_back</mat-icon>
         {{getBackButtonText()}}
       </button>
@@ -67,15 +53,10 @@
     <div class="continue-section spacer">
       <div class="last-edited">{{getTimeSinceLastReportEditString()}}</div>
       <div class="highlight-continue-button" *ngIf="onboarding"></div>
-      <button mat-stroked-button
-              class="continue-button"
-              [class.elevate]="onboarding"
-              cdkOverlayOrigin
-              #anchor="cdkOverlayOrigin"
-              [class.active-router-link]="getStepperButtonActive()"
-              [disabled]="!getStepperButtonActive()"
-              (click)="onStepperButtonClick()"
-              [attr.aria-label]="getReportButtonA11yLabel()">
+      <button mat-stroked-button class="continue-button" [class.elevate]="onboarding" cdkOverlayOrigin
+        #anchor="cdkOverlayOrigin" [class.active-router-link]="getStepperButtonActive()"
+        [disabled]="!getStepperButtonActive()" (click)="onStepperButtonClick()"
+        [attr.aria-label]="getReportButtonA11yLabel()">
         <span>
           <ng-container *ngIf="currentStep === BuildReportStep.ADD_COMMENTS">
             <div class="report-draft-comment-count" aria-hidden="true">{{reportDraftCommentCount}}</div>
@@ -92,33 +73,23 @@
        review report button.
        Note: CSS for this is in the main styles.scss file since it appears
        as part of the overlay. -->
-    <ng-template
-      cdkConnectedOverlay
-      cdkConnectedOverlayPush
-      cdkConnectedOverlayHasBackdrop
+    <ng-template cdkConnectedOverlay cdkConnectedOverlayPush cdkConnectedOverlayHasBackdrop
       [cdkConnectedOverlayPositions]="connectedOverlayPositions"
-      [cdkConnectedOverlayScrollStrategy]="overlayScrollStrategy"
-      cdkConnectedOverlayBackdropClass='onboarding-backdrop'
-      [cdkConnectedOverlayOrigin]="anchor"
-      [cdkConnectedOverlayOpen]="onboarding">
-      <div class="onboarding-review-report"
-           cdkTrapFocus
-           cdkTrapFocusAutoCapture>
+      [cdkConnectedOverlayScrollStrategy]="overlayScrollStrategy" cdkConnectedOverlayBackdropClass='onboarding-backdrop'
+      [cdkConnectedOverlayOrigin]="anchor" [cdkConnectedOverlayOpen]="onboarding">
+      <div class="onboarding-review-report" cdkTrapFocus cdkTrapFocusAutoCapture>
         <h1>Review report</h1>
-        <div class="message">Your report will update as you add comments. Visit this page to preview comments and add context for your report.</div>
-        <span class="visually-hidden">Displays the continue button, with a shopping cart icon indicating how many comments are currently in the report.</span>
-        <button mat-button
-                color="primary"
-                (click)="nextOnboardingStep()">Got it</button>
+        <div class="message">Your report will update as you add comments. Visit this page to preview comments and add
+          context for your report.</div>
+        <span class="visually-hidden">Displays the continue button, with a shopping cart icon indicating how many
+          comments are currently in the report.</span>
+        <button mat-button color="primary" (click)="nextOnboardingStep()">Got it</button>
       </div>
     </ng-template>
 
-    <ng-template cdkConnectedOverlay
-                 cdkConnectedOverlayPush="true"
-                 [cdkConnectedOverlayOffsetY]="6"
-                 [cdkConnectedOverlayOrigin]="anchor"
-                 [cdkConnectedOverlayLockPosition]="true"
-                 [cdkConnectedOverlayOpen]="reportNotificationOpen">
+    <ng-template cdkConnectedOverlay cdkConnectedOverlayPush="true" [cdkConnectedOverlayOffsetY]="6"
+      [cdkConnectedOverlayOrigin]="anchor" [cdkConnectedOverlayLockPosition]="true"
+      [cdkConnectedOverlayOpen]="reportNotificationOpen">
       <div #dropdown class="dropdown">
         <div class="title">{{notificationTitleText}}</div>
         <div class="subtitle">{{notificationSubtitleText}}</div>

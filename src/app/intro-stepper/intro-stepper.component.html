@@ -15,42 +15,31 @@
 -->
 
 <div class="container" cdkTrapFocus cdkTrapFocusAutoCapture>
-  <button mat-fab
-          class="back arrow"
-          [class.invisible]="currentStepIndex === 0"
-          color="primary"
-          (click)="previousStep()"
-          aria-label="Previous">
+  <button mat-fab class="back arrow" [class.invisible]="currentStepIndex === 0" color="primary" (click)="previousStep()"
+    aria-label="Previous">
     <mat-icon>arrow_back</mat-icon>
   </button>
 
   <div>
     <div class="message-container">
-      <button mat-icon-button
-              class="close-button"
-              (click)="getStartedClicked()"
-              aria-label="close">
+      <button mat-icon-button class="close-button" (click)="getStartedClicked()" aria-label="close">
         <mat-icon>close</mat-icon>
       </button>
-      <div class="intro-step"
-           *ngIf="introSteps[currentStepIndex] === IntroStep.INTRO">
+      <div class="intro-step" *ngIf="introSteps[currentStepIndex] === IntroStep.INTRO">
         <div class="image-container">
-          <img src="/alert_sign_stake.svg"
-               alt="A woman stakes a circular traffic sign with an alert symbol on the sign. There
+          <img src="/alert_sign_stake.svg" alt="A woman stakes a circular traffic sign with an alert symbol on the sign. There
                 are geometric shapes with varying textures on the ground.">
         </div>
         <div class="message">
-          <h2>Introducing Harassment Manager</h2>
+          <h2>Introducing SafeNet</h2>
           Use this tool to document harmful content
         </div>
       </div>
 
-      <div class="create-report-step"
-           *ngIf="introSteps[currentStepIndex] === IntroStep.CREATE_REPORT">
+      <div class="create-report-step" *ngIf="introSteps[currentStepIndex] === IntroStep.CREATE_REPORT">
         <div class="image-container">
-          <img src="/writing_on_document.svg"
-               alt="A man with a cap stands and writes on a very large document hanging on a wall.
-                 There are geometric shapes with varying textures on the ground" >
+          <img src="/writing_on_document.svg" alt="A man with a cap stands and writes on a very large document hanging on a wall.
+                 There are geometric shapes with varying textures on the ground">
         </div>
         <div class="message">
           <h2>Create Report</h2>
@@ -58,11 +47,9 @@
         </div>
       </div>
 
-      <div class="save-share-report-step"
-           *ngIf="introSteps[currentStepIndex] === IntroStep.SAVE_SHARE_REPORT">
+      <div class="save-share-report-step" *ngIf="introSteps[currentStepIndex] === IntroStep.SAVE_SHARE_REPORT">
         <div class="image-container">
-          <img alt="A woman placing a huge, person-sized document in a similarly huge folder."
-               src="/filing_report.svg">
+          <img alt="A woman placing a huge, person-sized document in a similarly huge folder." src="/filing_report.svg">
         </div>
         <div class="message">
           <h2>Take Action</h2>
@@ -72,19 +59,13 @@
     </div>
 
     <div class="progress-circles">
-      <div *ngFor="let step of introSteps; let i = index"
-           class="circle"
-           [class.fill]="currentStepIndex === i">
+      <div *ngFor="let step of introSteps; let i = index" class="circle" [class.fill]="currentStepIndex === i">
       </div>
     </div>
   </div>
 
-  <button mat-fab
-          class="forward arrow"
-          [class.invisible]="currentStepIndex === introSteps.length - 1"
-          color="primary"
-          (click)="nextStep();"
-          aria-label="Next">
+  <button mat-fab class="forward arrow" [class.invisible]="currentStepIndex === introSteps.length - 1" color="primary"
+    (click)="nextStep();" aria-label="Next">
     <mat-icon>arrow_forward</mat-icon>
   </button>
 </div>

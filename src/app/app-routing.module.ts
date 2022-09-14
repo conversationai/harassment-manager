@@ -28,6 +28,7 @@ import { FindSupportComponent } from './find-support/find-support.component';
 import { HelpCenterComponent } from './help-center/help-center.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { OauthApiService } from './oauth_api.service';
+import { PrivacyPageComponent } from './privacy-page/privacy-page.component';
 import { ReportCompleteComponent } from './report-complete/report-complete.component';
 import { ReportPdfComponent } from './report-pdf/report-pdf.component';
 import { ReviewReportComponent } from './review-report/review-report.component';
@@ -114,6 +115,11 @@ export class CustomRouteReuseStrategy implements RouteReuseStrategy {
 
 export const routes: Routes = [
   {
+    path: 'privacy-policy',
+    component: PrivacyPageComponent,
+    data: { title: 'Privacy Policy' },
+  },
+  {
     path: 'create-report',
     component: CreateReportComponent,
     canActivate: [AuthGuardService],
@@ -176,4 +182,4 @@ export const routes: Routes = [
     AuthGuardService,
   ],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
