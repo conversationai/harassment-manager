@@ -36,7 +36,6 @@
       <div class="horizontal-divider"></div>
       <p class="privacy-message">
         Learn more about how this tool uses your data. Check our
-        <!-- TODO: provide link for privacy policy -->
         <a href="/privacy-policy">privacy policy</a>.
       </p>
     </div>
@@ -54,14 +53,12 @@
         Use SafeNet to flag abusive content, report the abuse to the platforms or get our forensic investigators to
         track the culprits.
       </p>
-      <a href="/help-center">
-        <button mat-raised-button class="twitter-button">
-          <span>
-            <mat-icon class="product-icon">visibility</mat-icon>
-            Find out how
-          </span>
-        </button>
-      </a>
+      <button mat-raised-button class="twitter-button" (click)="visitHelpCenter()">
+        <span>
+          <mat-icon class="product-icon">visibility</mat-icon>
+          Find out how
+        </span>
+      </button>
 
     </div>
     <img src="/alert_sign_stake.svg" alt="A woman stakes a circular traffic sign with an alert symbol on the sign. There are
@@ -94,7 +91,6 @@
 </div>
 
 <div class="faq-section">
-  <!-- TODO: Provide FAQ section. -->
   <h2>SafeNet FAQs</h2>
   <mat-expansion-panel>
     <mat-expansion-panel-header collapsedHeight="82px" expandedHeight="82px">
