@@ -15,43 +15,48 @@
 -->
 
 <div class="container">
-  <div class="top-row">
-    <div class="summary-container">
-      <div class="title">
-        <div class="text">SafeNet</div>
-      </div>
-      <div class="summary">
-        SafeNet is a free tool specifically designed for Twitter users who face online abuse on social media. The
-        application syncs with a user’s Twitter account and flags abusive content, thus limiting exposure to targeted
-        harassment.
-      </div>
+  <div class="left">
+    <div class="title">
+      <div class="text">SafeNet</div>
     </div>
 
-    <div class="links">
-      <div class="link-column">
-        <div class="header">About</div>
-        <a routerLink="/">SafeNet</a>
-        <!-- TODO: Provide link and replace filler text. -->
-        <a href="" target="_blank">Organization</a>
+    <div class="summary">
+      SafeNet is a free tool specifically designed for Twitter users who face online abuse on social media. The
+      application syncs with a user’s Twitter account and flags abusive content, thus limiting exposure to targeted
+      harassment.
+    </div>
+
+    <div class="bottom">
+      <div class="copyright">
+        <p>&copy; {{ currentYear }} SafeNet</p>
       </div>
 
-      <div class="link-column">
-        <div class="header">Support</div>
-        <a routerLink="/find-support">Resources</a>
-        <a routerLink="/help-center">Help Center</a>
-        <!-- TODO: Provide link. -->
-        <a href="" rel="noopener" target="_blank">
-          Contact Us
+      <div class="powered-by">
+        <p>Powered by</p>
+        <a href="https://jigsaw.google.com/" target="_blank">
+          <img class="img-link" src="/Jigsaw_logo.svg" />
         </a>
       </div>
+
     </div>
+
+  </div>
+  <div class="middle">
+    <div class="link-list">
+      <div class="header">Resources</div>
+      <a routerLink="/">About</a>
+      <a routerLink="/privacy-policy">Privacy Policy</a>
+      <a routerLink="/privacy-policy">Terms of Service</a>
+    </div>
+
   </div>
 
-  <div class="vertical-divider"></div>
+  <div class="right">
+    <div>An initiative of</div>
+    <a href="https://codeforafrica.org/" target="_blank">
+      <img class="img-link" src="cfa_brand.svg" />
 
-  <div class="bottom-row">
-    <!-- TODO: Provide links. -->
-    <a href="/privacy-policy">Privacy</a>
-    <a href="/privacy-policy">Terms of Service</a>
+    </a>
   </div>
+
 </div>
