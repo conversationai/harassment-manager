@@ -14,121 +14,131 @@
  limitations under the License.
 -->
 
-<div class="login-header">
-  <a class="title" routerLink="/home">
-    <div class="text">SafeNet</div>
-  </a>
-  <div class="login-section">
-    <div class="hero-container left">
-      <img src="/header_images_Left_image.svg" alt="Decorative shapes.">
+<div class="welcome-page">
+  <div class="page-logo">
+    <a class="title" routerLink="/home">
+      <div class="text">{{appName}}</div>
+    </a>
+  </div>
+
+  <div class="header-container">
+
+
+    <!-- <div class="hero-container left">
+          <img src="/header_images_Left_image.svg" alt="Decorative shapes.">
+        </div> -->
+    <div class="header-left">
+      <div class="header-main-text">
+        <h1 class="header-text header-text-1">Say Goodbye to</h1>
+        <h1 class="header-text header-text-2">Online Trolls</h1>
+      </div>
+
+
+      <p class="header-text description-text">
+        Unfollow, mute and block toxic content. <br />
+        Take back control of your online experience with SafeNet.
+      </p>
+
+      <div class="header-cta">
+        <img class="header-cta-img" src="/header_cta.svg" (click)="loginWithTwitter()" />
+      </div>
+
     </div>
-    <div class="description">
-      <h1>Say goodbye to online trolls</h1>
-      <p>Unfollow, mute and block toxic content. Take back control of your online experience with SafeNet.</p>
-      <div class="login-buttons">
-        <button mat-raised-button class="twitter-button" (click)="loginWithTwitter()">
+    <div class="header-right">
+      <img class="header-illustration" src="/header_illustration.svg" />
+    </div>
+  </div>
+
+
+  <div class="info-section">
+    <div class="panel">
+      <div class="box">
+        <h2>Document the evidence, and unmask the trolls</h2>
+        <p>
+          Use SafeNet to flag abusive content, report the abuse to the platforms or get our forensic investigators to
+          track the culprits.
+        </p>
+        <button mat-raised-button class="twitter-button" (click)="visitHelpCenter()">
           <span>
-            <mat-icon class="product-icon" svgIcon="twitter_icon"></mat-icon>
-            Start with Twitter
+            <mat-icon class="product-icon">visibility</mat-icon>
+            Find out how
           </span>
         </button>
+
       </div>
-      <div class="horizontal-divider"></div>
-      <p class="privacy-message">
-        Learn more about how this tool uses your data. Check our
-        <a href="/privacy-policy">privacy policy</a>.
-      </p>
-    </div>
-    <div class="hero-container right">
-      <img src="/header_images_Right_image.svg" alt="Decorative shapes.">
-    </div>
-  </div>
-</div>
-
-<div class="info-section">
-  <div class="panel">
-    <div class="box">
-      <h2>Document the evidence, and unmask the trolls</h2>
-      <p>
-        Use SafeNet to flag abusive content, report the abuse to the platforms or get our forensic investigators to
-        track the culprits.
-      </p>
-      <button mat-raised-button class="twitter-button" (click)="visitHelpCenter()">
-        <span>
-          <mat-icon class="product-icon">visibility</mat-icon>
-          Find out how
-        </span>
-      </button>
-
-    </div>
-    <img src="/alert_sign_stake.svg" alt="A woman stakes a circular traffic sign with an alert symbol on the sign. There are
+      <img src="/alert_sign_stake.svg" alt="A woman stakes a circular traffic sign with an alert symbol on the sign. There are
               geometric shapes with varying textures on the ground.">
-  </div>
-  <div class="panel grey-bg">
-    <img src="/walking_in_clutter.svg" alt="A woman walks among geometric shapes strewn about the floor. She is holding a
+    </div>
+    <div class="panel grey-bg">
+      <img src="/walking_in_clutter.svg" alt="A woman walks among geometric shapes strewn about the floor. She is holding a
           large circular shape in her arm.">
-    <div class="box">
-      <h2>You’re not alone</h2>
-      <p>
-        SafeNet is building a network of allies. Our fact-checkers (Africa’s largest network) and forensic
-        investigators are also on standby to help you debunk allegations or expose the puppet-masters behind smear
-        campaigns.
-      </p>
-      <p>Connect with the community</p>
+      <div class="box">
+        <h2>You’re not alone</h2>
+        <p>
+          SafeNet is building a network of allies. Our fact-checkers (Africa’s largest network) and forensic
+          investigators are also on standby to help you debunk allegations or expose the puppet-masters behind smear
+          campaigns.
+        </p>
+        <p>Connect with the community</p>
+      </div>
     </div>
-  </div>
-  <div class="panel" *ngIf="false">
-    <div class="box">
-      <h2>Make removal easier by adding context</h2>
-      <p>
-        To make sure social media moderators take down harmful comments, we share the details needed to paint a bigger
-        picture of the situation.
-      </p>
-    </div>
-    <img src="/writing_on_document.svg" alt="A man with a cap stands and writes on a very large document hanging on a wall.
+    <div class="panel" *ngIf="false">
+      <div class="box">
+        <h2>Make removal easier by adding context</h2>
+        <p>
+          To make sure social media moderators take down harmful comments, we share the details needed to paint a bigger
+          picture of the situation.
+        </p>
+      </div>
+      <img src="/writing_on_document.svg" alt="A man with a cap stands and writes on a very large document hanging on a wall.
           There are geometric shapes with varying textures on the ground">
+    </div>
   </div>
-</div>
 
-<div class="faq-section">
-  <h2>SafeNet FAQs</h2>
-  <mat-expansion-panel>
-    <mat-expansion-panel-header collapsedHeight="82px" expandedHeight="82px">
-      <mat-panel-title>
-        Why do I have to register to use SafeNet?
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-    <p>By registering, you’ll help us understand who is using the tool, so we can constantly improve SafeNet’s
-      capabilities to suit your needs.
-    </p>
-    <p>
-      You can check out our <a href="/privacy-policy">privacy policy </a> to learn more about which personal information
-      we collect and how it's
-      protected.
-    </p>
-  </mat-expansion-panel>
-  <mat-expansion-panel>
-    <mat-expansion-panel-header collapsedHeight="82px" expandedHeight="82px">
-      <mat-panel-title>
-        How does SafeNet work?
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-    <p>SafeNet syncs with the user’s Twitter account and uses machine learning technology to identify abusive
-      comments, providing toxicity scores and enabling the user to take action - through muting or blocking accounts in
-      bulk - without reviewing the content. Users have the ability to unhide the comments if they wish.
-    </p>
-    <p>
-      Users also have the option to create records of harassment and download a report, which can be shared with trusted
-      third parties as needed. Users can choose to include all the abusive content and accounts that the tool has
-      identified as being harmful, or customise their selection.
-    </p>
-    <p>
-      Abusive accounts will not know that they have been featured in a report and no third party - including Code for
-      Africa, Twitter and Jigsaw - will access the report generated in the tool. Draft reports are temporarily stored in
-      the tool to enable you to complete them. Once downloaded or abandoned, the report will be deleted from SafeNet.
-    </p>
-  </mat-expansion-panel>
-  <a class="help-center-link" routerLink="/help-center">
-    <button mat-button class="action-button">Explore Help Center</button>
-  </a>
+  <div class="faq-section">
+    <h2>SafeNet FAQs</h2>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header collapsedHeight="82px" expandedHeight="82px">
+        <mat-panel-title>
+          Why do I have to register to use SafeNet?
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>By registering, you’ll help us understand who is using the tool, so we can constantly improve SafeNet’s
+        capabilities to suit your needs.
+      </p>
+      <p>
+        You can check out our <a href="/privacy-policy">privacy policy </a> to learn more about which personal
+        information
+        we collect and how it's
+        protected.
+      </p>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header collapsedHeight="82px" expandedHeight="82px">
+        <mat-panel-title>
+          How does SafeNet work?
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>SafeNet syncs with the user’s Twitter account and uses machine learning technology to identify abusive
+        comments, providing toxicity scores and enabling the user to take action - through muting or blocking accounts
+        in
+        bulk - without reviewing the content. Users have the ability to unhide the comments if they wish.
+      </p>
+      <p>
+        Users also have the option to create records of harassment and download a report, which can be shared with
+        trusted
+        third parties as needed. Users can choose to include all the abusive content and accounts that the tool has
+        identified as being harmful, or customise their selection.
+      </p>
+      <p>
+        Abusive accounts will not know that they have been featured in a report and no third party - including Code for
+        Africa, Twitter and Jigsaw - will access the report generated in the tool. Draft reports are temporarily stored
+        in
+        the tool to enable you to complete them. Once downloaded or abandoned, the report will be deleted from SafeNet.
+      </p>
+    </mat-expansion-panel>
+    <a class="help-center-link" routerLink="/help-center">
+      <button mat-button class="action-button">Explore Help Center</button>
+    </a>
+  </div>
 </div>
