@@ -135,6 +135,43 @@ $panel-padding: 32px 150px;
       }
     }
   }
+
+  .info-section-2 {
+    background-color: #d7dceb;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    height: 458px;
+    overflow: hidden;
+
+    .section-left {
+      font-family: 'Merriweather';
+      font-style: normal;
+      align-self: center;
+      width: 100%;
+      padding-left: 146px;
+
+      .text-1 {
+        font-weight: 400;
+        font-size: 48px;
+      }
+
+      .text-2 {
+        font-weight: 700;
+        font-size: 64px;
+      }
+
+      .description {
+        font-weight: 400;
+        font-size: 22px;
+      }
+
+      .cta-text {
+        font-weight: 400;
+        font-size: 22px;
+      }
+    }
+  }
 }
 
 .twitter-button {
