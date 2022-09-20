@@ -174,111 +174,60 @@ $panel-padding: 32px 150px;
   }
 }
 
-.twitter-button {
-  background-color: #1da1f2;
-  color: #ffffff;
-  margin-right: 20px;
-}
-
-.twitter-button span {
-  align-items: center;
-  display: flex;
-}
-
-.product-icon {
-  margin-right: 8px;
-}
-
-.horizontal-divider {
-  background-color: #dadce0;
-  height: 1px;
-  margin: 26px auto 16px auto;
-  max-width: 600px;
-}
-
-.privacy-message {
-  color: #202124;
-  font-size: 12px;
-  margin: 0 auto;
-  line-height: 18px;
-  max-width: 600px;
-}
-
-.hero-container {
-  position: absolute;
-  height: 100%;
-  top: 0;
-
-  &.left {
-    left: 0;
-  }
-
-  &.right {
-    right: 0;
-  }
-
-  img {
-    height: 100%;
-  }
-}
-
-.info-section {
-  // .panel:nth-child(even) {
-  //   background-color: #1625d9;
-  // }
-
-  // h2 {
-  //   font-size: 32px;
-  //   font-weight: 500;
-  //   margin-bottom: 0;
-  // }
-
-  // p {
-  //   font-size: 18px;
-  // }
-}
-
-.panel {
-  display: flex;
-  height: 400px;
-  justify-content: space-between;
-  padding: $panel-padding;
-
-  .box {
-    flex: 1;
-  }
-
-  img {
-    flex: 1;
-    height: 100%;
-    min-width: 0;
-  }
-}
-
 .faq-section {
-  background-color: #f9f9f9;
-  padding: $panel-padding;
+  background-color: #ffffff;
+  padding: 0 146px;
 
-  h2 {
-    font-size: 32px;
-    margin-top: 0px;
-    text-align: center;
+  .faq-title {
+    font-family: 'Merriweather';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 50px;
+    padding-top: 40px;
   }
 
-  mat-expansion-panel {
-    margin-bottom: 30px;
-  }
+  .faqs-list {
+    .faq-panel {
+      background-color: #d7dceb;
+      margin-top: 30px;
 
-  mat-expansion-panel-header {
-    font-size: 18px;
-  }
+      .faq-header {
+        background-color: #101bcf;
+        color: #ffffff;
+        padding-left: 52px;
+        font-family: 'Helvetica Neue';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 22px;
+        height: 86px;
+        display: flex;
+        align-items: center;
+      }
 
-  button.action-button {
-    display: block;
-    margin: 0 auto;
+      .faq-body {
+        padding: 0 52px 30px 52px;
+        p {
+          font-family: 'Helvetica';
+          font-style: normal;
+          font-weight: 400;
+          font-size: 20px;
+        }
+      }
+    }
   }
 }
 
-.help-center-link {
+.bottom-cta {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+  .bottom-cta-img {
+    width: 290px;
+    height: 51px;
+    cursor: pointer;
+  }
+}
+
+.page-link {
   text-decoration: none;
 }
