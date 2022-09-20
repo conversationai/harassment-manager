@@ -22,17 +22,13 @@
   </div>
 
   <div class="header-container">
-
-
-    <!-- <div class="hero-container left">
-          <img src="/header_images_Left_image.svg" alt="Decorative shapes.">
-        </div> -->
     <div class="header-left">
-      <div class="header-main-text">
-        <h1 class="header-text header-text-1">Say Goodbye to</h1>
-        <h1 class="header-text header-text-2">Online Trolls</h1>
-      </div>
-
+      <h1 class="header-text header-text-1">
+        Say Goodbye to <br />
+        <span class="header-text-2">
+          Online Trolls
+        </span>
+      </h1>
 
       <p class="header-text description-text">
         Unfollow, mute and block toxic content. <br />
@@ -51,7 +47,37 @@
 
 
   <div class="info-section">
-    <div class="panel">
+    <div class="info-section-1">
+      <div class="section-left">
+        <img class="section-img" src="/info_section_1_illustration.svg" />
+
+      </div>
+
+      <div class="section-right">
+        <div class="section-content">
+          <h1 class="text">
+            <span class="text-1">
+              Document the evidence,
+            </span><br />
+            <span class="text-2">unmask the trolls</span>
+          </h1>
+
+          <p class="description-text">
+            Use SafeNet to flag abusive content targeting you, so you <br />
+            report the abuse to the platforms or get our forensic <br />
+            investigators to track the culprits.
+          </p>
+
+          <div class="info-section-1-cta">
+            <img class="header-cta-img" src="/info_section_1_cta.svg" (click)="visitHelpCenter()" />
+          </div>
+        </div>
+
+
+      </div>
+
+    </div>
+    <!-- <div class="panel">
       <div class="box">
         <h2>Document the evidence, and unmask the trolls</h2>
         <p>
@@ -140,5 +166,5 @@
     <a class="help-center-link" routerLink="/help-center">
       <button mat-button class="action-button">Explore Help Center</button>
     </a>
+  </div> -->
   </div>
-</div>
