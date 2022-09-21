@@ -26,6 +26,7 @@ export class FindSupportListItemComponent implements OnChanges {
   @Input() title = '';
   @Input() description = '';
   @Input() url = '';
+  @Input() icon = '';
   safeUrl: SafeUrl;
 
   constructor(private sanitizer: DomSanitizer) {

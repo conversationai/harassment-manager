@@ -15,12 +15,12 @@
 -->
 
 <div class="tile">
-  <div class="icon"></div>
+  <div class="icon" [ngStyle]="{background:'url('+icon+')', width:'118px', height:'92px'}">
+  </div>
   <div class="info">
     <div class="name">
       <a [href]="safeUrl" target="_blank" rel="noopener noreferrer">
         {{title}}
-        <mat-icon>launch</mat-icon>
       </a>
     </div>
     <div class="description">

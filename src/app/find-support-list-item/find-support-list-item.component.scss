@@ -15,45 +15,43 @@
  */
 
 .tile {
-  border-bottom: 1px solid #F2F3F3;
+  border-bottom: 1px solid #f2f3f3;
   display: flex;
   padding-top: 18px;
   padding-bottom: 18px;
 
   .icon {
-    background: #F2F3F3;
+    background: #f2f3f3;
+    background-size: contain;
     border-radius: 2px;
-    height: 48px;
-    width: 48px;
+    height: 92px;
+    width: 118px;
+    background-repeat: no-repeat;
   }
 
   .info {
     flex: 1;
     margin-left: 18px;
+    align-self: center;
 
     .name {
-      color: #B23C66;
-      font-size: 18px;
-      letter-spacing: 0.25px;
-      line-height: 21px;
+      color: #101bcf;
+      font-size: 20px;
+      line-height: 27px;
+      font-family: 'Helvetica';
+      font-style: normal;
+      font-weight: 700;
 
       a {
         align-items: center;
         display: flex;
         color: inherit;
         text-decoration: none;
-
-        mat-icon {
-          color: #B23C66;
-          font-size: 18px;
-          height: 18px;
-          padding-left: 8px;
-        }
       }
     }
 
     .description {
-      color: #70757A;
+      color: #70757a;
       font-size: 14px;
       line-height: 16px;
     }

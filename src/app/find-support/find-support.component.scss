@@ -15,30 +15,37 @@
  */
 
 .header {
-  align-items: center;
-  background: rgba(209, 179, 195, 0.15);
-  display: flex;
-  flex-direction: column;
+  background: #1625d9;
+  background-image: url('~src/assets/help_center_bg.svg');
   margin-top: 0px;
   margin-bottom: 34px;
+  height: 327px;
+  display: flex;
+  justify-content: space-between;
+  color: #ffffff;
 
-  h1 {
-    color: #000000;
-    font-size: 24px;
-    line-height: 28px;
-    margin-bottom: 4px;
-    margin-top: 0px;
-    padding-top: 33px;
-    text-align: center;
-  }
+  .left-side {
+    padding-left: 150px;
 
-  .subtitle {
-    color: #202124;
-    font-size: 18px;
-    line-height: 24px;
-    max-width: 660px;
-    padding-bottom: 45px;
-    text-align: center;
+    .title {
+      font-family: 'Merriweather';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 73px;
+      line-height: 92px;
+    }
+
+    .subtitle {
+      font-family: 'Helvetica';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 22px;
+      line-height: 27px;
+    }
+
+    .right-side {
+      align-self: baseline;
+    }
   }
 }
 
@@ -47,6 +54,10 @@
   margin-left: 510px;
   margin-right: 150px;
   max-width: 900px;
+
+  .data-list {
+    background-color: #d7dcec;
+  }
 
   .explore-digital-tools {
     margin-bottom: 80px;
