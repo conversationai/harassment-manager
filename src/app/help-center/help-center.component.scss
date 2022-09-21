@@ -14,27 +14,42 @@
  * limitations under the License.
  */
 
+.help-center-page {
+  background-color: #eaefff;
+}
+
 .header {
-  background: rgba(209, 179, 195, 0.15);
+  background: #1625d9;
+  background-image: url('~src/assets/help_center_bg.svg');
   margin-top: 0px;
   margin-bottom: 34px;
+  height: 327px;
+  display: flex;
+  justify-content: space-between;
+  color: #ffffff;
 
-  h1 {
-    color: #000000;
-    font-size: 24px;
-    line-height: 28px;
-    margin-bottom: 4px;
-    margin-top: 0px;
-    padding-top: 33px;
-    text-align: center;
-  }
+  .left-side {
+    padding-left: 150px;
 
-  .subtitle {
-    color: #202124;
-    font-size: 18px;
-    line-height: 21px;
-    padding-bottom: 45px;
-    text-align: center;
+    .title {
+      font-family: 'Merriweather';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 73px;
+      line-height: 92px;
+    }
+
+    .subtitle {
+      font-family: 'Helvetica';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 22px;
+      line-height: 27px;
+    }
+
+    .right-side {
+      align-self: baseline;
+    }
   }
 }
 
@@ -43,57 +58,110 @@
   margin-right: 150px;
   max-width: 900px;
 
-  h1 {
-    color: #202124;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 29px;
-    margin-bottom: 14px;
-    padding-top: 14px;
-  }
-}
+  .product-support {
+    padding-bottom: 58px;
+    color: #000000;
 
-.product-support {
-  margin-top: 58px;
-}
-
-.data-and-privacy {
-  margin-top: 78px;
-  margin-bottom: 70px;
-}
-
-mat-expansion-panel {
-  color: #202124;
-  font-size: 14px;
-  line-height: 20px;
-  margin-bottom: 24px;
-
-  .panel-content {
-    display: flex;
-
-    .text {
-      margin-right: 22px;
+    .header-title {
+      font-family: 'Helvetica';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 27px;
     }
 
-    .image img {
-      width: 350px;
+    .content-data {
+      background-color: #d7dcec;
+      padding: 40px 35px;
+      margin-top: 30px;
+
+      .content-data-header {
+        font-family: 'Helvetica';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 22px;
+        line-height: 27px;
+      }
+
+      .content-data-body {
+        font-family: 'Helvetica';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 27px;
+
+        ul {
+          list-style: none;
+        }
+
+        li {
+          margin: 20px 0;
+        }
+
+        ul li::before {
+          content: '\2022';
+          color: #101bcf;
+          font-weight: bold;
+          display: inline-block;
+          width: 1em;
+          margin-left: -1em;
+        }
+      }
+
+      .sheets-link {
+        text-decoration: none;
+        color: #101bcf;
+      }
     }
   }
+
+  // h1 {
+  //   color: #202124;
+  //   font-size: 18px;
+  //   font-weight: 500;
+  //   line-height: 29px;
+  //   margin-bottom: 14px;
+  //   padding-top: 14px;
+  // }
 }
 
-mat-panel-title {
-  color: #202124;
-  font-size: 18px;
-  line-height: 29px;
-}
+.contact-us {
+  .header-title {
+    font-family: 'Helvetica';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 27px;
+  }
 
-.contact-us-button {
-  height: 36px;
-  width: 168px;
-}
+  .form {
+    margin: 20px 0;
+    padding: 20px 40px;
+    background-color: #d7dcec;
 
-.contact-us-menu-section {
-  align-items: center;
-  display: flex;
-  height: 66px;
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .form-input {
+      border-radius: 0;
+    }
+
+    .names {
+      display: flex;
+      justify-content: space-between;
+      gap: 42px;
+    }
+
+    .email .subject {
+      width: 100%;
+    }
+
+    .btn {
+      background: #1625d9;
+      color: #ffffff;
+    }
+  }
 }

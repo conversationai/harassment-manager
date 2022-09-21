@@ -13,45 +13,44 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 -->
+<div class="help-center-page">
 
-<div class="header">
-  <h1>Help Center</h1>
-  <div class="subtitle">Get answers and advice on your questions for SafeNet.</div>
-</div>
-
-<!-- Note: Wrapper div is required to prevent the side menu "sticky" layout
-     option from continuing beyond the bounds of the wrapper. -->
-<div class="content-wrapper">
-  <app-scrollable-side-menu class="side-menu" [sideMenuSections]="sideMenuSections">
-    <div class="contact-us-menu-section">
-      <!-- TODO: Provide 'Contact Us' link. -->
-      <a href="" rel="noopener" target="_blank">
-        <button mat-button class="action-button contact-us-button">Contact Us</button>
-      </a>
+  <div class="header">
+    <div class="left-side">
+      <h1 class="title">Help Center</h1>
+      <div class="subtitle">Get answers and advice on your questions for <br />
+        SafeNet.</div>
     </div>
-  </app-scrollable-side-menu>
+    <div class="right-side">
+      <img src="/help_center_illustration.svg" />
+    </div>
 
-  <div class="content">
-    <div class="product-support">
-      <h1>Product Support</h1>
+  </div>
 
-      <mat-expansion-panel>
-        <mat-expansion-panel-header [collapsedHeight]="expansionPanelHeaderHeight"
-          [expandedHeight]="expansionPanelHeaderHeight">
-          <mat-panel-title>
-            Add comments to your report
-          </mat-panel-title>
-        </mat-expansion-panel-header>
+  <!-- Note: Wrapper div is required to prevent the side menu "sticky" layout
+     option from continuing beyond the bounds of the wrapper. -->
+  <div class="content-wrapper">
+    <app-scrollable-side-menu class="side-menu" [sideMenuSections]="sideMenuSections">
+    </app-scrollable-side-menu>
 
-        <div class="panel-content">
-          <div class="text">
-            <ol>
+    <div class="content">
+      <div class="product-support">
+        <h1 class="header-title">Product Support</h1>
+
+        <div class="content-data">
+
+          <h3 class="content-data-header">Add Comments to your report</h3>
+
+          <div class="content-data-body">
+            <ul class="content-data-list">
               <li>
-                Sign into SafeNet with the platform of your choice to document and report online harassment targeted at
+                Sign into SafeNet with the platform of your choice to document and report online harassment targeted
+                at
                 you on that platform.
               </li>
               <li>
-                Not sure where to start? Select from grouped comments that are categorized based on their likeliness of
+                Not sure where to start? Select from grouped comments that are categorized based on their likeliness
+                of
                 containing harmful content.
               </li>
               <li>
@@ -64,50 +63,86 @@
                 After you complete your report, download or store it online. Keep it for your records or share with
                 others.
               </li>
-            </ol>
+            </ul>
           </div>
-        </div>
-      </mat-expansion-panel>
 
-      <mat-expansion-panel>
-        <mat-expansion-panel-header [collapsedHeight]="expansionPanelHeaderHeight"
-          [expandedHeight]="expansionPanelHeaderHeight">
-          <mat-panel-title>
-            Sharing or saving your report
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-
-        <div>
-          <ul>
-            <li>
-              You can export your report and save it locally by downloading a PDF, printing a copy, or saving a CSV file
-              to review later.
-            </li>
-            <li>
-              You can also save your report as a spreadsheet on Google Drive. View, share, download, or print your
-              report with Google Sheets on Drive.
-              <a href="https://www.google.com/sheets/about/" target="_blank" rel="noopener">Learn More</a>
-            </li>
-          </ul>
         </div>
-      </mat-expansion-panel>
+
+        <div class="content-data">
+
+          <h3 class="content-data-header">Sharing or saving your report</h3>
+
+          <div class="content-data-body">
+            <ul class="content-data-list">
+              <li>
+                You can export your report and save it locally by downloading a PDF, printing a copy, or saving a CSV
+                file to review later.
+              </li>
+              <li>
+                You can also save your report as a spreadsheet on Google Drive. View, share, download, or print your
+                report with Google Sheets on Drive. <br />
+                <a href="https://www.google.com/sheets/about/" target="_blank" rel="noopener" class="sheets-link">Learn
+                  More</a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="contact-us">
+        <h1 class="header-title">Contact Us</h1>
+        <form [formGroup]="contactUsForm" (ngSubmit)="onSubmit()" class="form">
+
+
+          <div class="names">
+
+            <div class="form-group">
+              <mat-label>First name</mat-label>
+              <mat-form-field appearance="outline">
+                <input matInput type="text" formControlName="firstName">
+              </mat-form-field>
+            </div>
+
+            <div class="form-group">
+              <mat-label>Last name</mat-label>
+              <mat-form-field appearance="outline">
+                <input matInput type="text" formControlName="lastName" class="form-input">
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="email form-group">
+            <mat-label>Email</mat-label>
+            <mat-form-field appearance="outline">
+              <input matInput type="email" formControlName="email" class="form-input">
+            </mat-form-field>
+          </div>
+
+          <div class="subject form-group">
+
+            <mat-label>Subject</mat-label>
+            <mat-form-field appearance="outline">
+              <input matInput type="text" formControlName="subject" class="form-input">
+            </mat-form-field>
+
+          </div>
+
+          <div class="message form-group">
+
+            <mat-label>Message</mat-label>
+            <mat-form-field appearance="outline">
+              <textarea matInput type="text" formControlName="message" class="form-input" rows="10"> </textarea>
+            </mat-form-field>
+          </div>
+
+          <div class="submit-btn">
+            <button type="button" class="btn" mat-button>Send</button>
+          </div>
+
+        </form>
+      </div>
+
     </div>
-
-    <!-- TODO: provide information on data privacy. -->
-    <!-- <div class="data-and-privacy">
-      <h1>Data &amp; Privacy</h1>
-      <mat-expansion-panel>
-        <mat-expansion-panel-header [collapsedHeight]="expansionPanelHeaderHeight"
-                                    [expandedHeight]="expansionPanelHeaderHeight">
-          <mat-panel-title>
-            Question #1
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-
-        <div>
-          Answer #1
-        </div>
-      </mat-expansion-panel>
-    </div> -->
   </div>
 </div>
