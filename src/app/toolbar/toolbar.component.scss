@@ -93,6 +93,10 @@
   background-color: #bd2c66;
 }
 
+.get-started-button {
+  background-color: #101bcf;
+}
+
 .continue-button span {
   align-items: center;
   display: flex;
@@ -157,7 +161,7 @@
 .toolbar-row {
   border-bottom: 1px solid #dadce0;
   justify-content: space-between;
-  padding-left: 30px;
+  padding-left: 150px;
   padding-right: 30px;
   position: relative;
 }
