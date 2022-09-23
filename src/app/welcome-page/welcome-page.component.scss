@@ -85,6 +85,53 @@ $panel-padding: 32px 150px;
   .header-right {
     align-self: baseline;
   }
+
+  /* Responsive Screens: mobile*/
+  @media all and (min-width: 0px) and (max-width: 640px) {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    padding-left: 0;
+
+    .header-left {
+      .header-text-1 {
+        font-size: 20px;
+      }
+
+      .header-text-2 {
+        font-size: 25px;
+      }
+    }
+
+    .header-right {
+      align-self: baseline;
+
+      .header-illustration {
+        width: 100%;
+      }
+    }
+  }
+
+  /* Responsive Screens: desktop*/
+  @media all and (min-width: 641px) and (max-width: 1366px) {
+    .header-left {
+      .header-text-1 {
+        font-size: 35px;
+      }
+
+      .header-text-2 {
+        font-size: 40px;
+      }
+    }
+
+    .header-right {
+      align-self: center;
+      .header-illustration {
+        width: 100%;
+      }
+    }
+  }
 }
 
 .info-section {
@@ -176,6 +223,132 @@ $panel-padding: 32px 150px;
       }
     }
   }
+
+  /* Responsive Screens: mobile*/
+  @media all and (min-width: 0px) and (max-width: 640px) {
+    display: flex;
+    flex-direction: column;
+    .info-section-1 {
+      flex-direction: column-reverse;
+      margin-top: 0;
+      justify-content: start;
+      padding-top: 30px;
+      overflow: hidden;
+
+      .section-left {
+        align-self: baseline;
+
+        .section-img {
+          width: 100%;
+        }
+      }
+
+      .section-right {
+        padding-left: 0;
+
+        .section-content {
+          text-align: center;
+
+          .text-1 {
+            font-size: 28px;
+          }
+
+          .text-2 {
+            font-size: 30px;
+          }
+          .description-text {
+            font-size: 18px;
+          }
+        }
+      }
+    }
+
+    .info-section-2 {
+      margin-top: 0px;
+      height: 100%;
+      flex-direction: column;
+
+      .section-left {
+        text-align: center;
+        padding-left: 0;
+
+        .text-1 {
+          font-size: 28px;
+        }
+
+        .text-2 {
+          font-size: 30px;
+        }
+        .description {
+          font-size: 18px;
+        }
+        .cta-text {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
+  /* Responsive Screens: desktop*/
+  @media all and (min-width: 641px) and (max-width: 1366px) {
+    .info-section-1 {
+      height: 100%;
+      .section-left {
+        align-self: center;
+        .section-img {
+          width: 100%;
+        }
+      }
+
+      .section-right {
+        padding-left: 30px;
+
+        .section-content {
+          text-align: center;
+
+          .text-1 {
+            font-size: 28px;
+          }
+
+          .text-2 {
+            font-size: 30px;
+          }
+          .description-text {
+            font-size: 18px;
+          }
+        }
+      }
+    }
+
+    .info-section-2 {
+      height: 100%;
+      .section-left {
+        text-align: center;
+        padding-left: 0;
+
+        .text-1 {
+          font-size: 35px;
+        }
+
+        .text-2 {
+          font-size: 40px;
+        }
+        .description {
+          font-size: 20px;
+        }
+        .cta-text {
+          font-size: 18px;
+        }
+      }
+
+      .section-right {
+        align-self: center;
+        .info-section-2-illustration {
+          width: 100%;
+        }
+      }
+    }
+  }
 }
 
 .faq-section {
@@ -216,6 +389,41 @@ $panel-padding: 32px 150px;
     // height: 86px;
     background-color: #101bcf !important;
     color: #ffffff;
+  }
+
+  /* Responsive Screens: mobile*/
+  @media all and (min-width: 0px) and (max-width: 640px) {
+    padding: 0 10px;
+    .faq-title {
+      font-size: 20px;
+      padding-top: 20px;
+    }
+
+    mat-expansion-panel {
+      margin-bottom: 10px;
+
+      p {
+        font-size: 16px;
+      }
+    }
+
+    mat-expansion-panel-header {
+      font-size: 16px;
+    }
+  }
+
+  /* Responsive Screens: desktop*/
+  @media all and (min-width: 641px) and (max-width: 1366px) {
+    padding: 0 20px;
+
+    .faq-title {
+      font-size: 22px;
+      padding-top: 25px;
+    }
+
+    mat-expansion-panel {
+      margin-bottom: 10px;
+    }
   }
 }
 

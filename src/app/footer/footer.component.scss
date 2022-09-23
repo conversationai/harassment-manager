@@ -109,6 +109,126 @@
     align-self: flex-end;
     text-align: right;
   }
+
+  /* Responsive Screens: mobile*/
+  @media all and (min-width: 0px) and (max-width: 640px) {
+    padding: 10px 36px;
+    flex-direction: column;
+
+    .left {
+      .title {
+        font-size: 20px;
+      }
+
+      .summary {
+        font-size: 18px;
+        line-height: normal;
+        margin-top: 16px;
+        letter-spacing: normal;
+      }
+
+      .bottom {
+        .copyright {
+          p {
+            font-size: 15px;
+          }
+        }
+
+        .powered-by {
+          flex: unset;
+          p {
+            letter-spacing: normal;
+          }
+          img {
+            width: 133px;
+          }
+        }
+      }
+    }
+
+    .middle {
+      display: block;
+      font-size: 16px;
+      .link-list {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+
+    .right {
+      flex: unset;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      padding-top: 20px;
+      align-items: center;
+      align-self: center;
+
+      .img-link {
+        height: 50px;
+        margin-left: 30px;
+      }
+    }
+  }
+
+  /* Responsive Screens: desktop*/
+  @media all and (min-width: 641px) and (max-width: 1366px) {
+    padding: 30px 10px;
+
+    .left {
+      .title {
+        font-size: 25px;
+      }
+
+      .summary {
+        font-size: 18px;
+        line-height: normal;
+        margin-top: 16px;
+        letter-spacing: normal;
+      }
+
+      .bottom {
+        .copyright {
+          p {
+            font-size: 15px;
+          }
+        }
+
+        .powered-by {
+          flex: unset;
+          p {
+            letter-spacing: normal;
+          }
+          img {
+            width: 133px;
+          }
+        }
+      }
+    }
+
+    .middle {
+      display: flex;
+      font-size: 18px;
+      .link-list {
+        justify-content: space-between;
+      }
+    }
+
+    .right {
+      flex: unset;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      padding-top: 20px;
+      align-items: center;
+      align-self: flex-end;
+
+      .img-link {
+        height: 50px;
+        margin-left: 30px;
+      }
+    }
+  }
 }
 
 .img-link {
