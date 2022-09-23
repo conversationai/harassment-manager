@@ -1,7 +1,7 @@
 <div class="privacy-page">
-    <div class="header">
+    <div class="page-header">
         <div class="left-side">
-            <h1>Privacy Policy</h1>
+            <h1 class="title">Privacy Policy</h1>
             <div class="subtitle">
                 SafeNet respects your privacy and is committed to <br />
                 protecting your personal data.
@@ -29,99 +29,133 @@
                 your privacy rights and how the law protects you.
             </div>
 
-            <div class="data">
-                <div class="collected-data">
-                    <h1 class="header-title">Data we collect about you</h1>
 
-                    <div class="content-data">
-                        <p>
-                            In order to facilitate access to and communications about the effectiveness <br />
-                            of the tool, we may collect the following information:
-                        </p>
-                        <ul class="content-data-list">
-                            <li>Your name (mandatory)</li>
-                            <li>Your country (optional)</li>
-                            <li>Your organisation (optional)</li>
-                            <li>Your email address (mandatory)</li>
-                            <li>Whether you work in journalism or related fields (optional)</li>
-                        </ul>
+            <div class="collected-data">
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header [collapsedHeight]="expansionPanelHeaderHeight"
+                        [expandedHeight]="expansionPanelHeaderHeight">
+                        <mat-panel-title>
+                            Data we collect about you
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+
+                    <div class="panel-content">
+                        <div class="text">
+                            <p>
+                                In order to facilitate access to and communications about the effectiveness of the
+                                tool, we
+                                may collect the following information:
+                            </p>
+                            <ul>
+                                <li>Your name (mandatory)</li>
+                                <li>Your country (optional)</li>
+                                <li>Your organisation (optional)</li>
+                                <li>Your email address (mandatory)</li>
+                                <li>Whether you work in journalism or related fields (optional)</li>
+                            </ul>
+                        </div>
                     </div>
+                </mat-expansion-panel>
 
 
 
-
-                </div>
-                <div class="data-usage">
-                    <h1 class="header-title">How we use Your Personal Data</h1>
-
-                    <div class="content-data">
-                        <p>
-                            We will only use your personal data for the purpose for which we collected it which
-                            include thefollowing:
-                        </p>
-                        <ul class="content-data-list">
-                            <li>
-                                To register you as a new contact and manage your relationship with us;
-                            </li>
-                            <li>
-                                If you register to receive updates and information on our initiatives and mentoring
-                                opportunities from Us, Your personal data will be used to send you these
-                                communications
-                                which you can opt out from at any time;
-                            </li>
-                            <li>To improve our website, products and services, or customer relationships;</li>
-                            <li>
-                                We may also collect information on how you use our website and services where you
-                                accept certain cookies. This may include Aggregated Data such as statistical or
-                                demographic
-                                data for any purpose. Aggregated Data will be derived from your personal data but is not
-                                considered personal data in law as this data will not directly or indirectly reveal
-                                your identity.
-                            </li>
-                        </ul>
-                        <p>
-                            We only share your personal data with third parties with your consent or other lawful
-                            basis for doing so, in accordance with our Privacy Policy. Specifically, in relation to the
-                            registration:
-                        </p>
-
-                        <ul>
-                            <li>
-                                When you log into the Tool with your Twitter account, your personal information may
-                                be
-                                processed in accordance with Twitter’s Privacy Policy.
-                            </li>
-                            <li>
-                                We manage our contact information and email outreach using Salesforce and Campaign
-                                Monitor,
-                                and your may be processed subject to their terms of service.
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="data-storage">
-
-                    <h1 class="header-title">Data Storage</h1>
-
-                    <div class="content-data">
-                        <p>
-                            The Tool may detect personal data, including some special category data, when looking
-                            for incidences of harassment.cHowever, this information is only visible to the user and is
-                            not stored in the Tool - with the exception of draft reports, which are an aggregation of
-                            public comments from Twitter, stored on Google Sheets and may be accessible to a limited
-                            number
-                            of developers with specific permissions. The in-progress report is deleted from the
-                            database once you have completed the report or abandoned it.
-                        </p>
-
-                        <p>
-                            In case of any questions regarding our privacy practices, if you would like to execute
-                            your rights or would like to submit a complaint, please contact info@codeforafrica.org.
-                        </p>
-                    </div>
-                </div>
             </div>
+            <div class="data-usage">
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header [collapsedHeight]="expansionPanelHeaderHeight"
+                        [expandedHeight]="expansionPanelHeaderHeight">
+                        <mat-panel-title>
+                            How we use Your Personal Data
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class="panel-content">
+                        <div class="text">
+                            <p>We will only use your personal data for the purpose for which we collected it which
+                                include the
+                                following:
+                            </p>
+                            <ul>
+                                <li>
+                                    To register you as a new contact and manage your relationship with us;
+                                </li>
+                                <li>
+                                    If you register to receive updates and information on our initiatives and mentoring
+                                    opportunities from Us, Your personal data will be used to send you these
+                                    communications
+                                    which you can opt out from at any time;
+                                </li>
+                                <li>To improve our website, products and services, or customer relationships;</li>
+                                <li>
+                                    We may also collect information on how you use our website and services where you
+                                    accept
+                                    certain cookies. This may include Aggregated Data such as statistical or demographic
+                                    data
+                                    for any purpose. Aggregated Data will be derived from your personal data but is not
+                                    considered personal data in law as this data will not directly or indirectly reveal
+                                    your
+                                    identity.
+                                </li>
+                            </ul>
+                            <p>
+                                We only share your personal data with third parties with your consent or other lawful
+                                basis for
+                                doing so, in accordance with our Privacy Policy. Specifically, in relation to the
+                                registration:
+                            </p>
+                            <ul>
+                                <li>
+                                    When you log into the Tool with your Twitter account, your personal information may
+                                    be
+                                    processed in accordance with Twitter’s Privacy Policy.
+                                </li>
+                                <li>
+                                    We manage our contact information and email outreach using Salesforce and Campaign
+                                    Monitor,
+                                    and your may be processed subject to their terms of service.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </mat-expansion-panel>
+
+            </div>
+
+            <div class="data-storage">
+
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header [collapsedHeight]="expansionPanelHeaderHeight"
+                        [expandedHeight]="expansionPanelHeaderHeight">
+                        <mat-panel-title>
+                            Data Storage
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class="panel-content">
+                        <div class="text">
+                            <p>
+                                The Tool may detect personal data, including some special category data, when looking
+                                for
+                                incidences of harassment.cHowever, this information is only visible to the user and is
+                                not
+                                stored in the Tool - with the exception of draft reports, which are an aggregation of
+                                public
+                                comments from Twitter, stored on Google Sheets and may be accessible to a limited number
+                                of
+                                developers with specific permissions. The in-progress report is deleted from the
+                                database once
+                                you have completed the report or abandoned it.
+                            </p>
+                            <p>
+                                In case of any questions regarding our privacy practices, if you would like to execute
+                                your
+                                rights or would like to submit a complaint, please contact info@codeforafrica.org.
+                            </p>
+                        </div>
+                    </div>
+                </mat-expansion-panel>
+
+
+            </div>
+
 
         </div>
     </div>

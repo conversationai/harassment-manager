@@ -26,6 +26,10 @@ $panel-padding: 32px 150px;
     text-decoration: none;
   }
 
+  .title:focus-visible {
+    outline: none;
+  }
+
   .text {
     align-self: center;
     color: #5f6368;
@@ -186,34 +190,32 @@ $panel-padding: 32px 150px;
     padding-top: 40px;
   }
 
-  .faqs-list {
-    .faq-panel {
-      background-color: #d7dceb;
-      margin-top: 30px;
+  mat-expansion-panel {
+    background-color: #d7dceb;
+    margin-top: 30px;
+    margin-bottom: 30px;
 
-      .faq-header {
-        background-color: #101bcf;
-        color: #ffffff;
-        padding-left: 52px;
-        font-family: 'Helvetica Neue';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 22px;
-        height: 86px;
-        display: flex;
-        align-items: center;
-      }
-
-      .faq-body {
-        padding: 0 52px 30px 52px;
-        p {
-          font-family: 'Helvetica';
-          font-style: normal;
-          font-weight: 400;
-          font-size: 20px;
-        }
-      }
+    p {
+      font-family: 'Helvetica';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 25px;
     }
+
+    .page-link {
+      text-decoration: none;
+    }
+  }
+
+  mat-expansion-panel-header {
+    font-family: 'Helvetica Neue';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    // height: 86px;
+    background-color: #101bcf !important;
+    color: #ffffff;
   }
 }
 

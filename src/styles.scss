@@ -127,9 +127,9 @@ body {
 app-help-center
   .mat-form-field-appearance-outline
   .mat-form-field-outline-start {
-  // border-radius: 30px 0 0 30px;
+  border-radius: 0;
   // min-width: 40px;
-  border: none;
+  // border: none;
 }
 
 app-help-center .mat-form-field-appearance-outline .mat-form-field-outline {
@@ -138,7 +138,7 @@ app-help-center .mat-form-field-appearance-outline .mat-form-field-outline {
 }
 
 app-help-center .mat-form-field-appearance-outline .mat-form-field-outline-end {
-  // border-radius: 0 30px 30px 0;
+  border-radius: 0;
 }
 
 app-help-center .mat-form-field-flex {
@@ -158,6 +158,21 @@ app-help-center .mat-expansion-panel-header,
 app-help-center .mat-expansion-panel-body {
   padding-left: 32px;
   padding-right: 32px;
+}
+
+app-help-center .mat-form-field-appearance-outline:hover,
+app-help-center .mat-form-field-flex:hover {
+  outline: none;
+}
+
+app-help-center .mat-form-field-outline-start,
+app-help-center .mat-form-field-appearance-outline,
+app-help-center .mat-form-field-outline-end {
+  border: 0 !important;
+}
+
+app-help-center .mat-input-element {
+  caption-side: #101bcf;
 }
 
 app-filter-dropdown
@@ -352,6 +367,19 @@ app-welcome-page .mat-expansion-panel-content {
   font-size: 18px;
 }
 
+app-welcome-page .mat-expansion-panel-header-title,
+.mat-expansion-indicator {
+  color: #ffffff;
+}
+
+app-privacy-page .mat-expansion-panel-body {
+  padding: 0 !important;
+}
+
+app-help-center .mat-expansion-panel-body {
+  padding: 0 !important;
+}
+
 // Tooltip styling. Since the tooltip is an overlay and not part of the
 // component, the CSS needs to go in a top-level file.
 .toxicity-tooltip,
@@ -481,4 +509,42 @@ app-welcome-page .mat-expansion-panel-content {
   position: absolute;
   white-space: nowrap;
   width: 1px;
+}
+
+/*------- CFA ADDED ----*/
+
+.page-header {
+  background: #1625d9;
+  background-image: url('~src/assets/help_center_bg.svg');
+  margin-top: 0px;
+  margin-bottom: 34px;
+  height: 327px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: #ffffff;
+
+  .left-side {
+    padding-left: 150px;
+
+    .title {
+      font-family: 'Merriweather';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 73px;
+      line-height: 92px;
+    }
+
+    .subtitle {
+      font-family: 'Helvetica';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 22px;
+      line-height: 27px;
+    }
+
+    .right-side {
+      align-self: baseline;
+    }
+  }
 }

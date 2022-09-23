@@ -18,41 +18,6 @@
   background-color: #eaefff;
 }
 
-.header {
-  background: #1625d9;
-  background-image: url('~src/assets/help_center_bg.svg');
-  margin-top: 0px;
-  margin-bottom: 34px;
-  height: 327px;
-  display: flex;
-  justify-content: space-between;
-  color: #ffffff;
-
-  .left-side {
-    padding-left: 150px;
-
-    .title {
-      font-family: 'Merriweather';
-      font-style: normal;
-      font-weight: 700;
-      font-size: 73px;
-      line-height: 92px;
-    }
-
-    .subtitle {
-      font-family: 'Helvetica';
-      font-style: normal;
-      font-weight: 400;
-      font-size: 22px;
-      line-height: 27px;
-    }
-
-    .right-side {
-      align-self: baseline;
-    }
-  }
-}
-
 .content {
   margin-left: 510px;
   margin-right: 150px;
@@ -62,57 +27,70 @@
     padding-bottom: 58px;
     color: #000000;
 
-    .header-title {
+    mat-expansion-panel {
+      // color: #202124;
+      font-size: 14px;
+      line-height: 20px;
+      margin-bottom: 24px;
+
+      .panel-content {
+        background-color: #d7dcec;
+        display: flex;
+
+        .text {
+          margin-right: 22px;
+          padding: 23px 29px 0 34px;
+        }
+
+        .image img {
+          width: 350px;
+        }
+      }
+    }
+
+    mat-panel-title {
       font-family: 'Helvetica';
       font-style: normal;
       font-weight: 700;
-      font-size: 24px;
+      font-size: 22px;
       line-height: 27px;
     }
 
-    .content-data {
-      background-color: #d7dcec;
-      padding: 40px 35px;
-      margin-top: 30px;
-
-      .content-data-header {
-        font-family: 'Helvetica';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 22px;
-        line-height: 27px;
-      }
-
-      .content-data-body {
-        font-family: 'Helvetica';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 20px;
-        line-height: 27px;
-
-        ul {
-          list-style: none;
-        }
-
-        li {
-          margin: 20px 0;
-        }
-
-        ul li::before {
-          content: '\2022';
-          color: #101bcf;
-          font-weight: bold;
-          display: inline-block;
-          width: 1em;
-          margin-left: -1em;
-        }
-      }
-
-      .sheets-link {
-        text-decoration: none;
-        color: #101bcf;
-      }
+    ul {
+      list-style: none;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 27px;
     }
+
+    li {
+      margin: 20px 0;
+    }
+
+    ul li::before {
+      content: '\2022';
+      color: #101bcf;
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+    }
+
+    .contact-us-button {
+      height: 36px;
+      width: 168px;
+    }
+
+    .contact-us-menu-section {
+      align-items: center;
+      display: flex;
+      height: 66px;
+    }
+  }
+
+  .sheets-link {
+    text-decoration: none;
+    color: #101bcf;
   }
 }
 

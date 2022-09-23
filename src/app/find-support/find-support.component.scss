@@ -14,41 +14,6 @@
  * limitations under the License.
  */
 
-.header {
-  background: #1625d9;
-  background-image: url('~src/assets/help_center_bg.svg');
-  margin-top: 0px;
-  margin-bottom: 34px;
-  height: 327px;
-  display: flex;
-  justify-content: space-between;
-  color: #ffffff;
-
-  .left-side {
-    padding-left: 150px;
-
-    .title {
-      font-family: 'Merriweather';
-      font-style: normal;
-      font-weight: 700;
-      font-size: 73px;
-      line-height: 92px;
-    }
-
-    .subtitle {
-      font-family: 'Helvetica';
-      font-style: normal;
-      font-weight: 400;
-      font-size: 22px;
-      line-height: 27px;
-    }
-
-    .right-side {
-      align-self: baseline;
-    }
-  }
-}
-
 .content {
   margin-bottom: 35px;
   margin-left: 510px;

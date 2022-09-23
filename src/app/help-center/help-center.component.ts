@@ -54,6 +54,5 @@ export class HelpCenterComponent {
 
   onSubmit() {
     //TODO: handle contact us form submission
-    console.log(this.contactUsForm.value);
   }
 }

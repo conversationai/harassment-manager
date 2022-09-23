@@ -1,38 +1,3 @@
-.header {
-  background: #1625d9;
-  background-image: url('~src/assets/help_center_bg.svg');
-  margin-top: 0px;
-  margin-bottom: 34px;
-  height: 327px;
-  display: flex;
-  justify-content: space-between;
-  color: #ffffff;
-
-  .left-side {
-    padding-left: 150px;
-
-    .title {
-      font-family: 'Merriweather';
-      font-style: normal;
-      font-weight: 700;
-      font-size: 73px;
-      line-height: 92px;
-    }
-
-    .subtitle {
-      font-family: 'Helvetica';
-      font-style: normal;
-      font-weight: 400;
-      font-size: 22px;
-      line-height: 27px;
-    }
-
-    .right-side {
-      align-self: baseline;
-    }
-  }
-}
-
 .content {
   margin-left: 510px;
   margin-right: 150px;
@@ -45,48 +10,62 @@
     font-size: 20px;
     line-height: 27px;
     color: #212121;
+    padding-bottom: 33px;
   }
 
-  .data {
-    padding-bottom: 30px;
-    .header-title {
-      font-family: 'Helvetica';
-      font-style: normal;
-      font-weight: 700;
-      font-size: 24px;
-      line-height: 27px;
-      color: #000000;
-    }
+  mat-expansion-panel {
+    font-family: 'Helvetica';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 27px;
+    color: #212121;
+    margin-bottom: 24px;
 
-    .content-data {
+    .panel-content {
+      display: flex;
       background-color: #d7dcec;
-      padding: 40px 35px;
-      margin-top: 30px;
 
-      font-family: 'Helvetica';
-      font-style: normal;
-      font-weight: 400;
-      font-size: 20px;
-      line-height: 27px;
-      color: #212121;
-
-      ul {
-        list-style: none;
+      .text {
+        margin-right: 22px;
+        font-family: 'Helvetica';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 27px;
+        color: #212121;
+        padding: 23px 29px 0 34px;
       }
 
-      li {
-        margin: 20px 0;
-      }
-
-      ul li::before {
-        content: '\2022';
-        color: #101bcf;
-        font-weight: bold;
-        display: inline-block;
-        width: 1em;
-        margin-left: -1em;
+      .image img {
+        width: 350px;
       }
     }
+  }
+
+  mat-panel-title {
+    font-family: 'Helvetica';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 27px;
+    color: #000000;
+  }
+  ul {
+    list-style: none;
+  }
+
+  li {
+    margin: 20px 0;
+  }
+
+  ul li::before {
+    content: '\2022';
+    color: #101bcf;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
   }
 }
 
