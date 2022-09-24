@@ -520,7 +520,7 @@ app-help-center .mat-expansion-panel-body {
   margin-bottom: 34px;
   height: 327px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   color: #ffffff;
 
@@ -542,9 +542,9 @@ app-help-center .mat-expansion-panel-body {
       font-size: 22px;
       line-height: 27px;
     }
-
-    .right-side {
-      align-self: baseline;
-    }
+  }
+  .right-side {
+    padding-right: 150px;
+    align-self: baseline;
   }
 }

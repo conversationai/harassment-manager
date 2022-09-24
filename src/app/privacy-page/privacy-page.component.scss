@@ -1,7 +1,7 @@
 .content {
   margin-left: 510px;
   margin-right: 150px;
-  max-width: 900px;
+  // max-width: 900px;
 
   .header-description {
     font-family: 'Helvetica';
@@ -11,6 +11,44 @@
     line-height: 27px;
     color: #212121;
     padding-bottom: 33px;
+  }
+
+  .header-title {
+    font-family: 'Helvetica';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 27px;
+    color: #000000;
+  }
+
+  .content-data {
+    background-color: #d7dcec;
+    font-family: 'Helvetica';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 27px;
+    color: #212121;
+    margin-bottom: 24px;
+    padding: 23px 29px 20px 34px;
+
+    ul {
+      list-style: none;
+    }
+
+    li {
+      margin: 20px 0;
+    }
+
+    ul li::before {
+      content: '\2022';
+      color: #101bcf;
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+    }
   }
 
   mat-expansion-panel {

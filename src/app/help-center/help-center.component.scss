@@ -21,11 +21,48 @@
 .content {
   margin-left: 510px;
   margin-right: 150px;
-  max-width: 900px;
+  // max-width: 900px;
 
   .product-support {
     padding-bottom: 58px;
     color: #000000;
+
+    .content-data {
+      background-color: #d7dcec;
+      padding: 20px 10px;
+      margin-bottom: 20px;
+
+      .content-data-header {
+        font-family: 'Helvetica';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 22px;
+        line-height: 27px;
+        padding-left: 20px;
+      }
+
+      .content-data-body {
+        ul {
+          list-style: none;
+          font-weight: 400;
+          font-size: 20px;
+          line-height: 27px;
+        }
+
+        li {
+          margin: 20px 0;
+        }
+
+        ul li::before {
+          content: '\2022';
+          color: #101bcf;
+          font-weight: bold;
+          display: inline-block;
+          width: 1em;
+          margin-left: -1em;
+        }
+      }
+    }
 
     mat-expansion-panel {
       // color: #202124;

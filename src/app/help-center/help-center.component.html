@@ -36,79 +36,61 @@
     <div class="content">
       <div class="product-support">
         <h1 class="header-title">Product Support</h1>
+        <div class="content-data">
 
-        <mat-expansion-panel>
-          <mat-expansion-panel-header [collapsedHeight]="expansionPanelHeaderHeight"
-            [expandedHeight]="expansionPanelHeaderHeight">
-            <mat-panel-title>
-              Add comments to your report
-            </mat-panel-title>
-          </mat-expansion-panel-header>
+          <h3 class="content-data-header">Add Comments to your report</h3>
 
-          <div class="panel-content">
-            <div class="text">
-              <ul>
-                <li>
-                  Sign into SafeNet with the platform of your choice to document and report online harassment targeted
-                  at
-                  you on that platform.
-                </li>
-                <li>
-                  Not sure where to start? Select from grouped comments that are categorized based on their likeliness
-                  of
-                  containing harmful content.
-                </li>
-                <li>
-                  Already know what you want to include? Explore all comments for a specific timeframe.
-                </li>
-                <li>
-                  Add comments and context to your report on the Create Report page.
-                </li>
-                <li>
-                  After you complete your report, download or store it online. Keep it for your records or share with
-                  others.
-                </li>
-              </ul>
-            </div>
+          <div class="content-data-body">
+            <ul class="content-data-list">
+              <li>
+                Sign into SafeNet with the platform of your choice to document and report online harassment targeted
+                at
+                you on that platform.
+              </li>
+              <li>
+                Not sure where to start? Select from grouped comments that are categorized based on their likeliness
+                of
+                containing harmful content.
+              </li>
+              <li>
+                Already know what you want to include? Explore all comments for a specific timeframe.
+              </li>
+              <li>
+                Add comments and context to your report on the Create Report page.
+              </li>
+              <li>
+                After you complete your report, download or store it online. Keep it for your records or share with
+                others.
+              </li>
+            </ul>
           </div>
-        </mat-expansion-panel>
+        </div>
+        <div class="content-data">
+          <h3 class="content-data-header">Sharing or saving your report</h3>
+          <div class="content-data-body">
+            <ul>
+              <li>
+                You can export your report and save it locally by downloading a PDF, printing a copy, or saving a CSV
+                file
+                to review later.
+              </li>
+              <li>
+                You can also save your report as a spreadsheet on Google Drive. View, share, download, or print your
+                report with Google Sheets on Drive.<br />
+                <a href="https://www.google.com/sheets/about/" target="_blank" rel="noopener" class="sheets-link">
+                  Learn More
+                </a>
 
-        <mat-expansion-panel>
-          <mat-expansion-panel-header [collapsedHeight]="expansionPanelHeaderHeight"
-            [expandedHeight]="expansionPanelHeaderHeight">
-            <mat-panel-title>
-              Sharing or saving your report
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-
-          <div class="panel-content">
-            <div class="text">
-              <ul>
-                <li>
-                  You can export your report and save it locally by downloading a PDF, printing a copy, or saving a CSV
-                  file
-                  to review later.
-                </li>
-                <li>
-                  You can also save your report as a spreadsheet on Google Drive. View, share, download, or print your
-                  report with Google Sheets on Drive.<br />
-                  <a href="https://www.google.com/sheets/about/" target="_blank" rel="noopener" class="sheets-link">
-                    Learn More
-                  </a>
-
-                </li>
-              </ul>
-            </div>
+              </li>
+            </ul>
           </div>
-        </mat-expansion-panel>
+
+        </div>
 
         <div class="contact-us">
           <h1 class="header-title">Contact Us</h1>
           <form [formGroup]="contactUsForm" (ngSubmit)="onSubmit()" class="form">
-
-
             <div class="names">
-
               <div class="form-group">
                 <mat-label>First name</mat-label>
                 <mat-form-field appearance="outline">

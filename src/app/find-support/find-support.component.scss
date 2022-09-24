@@ -18,7 +18,7 @@
   margin-bottom: 35px;
   margin-left: 510px;
   margin-right: 150px;
-  max-width: 900px;
+  // max-width: 900px;
 
   .data-list {
     background-color: #d7dcec;
@@ -34,9 +34,9 @@
 
   .tile-row {
     display: flex;
+    justify-content: space-between;
 
     app-find-support-tile {
-      margin-right: 46px;
       margin-bottom: 30px;
     }
   }
