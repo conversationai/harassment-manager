@@ -32,8 +32,41 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$documentation-app-primary: mat-palette($mat-pink, 800, 600, 900);
-$documentation-app-accent: mat-palette($mat-purple, A200, A100, A400);
+$light-text: #ffffff;
+$light-primary-text: $light-text;
+$dark-text: #212121;
+$dark-primary-text: rgba($dark-text, 0.87);
+
+$mat-primary: (
+  main: #101bcf,
+  lighter: #b7bbf1,
+  darker: #0910bd,
+  200: #101bcf,
+  // For slide toggle,
+  contrast:
+    (
+      main: $light-primary-text,
+      lighter: $dark-primary-text,
+      darker: $light-primary-text,
+    ),
+);
+
+$documentation-app-primary: mat-palette($mat-primary, main, lighter, darker);
+$mat-accent: (
+  main: #d7dcec,
+  lighter: #f3f5f9,
+  darker: #c7cee4,
+  200: #d7dcec,
+  // For slide toggle,
+  contrast:
+    (
+      main: $dark-primary-text,
+      lighter: $dark-primary-text,
+      darker: $dark-primary-text,
+    ),
+);
+
+$documentation-app-accent: mat-palette($mat-accent, main, lighter, darker);
 
 // The warn palette is optional (defaults to red).
 $documentation-app-warn: mat-palette($mat-red);
@@ -51,12 +84,12 @@ $documentation-app-theme: mat-light-theme(
 @include angular-material-theme($documentation-app-theme);
 
 * {
-  font-family: 'Google Sans', Arial, sans-serif;
+  font-family: Helvetica, Inter, Arial, sans-serif;
 }
 
 // Override typography for all Angular Material.
 @include angular-material-typography(
-  mat-typography-config($font-family: '"Google Sans", Arial, sans-serif')
+  mat-typography-config($font-family: 'Helvetica, Inter, sans-serif')
 );
 
 // Sets a global font-weight for common text elements. We are not overly
@@ -74,6 +107,16 @@ p {
 body {
   height: 100vh;
   margin: 0px;
+}
+
+/**
+Global Fonts
+*/
+
+h1,
+h2,
+h3 {
+  font-family: 'Merriweather', serif;
 }
 
 /**

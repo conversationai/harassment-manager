@@ -116,6 +116,9 @@ $panel-padding: 32px 150px;
       .header-text-2 {
         font-size: 25px;
       }
+      .header-cta {
+        justify-content: center;
+      }
     }
 
     .header-right {
@@ -274,11 +277,12 @@ $panel-padding: 32px 150px;
     display: flex;
     flex-direction: column;
     .info-section-1 {
-      flex-direction: column-reverse;
+      flex-direction: column;
       margin-top: 0;
       justify-content: start;
       padding-top: 30px;
       overflow: hidden;
+      height: 100%;
 
       .section-left {
         align-self: baseline;
@@ -303,6 +307,9 @@ $panel-padding: 32px 150px;
           }
           .description-text {
             font-size: 18px;
+          }
+          .info-section-1-cta {
+            justify-content: center;
           }
         }
       }

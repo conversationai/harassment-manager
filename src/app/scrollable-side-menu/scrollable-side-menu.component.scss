@@ -74,21 +74,11 @@
     // border-bottom: 6px solid #101bcf;
     .text {
       border-bottom: 6px solid #101bcf;
-      padding-left: 30px;
+      padding-left: 22px;
     }
 
     .text :hover {
       background-color: #d7dcec;
     }
   }
-
-  // .menu-section.selected::after {
-  //   content: '';
-  //   display: block;
-  //   height: 36px;
-  //   width: 100%;
-  //   background-image: url('~src/assets/blue_ellipse.svg');
-  //   background-repeat: no-repeat;
-  //   background-position: center bottom;
-  // }
 }
