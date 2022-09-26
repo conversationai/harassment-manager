@@ -423,6 +423,16 @@ app-help-center .mat-expansion-panel-body {
   padding: 0 !important;
 }
 
+app-scrollable-side-menu .mat-button-focus-overlay {
+  opacity: 0 !important;
+  transition: none !important;
+}
+
+app-scrollable-side-menu .mat-button-focus-overlay:hover {
+  opacity: 0 !important;
+  transition: none !important;
+}
+
 // Tooltip styling. Since the tooltip is an overlay and not part of the
 // component, the CSS needs to go in a top-level file.
 .toxicity-tooltip,
@@ -578,6 +588,7 @@ app-help-center .mat-expansion-panel-body {
       font-weight: 700;
       font-size: 73px;
       line-height: 92px;
+      margin: 0;
     }
 
     .subtitle {

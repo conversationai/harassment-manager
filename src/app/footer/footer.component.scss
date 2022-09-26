@@ -46,7 +46,7 @@
       justify-content: space-between;
 
       .copyright {
-        flex: 2;
+        flex: 1;
 
         p {
           font-weight: 400;
@@ -61,6 +61,7 @@
         display: flex;
         flex: 1;
         align-items: center;
+        justify-content: flex-end;
 
         p {
           font-weight: 400;
@@ -116,7 +117,7 @@
 
   /* Responsive Screens: mobile*/
   @media all and (min-width: 0px) and (max-width: 640px) {
-    padding: 10px 36px;
+    padding: 10px 10px;
     flex-direction: column;
 
     .left {
@@ -178,7 +179,7 @@
 
   /* Responsive Screens: desktop*/
   @media all and (min-width: 641px) and (max-width: 1366px) {
-    padding: 30px 10px;
+    padding: 30px 30px;
 
     .left {
       .title {
