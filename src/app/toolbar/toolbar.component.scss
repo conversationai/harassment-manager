@@ -189,3 +189,19 @@
   margin-right: 12px;
   text-align: right;
 }
+
+/* Responsive Screens: mobile*/
+@media all and (min-width: 0px) and (max-width: 640px) {
+  .toolbar-row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+/* Responsive Screens: desktop*/
+@media all and (min-width: 641px) and (max-width: 1366px) {
+  .toolbar-row {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}

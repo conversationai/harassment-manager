@@ -35,6 +35,8 @@
   .tile-row {
     display: flex;
     justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
 
     app-find-support-tile {
       margin-bottom: 30px;
@@ -58,9 +60,10 @@
   }
   .content {
     margin: 0 10px;
-  }
-  .tile-row {
-    flex-wrap: wrap;
+    .tile-row {
+      gap: 10px;
+      justify-content: center;
+    }
   }
 }
 
@@ -70,9 +73,9 @@
     display: none;
   }
   .content {
-    margin: 0 10px;
-  }
-  .tile-row {
-    flex-wrap: wrap;
+    margin: 0 30px;
+    .tile-row {
+      gap: 20px;
+    }
   }
 }

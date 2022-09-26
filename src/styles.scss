@@ -368,7 +368,7 @@ app-welcome-page .mat-expansion-panel-content {
 }
 
 app-welcome-page .mat-expansion-panel-header-title,
-.mat-expansion-indicator {
+.mat-expansion-indicator:after {
   color: #ffffff;
 }
 
@@ -567,7 +567,7 @@ app-help-center .mat-expansion-panel-body {
       text-align: center;
 
       .title {
-        font-size: 43px;
+        font-size: 33px;
       }
 
       .subtitle {
@@ -582,17 +582,31 @@ app-help-center .mat-expansion-panel-body {
 
   /* Responsive Screens: desktop*/
   @media all and (min-width: 641px) and (max-width: 1366px) {
-    height: unset;
+    height: 327px;
 
     .left-side {
+      flex: 1;
+      padding-left: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+
       .title {
         font-size: 43px;
         line-height: normal;
       }
+      .subtitle {
+        font-size: 18px;
+      }
     }
 
     .right-side {
+      flex: 1;
+      padding-right: 30px;
       align-self: flex-end;
+      height: 100%;
+      width: 100%;
       img {
         height: 100%;
         width: 100%;
