@@ -15,6 +15,7 @@
  */
 
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HelpCenterComponent } from './help-center.component';
 
@@ -24,9 +25,10 @@ describe('HelpCenterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HelpCenterComponent ]
+      declarations: [HelpCenterComponent],
+      imports: [FormsModule, ReactiveFormsModule]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

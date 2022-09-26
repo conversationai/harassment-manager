@@ -15,7 +15,7 @@
  */
 
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { SideMenuSection } from '../scrollable-side-menu/scrollable-side-menu.component';
 
 
@@ -45,11 +45,11 @@ export class HelpCenterComponent {
   }
 
   contactUsForm = this.formBuilder.group({
-    firstName: '',
-    lastName: '',
-    email: '',
-    subject: '',
-    message: ''
+    firstName: new FormControl('', [Validators.required]),
+    lastName: new FormControl(''),
+    email: new FormControl('', [Validators.required]),
+    subject: new FormControl('', [Validators.required]),
+    message: new FormControl('', [Validators.required])
   });
 
   onSubmit() {
