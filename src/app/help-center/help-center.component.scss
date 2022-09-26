@@ -171,3 +171,33 @@
     }
   }
 }
+
+/* Responsive Screens: mobile*/
+@media all and (min-width: 0px) and (max-width: 640px) {
+  app-scrollable-side-menu {
+    display: none;
+  }
+  .content {
+    margin: 0 10px;
+  }
+
+  .names {
+    flex-wrap: wrap;
+    gap: unset;
+  }
+}
+
+/* Responsive Screens: desktop*/
+@media all and (min-width: 641px) and (max-width: 1366px) {
+  app-scrollable-side-menu {
+    display: none;
+  }
+  .content {
+    margin: 0 10px;
+  }
+
+  .names {
+    flex-wrap: wrap;
+    gap: unset;
+  }
+}

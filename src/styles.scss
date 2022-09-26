@@ -523,9 +523,11 @@ app-help-center .mat-expansion-panel-body {
   justify-content: space-between;
   align-items: center;
   color: #ffffff;
+  overflow: hidden;
 
   .left-side {
     padding-left: 150px;
+    width: 100%;
 
     .title {
       font-family: 'Merriweather';
@@ -546,5 +548,56 @@ app-help-center .mat-expansion-panel-body {
   .right-side {
     padding-right: 150px;
     align-self: baseline;
+    width: 100%;
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  /* Responsive Screens: mobile*/
+  @media all and (min-width: 0px) and (max-width: 640px) {
+    flex-direction: column;
+    height: unset;
+
+    .left-side {
+      padding-left: 0;
+      text-align: center;
+
+      .title {
+        font-size: 43px;
+      }
+
+      .subtitle {
+        font-size: 16px;
+      }
+    }
+
+    .right-side {
+      display: none;
+    }
+  }
+
+  /* Responsive Screens: desktop*/
+  @media all and (min-width: 641px) and (max-width: 1366px) {
+    height: unset;
+
+    .left-side {
+      .title {
+        font-size: 43px;
+        line-height: normal;
+      }
+    }
+
+    .right-side {
+      align-self: flex-end;
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
   }
 }
