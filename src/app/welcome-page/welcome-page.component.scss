@@ -45,13 +45,14 @@ $panel-padding: 32px 150px;
   align-items: center;
   display: flex;
   justify-content: space-between;
-  padding-top: 40px;
+  // padding-top: 40px;
   padding-left: 150px;
   height: 445px;
   overflow: hidden;
 
   .header-text {
     color: #ffffff;
+    margin: 0;
   }
 
   .header-left {
