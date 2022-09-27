@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-@import url('//fonts.googleapis.com/css?family=Google+Sans:400,500,600');
+@import url('//fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Merriweather:wght@400;700&family=Roboto&display=swap');
 
 // Include CSS from the nouislider library, which doesn't seem to get included
 // automatically.
@@ -32,8 +32,41 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$documentation-app-primary: mat-palette($mat-pink, 800, 600, 900);
-$documentation-app-accent: mat-palette($mat-purple, A200, A100, A400);
+$light-text: #ffffff;
+$light-primary-text: $light-text;
+$dark-text: #212121;
+$dark-primary-text: rgba($dark-text, 0.87);
+
+$mat-primary: (
+  main: #101bcf,
+  lighter: #b7bbf1,
+  darker: #0910bd,
+  200: #101bcf,
+  // For slide toggle,
+  contrast:
+    (
+      main: $light-primary-text,
+      lighter: $dark-primary-text,
+      darker: $light-primary-text,
+    ),
+);
+
+$documentation-app-primary: mat-palette($mat-primary, main, lighter, darker);
+$mat-accent: (
+  main: #d7dcec,
+  lighter: #f3f5f9,
+  darker: #c7cee4,
+  200: #d7dcec,
+  // For slide toggle,
+  contrast:
+    (
+      main: $dark-primary-text,
+      lighter: $dark-primary-text,
+      darker: $dark-primary-text,
+    ),
+);
+
+$documentation-app-accent: mat-palette($mat-accent, main, lighter, darker);
 
 // The warn palette is optional (defaults to red).
 $documentation-app-warn: mat-palette($mat-red);
@@ -51,12 +84,12 @@ $documentation-app-theme: mat-light-theme(
 @include angular-material-theme($documentation-app-theme);
 
 * {
-  font-family: 'Google Sans', Arial, sans-serif;
+  font-family: Helvetica, Inter, Arial, sans-serif;
 }
 
 // Override typography for all Angular Material.
 @include angular-material-typography(
-  mat-typography-config($font-family: '"Google Sans", Arial, sans-serif')
+  mat-typography-config($font-family: 'Helvetica, Inter, sans-serif')
 );
 
 // Sets a global font-weight for common text elements. We are not overly
@@ -74,6 +107,16 @@ p {
 body {
   height: 100vh;
   margin: 0px;
+}
+
+/**
+Global Fonts
+*/
+
+h1,
+h2,
+h3 {
+  font-family: 'Merriweather', serif;
 }
 
 /**
@@ -127,17 +170,18 @@ body {
 app-help-center
   .mat-form-field-appearance-outline
   .mat-form-field-outline-start {
-  border-radius: 30px 0 0 30px;
-  min-width: 40px;
+  border-radius: 0;
+  // min-width: 40px;
+  // border: none;
 }
 
 app-help-center .mat-form-field-appearance-outline .mat-form-field-outline {
   background-color: #ffffff;
-  border-radius: 30px;
+  // border-radius: 30px;
 }
 
 app-help-center .mat-form-field-appearance-outline .mat-form-field-outline-end {
-  border-radius: 0 30px 30px 0;
+  border-radius: 0;
 }
 
 app-help-center .mat-form-field-flex {
@@ -157,6 +201,21 @@ app-help-center .mat-expansion-panel-header,
 app-help-center .mat-expansion-panel-body {
   padding-left: 32px;
   padding-right: 32px;
+}
+
+app-help-center .mat-form-field-appearance-outline:hover,
+app-help-center .mat-form-field-flex:hover {
+  outline: none;
+}
+
+app-help-center .mat-form-field-outline-start,
+app-help-center .mat-form-field-appearance-outline,
+app-help-center .mat-form-field-outline-end {
+  border: 0 !important;
+}
+
+app-help-center .mat-input-element {
+  caption-side: #101bcf;
 }
 
 app-filter-dropdown
@@ -351,6 +410,29 @@ app-welcome-page .mat-expansion-panel-content {
   font-size: 18px;
 }
 
+app-welcome-page .mat-expansion-panel-header-title,
+.mat-expansion-indicator:after {
+  color: #ffffff;
+}
+
+app-privacy-page .mat-expansion-panel-body {
+  padding: 0 !important;
+}
+
+app-help-center .mat-expansion-panel-body {
+  padding: 0 !important;
+}
+
+app-scrollable-side-menu .mat-button-focus-overlay {
+  opacity: 0 !important;
+  transition: none !important;
+}
+
+app-scrollable-side-menu .mat-button-focus-overlay:hover {
+  opacity: 0 !important;
+  transition: none !important;
+}
+
 // Tooltip styling. Since the tooltip is an overlay and not part of the
 // component, the CSS needs to go in a top-level file.
 .toxicity-tooltip,
@@ -480,4 +562,110 @@ app-welcome-page .mat-expansion-panel-content {
   position: absolute;
   white-space: nowrap;
   width: 1px;
+}
+
+/*------- CFA ADDED ----*/
+
+.page-header {
+  background: #1625d9;
+  background-image: url('~src/assets/help_center_bg.svg');
+  margin-top: 0px;
+  margin-bottom: 34px;
+  height: 327px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #ffffff;
+  overflow: hidden;
+
+  .left-side {
+    padding-left: 150px;
+    width: 100%;
+
+    .title {
+      font-family: 'Merriweather';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 73px;
+      line-height: 92px;
+      margin: 0;
+    }
+
+    .subtitle {
+      font-family: 'Helvetica';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 22px;
+      line-height: 27px;
+    }
+  }
+  .right-side {
+    padding-right: 150px;
+    align-self: baseline;
+    width: 100%;
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  /* Responsive Screens: mobile*/
+  @media all and (min-width: 0px) and (max-width: 640px) {
+    flex-direction: column;
+    height: unset;
+
+    .left-side {
+      padding-left: 0;
+      text-align: center;
+
+      .title {
+        font-size: 33px;
+      }
+
+      .subtitle {
+        font-size: 16px;
+      }
+    }
+
+    .right-side {
+      display: none;
+    }
+  }
+
+  /* Responsive Screens: desktop*/
+  @media all and (min-width: 641px) and (max-width: 1366px) {
+    height: 327px;
+
+    .left-side {
+      flex: 1;
+      padding-left: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+
+      .title {
+        font-size: 43px;
+        line-height: normal;
+      }
+      .subtitle {
+        font-size: 18px;
+      }
+    }
+
+    .right-side {
+      flex: 1;
+      padding-right: 30px;
+      align-self: flex-end;
+      height: 100%;
+      width: 100%;
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+  }
 }

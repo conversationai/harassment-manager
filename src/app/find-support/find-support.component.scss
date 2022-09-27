@@ -14,39 +14,15 @@
  * limitations under the License.
  */
 
-.header {
-  align-items: center;
-  background: rgba(209, 179, 195, 0.15);
-  display: flex;
-  flex-direction: column;
-  margin-top: 0px;
-  margin-bottom: 34px;
-
-  h1 {
-    color: #000000;
-    font-size: 24px;
-    line-height: 28px;
-    margin-bottom: 4px;
-    margin-top: 0px;
-    padding-top: 33px;
-    text-align: center;
-  }
-
-  .subtitle {
-    color: #202124;
-    font-size: 18px;
-    line-height: 24px;
-    max-width: 660px;
-    padding-bottom: 45px;
-    text-align: center;
-  }
-}
-
 .content {
   margin-bottom: 35px;
   margin-left: 510px;
   margin-right: 150px;
-  max-width: 900px;
+  // max-width: 900px;
+
+  .data-list {
+    background-color: #d7dcec;
+  }
 
   .explore-digital-tools {
     margin-bottom: 80px;
@@ -58,19 +34,48 @@
 
   .tile-row {
     display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
 
     app-find-support-tile {
-      margin-right: 46px;
       margin-bottom: 30px;
     }
   }
 
   h1 {
     color: #202124;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 29px;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 27px;
     margin-bottom: 14px;
     padding-top: 14px;
+  }
+}
+
+/* Responsive Screens: mobile*/
+@media all and (min-width: 0px) and (max-width: 640px) {
+  app-scrollable-side-menu {
+    display: none;
+  }
+  .content {
+    margin: 0 10px;
+    .tile-row {
+      gap: 10px;
+      justify-content: center;
+    }
+  }
+}
+
+/* Responsive Screens: desktop*/
+@media all and (min-width: 641px) and (max-width: 1366px) {
+  app-scrollable-side-menu {
+    display: none;
+  }
+  .content {
+    margin: 0 30px;
+    .tile-row {
+      gap: 20px;
+    }
   }
 }

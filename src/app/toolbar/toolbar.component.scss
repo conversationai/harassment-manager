@@ -93,6 +93,10 @@
   background-color: #bd2c66;
 }
 
+.get-started-button {
+  background-color: #101bcf;
+}
+
 .continue-button span {
   align-items: center;
   display: flex;
@@ -157,8 +161,8 @@
 .toolbar-row {
   border-bottom: 1px solid #dadce0;
   justify-content: space-between;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 150px;
+  padding-right: 150px;
   position: relative;
 }
 
@@ -184,4 +188,23 @@
   line-height: 16px;
   margin-right: 12px;
   text-align: right;
+}
+
+/* Responsive Screens: mobile*/
+@media all and (min-width: 0px) and (max-width: 640px) {
+  .toolbar-row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .get-started-button {
+    display: none;
+  }
+}
+
+/* Responsive Screens: desktop*/
+@media all and (min-width: 641px) and (max-width: 1366px) {
+  .toolbar-row {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
 }

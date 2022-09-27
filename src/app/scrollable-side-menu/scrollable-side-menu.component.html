@@ -15,14 +15,17 @@
 -->
 
 <div class="side-menu">
-  <div class="menu-section"
-       *ngFor="let section of sideMenuSections"
-       [class.selected]="section.selected">
-    <div class="highlight" *ngIf="section.selected"></div>
-    <button mat-button
-            [attr.aria-selected]="section.selected"
-            (click)="scrollToSelector(section.anchorSelector)"
-            class="text">{{section.title}}</button>
+  <div class="menu-section" *ngFor="let section of sideMenuSections" [class.selected]="section.selected">
+    <!-- <div class="highlight" *ngIf="section.selected"></div> -->
+    <div class="scroll-img" *ngIf="section.selected">
+      <img src="/blue_ellipse.svg" />
+    </div>
+    <button mat-button [attr.aria-selected]="section.selected" (click)="scrollToSelector(section.anchorSelector)"
+      class="text">{{section.title}}
+    </button>
+    <!-- <div class="scroll-img" *ngIf="section.selected">
+      <img src="/section_nav.svg" />
+    </div> -->
   </div>
   <div class="menu-section projected-content">
     <ng-content></ng-content>

@@ -15,6 +15,7 @@
  */
 
 import { Component } from '@angular/core';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { SideMenuSection } from '../scrollable-side-menu/scrollable-side-menu.component';
 
 
@@ -28,8 +29,30 @@ export class HelpCenterComponent {
   expansionPanelHeaderHeight = '82px';
 
   sideMenuSections: SideMenuSection[] = [
-    {title: 'Product Support', anchorSelector: '.product-support', selected: false},
-    // TODO: Once a "Data & Privacy" section is added in the HTML, reenable the header.
-    // {title: 'Data & Privacy', anchorSelector: '.data-and-privacy', selected: false},
+    {
+      title: 'Product Support',
+      anchorSelector: '.product-support',
+      selected: false
+    },
+    {
+      title: "Contact Us",
+      anchorSelector: '.contact-us',
+      selected: false
+    }
   ];
+
+  constructor(private formBuilder: FormBuilder,) {
+  }
+
+  contactUsForm = this.formBuilder.group({
+    firstName: new FormControl('', [Validators.required]),
+    lastName: new FormControl(''),
+    email: new FormControl('', [Validators.required]),
+    subject: new FormControl('', [Validators.required]),
+    message: new FormControl('', [Validators.required])
+  });
+
+  onSubmit() {
+    //TODO: handle contact us form submission
+  }
 }

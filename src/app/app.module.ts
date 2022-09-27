@@ -154,6 +154,7 @@ import { PrivacyPageComponent } from './privacy-page/privacy-page.component';
     BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     MatButtonModule,
     MatButtonToggleModule,
@@ -212,4 +213,4 @@ import { PrivacyPageComponent } from './privacy-page/privacy-page.component';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

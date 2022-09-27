@@ -97,8 +97,8 @@ describe('WelcomePageComponent', () => {
     expect(component).toBeTruthy();
     const componentElement = fixture.debugElement.nativeElement;
     expect(
-      componentElement.querySelector('.description').textContent
-    ).toContain('Say goodbye to online trolls');
+      componentElement.querySelector('.header-container').textContent
+    ).toContain('Take back control of your online experience with SafeNet');
   });
 
   it('routes to the home page on successful Twitter authentication', fakeAsync(() => {
@@ -106,7 +106,7 @@ describe('WelcomePageComponent', () => {
     createComponent();
 
     const componentElement = fixture.debugElement.nativeElement;
-    componentElement.querySelector('.twitter-button').click();
+    componentElement.querySelector('.header-cta-img').click();
     tick();
     expect(mockRouter.navigate).toHaveBeenCalledWith(['/home']);
   }));

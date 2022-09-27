@@ -28,6 +28,9 @@ import { OauthApiService } from '../oauth_api.service';
   styleUrls: ['./welcome-page.component.scss'],
 })
 export class WelcomePageComponent {
+
+  appName: string = "SafeNet"
+
   constructor(
     private firestoreService: FirestoreService,
     private oauthApiService: OauthApiService,
