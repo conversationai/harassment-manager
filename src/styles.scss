@@ -120,8 +120,13 @@ h3 {
 }
 
 h1 {
-  font-size: 28px;
-  line-height: math.div(34, 28);
+  font-size: 34px;
+  line-height: math.div(40, 34);
+}
+
+h2 {
+  font-size: 33px;
+  line-height: math.div(40, 33);
 }
 
 p {
@@ -130,16 +135,17 @@ p {
 }
 
 @media all and (min-width: 768px) {
-  h1 {
-    font-size: 39px;
-    line-height: math.div(47, 39);
-  }
 }
 
 @media all and (min-width: 1152px) {
   h1 {
     font-size: 72px;
     line-height: math.div(101, 72);
+  }
+
+  h2 {
+    font-size: 64px;
+    line-height: math.div(80.25, 64);
   }
 
   p {
