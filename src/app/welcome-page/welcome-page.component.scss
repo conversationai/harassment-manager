@@ -60,6 +60,7 @@ $panel-padding: 32px 150px;
   color: #fff;
   display: flex;
   padding: 40px 20px;
+  padding-bottom: 40px + 22; // button has -22px margin-bottom
 }
 
 .hero-container {
@@ -99,7 +100,7 @@ $panel-padding: 32px 150px;
   margin-top: 32px;
 }
 
-.twitter-button {
+.button {
   align-items: center;
   background: none;
   border: none;
@@ -111,26 +112,74 @@ $panel-padding: 32px 150px;
   line-height: math.div(26, 18);
   padding: 0;
 }
-.twitter-button:focus-visible {
+.button:focus-visible {
   outline: none;
+}
+.button span {
+  border-bottom: 5px solid #101bcf;
+  padding-right: 14px;
+  text-transform: none;
+}
+.button img {
+  margin-bottom: -22px;
+  margin-left: -3px;
+  width: 44px;
 }
 
 .twitter-button span {
   border-bottom: 5px solid #da2732;
-  padding-right: 14px;
-  text-transform: none;
 }
-.twitter-button img {
-  margin-bottom: -22px;
-  margin-left: -3px;
-  width: 44px;
+
+.info-section {
+  overflow: hidden;
+}
+
+.panel {
+  background-color: #d7dceb;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px + 22; // button has -22px margin-bottom
+  margin-top: 44px;
+
+  .box {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 20px;
+    text-align: center;
+
+    h2 {
+      font-size: 33px;
+      line-height: math.div(40, 33);
+      margin: 0;
+
+      span {
+        font-family: inherit;
+        font-weight: 400;
+        font-size: 28px;
+        line-height: math.div(34, 28);
+      }
+    }
+  }
+}
+.panel > img {
+  order: 0;
+}
+.panel > div {
+  order: 1;
+}
+
+.help-button {
+  margin: 40px auto;
 }
 
 @media all and (min-width: 768px) {
   .title {
     padding-left: 0;
     padding-right: 0;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
     max-width: 728px;
     width: 100%;
   }
@@ -161,6 +210,48 @@ $panel-padding: 32px 150px;
   .login-buttons {
     align-items: flex-start;
     width: 364px;
+  }
+
+  .panel {
+    column-gap: 30px;
+    flex-direction: row;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 728px;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    position: relative;
+
+    .box {
+      align-items: flex-start;
+      padding-top: 0;
+      text-align: left;
+      width: 364px;
+    }
+  }
+  .panel::before {
+    background-color: #d7dceb;
+    content: '';
+    bottom: 0;
+    left: calc((728px - 100vw) / 2);
+    position: absolute;
+    right: calc((728px - 100vw) / 2);
+    top: 0;
+    z-index: -1;
+  }
+  .panel > div {
+    order: unset;
+  }
+  .panel > img {
+    max-width: math.div(768px, 2);
+    order: unset;
+  }
+  div.panel:nth-of-type(2n + 1) > img {
+    margin-left: math.div(728px - 768px, 2);
+  }
+  div.panel:nth-of-type(2n) > img {
+    margin-right: math.div(728px - 768px, 2);
   }
 }
 
@@ -202,19 +293,55 @@ $panel-padding: 32px 150px;
     width: 512px;
   }
 
-  .twitter-button {
+  .button {
     display: flex;
     font-size: 24px;
     line-height: math.div(27.6, 24);
   }
-  .twitter-button span {
-    border-bottom: 7px solid #da2732;
+  .button span {
+    border-bottom: 7px solid #101bcf;
     padding-right: 14px;
   }
-  .twitter-button img {
+  .button img {
     margin-bottom: -22px;
     margin-left: -7px;
     width: 54px;
+  }
+
+  .twitter-button span {
+    border-bottom: 7px solid #da2732;
+  }
+
+  .panel {
+    max-width: 1024px;
+
+    .box {
+      width: 512px;
+
+      h2 {
+        font-size: 52px;
+        line-height: math.div(60, 52);
+
+        span {
+          font-size: 40px;
+          line-height: math.div(60, 40);
+        }
+      }
+    }
+  }
+  .panel::before {
+    left: calc((1024px - 100vw) / 2);
+    right: calc((1024px - 100vw) / 2);
+  }
+
+  .panel > img {
+    max-width: math.div(1152px, 2);
+  }
+  div.panel:nth-of-type(2n + 1) > img {
+    margin-left: math.div(1024px - 1152px, 2);
+  }
+  div.panel:nth-of-type(2n) > img {
+    margin-right: math.div(1024px - 1152px, 2);
   }
 }
 
@@ -240,8 +367,42 @@ $panel-padding: 32px 150px;
   .login-buttons {
     width: 572px;
   }
+
+  .panel {
+    column-gap: 75px;
+    max-width: 1144px;
+
+    .box {
+      width: 572px;
+
+      h2 {
+        font-size: 64px;
+        line-height: math.div(80.25, 64);
+
+        span {
+          font-size: 44px;
+          line-height: math.div(60, 48);
+        }
+      }
+    }
+  }
+  .panel::before {
+    left: calc((1144px - 100vw) / 2);
+    right: calc((1144px - 100vw) / 2);
+  }
+
+  .panel > img {
+    max-width: unset;
+  }
+  div.panel:nth-of-type(2n + 1) > img {
+    margin-left: math.div(1144px - 1440, 2);
+  }
+  div.panel:nth-of-type(2n) > img {
+    margin-right: math.div(1144px - 1440, 2);
+  }
 }
 
+/*
 .page-logo {
   padding: 10px 150px;
 
@@ -327,7 +488,6 @@ $panel-padding: 32px 150px;
     align-self: baseline;
   }
 
-  /* Responsive Screens: mobile*/
   @media all and (min-width: 0px) and (max-width: 640px) {
     flex-direction: column;
     align-items: center;
@@ -357,7 +517,6 @@ $panel-padding: 32px 150px;
     }
   }
 
-  /* Responsive Screens: desktop*/
   @media all and (min-width: 641px) and (max-width: 1366px) {
     .header-left {
       .header-text-1 {
@@ -499,7 +658,6 @@ $panel-padding: 32px 150px;
     }
   }
 
-  /* Responsive Screens: mobile*/
   @media all and (min-width: 0px) and (max-width: 640px) {
     display: flex;
     flex-direction: column;
@@ -568,7 +726,6 @@ $panel-padding: 32px 150px;
     }
   }
 
-  /* Responsive Screens: desktop*/
   @media all and (min-width: 641px) and (max-width: 1366px) {
     .info-section-1 {
       height: 100%;
@@ -670,7 +827,6 @@ $panel-padding: 32px 150px;
     color: #ffffff;
   }
 
-  /* Responsive Screens: mobile*/
   @media all and (min-width: 0px) and (max-width: 640px) {
     padding: 0 10px;
     .faq-title {
@@ -691,7 +847,6 @@ $panel-padding: 32px 150px;
     }
   }
 
-  /* Responsive Screens: desktop*/
   @media all and (min-width: 641px) and (max-width: 1366px) {
     padding: 0 20px;
 
@@ -731,3 +886,5 @@ $panel-padding: 32px 150px;
 .page-link {
   text-decoration: none;
 }
+
+*/
