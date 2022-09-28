@@ -13,8 +13,234 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+@use 'sass:math';
 
 $panel-padding: 32px 150px;
+
+.login-header {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+.login-header::before {
+  content: '';
+  position: absolute;
+  top: 60px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #1625d9;
+  background-image: url('/header_bg.svg');
+  z-index: -1;
+}
+
+.title {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  padding: 20px;
+  text-decoration: none;
+}
+.title:focus-visible {
+  outline: none;
+}
+
+.text {
+  align-self: center;
+  color: #000000;
+  font-size: 23px;
+  font-weight: 700;
+  line-height: math.div(28, 23);
+}
+
+.login-section {
+  align-items: center;
+  color: #fff;
+  display: flex;
+  padding: 40px 20px;
+}
+
+.hero-container {
+  display: none;
+}
+
+.description {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  line-height: 24px;
+  order: 1;
+  text-align: center;
+  width: 100%;
+
+  h1 {
+    margin: 0;
+
+    span {
+      display: block;
+      font-family: inherit;
+      font-weight: 400;
+      font-size: 23px;
+      line-height: math.div(28, 23);
+    }
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.login-buttons {
+  align-items: center;
+  display: flex;
+  margin-top: 32px;
+}
+
+.twitter-button {
+  align-items: center;
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: math.div(26, 18);
+  padding: 0;
+}
+.twitter-button:focus-visible {
+  outline: none;
+}
+
+.twitter-button span {
+  border-bottom: 5px solid #da2732;
+  padding-right: 14px;
+  text-transform: none;
+}
+.twitter-button img {
+  margin-bottom: -22px;
+  margin-left: -3px;
+  width: 44px;
+}
+
+@media all and (min-width: 768px) {
+  .title {
+    padding-left: 0;
+    padding-right: 0;
+    margin: 0 auto;
+    max-width: 728px;
+    width: 100%;
+  }
+
+  .login-section {
+    align-items: flex-end;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 728px;
+    width: 100%;
+  }
+
+  .hero-container {
+    display: flex;
+    order: 2;
+  }
+  .hero-container img {
+    height: 300px;
+  }
+
+  .description {
+    align-items: flex-start;
+    padding: 40px 0;
+    text-align: left;
+    width: 364px;
+  }
+
+  .login-buttons {
+    align-items: flex-start;
+    width: 364px;
+  }
+}
+
+@media all and (min-width: 1152px) {
+  .login-header::before {
+    top: 80px;
+  }
+
+  .title {
+    max-width: 1024px;
+  }
+
+  .text {
+    font-size: 36px;
+    line-height: math.div(52.56, 36);
+  }
+
+  .login-section {
+    max-width: 1024px;
+  }
+
+  .hero-container img {
+    height: 100%;
+  }
+
+  .description {
+    width: 512px;
+
+    h1 {
+      span {
+        font-size: 65px;
+        line-height: math.div(82, 65);
+        margin-bottom: -6px;
+      }
+    }
+  }
+
+  .login-buttons {
+    width: 512px;
+  }
+
+  .twitter-button {
+    display: flex;
+    font-size: 24px;
+    line-height: math.div(27.6, 24);
+  }
+  .twitter-button span {
+    border-bottom: 7px solid #da2732;
+    padding-right: 14px;
+  }
+  .twitter-button img {
+    margin-bottom: -22px;
+    margin-left: -7px;
+    width: 54px;
+  }
+}
+
+@media all and (min-width: 1440px) {
+  .title {
+    max-width: 1144px;
+  }
+
+  .login-section {
+    max-width: 1144px;
+  }
+
+  .hero-container {
+    // at width of 691px, the image misses 29px to touch the right-side of
+    // viewport
+    padding-left: 29px;
+  }
+
+  .description {
+    width: 572px;
+  }
+
+  .login-buttons {
+    width: 572px;
+  }
+}
 
 .page-logo {
   padding: 10px 150px;
