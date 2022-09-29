@@ -54,8 +54,4 @@ export class WelcomePageComponent {
       this.router.navigate(['/home']);
     });
   }
-
-  visitHelpCenter() {
-    this.router.navigate(['/help-center']);
-  }
 }

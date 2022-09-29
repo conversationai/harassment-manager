@@ -13,495 +13,461 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+@use 'sass:math';
 
 $panel-padding: 32px 150px;
 
-.page-logo {
-  padding: 10px 150px;
+.login-header {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
 
-  .title {
-    align-items: center;
-    cursor: pointer;
-    display: flex;
-    text-decoration: none;
+.login-header::before {
+  content: '';
+  position: absolute;
+  top: 60px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #1625d9;
+  background-image: url('/header_bg.svg');
+  z-index: -1;
+}
+
+.title {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  padding: 20px;
+  text-decoration: none;
+}
+.title:focus-visible {
+  outline: none;
+}
+
+.text {
+  align-self: center;
+  color: #000000;
+  font-size: 23px;
+  font-weight: 700;
+  line-height: math.div(28, 23);
+}
+
+.login-section {
+  align-items: center;
+  color: #fff;
+  display: flex;
+  padding: 40px 20px;
+  padding-bottom: 40px + 22; // button has -22px margin-bottom
+}
+
+.hero-container {
+  display: none;
+}
+
+.description {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  line-height: 24px;
+  order: 1;
+  text-align: center;
+  width: 100%;
+
+  h1 {
+    margin: 0;
+
+    span {
+      display: block;
+      font-family: inherit;
+      font-weight: 400;
+      font-size: 23px;
+      line-height: math.div(28, 23);
+    }
   }
 
-  .title:focus-visible {
-    outline: none;
-  }
-
-  .text {
-    align-self: center;
-    color: #5f6368;
-    font-size: 22px;
+  p {
+    margin-bottom: 0;
   }
 }
 
-.header-container {
-  background-color: #1625d9;
-  background-image: url('~src/assets/header_bg.svg');
-  background-repeat: no-repeat;
-  background-size: cover;
+.login-buttons {
   align-items: center;
   display: flex;
-  justify-content: space-between;
-  // padding-top: 40px;
-  padding-left: 150px;
-  height: 445px;
-  overflow: hidden;
+  margin-top: 32px;
+}
 
-  .header-text {
-    color: #ffffff;
-    margin: 0;
-  }
+.button {
+  align-items: center;
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: math.div(26, 18);
+  padding: 0;
+}
+.button:focus-visible {
+  outline: none;
+}
+.button span {
+  border-bottom: 5px solid #101bcf;
+  padding-right: 14px;
+  text-transform: none;
+}
+.button img {
+  margin-bottom: -22px;
+  margin-left: -3px;
+  width: 44px;
+}
 
-  .header-left {
-    font-style: normal;
-    font-family: 'Merriweather';
+.twitter-button span {
+  border-bottom: 5px solid #da2732;
+}
 
-    .header-text-1 {
-      font-weight: 400;
-      font-size: 65px;
-    }
-
-    .header-text-2 {
-      font-weight: 700;
-      font-size: 80px;
-    }
-
-    .description-text {
-      font-family: 'Helvetica';
-      font-weight: 400;
-      font-size: 22px;
-      line-height: 27px;
-    }
-
-    .header-cta {
-      cursor: pointer;
-      display: flex;
-
-      p {
-        font-family: 'Helvetica';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 24px;
-        line-height: 28px;
-        color: #ffffff;
-        padding-right: 10px;
-        border-bottom: 6px solid #da2732;
-      }
-
-      img {
-        align-self: flex-end;
-      }
-    }
-  }
-
-  .header-right {
-    align-self: baseline;
-  }
-
-  /* Responsive Screens: mobile*/
-  @media all and (min-width: 0px) and (max-width: 640px) {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    height: 100%;
-    padding-left: 0;
-
-    .header-left {
-      .header-text-1 {
-        font-size: 20px;
-      }
-
-      .header-text-2 {
-        font-size: 25px;
-      }
-      .header-cta {
-        justify-content: center;
-      }
-    }
-
-    .header-right {
-      align-self: baseline;
-
-      .header-illustration {
-        width: 100%;
-      }
-    }
-  }
-
-  /* Responsive Screens: desktop*/
-  @media all and (min-width: 641px) and (max-width: 1366px) {
-    .header-left {
-      .header-text-1 {
-        font-size: 35px;
-      }
-
-      .header-text-2 {
-        font-size: 40px;
-      }
-    }
-
-    .header-right {
-      align-self: center;
-      .header-illustration {
-        width: 100%;
-      }
-    }
-  }
+// TODO: h2 seem to be overriden in styles.scss. Since we haven't touch,
+//       the login pages yet, we'll reset them here. Used in .info-section and
+//       .faq-sectoin
+h2 {
+  font-size: 33px;
+  line-height: math.div(40, 33);
+  margin: 0;
 }
 
 .info-section {
-  background-color: #ffffff;
+  overflow: hidden;
+}
 
-  .text {
-    color: #212121;
-  }
+.panel {
+  background-color: #d7dceb;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px + 22; // button has -22px margin-bottom
+  margin-top: 44px;
 
-  .info-section-1 {
-    background-color: #d7dceb;
-    display: flex;
-    justify-content: space-between;
-    margin-top: 30px;
-    height: 458px;
-    overflow: hidden;
-
-    .section-left {
-      align-self: baseline;
-      width: 100%;
-
-      img {
-        width: 100%;
-        object-fit: cover;
-        height: 100%;
-      }
-    }
-
-    .section-right {
-      font-family: 'Merriweather';
-      font-style: normal;
-      align-self: center;
-      width: 100%;
-      padding-left: 150px;
-
-      .section-content {
-        text-align: start;
-
-        .text-1 {
-          font-weight: 400;
-          font-size: 48px;
-        }
-
-        .text-2 {
-          font-weight: 700;
-          font-size: 64px;
-        }
-        .description-text {
-          font-family: 'Helvetica';
-          font-weight: 400;
-          font-size: 22px;
-        }
-
-        .info-section-1-cta {
-          cursor: pointer;
-          display: flex;
-
-          p {
-            font-family: 'Helvetica';
-            font-style: normal;
-            font-weight: 700;
-            font-size: 24px;
-            line-height: 28px;
-            color: #212121;
-            padding-right: 10px;
-            border-bottom: 6px solid #101bcf;
-          }
-
-          img {
-            align-self: flex-end;
-          }
-        }
-      }
-    }
-  }
-
-  .info-section-2 {
-    background-color: #d7dceb;
-    display: flex;
-    justify-content: space-between;
-    margin-top: 30px;
-    height: 458px;
-    overflow: hidden;
-
-    .section-left {
-      font-family: 'Merriweather';
-      font-style: normal;
-      align-self: center;
-      width: 100%;
-      padding-left: 150px;
-
-      .text-1 {
-        font-weight: 400;
-        font-size: 48px;
-      }
-
-      .text-2 {
-        font-weight: 700;
-        font-size: 64px;
-      }
-
-      .description {
-        font-weight: 400;
-        font-size: 22px;
-      }
-
-      .cta-text {
-        font-weight: 400;
-        font-size: 22px;
-      }
-    }
-
-    .section-right {
-      width: 100%;
-
-      img {
-        width: 100%;
-        object-fit: cover;
-        height: 100%;
-      }
-    }
-  }
-
-  /* Responsive Screens: mobile*/
-  @media all and (min-width: 0px) and (max-width: 640px) {
+  .box {
     display: flex;
     flex-direction: column;
-    .info-section-1 {
-      flex-direction: column;
-      margin-top: 0;
-      justify-content: start;
-      padding-top: 30px;
-      overflow: hidden;
-      height: 100%;
+    justify-content: center;
+    padding: 20px;
+    padding-bottom: 0;
 
-      .section-left {
-        align-self: baseline;
+    h2 {
+      margin: 0;
 
-        .section-img {
-          width: 100%;
-        }
-      }
-
-      .section-right {
-        padding-left: 0;
-
-        .section-content {
-          text-align: center;
-
-          .text-1 {
-            font-size: 28px;
-          }
-
-          .text-2 {
-            font-size: 30px;
-          }
-          .description-text {
-            font-size: 18px;
-          }
-          .info-section-1-cta {
-            justify-content: center;
-          }
-        }
+      span {
+        font-family: inherit;
+        font-weight: 400;
+        font-size: 28px;
+        line-height: math.div(34, 28);
       }
     }
 
-    .info-section-2 {
-      margin-top: 0px;
-      height: 100%;
-      flex-direction: column;
-
-      .section-left {
-        text-align: center;
-        padding-left: 0;
-
-        .text-1 {
-          font-size: 28px;
-        }
-
-        .text-2 {
-          font-size: 30px;
-        }
-        .description {
-          font-size: 18px;
-        }
-        .cta-text {
-          font-size: 16px;
-        }
-      }
-    }
-  }
-
-  /* Responsive Screens: desktop*/
-  @media all and (min-width: 641px) and (max-width: 1366px) {
-    .info-section-1 {
-      height: 100%;
-      .section-left {
-        align-self: center;
-        .section-img {
-          width: 100%;
-        }
-      }
-
-      .section-right {
-        padding-left: 30px;
-
-        .section-content {
-          text-align: center;
-
-          .text-1 {
-            font-size: 28px;
-          }
-
-          .text-2 {
-            font-size: 30px;
-          }
-          .description-text {
-            font-size: 18px;
-          }
-        }
-      }
-    }
-
-    .info-section-2 {
-      height: 100%;
-      .section-left {
-        text-align: center;
-        padding-left: 0;
-
-        .text-1 {
-          font-size: 35px;
-        }
-
-        .text-2 {
-          font-size: 40px;
-        }
-        .description {
-          font-size: 20px;
-        }
-        .cta-text {
-          font-size: 18px;
-        }
-      }
-
-      .section-right {
-        align-self: center;
-        .info-section-2-illustration {
-          width: 100%;
-        }
-      }
+    .button {
+      margin: 0 auto;
     }
   }
 }
+.panel > img {
+  order: 0;
+}
+.panel > div {
+  order: 1;
+}
 
 .faq-section {
-  background-color: #ffffff;
-  padding: 0 150px;
-
-  .faq-title {
-    font-family: 'Merriweather';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 50px;
-    padding-top: 40px;
-  }
+  padding: 20px;
 
   mat-expansion-panel {
     background-color: #d7dceb;
     margin-top: 30px;
     margin-bottom: 30px;
+  }
 
-    p {
-      font-family: 'Helvetica';
-      font-style: normal;
-      font-weight: 400;
-      font-size: 20px;
-      line-height: 25px;
-    }
-
-    .page-link {
-      text-decoration: none;
-    }
+  .privacy-policy-link {
+    text-decoration: none;
   }
 
   mat-expansion-panel-header {
-    font-family: 'Helvetica Neue';
-    font-style: normal;
     font-weight: 700;
     font-size: 22px;
-    // height: 86px;
     background-color: #101bcf !important;
     color: #ffffff;
   }
 
-  /* Responsive Screens: mobile*/
-  @media all and (min-width: 0px) and (max-width: 640px) {
-    padding: 0 10px;
-    .faq-title {
-      font-size: 20px;
-      padding-top: 20px;
-    }
-
-    mat-expansion-panel {
-      margin-bottom: 10px;
-
-      p {
-        font-size: 16px;
-      }
-    }
-
-    mat-expansion-panel-header {
-      font-size: 16px;
-    }
+  .mat-expansion-panel-header-title {
+    font-size: 20px;
+    line-height: math.div(27, 20);
   }
-
-  /* Responsive Screens: desktop*/
-  @media all and (min-width: 641px) and (max-width: 1366px) {
-    padding: 0 20px;
-
-    .faq-title {
-      font-size: 22px;
-      padding-top: 25px;
-    }
-
-    mat-expansion-panel {
-      margin-bottom: 10px;
-    }
-  }
-}
-
-.bottom-cta {
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  padding-bottom: 30px;
 
   p {
-    font-family: 'Helvetica';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 28px;
-    color: #212121;
-    padding-right: 10px;
-    border-bottom: 6px solid #101bcf;
+    font-size: 18px;
+    line-height: math.div(25, 18);
   }
 
-  img {
-    align-self: flex-end;
+  .help-button {
+    margin: 40px auto;
   }
 }
 
-.page-link {
-  text-decoration: none;
+@media all and (min-width: 768px) {
+  .title {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 728px;
+    width: 100%;
+  }
+
+  .login-section {
+    align-items: flex-end;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 728px;
+    width: 100%;
+  }
+
+  .hero-container {
+    display: flex;
+    order: 2;
+  }
+  .hero-container img {
+    height: 300px;
+  }
+
+  .description {
+    align-items: flex-start;
+    padding: 40px 0;
+    text-align: left;
+    width: 364px;
+  }
+
+  .login-buttons {
+    align-items: flex-start;
+    width: 364px;
+  }
+
+  .panel {
+    column-gap: 30px;
+    flex-direction: row;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 728px;
+    padding: 0;
+    position: relative;
+
+    .box {
+      padding: 0;
+      width: 364px;
+
+      .button {
+        margin: 0;
+      }
+    }
+  }
+  .panel::before {
+    background-color: #d7dceb;
+    content: '';
+    bottom: 0;
+    left: calc((728px - 100vw) / 2);
+    position: absolute;
+    right: calc((728px - 100vw) / 2);
+    top: 0;
+    z-index: -1;
+  }
+  .panel > div {
+    order: unset;
+  }
+  .panel > img {
+    max-width: math.div(768px, 2);
+    order: unset;
+  }
+  div.panel:nth-of-type(2n + 1) > img {
+    margin-left: math.div(728px - 768px, 2);
+  }
+  div.panel:nth-of-type(2n) > img {
+    margin-right: math.div(728px - 768px, 2);
+  }
+
+  .faq-section {
+    margin: 0 auto;
+    max-width: 728px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media all and (min-width: 1152px) {
+  .login-header::before {
+    top: 80px;
+  }
+
+  .title {
+    max-width: 1024px;
+  }
+
+  .text {
+    font-size: 36px;
+    line-height: math.div(52.56, 36);
+  }
+
+  .login-section {
+    max-width: 1024px;
+  }
+
+  .hero-container img {
+    height: 100%;
+  }
+
+  .description {
+    width: 512px;
+
+    h1 {
+      span {
+        font-size: 65px;
+        line-height: math.div(82, 65);
+        margin-bottom: -6px;
+      }
+    }
+  }
+
+  .login-buttons {
+    width: 512px;
+  }
+
+  .button {
+    display: flex;
+    font-size: 24px;
+    line-height: math.div(27.6, 24);
+  }
+  .button span {
+    border-bottom: 7px solid #101bcf;
+    padding-right: 14px;
+  }
+  .button img {
+    margin-bottom: -22px;
+    margin-left: -7px;
+    width: 54px;
+  }
+
+  .twitter-button span {
+    border-bottom: 7px solid #da2732;
+  }
+
+  h2 {
+    font-size: 52px;
+    line-height: math.div(60, 52);
+  }
+
+  .panel {
+    max-width: 1024px;
+
+    .box {
+      width: 512px;
+
+      h2 {
+        span {
+          font-size: 40px;
+          line-height: math.div(60, 40);
+        }
+      }
+    }
+  }
+  .panel::before {
+    left: calc((1024px - 100vw) / 2);
+    right: calc((1024px - 100vw) / 2);
+  }
+
+  .panel > img {
+    max-width: math.div(1152px, 2);
+  }
+  div.panel:nth-of-type(2n + 1) > img {
+    margin-left: math.div(1024px - 1152px, 2);
+  }
+  div.panel:nth-of-type(2n) > img {
+    margin-right: math.div(1024px - 1152px, 2);
+  }
+
+  .faq-section {
+    max-width: 1024px;
+
+    .mat-expansion-panel-header-title {
+      font-size: 22px;
+      line-height: math.div(27, 22);
+    }
+
+    p {
+      font-size: 20px;
+      line-height: math.div(25, 20);
+    }
+  }
+}
+
+@media all and (min-width: 1440px) {
+  .title {
+    max-width: 1144px;
+  }
+
+  .login-section {
+    max-width: 1144px;
+  }
+
+  .hero-container {
+    // at width of 691px, the image misses 29px to touch the right-side of
+    // viewport
+    padding-left: 29px;
+  }
+
+  .description {
+    width: 572px;
+  }
+
+  .login-buttons {
+    width: 572px;
+  }
+
+  h2 {
+    font-size: 64px;
+    line-height: math.div(80.25, 64);
+  }
+
+  .panel {
+    column-gap: 75px;
+    max-width: 1144px;
+
+    .box {
+      width: 572px;
+
+      h2 {
+        span {
+          font-size: 44px;
+          line-height: math.div(60, 48);
+        }
+      }
+    }
+  }
+  .panel::before {
+    left: calc((1144px - 100vw) / 2);
+    right: calc((1144px - 100vw) / 2);
+  }
+
+  .panel > img {
+    max-width: unset;
+  }
+  div.panel:nth-of-type(2n + 1) > img {
+    margin-left: math.div(1144px - 1440, 2);
+  }
+  div.panel:nth-of-type(2n) > img {
+    margin-right: math.div(1144px - 1440, 2);
+  }
+
+  .faq-section {
+    max-width: 1144px;
+  }
 }

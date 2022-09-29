@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+@use 'sass:math';
+
 @import url('//fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Merriweather:wght@400;700&family=Roboto&display=swap');
 
 // Include CSS from the nouislider library, which doesn't seem to get included
@@ -97,9 +99,6 @@ $documentation-app-theme: mat-light-theme(
 // selector would override local CSS that sets material buttons to a heavier
 // font weight, which we still want to allow.
 div,
-h1,
-h2,
-h3,
 p {
   font-weight: 400;
 }
@@ -117,6 +116,49 @@ h1,
 h2,
 h3 {
   font-family: 'Merriweather', serif;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 34px;
+  line-height: math.div(40, 34);
+}
+
+h2 {
+  font-size: 33px;
+  line-height: math.div(40, 33);
+}
+
+p {
+  font-size: 18px;
+  line-height: math.div(27, 18);
+}
+
+@media all and (min-width: 768px) {
+}
+
+@media all and (min-width: 1152px) {
+  h1 {
+    font-size: 72px;
+    line-height: math.div(101, 72);
+  }
+
+  h2 {
+    font-size: 64px;
+    line-height: math.div(80.25, 64);
+  }
+
+  p {
+    font-size: 22px;
+    line-height: math.div(27, 22);
+  }
+}
+
+@media all and (min-width: 1440px) {
+  h1 {
+    font-size: 80px;
+    line-height: math.div(101, 80);
+  }
 }
 
 /**
