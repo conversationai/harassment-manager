@@ -151,7 +151,6 @@ h2 {
   margin-top: 44px;
 
   .box {
-    align-items: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -168,6 +167,10 @@ h2 {
         line-height: math.div(34, 28);
       }
     }
+
+    .button {
+      margin: 0 auto;
+    }
   }
 }
 .panel > img {
@@ -175,10 +178,6 @@ h2 {
 }
 .panel > div {
   order: 1;
-}
-
-.help-button {
-  margin: 40px auto;
 }
 
 .faq-section {
@@ -209,6 +208,10 @@ h2 {
   p {
     font-size: 18px;
     line-height: math.div(25, 18);
+  }
+
+  .help-button {
+    margin: 40px auto;
   }
 }
 
@@ -260,9 +263,12 @@ h2 {
     position: relative;
 
     .box {
-      align-items: flex-start;
       padding: 0;
       width: 364px;
+
+      .button {
+        margin: 0;
+      }
     }
   }
   .panel::before {
