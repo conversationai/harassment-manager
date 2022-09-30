@@ -19,7 +19,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export enum IntroStep {
   INTRO,
   CREATE_REPORT,
-  SAVE_SHARE_REPORT,
+  SAVE_SHARE_REPORT
 }
 
 /**

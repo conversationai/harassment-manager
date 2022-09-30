@@ -68,7 +68,7 @@ export const TOXICITY_RANGE_TEMPLATES: RecommendedReportTemplate[] = [
     },
     name: 'Potentially',
     description: 'Potentially harmful',
-    icon: 'possible_priority_icon.svg',
+    icon: 'purple_priority_icon.svg',
     color: 'yellow',
   },
   {

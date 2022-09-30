@@ -27,33 +27,35 @@
       </button>
       <div class="intro-step" *ngIf="introSteps[currentStepIndex] === IntroStep.INTRO">
         <div class="image-container">
-          <img src="/alert_sign_stake.svg" alt="A woman stakes a circular traffic sign with an alert symbol on the sign. There
-                are geometric shapes with varying textures on the ground.">
+          <img src="/welcome_illustration.svg" alt="A woman waving." class="image-popup">
         </div>
         <div class="message">
-          <h2>Introducing SafeNet</h2>
-          Use this tool to document harmful content
+          <h2>Welcom to SafeNet</h2>
+          Use the tol to flag online harrasment and collect evidence about the abuse
         </div>
       </div>
 
       <div class="create-report-step" *ngIf="introSteps[currentStepIndex] === IntroStep.CREATE_REPORT">
         <div class="image-container">
           <img src="/writing_on_document.svg" alt="A man with a cap stands and writes on a very large document hanging on a wall.
-                 There are geometric shapes with varying textures on the ground">
+                 There are geometric shapes with varying textures on the ground" class="image-popup">
         </div>
         <div class="message">
-          <h2>Create Report</h2>
-          Select comments, add context, and download your report.
+          <h2>Review Comments</h2>
+          The tool will categorise comments based on their likeliness of containing harmful content.
         </div>
       </div>
 
       <div class="save-share-report-step" *ngIf="introSteps[currentStepIndex] === IntroStep.SAVE_SHARE_REPORT">
         <div class="image-container">
-          <img alt="A woman placing a huge, person-sized document in a similarly huge folder." src="/filing_report.svg">
+          <img alt="A woman placing a huge, person-sized document in a similarly huge folder."
+            src="/evidence_illustration.svg" class="image-popup">
         </div>
         <div class="message">
-          <h2>Take Action</h2>
-          Block or mute accounts and hide replies. Download your reports to save or share.
+          <h2>Documant the evidence and take action </h2>
+          Create a report. Select the comments to be included in your report. Reports can be downloaded and shared with
+          third parties as needed. You can also block or mute accounts and hide replies, without having to review the
+          harmful content
         </div>
       </div>
     </div>
