@@ -20,26 +20,31 @@
       <div class="icon-placeholder"></div>
       <span class="title">SafeNet</span>
     </a>
-    <ng-container *ngIf="userIsSignedIn">
-      <!-- Note: This is how the spec for aria-current specifies it should be used, but this does not seem to be read by the Chrome screenreader at this point in time. This should be revisited later.-->
-      <div class="navigation-links" aria-label="navigation">
-        <a routerLinkActive="active-router-link" routerLink="/home" #homeLink role="link"
-          [attr.aria-current]="homeLink.routerLinkActive ? 'page' : false">Home</a>
-        <a routerLinkActive="active-router-link" [routerLink]="getCreateReportRouterLink()" #createReportLink
-          [attr.aria-current]="createReportLink.routerLinkActive ? 'page' : false">Create Report</a>
-        <a routerLinkActive="active-router-link" routerLink="/find-support" #findSupportLink
-          [attr.aria-current]="findSupportLink.routerLinkActive ? 'page' : false">Find Support</a>
-      </div>
-      <div class="sign-out-button-wrapper">
-        <button class="sign-out-button" mat-stroked-button (click)="revokeAuthorization()">
-          <span>Sign out</span>
-        </button>
-      </div>
-    </ng-container>
     <ng-container *ngIf="!userIsSignedIn">
       <span class="spacer"></span>
       <button mat-button class="action-button get-started-button" routerLink="/">Get Started</button>
     </ng-container>
+  </mat-toolbar-row>
+  <mat-toolbar-row class="toolbar-row signed-in-toolbar" *ngIf="userIsSignedIn">
+    <div class="nav-links">
+      <a routerLinkActive="active-router-link" routerLink="/home" #homeLink role="link"
+        [attr.aria-current]="homeLink.routerLinkActive ? 'page' : false">
+        <h3>Home</h3>
+      </a>
+      <a routerLinkActive="active-router-link" [routerLink]="getCreateReportRouterLink()" #createReportLink
+        [attr.aria-current]="createReportLink.routerLinkActive ? 'page' : false">
+        <h3>Create Report</h3>
+      </a>
+      <a routerLinkActive="active-router-link" routerLink="/find-support" #findSupportLink
+        [attr.aria-current]="findSupportLink.routerLinkActive ? 'page' : false">
+        <h3>Find Support</h3>
+      </a>
+    </div>
+    <div class="sign-out-button-wrapper">
+      <button class="sign-out-button" mat-stroked-button (click)="revokeAuthorization()">
+        <h3>Sign out</h3>
+      </button>
+    </div>
   </mat-toolbar-row>
   <mat-toolbar-row class="toolbar-row" *ngIf="showBuildReportStepper">
     <div class="spacer">

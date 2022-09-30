@@ -28,6 +28,11 @@
   display: flex;
   flex: 1;
   justify-content: flex-end;
+  color: #ffffff;
+
+  .sign-out-button {
+    border: none;
+  }
 }
 
 .title {
@@ -188,6 +193,23 @@
   line-height: 16px;
   margin-right: 12px;
   text-align: right;
+}
+
+.signed-in-toolbar {
+  background-color: #1625d9;
+  background-image: url('~src/assets/help_center_bg.svg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+
+  .nav-links {
+    display: flex;
+    a {
+      color: #ffffff;
+      text-decoration: none;
+      margin: 0 20px;
+      border-bottom: 5px solid #da2732;
+    }
+  }
 }
 
 /* Responsive Screens: mobile*/
