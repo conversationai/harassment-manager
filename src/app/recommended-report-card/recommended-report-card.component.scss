@@ -54,6 +54,11 @@ img {
 mat-card {
   height: 136px;
   width: 375px;
+  background-color: #d7dcec;
+}
+
+.view-comments-button {
+  color: #494949 !important;
 }
 
 // Once all the cards don't fit on the screen, reduce the card width.

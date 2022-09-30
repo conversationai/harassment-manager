@@ -57,7 +57,7 @@ export const TOXICITY_RANGE_TEMPLATES: RecommendedReportTemplate[] = [
     },
     name: 'Likely',
     description: 'Likely harmful',
-    icon: 'high_priority_icon.svg',
+    icon: 'red_priority_icon.svg',
     color: 'orange',
   },
   {
@@ -79,7 +79,7 @@ export const TOXICITY_RANGE_TEMPLATES: RecommendedReportTemplate[] = [
     },
     name: 'Unsure',
     description: 'Unsure if harmful',
-    icon: 'unknown_priority_icon.svg',
+    icon: 'grey_priority_icon.svg',
     color: 'grey',
   },
   {
@@ -138,7 +138,7 @@ export const RECOMMENDED_REPORT_TEMPLATES: RecommendedReportTemplate[] = [
     },
     name: 'All',
     description: 'All comments',
-    icon: 'all_comments_icon.svg',
+    icon: 'blue_message_icon.svg',
   },
 ];
 

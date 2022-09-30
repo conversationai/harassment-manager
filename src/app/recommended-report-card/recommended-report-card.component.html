@@ -21,13 +21,9 @@
       <h2>{{reportName}}</h2>
       <div class="description">
         <span>{{description}}</span>
-        <span class="unscored-definition"
-              *ngIf="reportData.name === 'Unable to score'"
-              #tooltip="matTooltip"
-              matTooltip="Sometimes there can be errors when coming up with a toxicity score. This can happen if the language isn't recognized or reasons that could be listed here."
-              matTooltipClass="unscored-tooltip"
-              matTooltipPosition="above"
-              tabindex="0">
+        <span class="unscored-definition" *ngIf="reportData.name === 'Unable to score'" #tooltip="matTooltip"
+          matTooltip="Sometimes there can be errors when coming up with a toxicity score. This can happen if the language isn't recognized or reasons that could be listed here."
+          matTooltipClass="unscored-tooltip" matTooltipPosition="above" tabindex="0">
           scored <mat-icon>info_outline</mat-icon>
         </span>
       </div>
@@ -36,22 +32,15 @@
 
   <div class="horizontal-divider"></div>
 
-  <div class="buttons"
-       [class.two-buttons]="reportData.name==='High'">
-    <button mat-button
-            color="primary"
-            class="view-comments-button"
-            (click)="handleViewCommentsClicked()">
-      <mat-icon [class.loading-color]="loading" >view_list</mat-icon>
+  <div class="buttons" [class.two-buttons]="reportData.name==='High'">
+    <button mat-button color="primary" class="view-comments-button" (click)="handleViewCommentsClicked()">
+      <mat-icon [class.loading-color]="loading">remove_red_eye</mat-icon>
       <span *ngIf="loading" class="loading-span loading-color">Loading comments...</span>
       <span *ngIf="!loading">{{viewCommentTextCommentCount}}</span>
     </button>
-    <button mat-button
-        class="add-all-to-report-button"
-        color="primary"
-        [disabled]="loading || addAllWasClicked || reportCommentsEmpty"
-        (click)="handleAddToReportClicked()"
-        *ngIf="!loading && reportData.name==='High'">
+    <button mat-button class="add-all-to-report-button" color="primary"
+      [disabled]="loading || addAllWasClicked || reportCommentsEmpty" (click)="handleAddToReportClicked()"
+      *ngIf="!loading && reportData.name==='High'">
       <mat-icon [svgIcon]="addAllIcon"></mat-icon>
       <span *ngIf="!addAllWasClicked">Add All to Report</span>
       <span *ngIf="addAllWasClicked">Added to Report</span>
