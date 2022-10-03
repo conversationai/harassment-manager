@@ -100,8 +100,11 @@
     <h2>Already know what you're looking for?</h2>
     These results are categorised by machine learning based on their likeliness of containing harmful content.
   </div>
-  <app-recommended-report-card [reportData]="recommendedReports[3]" [loading]="loadingRecommendedReports"
-    [error]="errorRecommendedReports" [name]="recommendedReports[3].description"
-    (viewCommentsClicked)="viewCommentsWithToxicityFilter(recommendedReports[3])">
-  </app-recommended-report-card>
+  <div class="recommended-cards-wrapper">
+    <app-recommended-report-card [reportData]="recommendedReports[3]" [loading]="loadingRecommendedReports"
+      [error]="errorRecommendedReports" [name]="recommendedReports[3].description"
+      (viewCommentsClicked)="viewCommentsWithToxicityFilter(recommendedReports[3])">
+    </app-recommended-report-card>
+  </div>
+
 </section>

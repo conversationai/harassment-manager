@@ -47,6 +47,10 @@ h2 {
   @media all and (min-width: 0px) and (max-width: 768px) {
     padding: 0 10px 30px 10px;
   }
+
+  @media all and (min-width: 769px) and (max-width: 1366px) {
+    padding: 0 30px;
+  }
 }
 
 .welcome-back-card {
