@@ -237,11 +237,13 @@ h2 {
   }
   .hero-container img {
     height: 300px;
+    margin-bottom: -43px; // image has transparent bottom spacing
   }
 
   .description {
     align-items: flex-start;
     padding: 40px 0;
+    padding-bottom: 40px + 13;
     text-align: left;
     width: 364px;
   }
@@ -321,9 +323,11 @@ h2 {
 
   .hero-container img {
     height: 100%;
+    margin-bottom: -73px;
   }
 
   .description {
+    padding-bottom: 40px + 20;
     width: 512px;
 
     h1 {
