@@ -13,11 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+@use 'sass:math';
 
 .toolbar {
-  background: white;
-  box-shadow: 0 2px 4px rgba(60 64 67 / 0.06);
-  color: #5f6368;
+  background: #eaefff;
+  color: #000000;
 }
 
 .spacer {
@@ -32,8 +32,10 @@
 
 .title {
   align-self: center;
-  color: #5f6368;
-  font-size: 22px;
+  color: #000000;
+  font-size: 23px;
+  font-weight: 700;
+  line-height: math.div(28, 23);
   margin-right: 30px;
 }
 
@@ -41,6 +43,7 @@
   cursor: pointer;
   display: flex;
   flex: 1;
+  padding-top: 8px; // to match size of get started button & vertically center the title
   text-decoration: none;
 }
 
@@ -95,6 +98,7 @@
 
 .get-started-button {
   background-color: #101bcf;
+  display: none;
 }
 
 .continue-button span {
@@ -161,8 +165,7 @@
 .toolbar-row {
   border-bottom: 1px solid #dadce0;
   justify-content: space-between;
-  padding-left: 150px;
-  padding-right: 150px;
+  padding: 0 20px;
   position: relative;
 }
 
@@ -190,21 +193,27 @@
   text-align: right;
 }
 
-/* Responsive Screens: mobile*/
-@media all and (min-width: 0px) and (max-width: 640px) {
+@media all and (min-width: 768px) {
   .toolbar-row {
-    padding-left: 10px;
-    padding-right: 10px;
+    margin: 0 auto;
+    max-width: 728px;
+    padding: 0;
+    width: 100%;
   }
+
   .get-started-button {
-    display: none;
+    display: initial;
   }
 }
 
-/* Responsive Screens: desktop*/
-@media all and (min-width: 641px) and (max-width: 1366px) {
+@media all and (min-width: 1152px) {
   .toolbar-row {
-    padding-left: 30px;
-    padding-right: 30px;
+    max-width: 1024px;
+  }
+}
+
+@media all and (min-width: 1440px) {
+  .toolbar-row {
+    max-width: 1144px;
   }
 }
