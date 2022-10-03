@@ -74,6 +74,13 @@ mat-card {
   }
 }
 
+// Make card fit in the container.
+@media all and (min-width: 0px) and (max-width: 768px) {
+  mat-card {
+    width: 100%;
+  }
+}
+
 // Once the screen is small enough, we start wrapping the cards, so add bottom margin.
 @media screen and (max-width: 1340px) {
   mat-card {

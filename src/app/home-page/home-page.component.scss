@@ -43,6 +43,10 @@ h2 {
     margin-bottom: 10px;
     padding-top: 30px;
   }
+
+  @media all and (min-width: 0px) and (max-width: 768px) {
+    padding: 0 10px 30px 10px;
+  }
 }
 
 .welcome-back-card {
@@ -123,6 +127,12 @@ h2 {
   }
 }
 
+// Make card fit in the container.
+@media all and (min-width: 0px) and (max-width: 768px) {
+  app-recommended-report-card {
+    width: 100%;
+  }
+}
 
 .recommended-report-cards::-webkit-scrollbar {
   background: transparent; /* Optional: just make scrollbar invisible */

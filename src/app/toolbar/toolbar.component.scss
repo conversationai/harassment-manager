@@ -206,7 +206,7 @@
     a {
       color: #ffffff;
       text-decoration: none;
-      margin: 0 20px;
+      margin: 0 20px 0 0;
       border-bottom: 5px solid #da2732;
     }
   }
@@ -219,6 +219,16 @@
     padding-right: 10px;
   }
   .get-started-button {
+    display: none;
+  }
+  .nav-links {
+    a {
+      margin: 0 10px 0 0;
+    }
+  }
+
+  /*Hide find support button on mobile since it already is in footer */
+  .find-support {
     display: none;
   }
 }
