@@ -200,6 +200,7 @@
   background-image: url('~src/assets/help_center_bg.svg');
   background-repeat: no-repeat;
   background-size: 100%;
+  padding: 50px 150px;
 
   .nav-links {
     display: flex;
@@ -207,19 +208,40 @@
       color: #ffffff;
       text-decoration: none;
       margin: 0 20px 0 0;
-      border-bottom: 5px solid #da2732;
+      display: flex;
+
+      img {
+        display: none;
+      }
+    }
+    .active-router-link {
+      h3 {
+        border-bottom: 5px solid #da2732;
+      }
+      img {
+        display: block;
+        height: 29px;
+        width: 29px;
+        align-self: flex-end;
+        margin-bottom: -12px;
+      }
     }
   }
 }
 
 /* Responsive Screens: mobile*/
-@media all and (min-width: 0px) and (max-width: 640px) {
+@media all and (min-width: 0px) and (max-width: 768px) {
   .toolbar-row {
     padding-left: 10px;
     padding-right: 10px;
   }
   .get-started-button {
     display: none;
+  }
+
+  .signed-in-toolbar {
+    flex-wrap: wrap;
+    align-content: center;
   }
   .nav-links {
     a {
@@ -234,9 +256,9 @@
 }
 
 /* Responsive Screens: desktop*/
-@media all and (min-width: 641px) and (max-width: 1366px) {
+@media all and (min-width: 769px) and (max-width: 1440px) {
   .toolbar-row {
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }

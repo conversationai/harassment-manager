@@ -30,14 +30,17 @@
       <a routerLinkActive="active-router-link" routerLink="/home" #homeLink role="link"
         [attr.aria-current]="homeLink.routerLinkActive ? 'page' : false">
         <h3>Home</h3>
+        <img src="/red_ellipse.svg" />
       </a>
       <a routerLinkActive="active-router-link" [routerLink]="getCreateReportRouterLink()" #createReportLink
         [attr.aria-current]="createReportLink.routerLinkActive ? 'page' : false">
         <h3>Create Report</h3>
+        <img src="/red_ellipse.svg" />
       </a>
       <a routerLinkActive="active-router-link" routerLink="/find-support" #findSupportLink
         [attr.aria-current]="findSupportLink.routerLinkActive ? 'page' : false" class="find-support">
         <h3>Find Support</h3>
+        <img src="/red_ellipse.svg" />
       </a>
     </div>
     <div class="sign-out-button-wrapper">

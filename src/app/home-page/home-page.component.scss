@@ -48,7 +48,7 @@ h2 {
     padding: 0 10px 30px 10px;
   }
 
-  @media all and (min-width: 769px) and (max-width: 1366px) {
+  @media all and (min-width: 769px) and (max-width: 1440px) {
     padding: 0 30px;
   }
 }
@@ -203,4 +203,8 @@ app-recommended-report-card {
   overflow: visible;
   position: relative;
   width: 100%;
+  // Make card fit in the container.
+  @media all and (min-width: 0px) and (max-width: 768px) {
+    overflow: hidden;
+  }
 }

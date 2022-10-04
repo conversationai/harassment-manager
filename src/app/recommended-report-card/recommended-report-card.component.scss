@@ -78,6 +78,12 @@ mat-card {
 @media all and (min-width: 0px) and (max-width: 768px) {
   mat-card {
     width: 100%;
+    height: unset;
+    min-width: auto;
+  }
+
+  .two-buttons {
+    flex-wrap: wrap;
   }
 }
 
