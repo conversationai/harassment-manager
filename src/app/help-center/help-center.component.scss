@@ -59,13 +59,14 @@
   }
 }
 
-.product-support {
-  margin-top: 58px;
+.content > div {
+  margin-top: 20px;
 }
-
-.data-and-privacy {
-  margin-top: 78px;
-  margin-bottom: 70px;
+.content > div:first-of-type {
+  margin-top: 52px;
+}
+.content > div:last-of-type {
+  margin-bottom: 52px;
 }
 
 mat-expansion-panel {
@@ -197,6 +198,16 @@ mat-panel-title {
       font-size: 24px;
       line-height: math.div(27, 24);
     }
+  }
+
+  .content > div {
+    margin-top: 40px;
+  }
+  .content > div:first-of-type {
+    margin-top: 70px;
+  }
+  .content > div:last-of-type {
+    margin-bottom: 70px;
   }
 
   mat-expansion-panel {
