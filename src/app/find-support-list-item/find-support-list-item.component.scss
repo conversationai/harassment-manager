@@ -13,17 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+@use 'sass:math';
 
 .tile {
-  border-bottom: 1px solid #f2f3f3;
+  background: inherit;
+  border-bottom: 2px solid #00000015;
   display: flex;
   padding-top: 18px;
   padding-bottom: 18px;
+  width: 100%;
 
   .icon {
-    background: #f2f3f3;
     background-size: contain;
-    border-radius: 2px;
     height: 92px;
     width: 118px;
     background-repeat: no-repeat;
@@ -31,15 +32,13 @@
 
   .info {
     flex: 1;
-    margin-left: 18px;
+    margin-left: 30px;
     align-self: center;
 
     .name {
       color: #101bcf;
       font-size: 20px;
-      line-height: 27px;
-      font-family: 'Helvetica';
-      font-style: normal;
+      line-height: math.div(27, 20);
       font-weight: 700;
 
       a {
@@ -55,5 +54,11 @@
       font-size: 14px;
       line-height: 16px;
     }
+  }
+}
+
+:host:last-of-type {
+  .tile {
+    border-bottom-color: transparent;
   }
 }
