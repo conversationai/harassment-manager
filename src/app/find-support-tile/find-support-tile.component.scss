@@ -19,32 +19,77 @@ a {
 }
 
 .tile {
+  align-items: center;
+  background-color: #d7dcec;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 220px;
+  width: 100%;
+}
+
+.image {
+  height: 152px;
   width: 219px;
+
+  img {
+    object-fit: cover;
+    width: 100%;
+  }
 }
 
 .title {
-  color: #ffffff;
-  background: rgba(16, 27, 207, 0.9);
-  width: 219px;
-  height: 68px;
-  display: flex;
-  justify-content: center;
   align-items: center;
-  text-align: center;
-  font-family: 'Helvetica';
-  font-style: normal;
-  font-weight: 700;
+  background: rgba(16, 27, 207, 0.9);
+  color: #ffffff;
+  display: flex;
   font-size: 18px;
+  font-weight: 700;
+  min-height: 68px;
+  justify-content: center;
   line-height: 24px;
+  text-align: center;
+  width: 100%;
 }
 
-.image,
-.img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
+@media all and (min-width: 768px) {
+  .tile {
+    height: 220px;
+    width: 219px;
+  }
+
+  .title {
+    width: 219px;
+  }
+}
+
+@media all and (min-width: 1152px) {
+  .tile {
+    height: 210px;
+    width: 210px;
+  }
+
+  .image {
+    height: 142px;
+    width: 210px;
+  }
+
+  .title {
+    width: 210px;
+  }
+}
+
+@media all and (min-width: 1440px) {
+  .tile {
+    height: 220px;
+    width: 219px;
+  }
+
+  .image {
+    height: 152px;
+    width: 219px;
+  }
+
+  .title {
+    width: 219px;
+  }
 }
