@@ -13,130 +13,95 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 -->
-<div class="help-center-page">
 
-  <div class="page-header">
-    <div class="left-side">
-      <h1 class="title">Help Center</h1>
-      <div class="subtitle">Get answers and advice on your questions for <br />
-        SafeNet.</div>
-    </div>
-    <div class="right-side">
-      <img src="/help_center_illustration.svg" />
-    </div>
+<div class="header">
+  <h1 class="title">Help Center</h1>
+  <p class="subtitle">Get answers and advice on your questions for SafeNet.</p>
+  <img src="/Illustration.svg" />
+</div>
 
-  </div>
-
-  <!-- Note: Wrapper div is required to prevent the side menu "sticky" layout
+<!-- Note: Wrapper div is required to prevent the side menu "sticky" layout
      option from continuing beyond the bounds of the wrapper. -->
-  <div class="content-wrapper">
-    <app-scrollable-side-menu class="side-menu" [sideMenuSections]="sideMenuSections">
-    </app-scrollable-side-menu>
+<div class="content-wrapper">
+  <app-scrollable-side-menu
+    class="side-menu"
+    [sideMenuSections]="sideMenuSections"
+  >
+  </app-scrollable-side-menu>
 
-    <div class="content">
-      <div class="product-support">
-        <h1 class="header-title">Product Support</h1>
-        <div class="content-data">
+  <div class="content">
+    <div class="product-support">
+      <h2>Product Support</h2>
 
-          <h3 class="content-data-header">Add Comments to your report</h3>
+      <mat-expansion-panel disabled expanded>
+        <mat-expansion-panel-header>
+          <mat-panel-title> Add comments to your report </mat-panel-title>
+        </mat-expansion-panel-header>
 
-          <div class="content-data-body">
-            <ul class="content-data-list">
-              <li>
-                Sign into SafeNet with the platform of your choice to document and report online harassment targeted
-                at
-                you on that platform.
-              </li>
-              <li>
-                Not sure where to start? Select from grouped comments that are categorized based on their likeliness
-                of
-                containing harmful content.
-              </li>
-              <li>
-                Already know what you want to include? Explore all comments for a specific timeframe.
-              </li>
-              <li>
-                Add comments and context to your report on the Create Report page.
-              </li>
-              <li>
-                After you complete your report, download or store it online. Keep it for your records or share with
-                others.
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="content-data">
-          <h3 class="content-data-header">Sharing or saving your report</h3>
-          <div class="content-data-body">
+        <div class="panel-content">
+          <div class="text">
             <ul>
               <li>
-                You can export your report and save it locally by downloading a PDF, printing a copy, or saving a CSV
-                file
-                to review later.
+                Sign into SafeNet with the platform of your choice to document
+                and report online harassment targeted at you on that platform.
               </li>
               <li>
-                You can also save your report as a spreadsheet on Google Drive. View, share, download, or print your
-                report with Google Sheets on Drive.<br />
-                <a href="https://www.google.com/sheets/about/" target="_blank" rel="noopener" class="sheets-link">
-                  Learn More
-                </a>
-
+                Not sure where to start? Select from grouped comments that are
+                categorized based on their likeliness of containing harmful
+                content.
+              </li>
+              <li>
+                Already know what you want to include? Explore all comments for
+                a specific timeframe.
+              </li>
+              <li>
+                Add comments and context to your report on the Create Report
+                page.
+              </li>
+              <li>
+                After you complete your report, download or store it online.
+                Keep it for your records or share with others.
               </li>
             </ul>
           </div>
-
         </div>
+      </mat-expansion-panel>
 
-        <div class="contact-us">
-          <h1 class="header-title">Contact Us</h1>
-          <form [formGroup]="contactUsForm" (ngSubmit)="onSubmit()" class="form">
-            <div class="names">
-              <div class="form-group">
-                <mat-label>First name</mat-label>
-                <mat-form-field appearance="outline">
-                  <input matInput type="text" formControlName="firstName">
-                </mat-form-field>
-              </div>
+      <mat-expansion-panel disabled expanded>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Sharing or saving your report</mat-panel-title>
+        </mat-expansion-panel-header>
 
-              <div class="form-group">
-                <mat-label>Last name</mat-label>
-                <mat-form-field appearance="outline">
-                  <input matInput type="text" formControlName="lastName" class="form-input">
-                </mat-form-field>
-              </div>
-            </div>
-
-            <div class="email form-group">
-              <mat-label>Email</mat-label>
-              <mat-form-field appearance="outline">
-                <input matInput type="email" formControlName="email" class="form-input">
-              </mat-form-field>
-            </div>
-
-            <div class="subject form-group">
-
-              <mat-label>Subject</mat-label>
-              <mat-form-field appearance="outline">
-                <input matInput type="text" formControlName="subject" class="form-input">
-              </mat-form-field>
-
-            </div>
-
-            <div class="message form-group">
-
-              <mat-label>Message</mat-label>
-              <mat-form-field appearance="outline">
-                <textarea matInput type="text" formControlName="message" class="form-input" rows="10"> </textarea>
-              </mat-form-field>
-            </div>
-
-            <div class="submit-btn">
-              <button type="button" class="btn" mat-button>Send</button>
-            </div>
-
-          </form>
+        <div class="panel-content">
+          <div class="text">
+            <ul>
+              <li>
+                You can export your report and save it locally by downloading a
+                PDF, printing a copy, or saving a CSV file to review later.
+              </li>
+              <li>
+                You can also save your report as a spreadsheet on Google Drive.
+                View, share, download, or print your report with Google Sheets
+                on Drive.<br />
+                <a
+                  href="https://www.google.com/sheets/about/"
+                  target="_blank"
+                  rel="noopener  noreferrer"
+                  class="sheets-link"
+                >
+                  Learn More
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
+      </mat-expansion-panel>
+    </div>
 
-      </div>
+    <div class="contact-us">
+      <h2>Contact Us</h2>
+
+      <!-- TODO: Embeddable form here-->
     </div>
   </div>
+</div>

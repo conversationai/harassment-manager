@@ -15,48 +15,51 @@
 -->
 
 <div class="container">
-  <div class="left">
-    <div class="title">
-      <div class="text">SafeNet</div>
-    </div>
+  <div class="top-row">
+    <div class="summary-container">
+      <a class="title" routerLink="/home">
+        <div class="text">SafeNet</div>
+      </a>
 
-    <div class="summary">
-      SafeNet is a free tool specifically designed for Twitter users who face online abuse on social media. The
-      application syncs with a user’s Twitter account and flags abusive content, thus limiting exposure to targeted
-      harassment.
-    </div>
+      <p class="summary">
+        SafeNet is a free tool specifically designed for Twitter users who face
+        online abuse on social media. The application syncs with a user’s
+        Twitter account and flags abusive content, thus limiting exposure to
+        targeted harassment.
+      </p>
 
-    <div class="bottom">
-      <div class="copyright">
-        <p>&copy; {{ currentYear }} SafeNet</p>
+      <div class="owner">
+        <div class="copyright">
+          <span class="caption">&copy; {{ currentYear }} SafeNet</span>
+        </div>
+
+        <div class="powered-by">
+          <span class="caption">Powered by</span>
+          <a href="https://jigsaw.google.com/" target="_blank">
+            <img class="img-link" src="/Jigsaw_logo.svg" />
+          </a>
+        </div>
       </div>
+    </div>
 
-      <div class="powered-by">
-        <p>Powered by</p>
-        <a href="https://jigsaw.google.com/" target="_blank">
-          <img class="img-link" src="/Jigsaw_logo.svg" />
-        </a>
+    <div class="links">
+      <div class="link-column">
+        <div class="header">Resources</div>
+        <a routerLink="/help-center">Help Center</a>
+        <a routerLink="/find-support">Find Support</a>
+        <a routerLink="/privacy-policy">Privacy</a>
       </div>
-
     </div>
 
-  </div>
-  <div class="middle">
-    <div class="link-list">
-      <div class="header">Resources</div>
-      <a routerLink="/help-center">Help Center</a>
-      <a routerLink="/find-support">Find Support</a>
-      <a routerLink="/privacy-policy">Privacy</a>
+    <div class="initiative-container">
+      <div class="header caption">An initiative of</div>
+      <a
+        href="https://codeforafrica.org/"
+        target="_blank"
+        rel="noreferrer noopener"
+      >
+        <img class="img-link" src="cfa_brand.svg" />
+      </a>
     </div>
-
   </div>
-
-  <div class="right">
-    <div>An initiative of</div>
-    <a href="https://codeforafrica.org/" target="_blank">
-      <img class="img-link" src="cfa_brand.svg" />
-
-    </a>
-  </div>
-
 </div>
