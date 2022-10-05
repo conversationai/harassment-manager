@@ -52,45 +52,38 @@ img {
 }
 
 mat-card {
-  height: 136px;
-  width: 375px;
+  width: 100%;
   background-color: #d7dcec;
+  min-width: auto;
 }
 
+.two-buttons {
+  flex-wrap: wrap;
+}
 .view-comments-button {
   color: #494949 !important;
 }
 
 // Once all the cards don't fit on the screen, reduce the card width.
 @media screen and (max-width: 1440px) {
-  mat-card {
-    min-width: max-content;
-    width: 325px;
-  }
-
   .two-buttons > button {
     left: -10px;
     padding-right: 0px;
   }
 }
 
-// Make card fit in the container.
-@media all and (min-width: 0px) and (max-width: 768px) {
+@media all and (min-width: 768px) {
   mat-card {
-    width: 100%;
-    height: unset;
-    min-width: auto;
-  }
-
-  .two-buttons {
-    flex-wrap: wrap;
+    width: 375px;
+    height: 136px;
+    min-width: max-content;
   }
 }
 
 // Once the screen is small enough, we start wrapping the cards, so add bottom margin.
 @media screen and (max-width: 1340px) {
   mat-card {
-    margin-bottom: 14px;
+    margin: 14px;
   }
 }
 

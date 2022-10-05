@@ -37,10 +37,10 @@
   border-radius: 20px;
   box-shadow: none;
   color: black;
-  width: 550px;
+  width: auto;
 
-  @media all and (min-width: 0px) and (max-width: 768px) {
-    width: auto;
+  @media all and (min-width: 768px) {
+    width: 550px;
   }
 }
 
