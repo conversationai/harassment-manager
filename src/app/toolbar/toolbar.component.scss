@@ -203,7 +203,9 @@
   background-image: url('~src/assets/help_center_bg.svg');
   background-repeat: no-repeat;
   background-size: 100%;
-  padding: 50px 150px;
+  padding: 10px;
+  flex-wrap: wrap;
+  height: 80px;
 
   .nav-links {
     display: flex;
@@ -229,45 +231,23 @@
         margin-bottom: -12px;
       }
     }
+    /*Hide find support button on mobile since it already is in footer */
+    .find-support {
+      display: none;
+    }
   }
 }
 
 @media all and (min-width: 768px) {
-  .toolbar-row {
-    margin: 0 auto;
-    max-width: 728px;
-    padding: 0;
-    width: 100%;
+  .signed-in-toolbar {
+    .nav-links {
+      .find-support {
+        display: block;
+      }
+    }
   }
 
   .get-started-button {
     display: initial;
-  }
-}
-
-@media all and (min-width: 1152px) {
-  .toolbar-row {
-    max-width: 1024px;
-  }
-
-  .signed-in-toolbar {
-    flex-wrap: wrap;
-    align-content: center;
-  }
-  .nav-links {
-    a {
-      margin: 0 10px 0 0;
-    }
-  }
-
-  /*Hide find support button on mobile since it already is in footer */
-  .find-support {
-    display: none;
-  }
-}
-
-@media all and (min-width: 1440px) {
-  .toolbar-row {
-    max-width: 1144px;
   }
 }
