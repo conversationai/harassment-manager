@@ -170,7 +170,7 @@
 .toolbar-row {
   border-bottom: 1px solid #dadce0;
   justify-content: space-between;
-  padding: 0 20px;
+  padding: 0 10px;
   position: relative;
 }
 
@@ -239,6 +239,9 @@
 }
 
 @media all and (min-width: 768px) {
+  .toolbar-row {
+    padding: 0 150px;
+  }
   .signed-in-toolbar {
     .nav-links {
       .find-support {
