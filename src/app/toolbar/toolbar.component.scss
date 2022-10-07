@@ -19,6 +19,33 @@
   background: #eaefff;
   color: #000000;
 }
+mat-toolbar-row {
+  padding: 0;
+}
+
+.logo-toolbar-wrapper,
+.signed-in-toolbar-wrapper,
+.builderReport-toolbar-wrapper {
+  mat-toolbar-row {
+    padding: 0 20px;
+  }
+
+  @media all and (min-width: 768px) {
+    mat-toolbar-row {
+      max-width: 728px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  @media all and (min-width: 1152px) {
+    mat-toolbar-row {
+      max-width: 1024px;
+    }
+  }
+}
 
 .spacer {
   flex: 1;
@@ -32,6 +59,7 @@
 
   .sign-out-button {
     border: none;
+    padding: 0;
   }
 }
 
@@ -168,9 +196,7 @@
 }
 
 .toolbar-row {
-  border-bottom: 1px solid #dadce0;
   justify-content: space-between;
-  padding: 0 10px;
   position: relative;
 }
 
@@ -199,16 +225,12 @@
 }
 
 .signed-in-toolbar {
-  background-color: #1625d9;
-  background-image: url('~src/assets/help_center_bg.svg');
-  background-repeat: no-repeat;
-  background-size: 100%;
-  padding: 10px;
   flex-wrap: wrap;
   height: 80px;
 
   .nav-links {
     display: flex;
+    z-index: 1;
     a {
       color: #ffffff;
       text-decoration: none;
@@ -238,10 +260,22 @@
   }
 }
 
+.signed-in-toolbar-wrapper {
+  background-color: #1625d9;
+  background-image: url('~src/assets/help_center_bg.svg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  content: '';
+
+  // @media all and (min-width: 768px) {
+  //   ::before {
+  //     left: calc((728px - 100vw) / 2);
+  //     right: calc((728px - 100vw) / 2);
+  //   }
+  // }
+}
+
 @media all and (min-width: 768px) {
-  .toolbar-row {
-    padding: 0 150px;
-  }
   .signed-in-toolbar {
     .nav-links {
       .find-support {

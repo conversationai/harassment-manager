@@ -28,11 +28,10 @@ h2 {
 }
 
 .jumbotron {
-  background: #f7f8f8;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  padding: 0 10px 30px 10px;
+  padding: 0 20px;
 
   h1 {
     font-size: 30px;
@@ -45,7 +44,15 @@ h2 {
   }
 
   @media all and (min-width: 768px) {
-    padding: 0 150px 50px 150px;
+    max-width: 728px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  @media all and (min-width: 1152px) {
+    max-width: 1024px;
   }
 }
 

@@ -55,6 +55,7 @@ mat-card {
   width: 100%;
   background-color: #d7dcec;
   min-width: auto;
+  margin-bottom: 14px;
 }
 
 .two-buttons {
@@ -77,13 +78,6 @@ mat-card {
     width: 375px;
     height: 136px;
     min-width: max-content;
-  }
-}
-
-// Once the screen is small enough, we start wrapping the cards, so add bottom margin.
-@media screen and (max-width: 1340px) {
-  mat-card {
-    margin: 14px;
   }
 }
 
