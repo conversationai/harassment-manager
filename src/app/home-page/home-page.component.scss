@@ -128,13 +128,6 @@ h2 {
   flex-wrap: wrap;
 }
 
-// If the screen is small enough, wrap the cards.
-// @media screen and (max-width: 1340px) {
-//   .recommended-report-cards {
-//     flex-wrap: wrap;
-//   }
-// }
-
 // Make card fit in the container.
 @media all and (min-width: 768px) {
   app-recommended-report-card {

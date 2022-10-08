@@ -58,3 +58,4 @@ service_account_key.json
 
 # Angular build cache
 .angular/cache
+src/environments/environment.ts
