@@ -75,7 +75,13 @@ mat-card {
 
 @media all and (min-width: 768px) {
   mat-card {
-    width: 375px;
+    width: 305px;
+    height: 150px;
+  }
+}
+@media all and (min-width: 1152px) {
+  mat-card {
+    width: 270px;
     height: 136px;
     min-width: max-content;
   }
