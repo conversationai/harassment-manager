@@ -15,18 +15,18 @@
 -->
 
 <mat-toolbar class="toolbar">
-  <div class="logo-toolbar-wrapper">
-    <mat-toolbar-row class="toolbar-row">
-      <a routerLink="/home" class="title-wrapper">
-        <div class="icon-placeholder"></div>
-        <span class="title">SafeNet</span>
-      </a>
-      <ng-container *ngIf="!userIsSignedIn">
-        <span class="spacer"></span>
-        <button mat-button class="action-button get-started-button" routerLink="/">Get Started</button>
-      </ng-container>
-    </mat-toolbar-row>
-  </div>
+
+  <mat-toolbar-row class="toolbar-row">
+    <a routerLink="/home" class="title-wrapper">
+      <div class="icon-placeholder"></div>
+      <span class="title">SafeNet</span>
+    </a>
+    <ng-container *ngIf="!userIsSignedIn">
+      <span class="spacer"></span>
+      <button mat-button class="action-button get-started-button" routerLink="/">Get Started</button>
+    </ng-container>
+  </mat-toolbar-row>
+
   <div class="signed-in-toolbar-wrapper">
     <mat-toolbar-row class="toolbar-row signed-in-toolbar" *ngIf="userIsSignedIn">
       <div class="nav-links">
@@ -53,63 +53,62 @@
       </div>
     </mat-toolbar-row>
   </div>
-  <div class="builderReport-toolbar-wrapper">
-    <mat-toolbar-row class="toolbar-row" *ngIf="showBuildReportStepper">
-      <div class="spacer">
-        <button mat-button [routerLink]="getBackButtonRouterLink()" class="box back-button"
-          *ngIf="currentStep > BuildReportStep.ADD_COMMENTS">
-          <mat-icon class="back-icon">arrow_back</mat-icon>
-          {{getBackButtonText()}}
-        </button>
-      </div>
-      <app-report-progress-bar [inNavigation]="true" class="spacer"></app-report-progress-bar>
-      <div class="continue-section spacer">
-        <div class="last-edited">{{getTimeSinceLastReportEditString()}}</div>
-        <div class="highlight-continue-button" *ngIf="onboarding"></div>
-        <button mat-stroked-button class="continue-button" [class.elevate]="onboarding" cdkOverlayOrigin
-          #anchor="cdkOverlayOrigin" [class.active-router-link]="getStepperButtonActive()"
-          [disabled]="!getStepperButtonActive()" (click)="onStepperButtonClick()"
-          [attr.aria-label]="getReportButtonA11yLabel()">
-          <span>
-            <ng-container *ngIf="currentStep === BuildReportStep.ADD_COMMENTS">
-              <div class="report-draft-comment-count" aria-hidden="true">{{reportDraftCommentCount}}</div>
-              <mat-icon svgIcon="report_icon_white" class="report-icon">
-              </mat-icon>
-            </ng-container>
-            <mat-icon *ngIf="currentStep === BuildReportStep.TAKE_ACTION" class="close-icon">close</mat-icon>
-            {{getReportButtonText()}}
-            <mat-icon *ngIf="currentStep < BuildReportStep.TAKE_ACTION" class="forward-icon">arrow_forward</mat-icon>
-          </span>
-        </button>
-      </div>
-      <!-- This template displays the overlay content and is connected to the
+
+  <mat-toolbar-row class="toolbar-row" *ngIf="showBuildReportStepper">
+    <div class="spacer">
+      <button mat-button [routerLink]="getBackButtonRouterLink()" class="box back-button"
+        *ngIf="currentStep > BuildReportStep.ADD_COMMENTS">
+        <mat-icon class="back-icon">arrow_back</mat-icon>
+        {{getBackButtonText()}}
+      </button>
+    </div>
+    <app-report-progress-bar [inNavigation]="true" class="spacer"></app-report-progress-bar>
+    <div class="continue-section spacer">
+      <div class="last-edited">{{getTimeSinceLastReportEditString()}}</div>
+      <div class="highlight-continue-button" *ngIf="onboarding"></div>
+      <button mat-stroked-button class="continue-button" [class.elevate]="onboarding" cdkOverlayOrigin
+        #anchor="cdkOverlayOrigin" [class.active-router-link]="getStepperButtonActive()"
+        [disabled]="!getStepperButtonActive()" (click)="onStepperButtonClick()"
+        [attr.aria-label]="getReportButtonA11yLabel()">
+        <span>
+          <ng-container *ngIf="currentStep === BuildReportStep.ADD_COMMENTS">
+            <div class="report-draft-comment-count" aria-hidden="true">{{reportDraftCommentCount}}</div>
+            <mat-icon svgIcon="report_icon_white" class="report-icon">
+            </mat-icon>
+          </ng-container>
+          <mat-icon *ngIf="currentStep === BuildReportStep.TAKE_ACTION" class="close-icon">close</mat-icon>
+          {{getReportButtonText()}}
+          <mat-icon *ngIf="currentStep < BuildReportStep.TAKE_ACTION" class="forward-icon">arrow_forward</mat-icon>
+        </span>
+      </button>
+    </div>
+    <!-- This template displays the overlay content and is connected to the
        review report button.
        Note: CSS for this is in the main styles.scss file since it appears
        as part of the overlay. -->
-      <ng-template cdkConnectedOverlay cdkConnectedOverlayPush cdkConnectedOverlayHasBackdrop
-        [cdkConnectedOverlayPositions]="connectedOverlayPositions"
-        [cdkConnectedOverlayScrollStrategy]="overlayScrollStrategy"
-        cdkConnectedOverlayBackdropClass='onboarding-backdrop' [cdkConnectedOverlayOrigin]="anchor"
-        [cdkConnectedOverlayOpen]="onboarding">
-        <div class="onboarding-review-report" cdkTrapFocus cdkTrapFocusAutoCapture>
-          <h1>Review report</h1>
-          <div class="message">Your report will update as you add comments. Visit this page to preview comments and add
-            context for your report.</div>
-          <span class="visually-hidden">Displays the continue button, with a shopping cart icon indicating how many
-            comments are currently in the report.</span>
-          <button mat-button color="primary" (click)="nextOnboardingStep()">Got it</button>
-        </div>
-      </ng-template>
+    <ng-template cdkConnectedOverlay cdkConnectedOverlayPush cdkConnectedOverlayHasBackdrop
+      [cdkConnectedOverlayPositions]="connectedOverlayPositions"
+      [cdkConnectedOverlayScrollStrategy]="overlayScrollStrategy" cdkConnectedOverlayBackdropClass='onboarding-backdrop'
+      [cdkConnectedOverlayOrigin]="anchor" [cdkConnectedOverlayOpen]="onboarding">
+      <div class="onboarding-review-report" cdkTrapFocus cdkTrapFocusAutoCapture>
+        <h1>Review report</h1>
+        <div class="message">Your report will update as you add comments. Visit this page to preview comments and add
+          context for your report.</div>
+        <span class="visually-hidden">Displays the continue button, with a shopping cart icon indicating how many
+          comments are currently in the report.</span>
+        <button mat-button color="primary" (click)="nextOnboardingStep()">Got it</button>
+      </div>
+    </ng-template>
 
-      <ng-template cdkConnectedOverlay cdkConnectedOverlayPush="true" [cdkConnectedOverlayOffsetY]="6"
-        [cdkConnectedOverlayOrigin]="anchor" [cdkConnectedOverlayLockPosition]="true"
-        [cdkConnectedOverlayOpen]="reportNotificationOpen">
-        <div #dropdown class="dropdown">
-          <div class="title">{{notificationTitleText}}</div>
-          <div class="subtitle">{{notificationSubtitleText}}</div>
-        </div>
-      </ng-template>
-    </mat-toolbar-row>
-  </div>
+    <ng-template cdkConnectedOverlay cdkConnectedOverlayPush="true" [cdkConnectedOverlayOffsetY]="6"
+      [cdkConnectedOverlayOrigin]="anchor" [cdkConnectedOverlayLockPosition]="true"
+      [cdkConnectedOverlayOpen]="reportNotificationOpen">
+      <div #dropdown class="dropdown">
+        <div class="title">{{notificationTitleText}}</div>
+        <div class="subtitle">{{notificationSubtitleText}}</div>
+      </div>
+    </ng-template>
+  </mat-toolbar-row>
+
 
 </mat-toolbar>
