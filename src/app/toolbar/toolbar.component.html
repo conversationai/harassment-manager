@@ -27,8 +27,9 @@
     </ng-container>
   </mat-toolbar-row>
 
-  <div class="signed-in-toolbar-wrapper">
-    <mat-toolbar-row class="toolbar-row signed-in-toolbar nav" *ngIf="userIsSignedIn">
+
+  <mat-toolbar-row class="signed-in-toolbar-wrapper" *ngIf="userIsSignedIn">
+    <div class="signed-in-toolbar  toolbar-row  ">
       <div class="nav-links nav-item">
         <a routerLinkActive="active-router-link" routerLink="/home" #homeLink role="link"
           [attr.aria-current]="homeLink.routerLinkActive ? 'page' : false">
@@ -51,8 +52,10 @@
           <h3>Sign out</h3>
         </a>
       </div>
-    </mat-toolbar-row>
-  </div>
+    </div>
+
+  </mat-toolbar-row>
+
 
   <mat-toolbar-row class="toolbar-row" *ngIf="showBuildReportStepper">
     <div class="spacer">

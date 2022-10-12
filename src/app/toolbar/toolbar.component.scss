@@ -29,7 +29,7 @@
   }
 
   @media all and (min-width: 768px) {
-    mat-toolbar-row {
+    .toolbar-row {
       max-width: 728px;
       margin-left: auto;
       margin-right: auto;
@@ -39,7 +39,7 @@
   }
 
   @media all and (min-width: 1152px) {
-    mat-toolbar-row {
+    .toolbar-row {
       max-width: 1024px;
     }
   }
@@ -226,6 +226,9 @@ mat-toolbar-row {
 }
 
 .signed-in-toolbar {
+  display: flex;
+  width: 100%;
+  align-items: center;
   flex-wrap: wrap;
   height: 80px;
 
@@ -266,21 +269,14 @@ mat-toolbar-row {
   background-image: url('~src/assets/help_center_bg.svg');
   background-repeat: no-repeat;
   background-size: 100%;
-  content: '';
-
-  // @media all and (min-width: 768px) {
-  //   ::before {
-  //     left: calc((728px - 100vw) / 2);
-  //     right: calc((728px - 100vw) / 2);
-  //   }
-  // }
+  height: 80px;
 }
 
 @media all and (min-width: 768px) {
   .signed-in-toolbar {
     .nav-links {
       .find-support {
-        display: block;
+        display: flex;
       }
     }
   }

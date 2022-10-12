@@ -79,13 +79,6 @@ mat-card {
     height: 150px;
   }
 }
-@media all and (min-width: 1152px) {
-  mat-card {
-    width: 270px;
-    height: 136px;
-    min-width: max-content;
-  }
-}
 
 mat-icon {
   margin-right: 6px;
