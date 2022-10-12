@@ -28,8 +28,8 @@
   </mat-toolbar-row>
 
   <div class="signed-in-toolbar-wrapper">
-    <mat-toolbar-row class="toolbar-row signed-in-toolbar" *ngIf="userIsSignedIn">
-      <div class="nav-links">
+    <mat-toolbar-row class="toolbar-row signed-in-toolbar nav" *ngIf="userIsSignedIn">
+      <div class="nav-links nav-item">
         <a routerLinkActive="active-router-link" routerLink="/home" #homeLink role="link"
           [attr.aria-current]="homeLink.routerLinkActive ? 'page' : false">
           <h3>Home</h3>
@@ -46,10 +46,10 @@
           <img src="/red_ellipse.svg" />
         </a>
       </div>
-      <div class="sign-out-button-wrapper">
-        <button class="sign-out-button" mat-stroked-button (click)="revokeAuthorization()">
+      <div class="sign-out-button-wrapper nav-item">
+        <a class="sign-out-button" (click)="revokeAuthorization()">
           <h3>Sign out</h3>
-        </button>
+        </a>
       </div>
     </mat-toolbar-row>
   </div>
