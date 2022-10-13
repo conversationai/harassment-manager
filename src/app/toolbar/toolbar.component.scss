@@ -43,6 +43,12 @@
       max-width: 1024px;
     }
   }
+
+  @media all and (min-width: 1440px) {
+    .toolbar-row {
+      max-width: 1144px;
+    }
+  }
 }
 mat-toolbar-row {
   padding: 0;
