@@ -58,4 +58,8 @@ service_account_key.json
 
 # Angular build cache
 .angular/cache
-src/environments/environment.ts
+
+# src files with sensitive information such as API keys
+# NOTE: these files may need to be checked in once in a blue moon
+src/app/gapi.service.ts
+src/environments
