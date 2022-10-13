@@ -235,11 +235,17 @@ mat-toolbar-row {
   .nav-links {
     display: flex;
     z-index: 1;
+    height: 100%;
+    a:first-of-type {
+      width: 60px;
+    }
     a {
       color: #ffffff;
       text-decoration: none;
       margin: 0 20px 0 0;
       display: flex;
+      width: 120px;
+      height: 50%;
 
       img {
         display: none;
@@ -275,6 +281,9 @@ mat-toolbar-row {
 @media all and (min-width: 768px) {
   .signed-in-toolbar {
     .nav-links {
+      a {
+        margin: 0 40px 0 0;
+      }
       .find-support {
         display: flex;
       }
