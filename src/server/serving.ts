@@ -364,30 +364,11 @@ export class Server {
   }
 
   createOAuthClient(
-    credentials: firebase.auth.OAuthCredential | Credentials,
-    clientProvidedRedirectUrl = ''
+    credentials: firebase.auth.OAuthCredential | Credentials
   ): OAuth2Client {
-    let redirectUrlToUse = '';
-
-    for (const uri of this.appCredentials!.redirect_uris) {
-      if (
-        clientProvidedRedirectUrl === uri ||
-        clientProvidedRedirectUrl === `${uri}/`
-      ) {
-        redirectUrlToUse = uri;
-      }
-    }
-    if (!redirectUrlToUse) {
-      console.error(
-        'No matching redirect uris for client provided redirect URL:',
-        clientProvidedRedirectUrl
-      );
-    }
-
     const oauthClient = new googleapis.auth.OAuth2(
       this.appCredentials!.client_id,
-      this.appCredentials!.client_secret,
-      redirectUrlToUse
+      this.appCredentials!.client_secret
     );
 
     if (isFirebaseCredential(credentials)) {

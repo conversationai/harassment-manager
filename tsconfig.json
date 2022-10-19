@@ -17,7 +17,7 @@
       "es2017",
       "dom"
     ],
-    "types": ["gtag.js", "gapi", "gapi.auth2", "jasmine"]
+    "types": ["gtag.js", "google.accounts", "jasmine"]
   },
   "extends": "./node_modules/gts/tsconfig-google.json"
 }

@@ -56,7 +56,7 @@ const MOCK_FIREBASE_CREDENTIALS = {
   toJSON: () => 'abcde',
 };
 
-const MOCK_GAPI_CREDENTIALS = {
+const MOCK_GOOGLE_CREDENTIALS = {
   access_token: 'test',
 };
 
@@ -84,7 +84,7 @@ describe('SheetsApiService', () => {
   beforeEach(() => {
     mockOauthApiService = jasmine.createSpyObj<OauthApiService>(
       'oauthApiService',
-      ['getGapiGoogleCredentials', 'getTwitterCredentials']
+      ['getGoogleCredentials', 'getTwitterCredentials']
     );
     mockOauthApiService.getTwitterCredentials.and.returnValue(undefined);
 
@@ -115,18 +115,18 @@ describe('SheetsApiService', () => {
     mockOauthApiService.getTwitterCredentials.and.returnValue(
       MOCK_FIREBASE_USER_CREDENTIALS
     );
-    mockOauthApiService.getGapiGoogleCredentials.and.returnValue(
-      MOCK_GAPI_CREDENTIALS
+    mockOauthApiService.getGoogleCredentials.and.returnValue(
+      MOCK_GOOGLE_CREDENTIALS
     );
     service
       .createSpreadsheet(COMMENTS, ['reportReason1'], 'some context')
       .subscribe((url: string) => {
         expect(url).toEqual('a');
       });
-    expect(mockOauthApiService.getGapiGoogleCredentials).toHaveBeenCalled();
+    expect(mockOauthApiService.getGoogleCredentials).toHaveBeenCalled();
     const req = httpTestingController.expectOne('/create_twitter_report');
     expect(req.request.method).toEqual('POST');
-    expect(req.request.body.credentials).toEqual(MOCK_GAPI_CREDENTIALS);
+    expect(req.request.body.credentials).toEqual(MOCK_GOOGLE_CREDENTIALS);
 
     req.flush({
       spreadsheetUrl: 'a',
