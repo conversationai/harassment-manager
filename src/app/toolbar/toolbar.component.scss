@@ -36,6 +36,20 @@
       padding-left: 0;
       padding-right: 0;
     }
+    .signed-in-toolbar {
+      .nav-links {
+        a {
+          margin: 0 40px 0 0;
+        }
+        .find-support {
+          display: flex;
+        }
+      }
+    }
+
+    .get-started-button {
+      display: initial;
+    }
   }
 
   @media all and (min-width: 1152px) {
@@ -258,7 +272,7 @@ mat-toolbar-row {
       }
     }
     .active-router-link {
-      h3 {
+      .text {
         border-bottom: 5px solid #da2732;
       }
       img {
@@ -284,19 +298,19 @@ mat-toolbar-row {
   height: 80px;
 }
 
-@media all and (min-width: 768px) {
-  .signed-in-toolbar {
-    .nav-links {
-      a {
-        margin: 0 40px 0 0;
-      }
-      .find-support {
-        display: flex;
-      }
-    }
-  }
+// @media all and (min-width: 768px) {
+//   .signed-in-toolbar {
+//     .nav-links {
+//       a {
+//         margin: 0 40px 0 0;
+//       }
+//       .find-support {
+//         display: flex;
+//       }
+//     }
+//   }
 
-  .get-started-button {
-    display: initial;
-  }
-}
+//   .get-started-button {
+//     display: initial;
+//   }
+// }

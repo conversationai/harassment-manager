@@ -49,6 +49,14 @@ h2 {
     margin-right: auto;
     padding-left: 0;
     padding-right: 0;
+
+    app-recommended-report-card {
+      width: auto !important;
+      margin-bottom: 14px;
+    }
+    .recommended-cards-wrapper {
+      overflow: visible;
+    }
   }
 
   @media all and (min-width: 1152px) {
@@ -56,6 +64,11 @@ h2 {
   }
   @media all and (min-width: 1440px) {
     max-width: 1144px;
+
+    .highlight-card {
+      left: 400px;
+      width: 390px;
+    }
   }
 }
 
@@ -132,13 +145,6 @@ h2 {
   flex-wrap: wrap;
 }
 
-// Make card fit in the container.
-@media all and (min-width: 768px) {
-  app-recommended-report-card {
-    width: auto !important;
-  }
-}
-
 .recommended-report-cards::-webkit-scrollbar {
   background: transparent; /* Optional: just make scrollbar invisible */
   width: 0px; /* Remove scrollbar space */
@@ -146,11 +152,6 @@ h2 {
 
 app-recommended-report-card {
   width: 100%;
-
-  /*Margin bottom after wrapping*/
-  @media all and (min-width: 768px) {
-    margin-bottom: 14px;
-  }
 }
 
 .arrow {
@@ -192,14 +193,6 @@ app-recommended-report-card {
   z-index: 1001; // Above the overlay backdrop
 }
 
-// Once all the cards don't fit on the screen, reduce the width.
-@media screen and (max-width: 1440px) {
-  .highlight-card {
-    left: 400px;
-    width: 390px;
-  }
-}
-
 .elevate {
   position: relative;
   z-index: 1002; // Above the overlay backdrop and the highlight card.
@@ -209,8 +202,4 @@ app-recommended-report-card {
   overflow: hidden;
   position: relative;
   width: 100%;
-
-  @media all and (min-width: 768px) {
-    overflow: visible;
-  }
 }

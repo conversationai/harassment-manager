@@ -33,23 +33,23 @@
       <div class="nav-links nav-item">
         <a routerLinkActive="active-router-link" routerLink="/home" #homeLink role="link"
           [attr.aria-current]="homeLink.routerLinkActive ? 'page' : false">
-          <h3>Home</h3>
+          <span class="text">Home</span>
           <img src="/red_ellipse.svg" />
         </a>
         <a routerLinkActive="active-router-link" [routerLink]="getCreateReportRouterLink()" #createReportLink
           [attr.aria-current]="createReportLink.routerLinkActive ? 'page' : false">
-          <h3>Create Report</h3>
+          <span class="text">Create Report</span>
           <img src="/red_ellipse.svg" />
         </a>
         <a routerLinkActive="active-router-link" routerLink="/find-support" #findSupportLink
           [attr.aria-current]="findSupportLink.routerLinkActive ? 'page' : false" class="find-support">
-          <h3>Find Support</h3>
+          <span class="text">Find Support</span>
           <img src="/red_ellipse.svg" />
         </a>
       </div>
       <div class="sign-out-button-wrapper nav-item">
         <a class="sign-out-button" (click)="revokeAuthorization()">
-          <h3>Sign out</h3>
+          <span class="text">Sign out</span>
         </a>
       </div>
     </div>
