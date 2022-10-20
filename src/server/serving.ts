@@ -82,7 +82,6 @@ export interface TwitterApiCredentials {
 export interface WebAppCredentials {
   client_secret: string;
   client_id: string;
-  redirect_uris: string[];
 }
 
 function loadAppCredentials(): Promise<WebAppCredentials> {
@@ -120,9 +119,6 @@ export class Server {
   analyzeApiClient?: NodeAnalyzeApiClient;
   port: number;
   staticPath?: string;
-
-  // Redirect URL to use for building App Credentials.
-  private clientProvidedRedirectUrl = '';
 
   private appCredentials: WebAppCredentials | null = null;
 
