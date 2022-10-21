@@ -15,24 +15,22 @@
  */
 
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { HelpCenterComponent } from './help-center.component';
+import { NotFoundPageComponent } from './not-found-page.component';
 
-describe('HelpCenterComponent', () => {
-  let component: HelpCenterComponent;
-  let fixture: ComponentFixture<HelpCenterComponent>;
+describe('FooterComponent', () => {
+  let component: NotFoundPageComponent;
+  let fixture: ComponentFixture<NotFoundPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [HelpCenterComponent],
-      imports: [FormsModule, ReactiveFormsModule]
+      declarations: [ NotFoundPageComponent ]
     })
-      .compileComponents();
+    .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HelpCenterComponent);
+    fixture = TestBed.createComponent(NotFoundPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -41,3 +39,4 @@ describe('HelpCenterComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
