@@ -58,9 +58,6 @@ mat-card {
   margin-bottom: 14px;
 }
 
-.two-buttons {
-  flex-wrap: wrap;
-}
 .view-comments-button {
   color: #494949 !important;
 }
@@ -76,7 +73,11 @@ mat-card {
 @media all and (min-width: 768px) {
   mat-card {
     width: 305px;
-    height: 150px;
+  }
+
+  .comment-text-count{
+    font-size: 12px;
+    font-weight: bold;
   }
 }
 

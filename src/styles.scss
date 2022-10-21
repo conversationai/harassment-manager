@@ -260,6 +260,14 @@ app-help-center .mat-input-element {
   caption-side: #101bcf;
 }
 
+app-home-page {
+  *{
+      font-family: 'Helvetica';
+      font-style: normal;
+  }
+    
+}
+
 app-filter-dropdown
   .mat-form-field-appearance-outline
   .mat-form-field-outline-start,
