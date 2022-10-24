@@ -14,119 +14,96 @@
  limitations under the License.
 -->
 
+
 <div class="item-list-container" [class.hidden]="!comments">
-  <div class="view-comments-title">
-    Create Report
-  </div>
-
-  <div class="vertical-divider"></div>
-
-  <div class="filters-container"
-       [class.elevate]="currentOnboardingStep === OnboardingStep.HIGHLIGHT_FILTERS"
-       cdkOverlayOrigin
-       #filtersContainer="cdkOverlayOrigin">
-    <div class="highlight-filters"
-         *ngIf="currentOnboardingStep === OnboardingStep.HIGHLIGHT_FILTERS">
+  <div class="data-filter-section">
+    <div class="view-comments-title">
+      Create Report
     </div>
-    <!-- These are not disabled while comments are loading. -->
-    <app-search-box (regexFiltersChange)="handleRegexFiltersChanged($event)">
-    </app-search-box>
-    <app-filter-dropdown #dateFilterDropdown
-                         class="date-filter-dropdown"
-                         label="Time"
-                         [options]="dateDropdownOptions"
-                         [selectFirstOption]="true"
-                         (customOptionSelected)="getCustomDateFilter()"
-                         (selectedOptionChange)="dateFilterSelectionChanged($event)">
-    </app-filter-dropdown>
-    <app-filter-dropdown #toxicityRangeDropdown
-                         class="toxicity-range-dropdown"
-                         label="Harmful"
-                         multiSelectionLabelPrefix="categories"
-                         [options]="toxicityRangeDropdownOptions"
-                         [selectAll]="true"
-                         [colorChangeOnSelect]="false"
-                         (customOptionSelected)="getCustomToxicityRange()"
-                         (selectedOptionsChange)="toxicityRangeSelectionChanged($event)"
-                         [multi]="true">
-    </app-filter-dropdown>
-    <app-filter-dropdown #moreFiltersDropdown
-                         label="More filters"
-                         class="more-filters-dropdown"
-                         [options]="moreDropdownOptions"
-                         (selectedOptionsChange)="metadataFilterSelectionChanged($event)"
-                         [multi]="true">
-    </app-filter-dropdown>
+    <div class="view-comments-subtitle">
+      <p>
+        Review and select the content you want to include in your report. Once completed, you can block or mute
+        accounts,
+        hide replies, or save and share your report
+      </p>
+    </div>
+
+    <div class="vertical-divider"></div>
+
+    <div class="filters-container" [class.elevate]="currentOnboardingStep === OnboardingStep.HIGHLIGHT_FILTERS"
+      cdkOverlayOrigin #filtersContainer="cdkOverlayOrigin">
+      <div class="highlight-filters" *ngIf="currentOnboardingStep === OnboardingStep.HIGHLIGHT_FILTERS">
+      </div>
+      <!-- These are not disabled while comments are loading. -->
+      <app-search-box (regexFiltersChange)="handleRegexFiltersChanged($event)">
+      </app-search-box>
+      <app-filter-dropdown #dateFilterDropdown class="date-filter-dropdown" label="Time" [options]="dateDropdownOptions"
+        [selectFirstOption]="true" (customOptionSelected)="getCustomDateFilter()"
+        (selectedOptionChange)="dateFilterSelectionChanged($event)">
+      </app-filter-dropdown>
+      <app-filter-dropdown #toxicityRangeDropdown class="toxicity-range-dropdown" label="Harmful"
+        multiSelectionLabelPrefix="categories" [options]="toxicityRangeDropdownOptions" [selectAll]="true"
+        [colorChangeOnSelect]="false" (customOptionSelected)="getCustomToxicityRange()"
+        (selectedOptionsChange)="toxicityRangeSelectionChanged($event)" [multi]="true">
+      </app-filter-dropdown>
+      <app-filter-dropdown #moreFiltersDropdown label="More filters" class="more-filters-dropdown"
+        [options]="moreDropdownOptions" (selectedOptionsChange)="metadataFilterSelectionChanged($event)" [multi]="true">
+      </app-filter-dropdown>
+    </div>
+
   </div>
 
   <!-- This template displays the overlay content and is connected to the
        filters container.
        Note: CSS for this is in the main styles.scss file since it appears
        as part of the overlay. -->
-  <ng-template
-    cdkConnectedOverlay
-    cdkConnectedOverlayHasBackdrop
+  <ng-template cdkConnectedOverlay cdkConnectedOverlayHasBackdrop
     [cdkConnectedOverlayPositions]="centerBottomConnectedOverlayPositions"
-    [cdkConnectedOverlayScrollStrategy]="overlayScrollStrategy"
-    cdkConnectedOverlayBackdropClass='onboarding-backdrop'
+    [cdkConnectedOverlayScrollStrategy]="overlayScrollStrategy" cdkConnectedOverlayBackdropClass='onboarding-backdrop'
     [cdkConnectedOverlayOrigin]="filtersContainer"
     [cdkConnectedOverlayOpen]="currentOnboardingStep === OnboardingStep.HIGHLIGHT_FILTERS">
-    <div class="onboarding-filters"
-         cdkTrapFocus
-         cdkTrapFocusAutoCapture>
+    <div class="onboarding-filters" cdkTrapFocus cdkTrapFocusAutoCapture>
       <h1>Narrow results</h1>
       <div class="message">Search and filter to find the comments you want to add to your report.</div>
-      <span class="visually-hidden">Displays the search bar, and menus for filtering by time (default since yesterday), harmful categories (5 selected by default), and more filter options (none selected by default).</span>
-      <button mat-button
-              color="primary"
-              (click)="nextOnboardingStep()">
+      <span class="visually-hidden">Displays the search bar, and menus for filtering by time (default since yesterday),
+        harmful categories (5 selected by default), and more filter options (none selected by default).</span>
+      <button mat-button color="primary" (click)="nextOnboardingStep()">
         Got it
       </button>
     </div>
   </ng-template>
 
-  <div class="vertical-divider"></div>
   <div class="items-wrapper">
     <div class="list-header">
       <div class="select-all">
         <!-- Note: The "indeterminate" behavior is the same as the select all in Gmail. -->
-        <mat-checkbox #selectAllCheckbox
-                      color="primary"
-                      [indeterminate]="selectAllCheckbox.checked
+        <mat-checkbox #selectAllCheckbox color="primary" [indeterminate]="selectAllCheckbox.checked
                                        && selectedItemsForPage.length > 0
                                        && selectedItemsForPage.length < getPaginatedItems().length"
-                      (change)="selectAllCheckbox.checked ? selectAll() : deselectAll()"
-                      [aria-label]="selectAllCheckbox.checked ? 'Deselect all.' : 'Select all.'">
+          (change)="selectAllCheckbox.checked ? selectAll() : deselectAll()"
+          [aria-label]="selectAllCheckbox.checked ? 'Deselect all.' : 'Select all.'">
         </mat-checkbox>
-        <button mat-icon-button
-                *ngIf="!loading"
-                class="refresh-button"
-                (click)="refresh()"
-                aria-label="Refresh.">
+        <button mat-icon-button *ngIf="!loading" class="refresh-button" (click)="refresh()" aria-label="Refresh.">
           <mat-icon class="refresh">refresh</mat-icon>
         </button>
 
         <div *ngIf="loading" class="loading-platform">
-          <span class=loading-spinner><mat-spinner [diameter]="18"></mat-spinner></span>
+          <span class=loading-spinner>
+            <mat-spinner [diameter]="18"></mat-spinner>
+          </span>
           <div>Loading comments from Twitter...</div>
         </div>
         <div *ngIf="!loading && !error">Last refreshed {{lastLoadedDate}}</div>
       </div>
       <div class="view-controls">
-        <div class="highlight-blur-toggle"
-             *ngIf="currentOnboardingStep === OnboardingStep.HIGHLIGHT_BLUR_TOGGLE">
+        <div class="highlight-blur-toggle" *ngIf="currentOnboardingStep === OnboardingStep.HIGHLIGHT_BLUR_TOGGLE">
         </div>
 
-        <div class="blur-toggle"
-             [class.elevate]="currentOnboardingStep === OnboardingStep.HIGHLIGHT_BLUR_TOGGLE"
-             cdkOverlayOrigin
-             #commentBlurToggle="cdkOverlayOrigin">
+        <div class="blur-toggle" [class.elevate]="currentOnboardingStep === OnboardingStep.HIGHLIGHT_BLUR_TOGGLE"
+          cdkOverlayOrigin #commentBlurToggle="cdkOverlayOrigin">
           <div>Comment Preview:</div>
-          <mat-button-toggle-group
-            class="preview-text"
-            name="preview-text"
-            [attr.aria-label]="'Comment Preview: ' + (shouldBlur ? 'Show': 'Hide')"
-            [(ngModel)]="shouldBlur"
+          <mat-button-toggle-group class="preview-text" name="preview-text"
+            [attr.aria-label]="'Comment Preview: ' + (shouldBlur ? 'Show': 'Hide')" [(ngModel)]="shouldBlur"
             [disabled]="loading">
             <mat-button-toggle [value]="true">
               <mat-icon>visibility_off</mat-icon>
@@ -143,25 +120,19 @@
              view settings.
              Note: CSS for this is in the main styles.scss file since it appears
              as part of the overlay. -->
-        <ng-template
-          cdkConnectedOverlay
-          cdkConnectedOverlayHasBackdrop
+        <ng-template cdkConnectedOverlay cdkConnectedOverlayHasBackdrop
           [cdkConnectedOverlayPositions]="highlightViewSettingsConnectedOverlayPositions"
           [cdkConnectedOverlayScrollStrategy]="overlayScrollStrategy"
-          cdkConnectedOverlayBackdropClass='onboarding-backdrop'
-          [cdkConnectedOverlayOrigin]="commentBlurToggle"
+          cdkConnectedOverlayBackdropClass='onboarding-backdrop' [cdkConnectedOverlayOrigin]="commentBlurToggle"
           [cdkConnectedOverlayOpen]="currentOnboardingStep === OnboardingStep.HIGHLIGHT_BLUR_TOGGLE">
-          <div class="onboarding-view-settings"
-               cdkTrapFocus
-               cdkTrapFocusAutoCapture>
+          <div class="onboarding-view-settings" cdkTrapFocus cdkTrapFocusAutoCapture>
             <h1>Choose what you see</h1>
             <div class="message">
               Comments are blurred by default. Use this setting to indicate what type of content you want to see.
             </div>
-            <span class="visually-hidden">Displays the comment blur button toggle option, set to hidden by default</span>
-            <button mat-button
-                    color="primary"
-                    (click)="nextOnboardingStep()">Got it</button>
+            <span class="visually-hidden">Displays the comment blur button toggle option, set to hidden by
+              default</span>
+            <button mat-button color="primary" (click)="nextOnboardingStep()">Got it</button>
           </div>
         </ng-template>
 
@@ -173,56 +144,39 @@
             <!-- Note: We use [aria-label] and not [attr.aria-label] below because
                  aria-label is an @Input() property on a MatSelect, not a native
                  attribute property. -->
-            <mat-select [(value)]="selectedSortOption"
-                        [aria-label]="'Sort by: ' + selectedSortOption"
-                        [disabled]="loading"
-                        (selectionChange)="applySortOption()">
+            <mat-select [(value)]="selectedSortOption" [aria-label]="'Sort by: ' + selectedSortOption"
+              [disabled]="loading" (selectionChange)="applySortOption()">
               <mat-option *ngFor="let option of sortOptions" [value]="option">{{option}}</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
         <div class="horizontal-divider"></div>
         <div class="comment-count-info" [class.loading]="loading">
-          <span class="paginator-loading-label"
-               *ngIf="loading"
-               [class.elevate]="currentOnboardingStep === OnboardingStep.HIGHLIGHT_PAGINATION">
+          <span class="paginator-loading-label" *ngIf="loading"
+            [class.elevate]="currentOnboardingStep === OnboardingStep.HIGHLIGHT_PAGINATION">
             {{commentsLoaded}} comments loaded...
           </span>
-          <mat-paginator #paginator
-                         [length]="filteredComments.length"
-                         [pageSize]="pageSize"
-                         [hidePageSize]="true"
-                         [pageIndex]="getPageIndex()"
-                         cdkOverlayOrigin
-                         #commentCountInfo="cdkOverlayOrigin"
-                         (page)="page($event)"
-                         [class.elevate]="currentOnboardingStep === OnboardingStep.HIGHLIGHT_PAGINATION">
+          <mat-paginator #paginator [length]="filteredComments.length" [pageSize]="pageSize" [hidePageSize]="true"
+            [pageIndex]="getPageIndex()" cdkOverlayOrigin #commentCountInfo="cdkOverlayOrigin" (page)="page($event)"
+            [class.elevate]="currentOnboardingStep === OnboardingStep.HIGHLIGHT_PAGINATION">
           </mat-paginator>
-          <div class="highlight-pagination"
-               *ngIf="currentOnboardingStep === OnboardingStep.HIGHLIGHT_PAGINATION">
+          <div class="highlight-pagination" *ngIf="currentOnboardingStep === OnboardingStep.HIGHLIGHT_PAGINATION">
           </div>
           <!-- This template displays the overlay content and is connected to the
                comment count info.
                Note: CSS for this is in the main styles.scss file since it appears
                as part of the overlay. -->
-          <ng-template
-            cdkConnectedOverlay
-            cdkConnectedOverlayHasBackdrop
-            [cdkConnectedOverlayPositions]="centerBottomConnectedOverlayPositions"
-            [cdkConnectedOverlayOffsetY]="24"
+          <ng-template cdkConnectedOverlay cdkConnectedOverlayHasBackdrop
+            [cdkConnectedOverlayPositions]="centerBottomConnectedOverlayPositions" [cdkConnectedOverlayOffsetY]="24"
             [cdkConnectedOverlayScrollStrategy]="overlayScrollStrategy"
-            cdkConnectedOverlayBackdropClass='onboarding-backdrop'
-            [cdkConnectedOverlayOrigin]="commentCountInfo"
+            cdkConnectedOverlayBackdropClass='onboarding-backdrop' [cdkConnectedOverlayOrigin]="commentCountInfo"
             [cdkConnectedOverlayOpen]="currentOnboardingStep === OnboardingStep.HIGHLIGHT_PAGINATION">
-            <div class="onboarding-pagination"
-                 cdkTrapFocus
-                 cdkTrapFocusAutoCapture>
+            <div class="onboarding-pagination" cdkTrapFocus cdkTrapFocusAutoCapture>
               <h1>Review comments</h1>
               <div class="message">See a limited number of comments per page.</div>
-              <span class="visually-hidden">Displays the pagination buttons, showing which comments are visible on this page and the total number of comments.</span>
-              <button mat-button
-                      color="primary"
-                      (click)="nextOnboardingStep()">
+              <span class="visually-hidden">Displays the pagination buttons, showing which comments are visible on this
+                page and the total number of comments.</span>
+              <button mat-button color="primary" (click)="nextOnboardingStep()">
                 Got it
               </button>
             </div>
@@ -247,55 +201,40 @@
         <ng-container *ngIf="{items: getPaginatedItems()}; let container">
           <!-- Separate out the first card so we can use it as an anchor for an onboarding element. -->
           <ng-container *ngIf="container.items.length > 0">
-            <app-expansion-box #expansionBox
-                               class="tweet-info"
-                               [disabled]="loading"
-                               [class.elevate]="currentOnboardingStep === OnboardingStep.HIGHLIGHT_COMMENT_CARD"
-                               cdkOverlayOrigin
-                               #firstCommentCard="cdkOverlayOrigin">
-              <app-comment-info expansion-box-header
-                              [comment]="container.items[0]"
-                              [enableBlurring]="shouldBlur"
-                              [showFullText]="expansionBox.panelOpen"
-                              [showFullMedia]="expansionBox.panelOpen"
-                              [showDetails]="expansionBox.panelOpen"
-                              [selected]="container.items[0].selected"
-                              [disabled]="container.items[0].disabled"
-                              (selectChange)="updateSelectedComment(container.items[0])">
+            <app-expansion-box #expansionBox class="tweet-info" [disabled]="loading"
+              [class.elevate]="currentOnboardingStep === OnboardingStep.HIGHLIGHT_COMMENT_CARD" cdkOverlayOrigin
+              #firstCommentCard="cdkOverlayOrigin">
+              <app-comment-info expansion-box-header [comment]="container.items[0]" [enableBlurring]="shouldBlur"
+                [showFullText]="expansionBox.panelOpen" [showFullMedia]="expansionBox.panelOpen"
+                [showDetails]="expansionBox.panelOpen" [selected]="container.items[0].selected"
+                [disabled]="container.items[0].disabled" (selectChange)="updateSelectedComment(container.items[0])">
               </app-comment-info>
-              <app-comment-info-expansion
-                              expansion-box-body
-                              [comment]="container.items[0]">
+              <app-comment-info-expansion expansion-box-body [comment]="container.items[0]">
               </app-comment-info-expansion>
             </app-expansion-box>
-            <div class="highlight-comment-card"
-                 *ngIf="currentOnboardingStep === OnboardingStep.HIGHLIGHT_COMMENT_CARD">
+            <div class="highlight-comment-card" *ngIf="currentOnboardingStep === OnboardingStep.HIGHLIGHT_COMMENT_CARD">
             </div>
 
             <!-- This template displays the overlay content and is connected to the
                  first comment card.
                  Note: CSS for this is in the main styles.scss file since it appears
                  as part of the overlay. -->
-            <ng-template
-              cdkConnectedOverlay
-              cdkConnectedOverlayHasBackdrop
-              [cdkConnectedOverlayPositions]="leftBottomConnectedOverlayPositions"
-              [cdkConnectedOverlayOffsetY]="24"
+            <ng-template cdkConnectedOverlay cdkConnectedOverlayHasBackdrop
+              [cdkConnectedOverlayPositions]="leftBottomConnectedOverlayPositions" [cdkConnectedOverlayOffsetY]="24"
               [cdkConnectedOverlayScrollStrategy]="overlayScrollStrategy"
-              cdkConnectedOverlayBackdropClass='onboarding-backdrop'
-              [cdkConnectedOverlayOrigin]="firstCommentCard"
+              cdkConnectedOverlayBackdropClass='onboarding-backdrop' [cdkConnectedOverlayOrigin]="firstCommentCard"
               [cdkConnectedOverlayOpen]="currentOnboardingStep === OnboardingStep.HIGHLIGHT_COMMENT_CARD">
-              <div class="onboarding-comment-card"
-                   cdkTrapFocus
-                   cdkTrapFocusAutoCapture>
+              <div class="onboarding-comment-card" cdkTrapFocus cdkTrapFocusAutoCapture>
                 <h1>Add comments</h1>
                 <div class="message">
-                  View comment details and select which comments to include in your report. Your work will be saved if you leave and come back.
+                  View comment details and select which comments to include in your report. Your work will be saved if
+                  you leave and come back.
                 </div>
-                <span class="visually-hidden">Displays the comment card, which includes info on how likely harmful the comment is, the comment's popularity, the time it was posted, and comment text and other metadata. It can be expanded to show more details about toxicity model scores and engagement metrics for this comment.</span>
-                <button mat-button
-                        color="primary"
-                        (click)="nextOnboardingStep()">
+                <span class="visually-hidden">Displays the comment card, which includes info on how likely harmful the
+                  comment is, the comment's popularity, the time it was posted, and comment text and other metadata. It
+                  can be expanded to show more details about toxicity model scores and engagement metrics for this
+                  comment.</span>
+                <button mat-button color="primary" (click)="nextOnboardingStep()">
                   Got it
                 </button>
               </div>
@@ -304,23 +243,14 @@
 
           <!-- The rest of the comment cards. -->
           <ng-container *ngIf="container.items.length > 1">
-            <app-expansion-box #expansionBox2
-                               *ngFor="let item of container.items.slice(1, container.items.length)"
-                               [disabled]="loading"
-                               class="tweet-info">
-              <app-comment-info expansion-box-header
-                               [comment]="item"
-                              [enableBlurring]="shouldBlur"
-                              [showFullText]="expansionBox2.panelOpen"
-                              [showFullMedia]="expansionBox2.panelOpen"
-                              [showDetails]="expansionBox2.panelOpen"
-                              [selected]="item.selected"
-                              [disabled]="item.disabled"
-                              (selectChange)="updateSelectedComment(item)">
+            <app-expansion-box #expansionBox2 *ngFor="let item of container.items.slice(1, container.items.length)"
+              [disabled]="loading" class="tweet-info">
+              <app-comment-info expansion-box-header [comment]="item" [enableBlurring]="shouldBlur"
+                [showFullText]="expansionBox2.panelOpen" [showFullMedia]="expansionBox2.panelOpen"
+                [showDetails]="expansionBox2.panelOpen" [selected]="item.selected" [disabled]="item.disabled"
+                (selectChange)="updateSelectedComment(item)">
               </app-comment-info>
-              <app-comment-info-expansion
-                              expansion-box-body
-                              [comment]="item">
+              <app-comment-info-expansion expansion-box-body [comment]="item">
               </app-comment-info-expansion>
             </app-expansion-box>
           </ng-container>
@@ -328,53 +258,40 @@
       </ng-container>
     </div> <!-- End comments-list -->
 
-    <ng-container *ngIf="!loading">
+    <ng-container *ngIf="!loading" class="comments-nav">
       <div class="page-numbers-label">
         {{getRangeLabel(pageIndex, pageSize, filteredComments.length)}}
       </div>
       <div class="page-numbers">
-        <button mat-button
-                class="page-button prev"
-                [disabled]="pageIndex === 0"
-                (click)="page({pageIndex: pageIndex - 1})">
+        <button mat-button class="page-button prev" [disabled]="pageIndex === 0"
+          (click)="page({pageIndex: pageIndex - 1})">
           Back
         </button>
         <!-- Note: Here we use actual page number, not index, hence the - 1 in the event callbacks. -->
 
         <!-- If there are few enough numbers, just show all the numbers.-->
         <ng-container *ngIf="numPages <= maxBottomPaginationPages">
-          <button *ngFor="let i of getAllPages()"
-                  mat-button
-                  class="page-number-button"
-                  [class.selected]="i - 1 === pageIndex"
-                  (click)="page({pageIndex: i - 1})">
+          <button *ngFor="let i of getAllPages()" mat-button class="page-number-button"
+            [class.selected]="i - 1 === pageIndex" (click)="page({pageIndex: i - 1})">
             {{i}}
           </button>
         </ng-container>
 
         <!-- Otherwise use an ellipsis.-->
         <ng-container *ngIf="numPages > maxBottomPaginationPages">
-          <button *ngFor="let i of getStartAbbreviatedPages()"
-                  mat-button
-                  class="page-number-button"
-                  [class.selected]="i - 1 === pageIndex"
-                  (click)="page({pageIndex: i - 1})">
+          <button *ngFor="let i of getStartAbbreviatedPages()" mat-button class="page-number-button"
+            [class.selected]="i - 1 === pageIndex" (click)="page({pageIndex: i - 1})">
             {{i}}
           </button>
           ...
-          <button *ngFor="let i of getEndAbbreviatedPages()"
-                  mat-button
-                  class="page-number-button"
-                  [class.selected]="i - 1 === pageIndex"
-                  (click)="page({pageIndex: i - 1})">
+          <button *ngFor="let i of getEndAbbreviatedPages()" mat-button class="page-number-button"
+            [class.selected]="i - 1 === pageIndex" (click)="page({pageIndex: i - 1})">
             {{i}}
           </button>
         </ng-container>
 
-        <button mat-button
-                class="page-button next"
-                [disabled]="pageIndex === numPages - 1"
-                (click)="page({pageIndex: pageIndex + 1})">
+        <button mat-button class="page-button next" [disabled]="pageIndex === numPages - 1"
+          (click)="page({pageIndex: pageIndex + 1})">
           Next
         </button>
       </div>

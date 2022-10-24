@@ -39,7 +39,7 @@
 .filters-container {
   align-items: flex-start;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   padding: 12px 0 18px 0;
   position: relative;
 }
@@ -133,7 +133,7 @@ app-filter-dropdown {
 
 .vertical-divider {
   background-color: #e0e0e0;
-  height: 1px;
+  height: 4px;
   width: 100%;
 }
 
@@ -155,9 +155,14 @@ mat-list-option .date-filter {
 
 .view-comments-title {
   font-size: 30px;
-  margin-bottom: 30px;
+  font-weight: bold;
+  margin-bottom: 0;
   margin-top: 50px;
-  text-align: center;
+  text-align: start;
+}
+.view-comments-subtitle{
+  text-align: start;
+  font-size: 20px;
 }
 
 .view-comments-title .greeting {
@@ -334,17 +339,17 @@ mat-list-option .item-metadata,
 }
 
 .items-wrapper {
-  background-color: #f9f9f9;
+  background-color: #D7DCEC;
   display: flex;
   flex: 1;
   flex-direction: column;
-  padding: 0 150px 5% 150px;
+  // padding: 0 150px 5% 150px;
 }
 
 // Once the text starts to wrap decrease the left/right padding.
 @media screen and (max-width: 1200px) {
   .items-wrapper {
-    padding: 0 5% 5% 5%;
+    // padding: 0 5% 5% 5%;
   }
 }
 
@@ -477,4 +482,20 @@ mat-paginator {
   background-color: transparent;
   border: 2px solid #9da1a3;
   color: #9da1a3;
+}
+
+@media screen and (min-width: 1152px) {
+
+  .data-filter-section{
+    background-color: #EAEFFF;;
+  }
+
+  .view-comments-title, .view-comments-subtitle, .filters-container, .list-header
+  , .comments-list, .comments-nav
+  {
+    max-width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
 }
