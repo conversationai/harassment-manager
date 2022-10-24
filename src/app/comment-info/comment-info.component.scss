@@ -139,6 +139,7 @@ img.priority {
 
 .stats {
   display: flex;
+  flex-wrap: wrap;
   height: 80px;
 }
 
@@ -204,7 +205,7 @@ img.priority {
   overflow: hidden;
 
   .toggle-visibility-icon {
-    color: #b23c66;
+    color: #101BCF;
   }
 }
 

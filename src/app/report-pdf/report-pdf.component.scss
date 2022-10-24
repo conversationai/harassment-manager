@@ -24,7 +24,7 @@
 
 .header {
   color: white;
-  background: #A54167;
+  background: #101BCF;
   display: flex;
   font-family: 'Google Sans', Arial, sans-serif;
   flex-direction: column;
@@ -37,8 +37,8 @@
 }
 
 hr {
- background-color: #A54167;
- color: #A54167;
+ background-color: #101BCF;
+ color: #101BCF;
  height: 2px;
  margin-left: 150px;
  margin-right: 150px;
@@ -66,7 +66,7 @@ img {
 
 // Overrides .mat-cell
 .border-right {
-  border-right: 4px solid #A54167;
+  border-right: 4px solid #101BCF;
 }
 
 .large-col {
@@ -93,6 +93,10 @@ img {
 .report-title {
   display: flex;
   margin-bottom: 0px;
+  .text{
+    font-weight: bold;
+    font-size: 30px
+  }
 }
 
 .report-details {
@@ -152,7 +156,7 @@ table {
 }
 
 .table-header {
-  background: #A54167;
+  background: #101BCF;
   color: white;
   display: flex;
   flex-direction: column;
@@ -171,7 +175,7 @@ table {
 }
 
 th {
-  color: #A54167;
+  color: #101BCF;
   font-weight: bold;
 }
 

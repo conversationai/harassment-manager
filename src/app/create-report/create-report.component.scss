@@ -174,11 +174,11 @@ mat-list-option .date-filter {
   color: #4a4a4a;
   display: flex;
   flex-direction: row;
-  font-size: 14px;
+  font-size: 12px;
   justify-content: space-between;
-  max-width: 1600px;
   padding-right: 16px;
   padding-top: 20px;
+  white-space: nowrap;
 }
 
 .list-header .view-controls {
@@ -225,7 +225,7 @@ mat-list-option .date-filter {
   justify-content: space-between;
   margin-left: 10px;
   .mat-button-toggle-checked {
-    color: #ad1457;
+    color: #101BCF;
     background-color: rgba(209, 179, 195, 0.2);
   }
 }
@@ -249,7 +249,7 @@ mat-list-option .date-filter {
 }
 
 .comment-count {
-  color: #ad1457;
+  color: #101BCF;
 }
 
 .comment-count-info {
@@ -334,7 +334,7 @@ mat-list-option .item-metadata,
 }
 
 .selected-comment-actions button {
-  background-color: #b23c66;
+  background-color: #101BCF;
   color: white;
 }
 
@@ -343,6 +343,7 @@ mat-list-option .item-metadata,
   display: flex;
   flex: 1;
   flex-direction: column;
+  margin-bottom: 150px;
   // padding: 0 150px 5% 150px;
 }
 
@@ -358,7 +359,7 @@ mat-list-option .item-metadata,
   mat-icon {
     background-repeat: no-repeat;
     display: inline-block;
-    color: #ad1457;
+    color: #101BCF;
     vertical-align: middle;
   }
   .refresh {
@@ -462,7 +463,7 @@ mat-paginator {
 }
 
 .page-number-button {
-  color: #a54167;
+  color: #101BCF;
   min-width: 20px;
   width: fit-content;
 }
@@ -473,7 +474,7 @@ mat-paginator {
 }
 
 .page-button {
-  background-color: #a54167;
+  background-color: #101BCF;
   border-radius: 52px;
   color: #fff;
 }

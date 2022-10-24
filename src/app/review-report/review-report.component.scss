@@ -22,16 +22,12 @@ h1 {
 }
 
 .report-summary {
-  background-color: #fff;
-  border: 1px solid #dadce0;
+  background-color: #D7DCEC;
   color: #202124;
-  flex-basis: 420px;
-  flex-shrink: 0;
-  font-size: 16px;
+  font-size: 14px;
   height: fit-content;
   line-height: 30px;
-  margin-left: 30px;
-  margin-right: 60px;
+  margin-right: 30px;
   margin-top: 16px;
   padding-bottom: 24px;
   padding-left: 24px;
@@ -58,14 +54,17 @@ h1 {
 
 .report-summary .row .details .username {
   margin-right: 24px;
-  min-width: 116px;
+  white-space: nowrap;
 }
 
 .review-report-container {
-  background-color: #f9f9f9;
-  border-top: 1px solid #dadce0;
   display: flex;
+  justify-content: space-between;
   height: 100%;
+}
+.report-content-wrapper{
+  background-color: #EAEFFF;
+
 }
 
 .report-contents {
@@ -82,7 +81,7 @@ h1 {
 }
 
 .show-comments-button {
-  color: #b23c66;
+  color: #101BCF;
   font-size: 14px;
   font-weight: 500;
   padding-left: 8px;
@@ -145,7 +144,7 @@ h1 {
 
 .comments-container {
   max-height: 800px;
-  overflow-y: scroll;
+  overflow: scroll;
 }
 
 .remove-all-button {
@@ -156,4 +155,17 @@ h1 {
   mat-icon {
     margin-right: 5px;
   }
+}
+
+@media screen and (min-width: 1152px) {
+.review-report-container{
+   max-width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.report-summary{
+  min-width: 280px;
+
+}
+
 }

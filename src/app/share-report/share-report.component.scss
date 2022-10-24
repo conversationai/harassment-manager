@@ -14,9 +14,15 @@
  * limitations under the License.
  */
 
+ .share-report-wrapper{
+  background-color:#EAEFFF ;
+ }
 .container {
   display: flex;
   height: 100%;
+   max-width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .report-preview {
@@ -54,11 +60,35 @@
   font-size: 16px;
   line-height: 21px;
   margin-bottom: 12px;
+
+  a {
+    text-decoration: none;
+  }
 }
 
 .card-body.small-text {
   color: #70757a;
   font-size: 13px;
+}
+
+.action-btn{
+  background-color: #101BCF;
+  color: white;
+  .prefix-icon{
+    color: white;
+  }
+}
+
+app-dropdown-button{
+  // this needs to be styled in isolation
+    ::ng-deep .save-button{
+    background-color: #101BCF;
+    color: white;
+
+    a{
+      color: white;
+    }
+  }
 }
 
 pdf-viewer {
@@ -112,7 +142,7 @@ pdf-viewer {
 }
 
 .prefix-icon {
-  color: #a54167;
+  color: #101BCF;
   margin-right: 8px;
 }
 
