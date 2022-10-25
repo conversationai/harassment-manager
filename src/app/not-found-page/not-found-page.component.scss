@@ -1,0 +1,90 @@
+/**
+ * Copyright 2022 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+@use 'sass:math';
+
+:host {
+  background-color: #eaefff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 90vh;
+}
+
+.header {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 20px;
+  position: relative;
+  row-gap: 20px;
+
+  h1,
+  p {
+    margin: 0;
+  }
+
+  p {
+    font-size: 20px;
+    line-height: math.div(27, 20);
+  }
+
+  button {
+    background-color: #101bcf;
+    border: 2px solid #101bcf;
+    border-radius: 13px;
+    color: #ffffff;
+    font-size: 20px;
+    line-height: math.div(27, 20);
+  }
+  button:focus-visible {
+    outline: none;
+  }
+}
+
+@media all and (min-width: 768px) {
+  .header {
+    height: 232px;
+    margin: 0 auto;
+    max-width: 728px;
+    padding: 0;
+    text-align: left;
+    width: 100%;
+  }
+}
+
+@media all and (min-width: 1152px) {
+  .header {
+    height: 300px;
+    max-width: 1024px;
+
+    h1 {
+      font-size: 64px;
+      line-height: math.div(92, 64);
+    }
+  }
+}
+
+@media all and (min-width: 1440px) {
+  .header {
+    height: 327px;
+    max-width: 1144px;
+
+    h1 {
+      font-size: 73px;
+      line-height: math.div(92, 73);
+    }
+  }
+}
