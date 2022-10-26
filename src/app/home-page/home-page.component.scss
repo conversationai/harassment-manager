@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+@use 'sass:math';
+
 .action-button {
   margin-top: 30px;
 }
@@ -22,27 +24,23 @@ section {
   display: flex;
 }
 
-h1,
-h2 {
-  font-weight: 500;
-}
-
 .jumbotron {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  padding: 0 20px;
+  padding: 40px 20px;
   margin-bottom: 30px;
 
   h1 {
-    font-size: 30px;
+    font-size: 36px;
+    line-height: math.div(27, 36);
+    margin-bottom: 20px;
   }
-
-  h1,
   h2 {
-    margin-bottom: 10px;
-    padding-top: 30px;
-    font-weight: bold;
+    font-size: 27px;
+    line-height: math.div(27, 27);
+    margin-bottom: 12px;
+    margin-top: 20px;
   }
 }
 
@@ -83,7 +81,7 @@ h2 {
 }
 
 .subtitle {
-  color: #202124;
+  color: #212121;
   font-size: 14px;
   padding-bottom: 15px;
 
@@ -199,6 +197,16 @@ app-recommended-report-card {
 @media all and (min-width: 1152px) {
   .jumbotron {
     max-width: 1024px;
+    padding: 60px 0;
+
+    h2 {
+      margin-top: 30px;
+    }
+  }
+
+  .subtitle {
+    font-size: 20px;
+    line-height: math.div(27, 20);
   }
 }
 
