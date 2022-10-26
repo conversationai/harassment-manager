@@ -16,7 +16,7 @@
 
 .close-button {
   border: none;
-  color: #3C4043;
+  color: #3c4043;
 }
 
 .content-container {
@@ -37,7 +37,11 @@
   border-radius: 20px;
   box-shadow: none;
   color: black;
-  width: 550px;
+  width: auto;
+
+  @media all and (min-width: 768px) {
+    width: 550px;
+  }
 }
 
 .loading-dialog button {

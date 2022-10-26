@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+@use 'sass:math';
+
 .action-button {
   margin-top: 30px;
 }
@@ -22,26 +24,23 @@ section {
   display: flex;
 }
 
-h1,
-h2 {
-  font-weight: 500;
-}
-
 .jumbotron {
-  background: #f7f8f8;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  padding: 0 150px 50px 150px;
+  padding: 40px 20px;
+  margin-bottom: 30px;
 
   h1 {
-    font-size: 30px;
+    font-size: 36px;
+    line-height: math.div(27, 36);
+    margin-bottom: 20px;
   }
-
-  h1,
   h2 {
-    margin-bottom: 10px;
-    padding-top: 30px;
+    font-size: 27px;
+    line-height: math.div(27, 27);
+    margin-bottom: 12px;
+    margin-top: 20px;
   }
 }
 
@@ -82,7 +81,7 @@ h2 {
 }
 
 .subtitle {
-  color: #202124;
+  color: #212121;
   font-size: 14px;
   padding-bottom: 15px;
 
@@ -109,20 +108,14 @@ h2 {
 
 .recommended-report-cards {
   display: flex;
+  justify-content: space-between;
   padding-bottom: 8px; // Temp fix for container height too small for child's shadow.
   padding-left: 2px; //  Temp fix for container width too small for child's shadow.
   scroll-behavior: smooth;
   scrollbar-width: none; /* Firefox */
   width: 100%;
+  flex-wrap: wrap;
 }
-
-// If the screen is small enough, wrap the cards.
-@media screen and (max-width: 1340px) {
-  .recommended-report-cards {
-    flex-wrap: wrap;
-  }
-}
-
 
 .recommended-report-cards::-webkit-scrollbar {
   background: transparent; /* Optional: just make scrollbar invisible */
@@ -130,7 +123,7 @@ h2 {
 }
 
 app-recommended-report-card {
-  margin-right: 24px;
+  width: 100%;
 }
 
 .arrow {
@@ -150,7 +143,7 @@ app-recommended-report-card {
 
 .additional-definition {
   align-items: center;
-  color: #b23c66;
+  color: #101bcf;
   display: inline-flex;
 }
 
@@ -172,21 +165,58 @@ app-recommended-report-card {
   z-index: 1001; // Above the overlay backdrop
 }
 
-// Once all the cards don't fit on the screen, reduce the width.
-@media screen and (max-width: 1440px) {
-  .highlight-card {
-    left: 400px;
-    width: 390px;
-  }
-}
-
 .elevate {
   position: relative;
   z-index: 1002; // Above the overlay backdrop and the highlight card.
 }
 
 .recommended-cards-wrapper {
-  overflow: visible;
+  overflow: hidden;
   position: relative;
   width: 100%;
+}
+
+@media all and (min-width: 768px) {
+  .jumbotron {
+    max-width: 728px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
+    padding-right: 0;
+
+    app-recommended-report-card {
+      width: auto;
+    }
+
+    .recommended-cards-wrapper {
+      overflow: visible;
+    }
+  }
+}
+
+@media all and (min-width: 1152px) {
+  .jumbotron {
+    max-width: 1024px;
+    padding: 60px 0;
+
+    h2 {
+      margin-top: 30px;
+    }
+  }
+
+  .subtitle {
+    font-size: 20px;
+    line-height: math.div(27, 20);
+  }
+}
+
+@media all and (min-width: 1440px) {
+  .jumbotron {
+    max-width: 1144px;
+
+    .highlight-card {
+      left: 400px;
+      width: 390px;
+    }
+  }
 }
