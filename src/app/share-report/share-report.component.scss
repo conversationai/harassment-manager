@@ -20,9 +20,6 @@
 .container {
   display: flex;
   height: 100%;
-   max-width: 1024px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .report-preview {
@@ -172,4 +169,21 @@ pdf-viewer {
 
 .save-actions-button {
   width: 196px;
+}
+
+@media screen and (min-width: 768px) {
+ .container {
+    max-width: 728px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media screen and (min-width: 1152px) {
+
+
+ .container {
+   max-width: 1024px;
+  }
+
 }

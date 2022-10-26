@@ -156,12 +156,28 @@ h1 {
     margin-right: 5px;
   }
 }
+@media screen and (min-width: 768px) {
+.review-report-container{
+   max-width: 728px;
+    margin-left: auto;
+    margin-right: auto;
+    flex-direction: column;
+}
+.report-summary{
+
+  .details{
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+}
+
+}
 
 @media screen and (min-width: 1152px) {
 .review-report-container{
    max-width: 1024px;
-    margin-left: auto;
-    margin-right: auto;
+   flex-direction: row;
 }
 .report-summary{
   min-width: 280px;

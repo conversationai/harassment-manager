@@ -25,6 +25,10 @@
   flex: 1;
   flex-direction: column;
 }
+  .data-filter-section{
+    background-color: #EAEFFF;;
+  }
+
 
 .tweet-info {
   display: block;
@@ -343,7 +347,7 @@ mat-list-option .item-metadata,
   display: flex;
   flex: 1;
   flex-direction: column;
-  margin-bottom: 150px;
+  padding-bottom: 50px;
   // padding: 0 150px 5% 150px;
 }
 
@@ -484,19 +488,41 @@ mat-paginator {
   border: 2px solid #9da1a3;
   color: #9da1a3;
 }
+@media screen and (min-width: 768px) {
+  .view-comments-title, .view-comments-subtitle, .filters-container, .list-header
+  , .comments-list, .comments-nav
+  {
+    max-width: 728px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .filters-container {
+    flex-wrap: wrap;
+  }
+
+  .list-header {
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
+
+    .select-all{
+      width: 100%;
+    }
+  }
+
+  .list-header .view-controls .horizontal-divider {
+  display: none;
+}
+
+}
 
 @media screen and (min-width: 1152px) {
 
-  .data-filter-section{
-    background-color: #EAEFFF;;
-  }
 
   .view-comments-title, .view-comments-subtitle, .filters-container, .list-header
   , .comments-list, .comments-nav
   {
     max-width: 1024px;
-    margin-left: auto;
-    margin-right: auto;
   }
 
 }

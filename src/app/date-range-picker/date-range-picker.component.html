@@ -15,15 +15,12 @@
 -->
 
 <div class="container">
-  Show posts from
+  From
 
   <mat-form-field class="start-date">
     <mat-label class="visually-hidden">Start date</mat-label>
-    <input matInput
-           [max]="endDate.value"
-           [matDatepicker]="startDatePicker"
-           [formControl]="startDate"
-           (dateChange)="updateDateFilter()">
+    <input matInput [max]="endDate.value" [matDatepicker]="startDatePicker" [formControl]="startDate"
+      (dateChange)="updateDateFilter()">
     <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
     <mat-datepicker #startDatePicker></mat-datepicker>
   </mat-form-field>
@@ -32,12 +29,8 @@
 
   <mat-form-field class="end-date">
     <mat-label class="visually-hidden">End date</mat-label>
-    <input matInput
-           [min]="startDate.value"
-           [max]="maxDate"
-           [matDatepicker]="maxDatePicker"
-           [formControl]="endDate"
-           (dateChange)="updateDateFilter()">
+    <input matInput [min]="startDate.value" [max]="maxDate" [matDatepicker]="maxDatePicker" [formControl]="endDate"
+      (dateChange)="updateDateFilter()">
     <mat-datepicker-toggle matSuffix [for]="maxDatePicker"></mat-datepicker-toggle>
     <mat-datepicker #maxDatePicker></mat-datepicker>
   </mat-form-field>
