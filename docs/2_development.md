@@ -50,10 +50,10 @@ The file will look something like
 ```
 
 4. If you or another developer on your team has not yet updated the `CLIENT_ID`
-   field in [GapiService](../src/app/gapi.service.ts), copy the value from the
-   `client_id` in the `credentials.json` file above into the `CLIENT_ID` field.
-   It will look something like
-   <long string of characters>.apps.googleusercontent.com.
+   field in [OauthApiService](../src/app/oauth_api.service.ts), copy the value
+   from the `client_id` in the `credentials.json` file above into the
+   `CLIENT_ID` field. It will look something like <long string of
+   characters>.apps.googleusercontent.com.
 
 ## 4. Create a Firebase service account key
 
