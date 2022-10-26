@@ -15,7 +15,6 @@
 -->
 
 <mat-toolbar class="toolbar">
-
   <mat-toolbar-row class="toolbar-row">
     <a routerLink="/home" class="title-wrapper">
       <div class="icon-placeholder"></div>
@@ -27,35 +26,30 @@
     </ng-container>
   </mat-toolbar-row>
 
-
-  <mat-toolbar-row class="signed-in-toolbar-wrapper" *ngIf="userIsSignedIn">
-    <div class="signed-in-toolbar  toolbar-row  ">
-      <div class="nav-links nav-item">
-        <a routerLinkActive="active-router-link" routerLink="/home" #homeLink role="link"
-          [attr.aria-current]="homeLink.routerLinkActive ? 'page' : false">
-          <span class="text">Home</span>
-          <img src="/red_ellipse.svg" />
-        </a>
-        <a routerLinkActive="active-router-link" [routerLink]="getCreateReportRouterLink()" #createReportLink
-          [attr.aria-current]="createReportLink.routerLinkActive ? 'page' : false">
-          <span class="text">Create Report</span>
-          <img src="/red_ellipse.svg" />
-        </a>
-        <a routerLinkActive="active-router-link" routerLink="/find-support" #findSupportLink
-          [attr.aria-current]="findSupportLink.routerLinkActive ? 'page' : false" class="find-support">
-          <span class="text">Find Support</span>
-          <img src="/red_ellipse.svg" />
-        </a>
-      </div>
-      <div class="sign-out-button-wrapper nav-item">
-        <a class="sign-out-button" (click)="revokeAuthorization()">
-          <span class="text">Sign out</span>
-        </a>
-      </div>
+  <mat-toolbar-row class="toolbar-row toolbar-row-signed-in" *ngIf="userIsSignedIn">
+    <div class="nav-links nav-item">
+      <a routerLinkActive="active-router-link" routerLink="/home" #homeLink role="link"
+        [attr.aria-current]="homeLink.routerLinkActive ? 'page' : false">
+        <span class="text">Home</span>
+        <img src="/red_ellipse.svg" />
+      </a>
+      <a routerLinkActive="active-router-link" [routerLink]="getCreateReportRouterLink()" #createReportLink
+        [attr.aria-current]="createReportLink.routerLinkActive ? 'page' : false">
+        <span class="text">Create Report</span>
+        <img src="/red_ellipse.svg" />
+      </a>
+      <a routerLinkActive="active-router-link" routerLink="/find-support" #findSupportLink
+        [attr.aria-current]="findSupportLink.routerLinkActive ? 'page' : false" class="find-support">
+        <span class="text">Find Support</span>
+        <img src="/red_ellipse.svg" />
+      </a>
     </div>
-
+    <div class="nav-links nav-item">
+      <button class="sign-out-button" (click)="revokeAuthorization()">
+        <span>Sign out</span>
+      </button>
+    </div>
   </mat-toolbar-row>
-
 
   <mat-toolbar-row class="toolbar-row" *ngIf="showBuildReportStepper">
     <div class="spacer">
@@ -112,6 +106,4 @@
       </div>
     </ng-template>
   </mat-toolbar-row>
-
-
 </mat-toolbar>

@@ -18,8 +18,11 @@
 .toolbar {
   background: #eaefff;
   color: #000000;
-  mat-toolbar-row {
+
+  .toolbar-row {
+    justify-content: space-between;
     padding: 0 20px;
+    position: relative;
   }
 
   .nav-item {
@@ -27,61 +30,10 @@
     display: flex;
     align-items: center;
   }
-
-  @media all and (min-width: 768px) {
-    .toolbar-row {
-      max-width: 728px;
-      margin-left: auto;
-      margin-right: auto;
-      padding-left: 0;
-      padding-right: 0;
-    }
-    .signed-in-toolbar {
-      .nav-links {
-        a {
-          margin: 0 40px 0 0;
-        }
-        .find-support {
-          display: flex;
-        }
-      }
-    }
-
-    .get-started-button {
-      display: initial;
-    }
-  }
-
-  @media all and (min-width: 1152px) {
-    .toolbar-row {
-      max-width: 1024px;
-    }
-  }
-
-  @media all and (min-width: 1440px) {
-    .toolbar-row {
-      max-width: 1144px;
-    }
-  }
-}
-mat-toolbar-row {
-  padding: 0;
 }
 
 .spacer {
   flex: 1;
-}
-
-.sign-out-button-wrapper {
-  display: flex;
-  flex: 1;
-  justify-content: flex-end;
-  color: #ffffff;
-
-  .sign-out-button {
-    border: none;
-    padding: 0;
-  }
 }
 
 .title {
@@ -105,28 +57,6 @@ mat-toolbar-row {
   display: flex;
   justify-content: center;
   height: 100%;
-}
-
-.navigation-links a {
-  align-items: center;
-  color: #4a4a4a;
-  display: flex;
-  font-size: 14px;
-  font-weight: 500;
-  padding: 0 20px;
-  text-decoration: none;
-
-  &.active-router-link {
-    color: #b23c66;
-  }
-
-  &:focus {
-    background: rgba(0, 0, 0, 0.12);
-  }
-
-  &:hover {
-    color: #121112;
-  }
 }
 
 .continue-section {
@@ -216,11 +146,6 @@ mat-toolbar-row {
   margin-bottom: 8px;
 }
 
-.toolbar-row {
-  justify-content: space-between;
-  position: relative;
-}
-
 .highlight-continue-button {
   background-color: #ffffff;
   border-radius: 30px;
@@ -245,32 +170,45 @@ mat-toolbar-row {
   text-align: right;
 }
 
-.signed-in-toolbar {
+.toolbar-row-signed-in {
   display: flex;
   width: 100%;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   height: 80px;
+  position: relative;
 
   .nav-links {
     display: flex;
     z-index: 1;
     height: 100%;
-    a:first-of-type {
-      width: 60px;
-    }
-    a {
+
+    a,
+    button {
+      background: none;
+      border: none;
       color: #ffffff;
-      text-decoration: none;
-      margin: 0 20px 0 0;
       display: flex;
-      width: 120px;
       height: 50%;
+      margin: 0 20px 0 0;
+      padding: 0;
+      text-decoration: none;
+      width: 120px;
 
       img {
         display: none;
       }
+      span {
+        font-family: 'Merriweather', serif;
+        font-size: 22px;
+        font-weight: 700;
+        line-height: math.div(28, 22);
+      }
     }
+    a:first-of-type {
+      width: 60px;
+    }
+
     .active-router-link {
       .text {
         border-bottom: 5px solid #da2732;
@@ -289,11 +227,73 @@ mat-toolbar-row {
     }
   }
 }
-
-.signed-in-toolbar-wrapper {
+.toolbar-row-signed-in::before {
   background-color: #1625d9;
   background-image: url('~src/assets/help_center_bg.svg');
   background-repeat: no-repeat;
   background-size: 100%;
-  height: 80px;
+  content: '';
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+@media all and (min-width: 768px) {
+  .toolbar {
+    .toolbar-row {
+      max-width: 728px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .get-started-button {
+      display: initial;
+    }
+  }
+
+  .toolbar-row-signed-in::before {
+    left: calc((728px - 100vw) / 2);
+    right: calc((728px - 100vw) / 2);
+  }
+}
+
+@media all and (min-width: 1152px) {
+  .toolbar {
+    .toolbar-row {
+      max-width: 1024px;
+    }
+  }
+
+  .toolbar-row-signed-in {
+    .nav-links {
+      a {
+        margin: 0 40px 0 0;
+      }
+
+      .find-support {
+        display: flex;
+      }
+    }
+  }
+  .toolbar-row-signed-in::before {
+    left: calc((1024px - 100vw) / 2);
+    right: calc((1024px - 100vw) / 2);
+  }
+}
+
+@media all and (min-width: 1440px) {
+  .toolbar {
+    .toolbar-row {
+      max-width: 1144px;
+    }
+  }
+
+  .toolbar-row-signed-in::before {
+    left: calc((1144px - 100vw) / 2);
+    right: calc((1144px - 100vw) / 2);
+  }
 }
