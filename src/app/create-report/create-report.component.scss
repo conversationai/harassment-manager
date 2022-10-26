@@ -26,7 +26,8 @@
   flex-direction: column;
 }
   .data-filter-section{
-    background-color: #EAEFFF;;
+    background-color: #EAEFFF;
+    padding: 0 20px;
   }
 
 
@@ -46,6 +47,8 @@
   justify-content: space-between;
   padding: 12px 0 18px 0;
   position: relative;
+  flex-wrap: wrap;
+
 }
 
 .filters-container > * {
@@ -70,7 +73,8 @@ app-filter-dropdown {
 }
 
 .toxicity-range-dropdown {
-  width: 280px;
+  // width: 280px
+  width: auto;
 }
 
 /*
@@ -174,10 +178,11 @@ mat-list-option .date-filter {
 }
 
 .list-header {
-  align-items: center;
+  // align-items: center;
   color: #4a4a4a;
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
+  flex-direction: column-reverse;
   font-size: 12px;
   justify-content: space-between;
   padding-right: 16px;
@@ -189,6 +194,8 @@ mat-list-option .date-filter {
   align-items: center;
   display: flex;
   position: relative;
+      flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .horizontal-divider {
@@ -201,6 +208,7 @@ mat-list-option .date-filter {
 
 .list-header .view-controls .horizontal-divider {
   height: 1em;
+  display: none;
 }
 
 .options-dropdown {
@@ -243,13 +251,17 @@ mat-list-option .date-filter {
   display: flex;
   justify-content: center;
   white-space: nowrap;
-  width: 300px;
+  // width: 300px;
+  width: auto;
+
 }
 
 .select-all {
   align-items: center;
   display: flex;
-  padding-left: 40px;
+      width: 100%;
+    padding: 0;
+  // padding-left: 40px;
 }
 
 .comment-count {
@@ -258,7 +270,10 @@ mat-list-option .date-filter {
 
 .comment-count-info {
   align-items: center;
-  display: flex;
+  // display: flex;
+
+  // Hide by default and show in desktop view.
+  display: none;
   position: relative;
 }
 
@@ -347,8 +362,8 @@ mat-list-option .item-metadata,
   display: flex;
   flex: 1;
   flex-direction: column;
-  padding-bottom: 50px;
-  // padding: 0 150px 5% 150px;
+  padding: 0 20px;
+  padding-bottom: 20px + 30;
 }
 
 // Once the text starts to wrap decrease the left/right padding.

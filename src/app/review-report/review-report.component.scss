@@ -27,7 +27,8 @@ h1 {
   font-size: 14px;
   height: fit-content;
   line-height: 30px;
-  margin-right: 30px;
+  // margin-right: 30px;
+  margin-right: 0;
   margin-top: 16px;
   padding-bottom: 24px;
   padding-left: 24px;
@@ -61,6 +62,8 @@ h1 {
   display: flex;
   justify-content: space-between;
   height: 100%;
+  padding: 0 20px;
+  flex-direction: column;
 }
 .report-content-wrapper{
   background-color: #EAEFFF;
@@ -72,6 +75,7 @@ h1 {
   font-size: 14px;
   margin-right: 32px;
   margin-top: 22px;
+  padding-left: 24px;
 }
 
 .report-contents h2 {
@@ -90,6 +94,11 @@ h1 {
 .report-reasons mat-checkbox {
   display: block;
   margin-bottom: 8px;
+
+  // this needs to be styled in isolation
+    ::ng-deep .mat-checkbox-label{
+      white-space: break-spaces;
+  }
 }
 
 .dependent-checkbox {

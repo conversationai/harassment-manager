@@ -17,21 +17,28 @@
  .share-report-wrapper{
   background-color:#EAEFFF ;
  }
+ // hide pdf view by default
+ app-report-pdf{
+  display: none;
+ }
 .container {
   display: flex;
   height: 100%;
+  padding: 0 20px;
 }
 
 .report-preview {
   background-color: #d0d0d0;
-  display: flex;
+  // display: flex;
+  display: none;
   justify-content: center;
   width: calc(100% - 500px); // 100% - width of actions-container
 }
 
 .actions-container {
   background-color: #f9f9f9;
-  width: 500px;
+  // width: 500px;
+  width: auto;
 }
 
 .image-container {
@@ -42,7 +49,7 @@
   display: flex;
   padding: 20px 24px 18px 25px;
   margin: 24px 28px;
-  width: 375px;
+  // width: 375px;
 }
 
 .card-title {
