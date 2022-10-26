@@ -14,21 +14,25 @@
  * limitations under the License.
  */
 
+@use 'sass:math';
+
 h2 {
-  color: rgba(0, 0, 0, 0.87);
+  color: #000000;
   margin-bottom: 6px;
   margin-top: 6px;
   padding-left: 16px;
+  text-transform: capitalize;
 }
 
 img {
-  height: 50px;
+  height: 32px;
   padding-top: 5px;
 }
 
 .description {
-  color: #70757a;
+  color: #000000;
   font-size: 14px;
+  line-height: math.div(27, 14);
   padding-left: 16px;
 }
 
@@ -45,39 +49,52 @@ img {
 }
 
 .horizontal-divider {
-  background-color: #e8eaed;
-  height: 1px;
-  margin: 12px 16px 12px 16px;
-  width: calc(100% - 32px);
+  background-color: #eaefff;
+  height: 2px;
+  margin: 12px 0;
 }
 
 mat-card {
-  width: 100%;
+  border-radius: 0;
   background-color: #d7dcec;
-  min-width: auto;
   margin-bottom: 14px;
 }
+mat-card:not([class*='mat-elevation-z']) {
+  box-shadow: none;
+}
 
+.view-comments-button,
+.add-all-to-report-button {
+  color: #494949;
+  font-size: 15px;
+  line-height: math.div(27, 15);
+  padding-left: 0;
+  padding-right: 0;
+  text-transform: none;
+
+  // mat-button have span wrapper
+  .mat-button-wrapper {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  img {
+    margin-right: 4px;
+    padding: 0;
+  }
+
+  span {
+    color: #494949;
+  }
+}
 .view-comments-button {
-  color: #494949 !important;
-}
-
-// Once all the cards don't fit on the screen, reduce the card width.
-@media screen and (max-width: 1440px) {
-  .two-buttons > button {
-    left: -10px;
-    padding-right: 0px;
+  img {
+    width: 22px;
   }
 }
-
-@media all and (min-width: 768px) {
-  mat-card {
-    width: 305px;
-  }
-
-  .comment-text-count{
-    font-size: 12px;
-    font-weight: bold;
+.add-all-to-report-button {
+  img {
+    width: 27px;
   }
 }
 
@@ -85,13 +102,9 @@ mat-icon {
   margin-right: 6px;
 }
 
-button {
-  font-weight: 500;
-  text-transform: uppercase;
-}
-
 .buttons {
   display: flex;
+  justify-content: space-between;
 }
 
 .report-data-contents {
@@ -123,5 +136,23 @@ button {
 }
 
 .loading-color {
-  color: #70757a;
+  color: #494949;
+}
+
+@media all and (min-width: 768px) {
+  mat-card {
+    width: 305px;
+  }
+}
+
+@media screen and (min-width: 1152px) {
+  h2 {
+    font-size: 26px;
+    line-height: math.div(27, 26);
+  }
+
+  .description {
+    font-size: 16px;
+    line-height: math.div(27, 16);
+  }
 }

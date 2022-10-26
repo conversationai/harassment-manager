@@ -34,16 +34,16 @@
 
   <div class="buttons" [class.two-buttons]="reportData.name==='High'">
     <button mat-button color="primary" class="view-comments-button" (click)="handleViewCommentsClicked()">
-      <mat-icon [class.loading-color]="loading">remove_red_eye</mat-icon>
+      <img src="/eye-icon.svg" alt="Eye.">
       <span *ngIf="loading" class="loading-span loading-color comment-text-count">Loading comments...</span>
       <span *ngIf="!loading" class="comment-text-count">{{viewCommentTextCommentCount}}</span>
     </button>
     <button mat-button class="add-all-to-report-button" color="primary"
       [disabled]="loading || addAllWasClicked || reportCommentsEmpty" (click)="handleAddToReportClicked()"
       *ngIf="!loading && reportData.name==='High'">
-      <mat-icon [svgIcon]="addAllIcon"></mat-icon>
-      <span *ngIf="!addAllWasClicked" class="comment-text-count">Add All to Report</span>
-      <span *ngIf="addAllWasClicked" class="comment-text-count">Added to Report</span>
+      <img src="/add-all-icon.svg" alt="Plus.">
+      <span *ngIf="!addAllWasClicked">Add all to Report</span>
+      <span *ngIf="addAllWasClicked">Added to Report</span>
     </button>
   </div>
 </mat-card>
