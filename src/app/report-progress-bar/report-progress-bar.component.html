@@ -14,60 +14,50 @@
  limitations under the License.
 -->
 
-<div class="progress-bar" [attr.aria-label]="inNavigation ? 'create report step navigation' : 'create report step progress bar'">
-  <button mat-button
-     class="step"
-     role="link"
-     routerLink="/create-report"
-     [class.active]="currentStep >= BuildReportStep.ADD_COMMENTS"
-     [attr.aria-selected]="inNavigation && currentStep === BuildReportStep.ADD_COMMENTS"
-     [disabled]="currentStep < BuildReportStep.ADD_COMMENTS">
+<div class="progress-bar"
+  [attr.aria-label]="inNavigation ? 'create report step navigation' : 'create report step progress bar'">
+  <button mat-button class="step" role="link" routerLink="/create-report"
+    [class.active]="currentStep >= BuildReportStep.ADD_COMMENTS"
+    [class.selected]="currentStep === BuildReportStep.ADD_COMMENTS"
+    [attr.aria-selected]="inNavigation && currentStep === BuildReportStep.ADD_COMMENTS"
+    [disabled]="currentStep < BuildReportStep.ADD_COMMENTS">
     <span aria-label="Step 1" *ngIf="currentStep <= BuildReportStep.ADD_COMMENTS" class="step-number-icon">1</span>
-    <span class="completed-step-icon-container"
-          aria-label="Completed step"
-          *ngIf="currentStep > BuildReportStep.ADD_COMMENTS">
+    <span class="completed-step-icon-container" aria-label="Completed step"
+      *ngIf="currentStep > BuildReportStep.ADD_COMMENTS">
       <mat-icon>check_circle_filled</mat-icon>
     </span>
     Add Comments
   </button>
 
-  <div class="divider"
-       [class.half-filled]="currentStep === BuildReportStep.ADD_COMMENTS"
-       [class.filled]="currentStep > BuildReportStep.ADD_COMMENTS">
+  <div class="divider" [class.half-filled]="currentStep === BuildReportStep.ADD_COMMENTS"
+    [class.filled]="currentStep > BuildReportStep.ADD_COMMENTS">
   </div>
 
-  <button mat-button
-     class="step"
-     role="link"
-     routerLink="/review-report"
-     [class.active]="currentStep >= BuildReportStep.EDIT_DETAILS"
-     [attr.aria-selected]="inNavigation && currentStep === BuildReportStep.EDIT_DETAILS"
-     [disabled]="currentStep < BuildReportStep.EDIT_DETAILS">
+  <button mat-button class="step" role="link" routerLink="/review-report"
+    [class.active]="currentStep >= BuildReportStep.EDIT_DETAILS"
+    [class.selected]="currentStep === BuildReportStep.EDIT_DETAILS"
+    [attr.aria-selected]="inNavigation && currentStep === BuildReportStep.EDIT_DETAILS"
+    [disabled]="currentStep < BuildReportStep.EDIT_DETAILS">
     <span aria-label="Step 2" *ngIf="currentStep <= BuildReportStep.EDIT_DETAILS" class="step-number-icon">2</span>
-    <span class="completed-step-icon-container"
-          aria-label="Completed step"
-          *ngIf="currentStep > BuildReportStep.EDIT_DETAILS">
+    <span class="completed-step-icon-container" aria-label="Completed step"
+      *ngIf="currentStep > BuildReportStep.EDIT_DETAILS">
       <mat-icon>check_circle_filled</mat-icon>
     </span>
     Edit Details
   </button>
 
-  <div class="divider"
-       [class.half-filled]="currentStep === BuildReportStep.EDIT_DETAILS"
-       [class.filled]="currentStep > BuildReportStep.EDIT_DETAILS">
+  <div class="divider" [class.half-filled]="currentStep === BuildReportStep.EDIT_DETAILS"
+    [class.filled]="currentStep > BuildReportStep.EDIT_DETAILS">
   </div>
 
-  <button mat-button
-     class="step"
-     role="link"
-     routerLink="/share-report"
-     [class.active]="currentStep >= BuildReportStep.TAKE_ACTION"
-     [attr.aria-selected]="inNavigation && currentStep === BuildReportStep.TAKE_ACTION"
-     [disabled]="currentStep < BuildReportStep.TAKE_ACTION">
+  <button mat-button class="step" role="link" routerLink="/share-report"
+    [class.active]="currentStep >= BuildReportStep.TAKE_ACTION"
+    [class.selected]="currentStep === BuildReportStep.TAKE_ACTION"
+    [attr.aria-selected]="inNavigation && currentStep === BuildReportStep.TAKE_ACTION"
+    [disabled]="currentStep < BuildReportStep.TAKE_ACTION">
     <span aria-label="Step 3" *ngIf="currentStep <= BuildReportStep.TAKE_ACTION" class="step-number-icon">3</span>
-    <span class="completed-step-icon-container"
-          aria-label="Completed step"
-          *ngIf="currentStep > BuildReportStep.TAKE_ACTION">
+    <span class="completed-step-icon-container" aria-label="Completed step"
+      *ngIf="currentStep > BuildReportStep.TAKE_ACTION">
       <mat-icon>check_circle_filled</mat-icon>
     </span>
     Take Action

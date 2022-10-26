@@ -55,7 +55,7 @@
     <div class="spacer">
       <button mat-button [routerLink]="getBackButtonRouterLink()" class="box back-button"
         *ngIf="currentStep > BuildReportStep.ADD_COMMENTS">
-        <mat-icon class="back-icon">arrow_back</mat-icon>
+        <mat-icon class="back_icon" svgIcon="report_back_icon"></mat-icon>
         {{getBackButtonText()}}
       </button>
     </div>
@@ -73,9 +73,11 @@
             <mat-icon svgIcon="report_icon_white" class="report-icon">
             </mat-icon>
           </ng-container>
-          <mat-icon *ngIf="currentStep === BuildReportStep.TAKE_ACTION" class="close-icon">close</mat-icon>
           {{getReportButtonText()}}
-          <mat-icon *ngIf="currentStep < BuildReportStep.TAKE_ACTION" class="forward-icon">arrow_forward</mat-icon>
+          <mat-icon *ngIf="currentStep === BuildReportStep.TAKE_ACTION" class="close-icon">cancel</mat-icon>
+          <mat-icon *ngIf="currentStep < BuildReportStep.TAKE_ACTION" class="forward_icon"
+            svgIcon="report_forward_icon">
+          </mat-icon>
         </span>
       </button>
     </div>
