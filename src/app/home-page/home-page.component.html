@@ -22,7 +22,7 @@
 
 <mat-card *ngIf="shouldShowWelcomeBackCard" class="welcome-back-card">
   <div>
-    <h1>Welcome back<span *ngIf="name">, {{name}}</span>!</h1>
+    <h1>Welcome back<span *ngIf="name">,<br /> {{name}}</span>!</h1>
     <div class="welcome-back-subtitle">Continue from where you left off.</div>
     <app-report-progress-bar></app-report-progress-bar>
     <button mat-button class="action-button continue-report-button" (click)="continueReport()">
@@ -37,9 +37,9 @@
 </mat-card>
 
 <section class="jumbotron">
-  <h1>Add from today's comments</h1>
+  <h1>Review Comments</h1>
   <div class="subtitle">
-    Add comments that are categorized by
+    These results are categorised by
     <span class="additional-definition" #tooltip="matTooltip" matTooltip="Machine learning is the processs of using computers to learn based on data.
           This tool uses machine learning developed by Perspective API, which has been tested and
           trained to score comments based on their possible impact." matTooltipClass="toxicity-tooltip"
@@ -98,26 +98,13 @@
   </div>
   <div class="subtitle subtitle-bottom">
     <h2>Already know what you're looking for?</h2>
-    Use keywords and filters to find the comments you want to report.
+    These results are categorised by machine learning based on their likeliness of containing harmful content.
   </div>
-  <app-recommended-report-card [reportData]="recommendedReports[3]" [loading]="loadingRecommendedReports"
-    [error]="errorRecommendedReports" [name]="recommendedReports[3].description"
-    (viewCommentsClicked)="viewCommentsWithToxicityFilter(recommendedReports[3])">
-  </app-recommended-report-card>
-</section>
-<section class="content">
-  <div>
-    <h2>You're not alone</h2>
-    <div>
-      Dealing with harmful content can be tough.
-    </div>
-    <div>
-      Discover resources to help you along the way.
-    </div>
-    <button mat-flat-button class="action-button" routerLink="/find-support">
-      View Support Resources
-    </button>
+  <div class="recommended-cards-wrapper">
+    <app-recommended-report-card [reportData]="recommendedReports[3]" [loading]="loadingRecommendedReports"
+      [error]="errorRecommendedReports" [name]="recommendedReports[3].description"
+      (viewCommentsClicked)="viewCommentsWithToxicityFilter(recommendedReports[3])">
+    </app-recommended-report-card>
   </div>
-  <img class="not-alone-image" src="/climb_mountain.svg"
-    alt="Someone reaching out a hand to help someone else climb up a mountain of shapes.">
+
 </section>
