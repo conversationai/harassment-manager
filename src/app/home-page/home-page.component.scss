@@ -44,34 +44,6 @@ h2 {
     padding-top: 30px;
     font-weight: bold;
   }
-
-  @media all and (min-width: 768px) {
-    max-width: 728px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 0;
-    padding-right: 0;
-
-    app-recommended-report-card {
-      width: auto !important;
-      margin-bottom: 14px;
-    }
-    .recommended-cards-wrapper {
-      overflow: visible;
-    }
-  }
-
-  @media all and (min-width: 1152px) {
-    max-width: 1024px;
-  }
-  @media all and (min-width: 1440px) {
-    max-width: 1144px;
-
-    .highlight-card {
-      left: 400px;
-      width: 390px;
-    }
-  }
 }
 
 .welcome-back-card {
@@ -204,4 +176,39 @@ app-recommended-report-card {
   overflow: hidden;
   position: relative;
   width: 100%;
+}
+
+@media all and (min-width: 768px) {
+  .jumbotron {
+    max-width: 728px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
+    padding-right: 0;
+
+    app-recommended-report-card {
+      width: auto;
+    }
+
+    .recommended-cards-wrapper {
+      overflow: visible;
+    }
+  }
+}
+
+@media all and (min-width: 1152px) {
+  .jumbotron {
+    max-width: 1024px;
+  }
+}
+
+@media all and (min-width: 1440px) {
+  .jumbotron {
+    max-width: 1144px;
+
+    .highlight-card {
+      left: 400px;
+      width: 390px;
+    }
+  }
 }

@@ -55,9 +55,11 @@ img {
 }
 
 mat-card {
-  border-radius: 0;
   background-color: #d7dcec;
+  border-radius: 0;
+  box-sizing: border-box;
   margin-bottom: 14px;
+  width: 100%;
 }
 mat-card:not([class*='mat-elevation-z']) {
   box-shadow: none;
@@ -141,11 +143,15 @@ mat-icon {
 
 @media all and (min-width: 768px) {
   mat-card {
-    width: 305px;
+    width: 357px;
   }
 }
 
 @media screen and (min-width: 1152px) {
+  mat-card {
+    width: 335px;
+  }
+
   h2 {
     font-size: 26px;
     line-height: math.div(27, 26);
@@ -154,5 +160,11 @@ mat-icon {
   .description {
     font-size: 16px;
     line-height: math.div(27, 16);
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  mat-card {
+    width: 367px;
   }
 }
