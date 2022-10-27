@@ -65,7 +65,7 @@ interface ReportTableBodyContent {
   hiddenLinks: Map<string, string>;
 }
 
-const TABLE_ACCENT_COLOR = '#A54167';
+const TABLE_ACCENT_COLOR = '#101BCF';
 const BORDER_COLUMN = ''; // Used to style border between columns.
 
 const DISPLAYED_COLUMNS_TWITTER: string[] = [
@@ -373,7 +373,7 @@ export class PdfService {
     const columnStyles = COLUMN_STYLES_TWITTER;
     const displayedRowText = tableBodyContent.displayedRowText;
     doc.addPage();
-    doc.addImage('pdf_table_header.png', 'PNG', 14, 10, 270, 23);
+    doc.addImage('safenet_table_header.png', 'PNG', 14, 10, 270, 23);
     autoTable(doc, {
       theme: 'grid',
       // Shift the table down on the first page so the inserted image isn't covered.

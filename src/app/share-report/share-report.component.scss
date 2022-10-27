@@ -184,6 +184,21 @@ pdf-viewer {
     margin-left: auto;
     margin-right: auto;
   }
+  
+  app-report-pdf{
+    display: block;
+  }
+  .actions-container {
+  width: 400px;
+  }
+
+  .report-preview {
+    display: flex; 
+    width: calc(100% - 400px); // 100% - width of actions-container
+
+  }
+
+
 }
 
 @media screen and (min-width: 1152px) {
@@ -191,6 +206,22 @@ pdf-viewer {
 
  .container {
    max-width: 1024px;
+  }
+  .actions-container {
+    width: 500px;
+  }
+
+  .report-preview {
+    display: flex; 
+    width: calc(100% - 500px); // 100% - width of actions-container
+
+  }
+
+}
+
+@media screen and (min-width: 1440px) {
+ .container {
+   max-width: 1144px;
   }
 
 }
