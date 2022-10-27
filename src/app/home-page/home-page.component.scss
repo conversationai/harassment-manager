@@ -80,6 +80,8 @@ section {
     ::ng-deep .progress-bar{
       display: flex;
       justify-content: space-between;
+      flex-wrap: wrap;
+
 
       .step{
         font-size: 14px;
@@ -217,8 +219,6 @@ app-recommended-report-card {
   app-report-progress-bar {
     // this needs to be styled in isolation
     ::ng-deep .progress-bar{
-      flex-wrap: wrap;
-
       .step{
         font-size: 14px;
       }

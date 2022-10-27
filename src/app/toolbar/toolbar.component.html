@@ -66,6 +66,7 @@
       <button mat-stroked-button class="continue-button" [class.elevate]="onboarding" cdkOverlayOrigin
         #anchor="cdkOverlayOrigin" [class.active-router-link]="getStepperButtonActive()"
         [disabled]="!getStepperButtonActive()" (click)="onStepperButtonClick()"
+        [class.close-button]="currentStep === BuildReportStep.TAKE_ACTION"
         [attr.aria-label]="getReportButtonA11yLabel()">
         <span>
           <ng-container *ngIf="currentStep === BuildReportStep.ADD_COMMENTS">
@@ -74,8 +75,9 @@
             </mat-icon>
           </ng-container>
           {{getReportButtonText()}}
-          <mat-icon *ngIf="currentStep === BuildReportStep.TAKE_ACTION" class="close-icon">cancel</mat-icon>
-          <mat-icon *ngIf="currentStep < BuildReportStep.TAKE_ACTION" class="forward_icon"
+          <mat-icon *ngIf="currentStep === BuildReportStep.TAKE_ACTION" class="close-icon" svgIcon="report_close_icon">
+          </mat-icon>
+          <mat-icon *ngIf="currentStep < BuildReportStep.TAKE_ACTION" class="forward-icon"
             svgIcon="report_forward_icon">
           </mat-icon>
         </span>

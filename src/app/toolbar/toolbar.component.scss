@@ -41,6 +41,10 @@ app-report-progress-bar {
           display: none;
         }
 
+        .divider{
+          width: 30px;
+        }
+
         .divider:not(.half-filled){
           display: none;
         }
@@ -125,6 +129,9 @@ app-report-progress-bar {
   color: #101bcf;
   margin-right: 10px;
   z-index: 2; // above the stepper
+  padding: 0;
+  margin: 0;
+
 }
 
 .forward-icon,
@@ -133,6 +140,16 @@ app-report-progress-bar {
   color: #101bcf;
   display: flex;
 }
+
+.close-button{
+  background-color: #DA2732 !important;
+  color: #ffffff !important;
+  .close-icon{
+    color: #ffffff !important;
+  }
+}
+
+
 
 .forward-icon,
 .close-icon 
@@ -143,10 +160,6 @@ app-report-progress-bar {
 .close-icon,
 .report-icon {
   margin-right: 4px;
-}
-
-.forward-icon {
-  margin-left: 4px;
 }
 
 .report-icon {
@@ -288,6 +301,28 @@ app-report-progress-bar {
     left: calc((728px - 100vw) / 2);
     right: calc((728px - 100vw) / 2);
   }
+  app-report-progress-bar {
+   // this needs to be styled in isolation
+      ::ng-deep .progress-bar{
+
+        button {
+          padding: 0 8px;
+        }
+
+        button:not(.selected){
+          display: block;
+        }
+
+        .divider {
+          width: 40px;
+        }
+
+        .divider:not(.half-filled){
+          display: block;
+        }
+
+      }
+}
 }
 
 @media all and (min-width: 1152px) {
@@ -312,6 +347,18 @@ app-report-progress-bar {
     left: calc((1024px - 100vw) / 2);
     right: calc((1024px - 100vw) / 2);
   }
+
+    app-report-progress-bar {
+   // this needs to be styled in isolation
+      ::ng-deep .progress-bar{
+
+        .divider {
+          width: 86px;
+        }
+      }
+}
+
+
 }
 
 @media all and (min-width: 1440px) {
