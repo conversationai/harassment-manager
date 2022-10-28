@@ -14,13 +14,15 @@
  * limitations under the License.
  */
 
- .share-report-wrapper{
-  background-color:#EAEFFF ;
- }
- // hide pdf view by default
- app-report-pdf{
+.share-report-wrapper {
+  background-color: #EAEFFF;
+}
+
+// hide pdf view by default
+app-report-pdf {
   display: none;
- }
+}
+
 .container {
   display: flex;
   height: 100%;
@@ -29,7 +31,6 @@
 
 .report-preview {
   background-color: #d0d0d0;
-  // display: flex;
   display: none;
   justify-content: center;
   width: calc(100% - 500px); // 100% - width of actions-container
@@ -37,7 +38,6 @@
 
 .actions-container {
   background-color: #f9f9f9;
-  // width: 500px;
   width: auto;
 }
 
@@ -49,7 +49,6 @@
   display: flex;
   padding: 20px 24px 18px 25px;
   margin: 24px 28px;
-  // width: 375px;
 }
 
 .card-title {
@@ -75,21 +74,23 @@
   font-size: 13px;
 }
 
-.action-btn{
+.action-btn {
   background-color: #101BCF;
   color: white;
-  .prefix-icon{
+
+  .prefix-icon {
     color: white;
   }
 }
 
-app-dropdown-button{
+app-dropdown-button {
+
   // this needs to be styled in isolation
-    ::ng-deep .save-button{
+  ::ng-deep .save-button {
     background-color: #101BCF;
     color: white;
 
-    a{
+    a {
       color: white;
     }
   }
@@ -97,10 +98,8 @@ app-dropdown-button{
 
 pdf-viewer {
   display: block;
-  height: max(
-    100vh,
-    930px
-  ); // 930px is the height of the action panel on the right for Twitter
+  height: max(100vh,
+      930px); // 930px is the height of the action panel on the right for Twitter
   width: 100%;
 }
 
@@ -179,21 +178,22 @@ pdf-viewer {
 }
 
 @media screen and (min-width: 768px) {
- .container {
+  .container {
     max-width: 728px;
     margin-left: auto;
     margin-right: auto;
   }
-  
-  app-report-pdf{
+
+  app-report-pdf {
     display: block;
   }
+
   .actions-container {
-  width: 400px;
+    width: 400px;
   }
 
   .report-preview {
-    display: flex; 
+    display: flex;
     width: calc(100% - 400px); // 100% - width of actions-container
 
   }
@@ -204,15 +204,16 @@ pdf-viewer {
 @media screen and (min-width: 1152px) {
 
 
- .container {
-   max-width: 1024px;
+  .container {
+    max-width: 1024px;
   }
+
   .actions-container {
     width: 500px;
   }
 
   .report-preview {
-    display: flex; 
+    display: flex;
     width: calc(100% - 500px); // 100% - width of actions-container
 
   }
@@ -220,8 +221,8 @@ pdf-viewer {
 }
 
 @media screen and (min-width: 1440px) {
- .container {
-   max-width: 1144px;
+  .container {
+    max-width: 1144px;
   }
 
 }

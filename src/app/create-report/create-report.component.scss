@@ -25,10 +25,11 @@
   flex: 1;
   flex-direction: column;
 }
-  .data-filter-section{
-    background-color: #EAEFFF;
-    padding: 0 20px;
-  }
+
+.data-filter-section {
+  background-color: #EAEFFF;
+  padding: 0 20px;
+}
 
 
 .tweet-info {
@@ -51,7 +52,7 @@
 
 }
 
-.filters-container > * {
+.filters-container>* {
   z-index: inherit;
 }
 
@@ -73,7 +74,6 @@ app-filter-dropdown {
 }
 
 .toxicity-range-dropdown {
-  // width: 280px
   width: auto;
 }
 
@@ -168,7 +168,8 @@ mat-list-option .date-filter {
   margin-top: 50px;
   text-align: start;
 }
-.view-comments-subtitle{
+
+.view-comments-subtitle {
   text-align: start;
   font-size: 20px;
 }
@@ -178,7 +179,6 @@ mat-list-option .date-filter {
 }
 
 .list-header {
-  // align-items: center;
   color: #4a4a4a;
   display: flex;
   flex-wrap: wrap;
@@ -194,8 +194,8 @@ mat-list-option .date-filter {
   align-items: center;
   display: flex;
   position: relative;
-      flex-wrap: wrap;
-    justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .horizontal-divider {
@@ -236,6 +236,7 @@ mat-list-option .date-filter {
   height: 30px;
   justify-content: space-between;
   margin-left: 10px;
+
   .mat-button-toggle-checked {
     color: #101BCF;
     background-color: rgba(209, 179, 195, 0.2);
@@ -251,7 +252,6 @@ mat-list-option .date-filter {
   display: flex;
   justify-content: center;
   white-space: nowrap;
-  // width: 300px;
   width: auto;
 
 }
@@ -259,9 +259,8 @@ mat-list-option .date-filter {
 .select-all {
   align-items: center;
   display: flex;
-      width: 100%;
-    padding: 0;
-  // padding-left: 40px;
+  width: 100%;
+  padding: 0;
 }
 
 .comment-count {
@@ -270,7 +269,6 @@ mat-list-option .date-filter {
 
 .comment-count-info {
   align-items: center;
-  // display: flex;
 
   // Hide by default and show in desktop view.
   display: none;
@@ -366,14 +364,8 @@ mat-list-option .item-metadata,
   padding-bottom: 20px + 30;
 }
 
-// Once the text starts to wrap decrease the left/right padding.
-@media screen and (max-width: 1200px) {
-  .items-wrapper {
-    // padding: 0 5% 5% 5%;
-  }
-}
-
 .list-header {
+
   button,
   mat-icon {
     background-repeat: no-repeat;
@@ -381,6 +373,7 @@ mat-list-option .item-metadata,
     color: #101BCF;
     vertical-align: middle;
   }
+
   .refresh {
     color: #757575;
   }
@@ -503,10 +496,15 @@ mat-paginator {
   border: 2px solid #9da1a3;
   color: #9da1a3;
 }
+
 @media screen and (min-width: 768px) {
-  .view-comments-title, .view-comments-subtitle, .filters-container, .list-header
-  , .comments-list, .comments-nav
-  {
+
+  .view-comments-title,
+  .view-comments-subtitle,
+  .filters-container,
+  .list-header,
+  .comments-list,
+  .comments-nav {
     max-width: 728px;
     margin-left: auto;
     margin-right: auto;
@@ -520,23 +518,26 @@ mat-paginator {
     flex-wrap: wrap;
     flex-direction: column-reverse;
 
-    .select-all{
+    .select-all {
       width: 100%;
     }
   }
 
   .list-header .view-controls .horizontal-divider {
-  display: none;
-}
+    display: none;
+  }
 
 }
 
 @media screen and (min-width: 1152px) {
 
 
-  .view-comments-title, .view-comments-subtitle, .filters-container, .list-header
-  , .comments-list, .comments-nav
-  {
+  .view-comments-title,
+  .view-comments-subtitle,
+  .filters-container,
+  .list-header,
+  .comments-list,
+  .comments-nav {
     max-width: 1024px;
   }
 

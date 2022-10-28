@@ -34,27 +34,24 @@
 }
 
 app-report-progress-bar {
-   // this needs to be styled in isolation
-      ::ng-deep .progress-bar{
 
-        button:not(.selected){
-          display: none;
-        }
+  // this needs to be styled in isolation
+  ::ng-deep .progress-bar {
 
-        .divider{
-          width: 30px;
-        }
+    button:not(.selected) {
+      display: none;
+    }
 
-        .divider:not(.half-filled){
-          display: none;
-        }
+    .divider {
+      width: 30px;
+    }
 
-      }
+    .divider:not(.half-filled) {
+      display: none;
+    }
+
+  }
 }
-
-// .spacer {
-//   flex: 1;
-// }
 
 .title {
   align-self: center;
@@ -98,7 +95,7 @@ app-report-progress-bar {
 
 .continue-button.active-router-link {
   color: #101bcf;
-   background-color: #ffffff;
+  background-color: #ffffff;
 }
 
 .get-started-button {
@@ -141,10 +138,11 @@ app-report-progress-bar {
   display: flex;
 }
 
-.close-button{
+.close-button {
   background-color: #DA2732 !important;
   color: #ffffff !important;
-  .close-icon{
+
+  .close-icon {
     color: #ffffff !important;
   }
 }
@@ -152,8 +150,7 @@ app-report-progress-bar {
 
 
 .forward-icon,
-.close-icon 
-{
+.close-icon {
   margin-left: 10px;
 }
 
@@ -240,6 +237,7 @@ app-report-progress-bar {
       img {
         display: none;
       }
+
       span {
         font-family: 'Merriweather', serif;
         font-size: 22px;
@@ -247,14 +245,12 @@ app-report-progress-bar {
         line-height: math.div(28, 22);
       }
     }
-    // a:first-of-type {
-    //   width: 60px;
-    // }
 
     .active-router-link {
       .text {
         border-bottom: 5px solid #da2732;
       }
+
       img {
         display: block;
         height: 29px;
@@ -263,12 +259,14 @@ app-report-progress-bar {
         margin-bottom: -12px;
       }
     }
+
     /*Hide find support button on mobile since it already is in footer */
     .find-support {
       display: none;
     }
   }
 }
+
 .toolbar-row-signed-in::before {
   background-color: #1625d9;
   background-image: url('~src/assets/help_center_bg.svg');
@@ -301,28 +299,30 @@ app-report-progress-bar {
     left: calc((728px - 100vw) / 2);
     right: calc((728px - 100vw) / 2);
   }
+
   app-report-progress-bar {
-   // this needs to be styled in isolation
-      ::ng-deep .progress-bar{
 
-        button {
-          padding: 0 8px;
-        }
+    // this needs to be styled in isolation
+    ::ng-deep .progress-bar {
 
-        button:not(.selected){
-          display: block;
-        }
-
-        .divider {
-          width: 40px;
-        }
-
-        .divider:not(.half-filled){
-          display: block;
-        }
-
+      button {
+        padding: 0 8px;
       }
-}
+
+      button:not(.selected) {
+        display: block;
+      }
+
+      .divider {
+        width: 40px;
+      }
+
+      .divider:not(.half-filled) {
+        display: block;
+      }
+
+    }
+  }
 }
 
 @media all and (min-width: 1152px) {
@@ -343,20 +343,22 @@ app-report-progress-bar {
       }
     }
   }
+
   .toolbar-row-signed-in::before {
     left: calc((1024px - 100vw) / 2);
     right: calc((1024px - 100vw) / 2);
   }
 
-    app-report-progress-bar {
-   // this needs to be styled in isolation
-      ::ng-deep .progress-bar{
+  app-report-progress-bar {
 
-        .divider {
-          width: 86px;
-        }
+    // this needs to be styled in isolation
+    ::ng-deep .progress-bar {
+
+      .divider {
+        width: 86px;
       }
-}
+    }
+  }
 
 
 }
