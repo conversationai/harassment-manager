@@ -85,6 +85,9 @@ import { IntroStepperComponent } from './intro-stepper/intro-stepper.component';
 import { LoadingDialogComponent } from './loading-dialog/loading-dialog.component';
 import { PdfService } from './pdf_service';
 import { PerspectiveApiService } from './perspectiveapi.service';
+import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
+import { OpportunitiesComponent } from './opportunities/opportunities.component';
+import { OpportunityCardComponent } from './opportunity-card/opportunity-card.component';
 import { RecommendedReportCardComponent } from './recommended-report-card/recommended-report-card.component';
 import { RegularExpressionFilterComponent } from './regular-expression-filter/regular-expression-filter.component';
 import { ReportCompleteComponent } from './report-complete/report-complete.component';
@@ -129,6 +132,9 @@ import { PrivacyPageComponent } from './privacy-page/privacy-page.component';
     HrefOnlyDownloadDirective,
     IntroStepperComponent,
     LoadingDialogComponent,
+    NotFoundPageComponent,
+    OpportunitiesComponent,
+    OpportunityCardComponent,
     RecommendedReportCardComponent,
     RegularExpressionFilterComponent,
     ReportCompleteComponent,

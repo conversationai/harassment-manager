@@ -28,6 +28,7 @@ import { FindSupportComponent } from './find-support/find-support.component';
 import { HelpCenterComponent } from './help-center/help-center.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { OauthApiService } from './oauth_api.service';
+import { OpportunitiesComponent } from './opportunities/opportunities.component';
 import { PrivacyPageComponent } from './privacy-page/privacy-page.component';
 import { ReportCompleteComponent } from './report-complete/report-complete.component';
 import { ReportPdfComponent } from './report-pdf/report-pdf.component';
@@ -135,6 +136,11 @@ export const routes: Routes = [
     path: 'help-center',
     component: HelpCenterComponent,
     data: { title: 'Help Center' },
+  },
+  {
+    path: 'opportunities',
+    component: OpportunitiesComponent,
+    data: { title: 'Opportunities' },
   },
   {
     path: 'review-report',
