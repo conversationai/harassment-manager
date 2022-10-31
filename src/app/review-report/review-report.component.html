@@ -48,7 +48,7 @@
         <span>We've hidden and summarized the full contents of your report. You can unhide this information at any
           time.</span>
         <button mat-button class="show-comments-button" (click)="showFullReport = !showFullReport">
-          <span>{{showFullReport ? 'Hide comments' : 'Show comments'}}</span>
+          <span class="comments-text">{{showFullReport ? 'Hide comments' : 'Show comments'}}</span>
           <mat-icon>{{showFullReport ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}</mat-icon>
         </button>
         <div *ngIf="showFullReport" class="comments-container">
@@ -75,7 +75,7 @@
 
       <div class="additional-notes">
         <h2>Additional notes</h2>
-        <div>
+        <div class="additional-notes-text">
           Add any details or context you want to record or share when you share this report.
         </div>
         <mat-form-field appearance="outline">

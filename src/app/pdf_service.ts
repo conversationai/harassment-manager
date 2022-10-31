@@ -230,7 +230,7 @@ export class PdfService {
       TITLE_DATE_FORMAT_OPTIONS
     );
     return (
-      `${this.username}'s Harassment Report From ${date} ` +
+      `${this.username}'s SafeNets Report From ${date} ` +
       `[Content Warning- Toxic Language]`
     );
   }

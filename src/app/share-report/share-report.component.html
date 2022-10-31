@@ -117,7 +117,7 @@
             <button mat-button class="hide-replies-button action-btn" color="primary"
               (click)="addAction(ReportAction.HIDE_REPLIES_TWITTER)" [disabled]="muteActionInProgress">
               <ng-container *ngIf="muteActionInProgress">
-                <mat-icon class="prefix-icon">visibility_off</mat-icon>
+                <mat-icon class="prefix-icon" svgIcon="hide_replies_icon"></mat-icon>
                 Hiding replies...
               </ng-container>
               <ng-container *ngIf="!muteActionInProgress">
@@ -126,7 +126,7 @@
                   Replies hidden
                 </ng-container>
                 <ng-container *ngIf="!actions.includes(ReportAction.HIDE_REPLIES_TWITTER)">
-                  <mat-icon class="prefix-icon">visibility_off</mat-icon>
+                  <mat-icon class="prefix-icon" svgIcon="hide_replies_icon"></mat-icon>
                   Hide replies
                 </ng-container>
               </ng-container>

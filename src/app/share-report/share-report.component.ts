@@ -167,11 +167,17 @@ export class ShareReportComponent implements AfterViewInit {
     this.matIconRegistry.addSvgIcon(
       'csv_icon',
       this.sanitizer.bypassSecurityTrustResourceUrl('/csv_icon.svg')
-    );
-    this.matIconRegistry.addSvgIcon(
-      'pdf_icon',
-      this.sanitizer.bypassSecurityTrustResourceUrl('/pdf_icon.svg')
-    );
+    )
+      .addSvgIcon(
+        'pdf_icon',
+        this.sanitizer.bypassSecurityTrustResourceUrl('/pdf_icon.svg')
+      )
+      .addSvgIcon(
+        'hide_replies_icon',
+        this.sanitizer.bypassSecurityTrustResourceUrl(
+          '/eye-off.svg'
+        )
+      )
 
     // Listen to the service to restore any state.
     this.actions = this.reportService.getReportActions();

@@ -13,6 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+@use 'sass:math';
+
+*:not(.mat-icon) {
+  font-family: Helvetica;
+  font-style: normal;
+}
 
 .share-report-wrapper {
   background-color: #EAEFFF;
@@ -37,7 +43,7 @@ app-report-pdf {
 }
 
 .actions-container {
-  background-color: #f9f9f9;
+  background-color: #D7DCEC;
   width: auto;
 }
 
@@ -52,8 +58,9 @@ app-report-pdf {
 }
 
 .card-title {
-  color: #4a4a4a;
-  font-size: 16px;
+  color: #000000;
+  font-size: 15px;
+  font-weight: 400;
   line-height: 19px;
   margin-bottom: 4px;
 }
@@ -70,8 +77,10 @@ app-report-pdf {
 }
 
 .card-body.small-text {
-  color: #70757a;
+  color: #494949;
   font-size: 13px;
+  font-weight: 400;
+  line-height: 19px;
 }
 
 .action-btn {
@@ -161,7 +170,17 @@ pdf-viewer {
   margin: 36px 24px 30px 28px;
 
   h2 {
-    font-weight: 500px;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: math.div(27, 20);
+    color: #000000;
+  }
+
+  div {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 20px;
+    color: #212121;
   }
 }
 
@@ -175,6 +194,10 @@ pdf-viewer {
 
 .save-actions-button {
   width: 196px;
+}
+
+app-report-pdf {
+  background-color: #EAEFFF;
 }
 
 @media screen and (min-width: 768px) {

@@ -14,148 +14,152 @@
  limitations under the License.
 -->
 
-<div #PdfReportComponent>
-  <div class="report-summary">
-    <div class="header">
-      <div class="report-title">
-        <div class="text">SafeNet</div>
+<div class="pdf-page">
+  <div #PdfReportComponent>
+    <div class="report-summary">
+      <div class="header">
+        <div class="report-title">
+          <div class="text">SafeNet</div>
+        </div>
+        <h1 class="summary-title">Report Summary</h1>
+        <div class="summary-subtitle">Here's an overview of your harassment report. View Summary in Page 2.</div>
       </div>
-      <h1 class="summary-title">Report Summary</h1>
-      <div>Here's an overview of your harassment report. View Summary in Page 2.</div>
-    </div>
 
-    <div class="summary-bar">
-      <div class="summary-label">Total Comments:</div>
-      <div class="summary-label">Directed At:</div>
-      <div class="summary-label">Date Created:</div>
-      <div>{{entries.length}}</div>
-      <div>{{getUsername()}}</div>
-      <div>{{date}}</div>
-    </div>
-
-    <hr>
-    <div class="summary-body">
-      <div class="summary-label">Date Range:</div>
-      <div>{{getDateRangeString()}}</div>
-      <div class="summary-label">Toxicity:</div>
-      <div>{{computeReportSummary()}}</div>
-      <div class="summary-label">Reported Due to:</div>
-      <div>{{reportReasons.join('; ')}}</div>
-      <div class="summary-label">Additional Context:</div>
-      <div>{{context}}</div>
-    </div>
-  </div>
-
-  <div class="report-details">
-    <div class="table-header">
-      <div class="report-title">
-        <div class="text">SafeNet</div>
+      <div class="summary-bar">
+        <div class="summary-label">Total Comments:</div>
+        <div class="summary-label">Directed At:</div>
+        <div class="summary-label">Date Created:</div>
+        <div>{{entries.length}}</div>
+        <div>{{getUsername()}}</div>
+        <div>{{date}}</div>
       </div>
-      <h1 class="summary-title">{{platform}} SafeNet Report Details</h1>
+
+      <hr>
+      <div class="summary-body">
+        <div class="summary-label">Date Range:</div>
+        <div>{{getDateRangeString()}}</div>
+        <div class="summary-label">Toxicity:</div>
+        <div>{{computeReportSummary()}}</div>
+        <div class="summary-label">Reported Due to:</div>
+        <div>{{reportReasons.join('; ')}}</div>
+        <div class="summary-label">Additional Context:</div>
+        <div>{{context}}</div>
+      </div>
     </div>
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 page-2">
-      <ng-container matColumnDef="comment">
-        <th mat-header-cell class="large-col" *matHeaderCellDef> Comment </th>
-        <td mat-cell [class.page-break-cell]="element.item.text === ''" class="large-col" *matCellDef="let element">
-          {{element.item.text}}
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="image">
-        <th mat-header-cell class="x-small-col" *matHeaderCellDef> Image </th>
-        <td mat-cell [class.page-break-cell]="element.item.text === ''" class="x-small-col" *matCellDef="let element">
-          {{element.item.hasImage ? 'Yes' : 'No'}}
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="hashtag">
-        <th mat-header-cell class="medium-col" *matHeaderCellDef> Hashtag </th>
-        <td mat-cell class="centered-col" [class.page-break-cell]="element.item.text === ''" *matCellDef="let element">
-          {{element.item ? formatHashtags(element.item) : '-' }}
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="author">
-        <th mat-header-cell class="medium-col" *matHeaderCellDef> Author </th>
-        <td mat-cell [class.page-break-cell]="element.item.text === ''" *matCellDef="let element">
-          <a [href]="getAuthorUrl(element.item.authorUrl)">{{element.item.authorName}}</a>
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="time posted">
-        <th mat-header-cell class="time-posted-col" *matHeaderCellDef> Time Posted </th>
-        <td mat-cell [class.page-break-cell]="element.item.text === ''" *matCellDef="let element">
-          {{getTimePosted(element.item.date) }}
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="tweet id">
-        <th mat-header-cell class="border-right medium-col" *matHeaderCellDef> Tweet ID </th>
-        <td mat-cell [class.page-break-cell]="element.item.text === ''" class="border-right" *matCellDef="let element">
-          {{element.item.id_str }}
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="comment id">
-        <th mat-header-cell class="medium-col" *matHeaderCellDef> Comment ID </th>
-        <td mat-cell [class.page-break-cell]="element.item.text === ''" *matCellDef="let element">
-          {{element.item.id_str }}
-        </td>
-      </ng-container>
 
-      <ng-container matColumnDef="toxicity">
-        <th mat-header-cell class="small-col" *matHeaderCellDef> Toxicity (%) </th>
-        <td mat-cell [class.page-break-cell]="element.item.text === ''" class="small-col" *matCellDef="let element">
-          {{formatAttributeScore(element.scores.TOXICITY)}}
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="severe toxicity">
-        <th mat-header-cell class="small-col" *matHeaderCellDef> Severe (%) </th>
-        <td mat-cell [class.page-break-cell]="element.item.text === ''" class="small-col" *matCellDef="let element">
-          {{formatAttributeScore(element.scores.SEVERE_TOXICITY)}}
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="insult">
-        <th mat-header-cell class="small-col" *matHeaderCellDef> Insult (%) </th>
-        <td mat-cell [class.page-break-cell]="element.item.text === ''" class="small-col" *matCellDef="let element">
-          {{formatAttributeScore(element.scores.INSULT)}}
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="profanity">
-        <th mat-header-cell class="small-col" *matHeaderCellDef> Profanity (%) </th>
-        <td mat-cell [class.page-break-cell]="element.item.text === ''" class="small-col" *matCellDef="let element">
-          {{formatAttributeScore(element.scores.PROFANITY)}}
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="threat">
-        <th mat-header-cell class="small-col" *matHeaderCellDef> Threat (%) </th>
-        <td mat-cell [class.page-break-cell]="element.item.text === ''" class="small-col" *matCellDef="let element">
-          {{formatAttributeScore(element.scores.THREAT)}}
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="identity attack">
-        <th mat-header-cell class="border-right small-col" *matHeaderCellDef> Identity (%) </th>
-        <td mat-cell [class.page-break-cell]="element.item.text === ''" class="border-right small-col"
-          *matCellDef="let element">
-          {{formatAttributeScore(element.scores.IDENTITY_ATTACK)}}
-        </td>
-      </ng-container>
+    <div class="report-details">
+      <div class="table-header">
+        <div class="report-title">
+          <div class="text">SafeNet</div>
+        </div>
+        <h1 class="summary-title">{{platform}} SafeNet Report Details</h1>
+      </div>
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 page-2">
+        <ng-container matColumnDef="comment">
+          <th mat-header-cell class="large-col" *matHeaderCellDef> Comment </th>
+          <td mat-cell [class.page-break-cell]="element.item.text === ''" class="large-col" *matCellDef="let element">
+            {{element.item.text}}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="image">
+          <th mat-header-cell class="x-small-col" *matHeaderCellDef> Image </th>
+          <td mat-cell [class.page-break-cell]="element.item.text === ''" class="x-small-col" *matCellDef="let element">
+            {{element.item.hasImage ? 'Yes' : 'No'}}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="hashtag">
+          <th mat-header-cell class="medium-col" *matHeaderCellDef> Hashtag </th>
+          <td mat-cell class="centered-col" [class.page-break-cell]="element.item.text === ''"
+            *matCellDef="let element">
+            {{element.item ? formatHashtags(element.item) : '-' }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="author">
+          <th mat-header-cell class="medium-col" *matHeaderCellDef> Author </th>
+          <td mat-cell [class.page-break-cell]="element.item.text === ''" *matCellDef="let element">
+            <a [href]="getAuthorUrl(element.item.authorUrl)">{{element.item.authorName}}</a>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="time posted">
+          <th mat-header-cell class="time-posted-col" *matHeaderCellDef> Time Posted </th>
+          <td mat-cell [class.page-break-cell]="element.item.text === ''" *matCellDef="let element">
+            {{getTimePosted(element.item.date) }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="tweet id">
+          <th mat-header-cell class="border-right medium-col" *matHeaderCellDef> Tweet ID </th>
+          <td mat-cell [class.page-break-cell]="element.item.text === ''" class="border-right"
+            *matCellDef="let element">
+            {{element.item.id_str }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="comment id">
+          <th mat-header-cell class="medium-col" *matHeaderCellDef> Comment ID </th>
+          <td mat-cell [class.page-break-cell]="element.item.text === ''" *matCellDef="let element">
+            {{element.item.id_str }}
+          </td>
+        </ng-container>
 
-      <ng-container matColumnDef="retweets">
-        <th mat-header-cell class="small-col" *matHeaderCellDef> Retweets </th>
-        <td mat-cell [class.page-break-cell]="element.item.text === ''" class="small-col" *matCellDef="let element">
-          {{formatCount(element.item.retweet_count)}}
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="likes twitter">
-        <th mat-header-cell class="small-col" *matHeaderCellDef> Likes </th>
-        <td mat-cell [class.page-break-cell]="element.item.text === ''" class="small-col" *matCellDef="let element">
-          {{formatCount(element.item.favorite_count)}}
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="comments">
-        <th mat-header-cell class="small-col" *matHeaderCellDef> Comments </th>
-        <td mat-cell [class.page-break-cell]="element.item.text === ''" class="small-col" *matCellDef="let element">
-          {{formatCount(element.item.reply_count) }}
-        </td>
-      </ng-container>
+        <ng-container matColumnDef="toxicity">
+          <th mat-header-cell class="small-col" *matHeaderCellDef> Toxicity (%) </th>
+          <td mat-cell [class.page-break-cell]="element.item.text === ''" class="small-col" *matCellDef="let element">
+            {{formatAttributeScore(element.scores.TOXICITY)}}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="severe toxicity">
+          <th mat-header-cell class="small-col" *matHeaderCellDef> Severe (%) </th>
+          <td mat-cell [class.page-break-cell]="element.item.text === ''" class="small-col" *matCellDef="let element">
+            {{formatAttributeScore(element.scores.SEVERE_TOXICITY)}}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="insult">
+          <th mat-header-cell class="small-col" *matHeaderCellDef> Insult (%) </th>
+          <td mat-cell [class.page-break-cell]="element.item.text === ''" class="small-col" *matCellDef="let element">
+            {{formatAttributeScore(element.scores.INSULT)}}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="profanity">
+          <th mat-header-cell class="small-col" *matHeaderCellDef> Profanity (%) </th>
+          <td mat-cell [class.page-break-cell]="element.item.text === ''" class="small-col" *matCellDef="let element">
+            {{formatAttributeScore(element.scores.PROFANITY)}}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="threat">
+          <th mat-header-cell class="small-col" *matHeaderCellDef> Threat (%) </th>
+          <td mat-cell [class.page-break-cell]="element.item.text === ''" class="small-col" *matCellDef="let element">
+            {{formatAttributeScore(element.scores.THREAT)}}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="identity attack">
+          <th mat-header-cell class="border-right small-col" *matHeaderCellDef> Identity (%) </th>
+          <td mat-cell [class.page-break-cell]="element.item.text === ''" class="border-right small-col"
+            *matCellDef="let element">
+            {{formatAttributeScore(element.scores.IDENTITY_ATTACK)}}
+          </td>
+        </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row [class.page-break-row]="row.item.text === ''" *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+        <ng-container matColumnDef="retweets">
+          <th mat-header-cell class="small-col" *matHeaderCellDef> Retweets </th>
+          <td mat-cell [class.page-break-cell]="element.item.text === ''" class="small-col" *matCellDef="let element">
+            {{formatCount(element.item.retweet_count)}}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="likes twitter">
+          <th mat-header-cell class="small-col" *matHeaderCellDef> Likes </th>
+          <td mat-cell [class.page-break-cell]="element.item.text === ''" class="small-col" *matCellDef="let element">
+            {{formatCount(element.item.favorite_count)}}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="comments">
+          <th mat-header-cell class="small-col" *matHeaderCellDef> Comments </th>
+          <td mat-cell [class.page-break-cell]="element.item.text === ''" class="small-col" *matCellDef="let element">
+            {{formatCount(element.item.reply_count) }}
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row [class.page-break-row]="row.item.text === ''" *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
   </div>
 </div>
