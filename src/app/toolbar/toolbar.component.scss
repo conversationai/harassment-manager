@@ -59,6 +59,10 @@ app-report-progress-bar {
       }
     }
 
+    button:not(.selected) {
+      display: none;
+    }
+
     .divider {
       display: none;
     }
@@ -297,20 +301,6 @@ app-report-progress-bar {
   top: 0;
 }
 
-// Only show active router link on small screens
-@media all and (max-width: 546px) {
-  app-report-progress-bar {
-
-    // this needs to be styled in isolation
-    ::ng-deep .progress-bar {
-
-      button:not(.selected) {
-        display: none;
-      }
-    }
-  }
-}
-
 @media all and (min-width: 768px) {
   .toolbar {
     .toolbar-row {
@@ -331,9 +321,6 @@ app-report-progress-bar {
     right: calc((728px - 100vw) / 2);
   }
 
-  .last-edited {
-    display: block;
-  }
 
   app-report-progress-bar {
 
@@ -374,6 +361,10 @@ app-report-progress-bar {
   .toolbar-row-signed-in::before {
     left: calc((1024px - 100vw) / 2);
     right: calc((1024px - 100vw) / 2);
+  }
+
+  .last-edited {
+    display: block;
   }
 
 }
