@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+@use 'sass:math';
 
 :host {
   display: flex;
@@ -140,8 +141,8 @@ app-filter-dropdown {
 }
 
 .vertical-divider {
-  background-color: #e0e0e0;
-  height: 4px;
+  background-color: #D7DCEC;
+  height: 5px;
   width: 100%;
 }
 
@@ -161,12 +162,21 @@ mat-list-option .date-filter {
   background-color: #f3e8fd;
 }
 
+.view-comments-title,
+.view-comments-subtitle {
+  font-family: Helvetica;
+  line-height: math.div(27, 27);
+
+
+}
+
 .view-comments-title {
-  font-size: 30px;
-  font-weight: bold;
+  font-size: 36px;
+  font-weight: 700;
   margin-bottom: 0;
   margin-top: 50px;
   text-align: start;
+  color: #000000;
 }
 
 .view-comments-subtitle {
@@ -176,6 +186,9 @@ mat-list-option .date-filter {
 
 .view-comments-title .greeting {
   margin-bottom: 16px;
+  font-weight: 400;
+  font-size: 20px;
+  color: #212121;
 }
 
 .list-header {
@@ -478,6 +491,7 @@ mat-paginator {
   color: #101BCF;
   min-width: 20px;
   width: fit-content;
+  margin-right: 10px;
 }
 
 .page-number-button.selected {
@@ -486,9 +500,11 @@ mat-paginator {
 }
 
 .page-button {
-  background-color: #101BCF;
-  border-radius: 52px;
-  color: #fff;
+  // background-color: #101BCF;
+  border-radius: 13px;
+  border: 1px solid #000000;
+  color: #000000;
+  margin-right: 10px;
 }
 
 .page-button:disabled {
@@ -515,17 +531,25 @@ mat-paginator {
   }
 
   .list-header {
-    flex-wrap: wrap;
-    flex-direction: column-reverse;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
 
     .select-all {
       width: 100%;
     }
+
+    .view-controls {
+      flex-wrap: nowrap;
+
+      .horizontal-divider {
+        display: block;
+      }
+    }
+
   }
 
-  .list-header .view-controls .horizontal-divider {
-    display: none;
-  }
 
 }
 
@@ -539,6 +563,24 @@ mat-paginator {
   .comments-list,
   .comments-nav {
     max-width: 1024px;
+  }
+
+  .comment-count-info {
+    display: block;
+  }
+
+}
+
+@media screen and (min-width: 1440px) {
+
+
+  .view-comments-title,
+  .view-comments-subtitle,
+  .filters-container,
+  .list-header,
+  .comments-list,
+  .comments-nav {
+    max-width: 1144px;
   }
 
 }

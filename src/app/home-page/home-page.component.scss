@@ -33,7 +33,6 @@ section {
 .jumbotron {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   padding: 40px 20px;
   margin-bottom: 30px;
 
@@ -71,7 +70,7 @@ section {
 
   h1 {
     margin-bottom: 10px;
-    font-size: 75px;
+    font-size: 45px;
     color: #363636;
     font-family: 'Merriweather';
     line-height: 94px;
@@ -96,39 +95,46 @@ section {
     ::ng-deep .progress-bar {
       display: flex;
       justify-content: space-between;
-      flex-wrap: wrap;
 
       .step {
         font-weight: 400;
         font-size: 15px;
         line-height: math.div(27, 15);
+        color: #101bcf;
+
+        .step-number-icon {
+          background-color: #101bcf;
+          color: white;
+        }
       }
 
       .divider {
-        width: 40px;
+        display: none;
       }
 
       button:first-child {
         padding-left: 0;
-      }
-
-      .start-over-button {
-        color: #DA2732;
-        border: 2px solid #DA2732;
       }
     }
   }
 
   button {
     margin-right: 12px;
+    font-weight: 400;
+    font-size: 20px;
     border-radius: 13px;
+  }
+
+  .start-over-button {
+    color: #DA2732;
+    border: 2px solid #DA2732;
   }
 }
 
 .welcome-back-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .not-alone-image {
@@ -239,14 +245,16 @@ app-recommended-report-card {
 
   .welcome-back-card {
     flex-direction: row;
-    max-width: 768px;
+    max-width: 728px;
     margin-left: auto;
     margin-right: auto;
 
-    button {
-      margin-right: 12px;
+    h1 {
+      font-size: 55px;
     }
   }
+
+
 
 
   .jumbotron {
@@ -270,16 +278,12 @@ app-recommended-report-card {
   .welcome-back-card {
     max-width: 1024px;
 
-    app-report-progress-bar {
-
-      // this needs to be styled in isolation
-      ::ng-deep .progress-bar {
-        .divider {
-          width: 60px;
-        }
-      }
+    h1 {
+      font-size: 65px;
     }
   }
+
+
 
   .jumbotron {
     max-width: 1024px;
@@ -299,7 +303,13 @@ app-recommended-report-card {
 @media all and (min-width: 1440px) {
   .welcome-back-card {
     max-width: 1144px;
+
+    h1 {
+      font-size: 75px;
+    }
   }
+
+
 
   .jumbotron {
     max-width: 1144px;

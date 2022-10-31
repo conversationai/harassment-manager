@@ -13,11 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+@use 'sass:math';
 
 .search-input {
-  font-size: 14px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: math.div(27, 27);
   margin-right: 16px;
   width: auto;
+  color: #808080;
 }
 
 .search-input mat-icon {

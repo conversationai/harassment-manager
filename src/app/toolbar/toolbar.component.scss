@@ -34,22 +34,34 @@
 }
 
 app-report-progress-bar {
+  width: 100%;
 
   // this needs to be styled in isolation
   ::ng-deep .progress-bar {
 
-    button:not(.selected) {
-      display: none;
+    justify-content: space-around;
+
+    .step {
+      color: #000000;
+
+      .step-number-icon {
+        background-color: #585555;
+        color: white;
+      }
+    }
+
+    .step.active {
+      color: #101bcf;
+
+      .step-number-icon {
+        background-color: #101bcf;
+        color: white;
+      }
     }
 
     .divider {
-      width: 30px;
-    }
-
-    .divider:not(.half-filled) {
       display: none;
     }
-
   }
 }
 
@@ -83,14 +95,19 @@ app-report-progress-bar {
 }
 
 .continue-button {
-  background-color: #9da1a3;
+  background-color: #ffffff;
   border-radius: 18px;
-  color: #ffffff;
+  border: none;
+  color: #101bcf;
   z-index: 2; // above the stepper
 }
 
 .continue-button[disabled] {
-  color: #ffffff;
+  color: #c4c4c4;
+
+  .forward-icon {
+    display: none;
+  }
 }
 
 .continue-button.active-router-link {
@@ -110,7 +127,7 @@ app-report-progress-bar {
 }
 
 .continue-button .report-draft-comment-count {
-  color: #9da1a3;
+  color: #101bcf;
   font-size: 12px;
   position: absolute;
   text-align: center;
@@ -201,7 +218,7 @@ app-report-progress-bar {
 }
 
 .last-edited {
-  color: #70757a;
+  color: #000000;
   font-size: 14px;
   font-style: italic;
   line-height: 16px;
@@ -280,6 +297,20 @@ app-report-progress-bar {
   top: 0;
 }
 
+// Only show active router link on small screens
+@media all and (max-width: 546px) {
+  app-report-progress-bar {
+
+    // this needs to be styled in isolation
+    ::ng-deep .progress-bar {
+
+      button:not(.selected) {
+        display: none;
+      }
+    }
+  }
+}
+
 @media all and (min-width: 768px) {
   .toolbar {
     .toolbar-row {
@@ -300,6 +331,10 @@ app-report-progress-bar {
     right: calc((728px - 100vw) / 2);
   }
 
+  .last-edited {
+    display: block;
+  }
+
   app-report-progress-bar {
 
     // this needs to be styled in isolation
@@ -310,14 +345,6 @@ app-report-progress-bar {
       }
 
       button:not(.selected) {
-        display: block;
-      }
-
-      .divider {
-        width: 40px;
-      }
-
-      .divider:not(.half-filled) {
         display: block;
       }
 
@@ -348,18 +375,6 @@ app-report-progress-bar {
     left: calc((1024px - 100vw) / 2);
     right: calc((1024px - 100vw) / 2);
   }
-
-  app-report-progress-bar {
-
-    // this needs to be styled in isolation
-    ::ng-deep .progress-bar {
-
-      .divider {
-        width: 86px;
-      }
-    }
-  }
-
 
 }
 

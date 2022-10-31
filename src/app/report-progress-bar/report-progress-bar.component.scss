@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+@use 'sass:math';
 
 .progress-bar {
   align-items: center;
@@ -21,12 +22,14 @@
 
 .step {
   align-items: center;
-  color: #70757a;
+  color: #000000;
   display: inline-flex;
-  font-size: 14px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: math.div(27, 27);
 
   mat-icon {
-    color: #101BCF;
+    color: #585555;
     margin-right: 4px;
   }
 }

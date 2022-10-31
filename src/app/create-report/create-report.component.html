@@ -106,11 +106,11 @@
             [attr.aria-label]="'Comment Preview: ' + (shouldBlur ? 'Show': 'Hide')" [(ngModel)]="shouldBlur"
             [disabled]="loading">
             <mat-button-toggle [value]="true">
-              <mat-icon>visibility_off</mat-icon>
+              <mat-icon svgIcon="close_report_icon"></mat-icon>
               Hide
             </mat-button-toggle>
             <mat-button-toggle [value]="false">
-              <mat-icon>visibility</mat-icon>
+              <mat-icon svgIcon="open_report_icon"></mat-icon>
               Show
             </mat-button-toggle>
           </mat-button-toggle-group>
