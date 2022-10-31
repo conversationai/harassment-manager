@@ -64,7 +64,7 @@
             <button mat-icon-button class="toggle-visibility-icon"
               [attr.aria-label]="shouldBlur ? 'Comment hidden, click to reveal comment' : 'Comment visible, click to hide comment'"
               (click)="toggleBlur(); $event.stopPropagation();">
-              <mat-icon>{{shouldBlur ? 'hide_report_icon' : 'show_report_icon'}}</mat-icon>
+              <mat-icon [svgIcon]="shouldBlur ? 'hide_report_icon' : 'show_report_icon'"></mat-icon>
             </button>
             <div class="comment-text" [class.blur]="shouldBlur">
               {{comment.item.text}}
