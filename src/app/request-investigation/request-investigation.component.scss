@@ -77,6 +77,7 @@ ul {
                     width: 176px;
                     height: 162px;
                     border-radius: 50%;
+                    display: flex;
 
                     img {
                         display: block;
@@ -85,8 +86,6 @@ ul {
                 }
 
                 .name {
-                    font-weight: 700;
-                    font-size: 22px;
                     line-height: math.div(27, 22);
                     color: #212121;
                 }
