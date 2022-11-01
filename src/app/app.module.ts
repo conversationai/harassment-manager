@@ -102,6 +102,7 @@ import { TweetImageComponent } from './tweet-image/tweet-image.component';
 import { TwitterApiService } from './twitter_api.service';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { PrivacyPageComponent } from './privacy-page/privacy-page.component';
+import { RequestInvestigationComponent } from './request-investigation/request-investigation.component';
 
 @NgModule({
   declarations: [
@@ -144,6 +145,7 @@ import { PrivacyPageComponent } from './privacy-page/privacy-page.component';
     TweetImageComponent,
     WelcomePageComponent,
     PrivacyPageComponent,
+    RequestInvestigationComponent,
   ],
   imports: [
     A11yModule,

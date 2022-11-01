@@ -1,0 +1,130 @@
+@use 'sass:math';
+
+* {
+    font-family: Helvetica;
+    font-style: normal;
+}
+
+
+h2,
+h3 {
+    font-weight: 700;
+    line-height: math.div(27, 23);
+    color: #000000;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+h3 {
+    font-size: 22px;
+}
+
+p,
+ul {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: math.div(27, 20);
+    color: #212121;
+}
+
+.request-investigation-page {
+    background-color: #EAEFFF;
+    padding: 20px 0;
+
+    .content {
+        padding: 0 20px;
+
+        .form-link {
+            background: #101BCF;
+            color: white;
+            border-radius: 13px;
+            padding: 0 5px;
+            text-decoration: none;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        ul li::before {
+            content: "\2022"; // unicode for bullet
+            color: #101BCF;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        .team-members {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 40px;
+            margin-bottom: 40px;
+            background-color: #D7DCEC;
+
+            .team-member {
+
+                max-width: 176px;
+                width: min-content;
+                padding: 20px 40px;
+
+                .profile-image {
+                    background-color: #EE2534;
+                    width: 176px;
+                    height: 162px;
+                    border-radius: 50%;
+
+                    img {
+                        display: block;
+                        margin: auto;
+                    }
+                }
+
+                .name {
+                    font-weight: 700;
+                    font-size: 22px;
+                    line-height: math.div(27, 22);
+                    color: #212121;
+                }
+
+                .title {
+                    font-size: 18px;
+                    line-height: math.div(27, 23);
+                }
+            }
+        }
+    }
+
+}
+
+@media all and (min-width: 768px) {
+
+    .content {
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 728px;
+    }
+
+}
+
+@media all and (min-width: 1152px) {
+
+    .content {
+        max-width: 1024px;
+    }
+
+}
+
+@media all and (min-width: 1440px) {
+
+    .content {
+        max-width: 1144px;
+    }
+
+}

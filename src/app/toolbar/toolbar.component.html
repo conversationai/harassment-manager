@@ -43,6 +43,11 @@
         <span class="text">Find Support</span>
         <img src="/red_ellipse.svg" />
       </a>
+      <a routerLinkActive="active-router-link" routerLink="/request-an-investigation" #findSupportLink
+        [attr.aria-current]="findSupportLink.routerLinkActive ? 'page' : false">
+        <span class="text">Request an Investigation</span>
+        <img src="/red_ellipse.svg" />
+      </a>
     </div>
     <div class="nav-links nav-item">
       <button class="sign-out-button" (click)="revokeAuthorization()">

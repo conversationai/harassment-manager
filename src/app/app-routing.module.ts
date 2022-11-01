@@ -35,6 +35,7 @@ import { ReviewReportComponent } from './review-report/review-report.component';
 import { ShareReportComponent } from './share-report/share-report.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
+import { RequestInvestigationComponent } from './request-investigation/request-investigation.component';
 
 /**
  * Custom RouteReuseStrategy that reuses the CreateReportComponent so that the
@@ -159,6 +160,12 @@ export const routes: Routes = [
     component: ReportPdfComponent,
     canActivate: [AuthGuardService],
     data: { title: 'Report PDF' },
+  },
+  {
+    path: 'request-an-investigation',
+    component: RequestInvestigationComponent,
+    canActivate: [AuthGuardService],
+    data: { title: 'Request and Investigation' },
   },
   {
     path: 'home',
