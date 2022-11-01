@@ -71,6 +71,7 @@ import {
   DropdownButtonComponent,
   HrefOnlyDownloadDirective,
 } from './dropdown-button/dropdown-button.component';
+import { EarlyAdoptersOpportunityPageComponent } from './opportunities-early-adopters/opportunities-early-adopters-page.component';
 import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
 import { ExitDialogComponent } from './exit-dialog/exit-dialog.component';
 import { ExpansionBoxComponent } from './expansion-box/expansion-box.component';
@@ -93,6 +94,7 @@ import { RegularExpressionFilterComponent } from './regular-expression-filter/re
 import { ReportCompleteComponent } from './report-complete/report-complete.component';
 import { ReportPdfComponent } from './report-pdf/report-pdf.component';
 import { ReportProgressBarComponent } from './report-progress-bar/report-progress-bar.component';
+import { ResearchPartnersOpportunityPageComponent } from './opportunities-research-partners/opportunities-research-partners-page.component';
 import { ReviewReportComponent } from './review-report/review-report.component';
 import { ScrollableSideMenuComponent } from './scrollable-side-menu/scrollable-side-menu.component';
 import { SearchBoxComponent } from './search-box/search-box.component';
@@ -119,6 +121,7 @@ import { PrivacyPageComponent } from './privacy-page/privacy-page.component';
     DatePickerDialogComponent,
     DateRangePickerComponent,
     DropdownButtonComponent,
+    EarlyAdoptersOpportunityPageComponent,
     ErrorDialogComponent,
     ExitDialogComponent,
     ExpansionBoxComponent,
@@ -140,6 +143,7 @@ import { PrivacyPageComponent } from './privacy-page/privacy-page.component';
     ReportCompleteComponent,
     ReportPdfComponent,
     ReportProgressBarComponent,
+    ResearchPartnersOpportunityPageComponent,
     ReviewReportComponent,
     ScrollableSideMenuComponent,
     SearchBoxComponent,
