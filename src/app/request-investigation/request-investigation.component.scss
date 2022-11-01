@@ -1,16 +1,12 @@
 @use 'sass:math';
 
-* {
-    font-family: Helvetica;
-    font-style: normal;
-}
-
-
 h2,
 h3 {
     font-weight: 700;
     line-height: math.div(27, 23);
     color: #000000;
+    font-family: Helvetica;
+    font-style: normal;
 }
 
 h2 {
@@ -36,25 +32,34 @@ ul {
     .content {
         padding: 0 20px;
 
-        .form-link {
-            background: #101BCF;
-            color: white;
+        button {
+            background-color: #101bcf;
+            border: 2px solid #101bcf;
             border-radius: 13px;
-            padding: 0 5px;
-            text-decoration: none;
+            color: #ffffff;
+            font-size: 20px;
+            line-height: math.div(27, 20);
+        }
+
+        button:focus-visible {
+            outline: none;
         }
 
         ul {
             list-style: none;
+            padding: 0;
+            margin: 0;
         }
 
-        ul li::before {
-            content: "\2022"; // unicode for bullet
-            color: #101BCF;
-            font-weight: bold;
-            display: inline-block;
-            width: 1em;
-            margin-left: -1em;
+        li {
+            background-image: url('/bullet.svg');
+            background-position: 0.5rem 0.5rem;
+            background-size: 0.5rem 0.5rem;
+            background-repeat: no-repeat;
+            margin-bottom: 27px;
+            margin-left: -0.5rem;
+            padding: 0;
+            padding-left: 2rem;
         }
 
         .team-members {
@@ -101,29 +106,37 @@ ul {
 }
 
 @media all and (min-width: 768px) {
+    .request-investigation-page {
+        .content {
+            padding-left: 0;
+            padding-right: 0;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 728px;
 
-    .content {
-        padding-left: 0;
-        padding-right: 0;
-        margin-left: auto;
-        margin-right: auto;
-        max-width: 728px;
+            .team-members {
+                justify-content: center;
+            }
+        }
     }
+
+
 
 }
 
 @media all and (min-width: 1152px) {
-
-    .content {
-        max-width: 1024px;
+    .request-investigation-page {
+        .content {
+            max-width: 1024px;
+        }
     }
 
 }
 
 @media all and (min-width: 1440px) {
-
-    .content {
-        max-width: 1144px;
+    .request-investigation-page {
+        .content {
+            max-width: 1144px;
+        }
     }
-
 }
