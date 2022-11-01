@@ -50,12 +50,13 @@ a:focus {
     font-size: 26px;
     font-weight: 700;
     line-height: math.div(27, 26);
+    margin: 20px 0 0;
   }
 
   .excerpt {
     font-size: 18px;
     line-height: math.div(27, 18);
-    margin-top: 10px;
+    margin-top: 20px;
   }
 
   .info {
@@ -86,14 +87,16 @@ a:focus {
       font-size: 32px;
       font-weight: 700;
       line-height: math.div(27, 32);
+      margin: 0;
     }
+
     .excerpt {
       font-size: 20px;
       line-height: math.div(27, 20);
     }
 
     .info {
-      margin-top: 40px;
+      margin-top: 20px;
     }
   }
 }
