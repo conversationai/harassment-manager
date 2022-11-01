@@ -45,10 +45,12 @@ $mat-primary: (
   darker: #0910bd,
   200: #101bcf,
   // For slide toggle,
-  contrast: (main: $light-primary-text,
-    lighter: $dark-primary-text,
-    darker: $light-primary-text,
-  ),
+  contrast:
+    (
+      main: $light-primary-text,
+      lighter: $dark-primary-text,
+      darker: $light-primary-text,
+    ),
 );
 
 $documentation-app-primary: mat-palette($mat-primary, main, lighter, darker);
@@ -58,10 +60,12 @@ $mat-accent: (
   darker: #c7cee4,
   200: #d7dcec,
   // For slide toggle,
-  contrast: (main: $dark-primary-text,
-    lighter: $dark-primary-text,
-    darker: $dark-primary-text,
-  ),
+  contrast:
+    (
+      main: $dark-primary-text,
+      lighter: $dark-primary-text,
+      darker: $dark-primary-text,
+    ),
 );
 
 $documentation-app-accent: mat-palette($mat-accent, main, lighter, darker);
@@ -70,9 +74,11 @@ $documentation-app-accent: mat-palette($mat-accent, main, lighter, darker);
 $documentation-app-warn: mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
-$documentation-app-theme: mat-light-theme($documentation-app-primary,
-    $documentation-app-accent,
-    $documentation-app-warn);
+$documentation-app-theme: mat-light-theme(
+  $documentation-app-primary,
+  $documentation-app-accent,
+  $documentation-app-warn
+);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -84,7 +90,9 @@ $documentation-app-theme: mat-light-theme($documentation-app-primary,
 }
 
 // Override typography for all Angular Material.
-@include angular-material-typography(mat-typography-config($font-family: 'Helvetica, Inter, sans-serif'));
+@include angular-material-typography(
+  mat-typography-config($font-family: 'Helvetica, Inter, sans-serif')
+);
 
 // Sets a global font-weight for common text elements. We are not overly
 // general here (not using a * like above), because in that case this global
@@ -126,7 +134,8 @@ p {
   line-height: math.div(27, 18);
 }
 
-@media all and (min-width: 768px) {}
+@media all and (min-width: 768px) {
+}
 
 @media all and (min-width: 1152px) {
   h1 {
@@ -161,7 +170,11 @@ p {
  * Prevents the comment card text content from growing larger than the card,
  * which causes layout weirdness.
  */
-.mat-list-base .comment-card .mat-list-option.list-item-container .mat-list-item-content-reverse .mat-list-text {
+.mat-list-base
+  .comment-card
+  .mat-list-option.list-item-container
+  .mat-list-item-content-reverse
+  .mat-list-text {
   align-self: flex-start;
 }
 
@@ -196,7 +209,9 @@ p {
   align-self: flex-start;
 }
 
-app-help-center .mat-form-field-appearance-outline .mat-form-field-outline-start {
+app-help-center
+  .mat-form-field-appearance-outline
+  .mat-form-field-outline-start {
   border-radius: 0;
   // min-width: 40px;
   // border: none;
@@ -246,20 +261,26 @@ app-help-center .mat-input-element {
 }
 
 app-home-page {
-  * {
-    font-family: 'Helvetica';
-    font-style: normal;
+  *{
+      font-family: 'Helvetica';
+      font-style: normal;
   }
-
+    
 }
 
-app-filter-dropdown .mat-form-field-appearance-outline .mat-form-field-outline-start,
-app-search-box .mat-form-field-appearance-outline .mat-form-field-outline-start {
+app-filter-dropdown
+  .mat-form-field-appearance-outline
+  .mat-form-field-outline-start,
+app-search-box
+  .mat-form-field-appearance-outline
+  .mat-form-field-outline-start {
   border-radius: 20px 0 0 20px;
   min-width: 40px;
 }
 
-app-filter-dropdown .mat-form-field-appearance-outline .mat-form-field-outline-end,
+app-filter-dropdown
+  .mat-form-field-appearance-outline
+  .mat-form-field-outline-end,
 app-search-box .mat-form-field-appearance-outline .mat-form-field-outline-end {
   border-radius: 0 20px 20px 0;
 }
@@ -275,12 +296,16 @@ app-search-box .mat-form-field-appearance-outline .mat-form-field-outline {
   top: 1em;
 }
 
-app-filter-dropdown .filter-active.mat-form-field-appearance-outline .mat-form-field-outline {
+app-filter-dropdown
+  .filter-active.mat-form-field-appearance-outline
+  .mat-form-field-outline {
   background-color: rgba(209, 179, 195, 0.2);
   border-radius: 20px;
 }
 
-app-filter-dropdown .mat-form-field-appearance-outline .mat-select-arrow-wrapper {
+app-filter-dropdown
+  .mat-form-field-appearance-outline
+  .mat-select-arrow-wrapper {
   transform: none;
 }
 
@@ -293,7 +318,8 @@ app-filter-dropdown .mat-option .mat-icon {
   margin-right: 0px;
 }
 
-.mat-primary .mat-option.mat-selected:not(.mat-option-disabled).black-on-select {
+.mat-primary
+  .mat-option.mat-selected:not(.mat-option-disabled).black-on-select {
   color: black;
 }
 
@@ -345,7 +371,10 @@ app-search-box .mat-form-field-appearance-outline .mat-form-field-flex {
   border-top: 0.65em solid transparent;
 }
 
-app-create-report .options-dropdown .mat-form-field-appearance-legacy .mat-form-field-underline {
+app-create-report
+  .options-dropdown
+  .mat-form-field-appearance-legacy
+  .mat-form-field-underline {
   display: none;
 }
 
@@ -354,7 +383,6 @@ h2 {
 }
 
 button {
-
   &.action-button,
   &.action-button-stroked {
     border-radius: 18px;
@@ -393,10 +421,12 @@ app-create-report .loading mat-paginator .mat-paginator-range-label {
 
 /** Custom styles for the nouifilter library. */
 app-toxicity-range-filter .noUi-connects {
-  background: linear-gradient(to right,
-      #34a85340 0%,
-      #fbbc0440 50%,
-      #e9423540 100%);
+  background: linear-gradient(
+    to right,
+    #34a85340 0%,
+    #fbbc0440 50%,
+    #e9423540 100%
+  );
 }
 
 // DOM element connecting the lower and upper handles on the slider.
@@ -540,12 +570,10 @@ app-scrollable-side-menu .mat-button-focus-overlay:hover {
     background-color: transparent;
     border: 1px solid $color;
   }
-
   .mat-slide-toggle-thumb-container {
     // Shifts the thumb so the toggle bar border is not visible underneath.
     left: $left-offset;
   }
-
   .mat-slide-toggle-thumb {
     background-color: $color;
   }
@@ -621,7 +649,6 @@ app-scrollable-side-menu .mat-button-focus-overlay:hover {
       line-height: 27px;
     }
   }
-
   .right-side {
     padding-right: 150px;
     align-self: baseline;
@@ -673,7 +700,6 @@ app-scrollable-side-menu .mat-button-focus-overlay:hover {
         font-size: 43px;
         line-height: normal;
       }
-
       .subtitle {
         font-size: 18px;
       }
@@ -685,7 +711,6 @@ app-scrollable-side-menu .mat-button-focus-overlay:hover {
       align-self: flex-end;
       height: 100%;
       width: 100%;
-
       img {
         height: 100%;
         width: 100%;
