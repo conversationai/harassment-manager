@@ -533,10 +533,6 @@ app-scrollable-side-menu .mat-button-focus-overlay:hover {
   }
 }
 
-app-request-investigation {
-  background-color: #EAEFFF;
-}
-
 // Mixin for common mat-slide-toggle styles that apply to both toggled and
 // untoggled states.
 @mixin max-slide-toggle-theme($color, $left-offset) {
