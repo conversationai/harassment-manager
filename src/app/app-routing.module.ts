@@ -25,12 +25,15 @@ import {
 import { AuthGuardService } from './auth-guard.service';
 import { CreateReportComponent } from './create-report/create-report.component';
 import { FindSupportComponent } from './find-support/find-support.component';
+import { EarlyAdoptersOpportunityPageComponent } from './opportunities-early-adopters/opportunities-early-adopters-page.component';
 import { HelpCenterComponent } from './help-center/help-center.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { OauthApiService } from './oauth_api.service';
+import { OpportunitiesComponent } from './opportunities/opportunities.component';
 import { PrivacyPageComponent } from './privacy-page/privacy-page.component';
 import { ReportCompleteComponent } from './report-complete/report-complete.component';
 import { ReportPdfComponent } from './report-pdf/report-pdf.component';
+import { ResearchPartnersOpportunityPageComponent } from './opportunities-research-partners/opportunities-research-partners-page.component';
 import { ReviewReportComponent } from './review-report/review-report.component';
 import { ShareReportComponent } from './share-report/share-report.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
@@ -136,6 +139,21 @@ export const routes: Routes = [
     path: 'help-center',
     component: HelpCenterComponent,
     data: { title: 'Help Center' },
+  },
+  {
+    path: 'opportunities/early-adopters',
+    component: EarlyAdoptersOpportunityPageComponent,
+    data: { title: 'Early Adopters | Opportunities' },
+  },
+  {
+    path: 'opportunities/research-partners',
+    component: ResearchPartnersOpportunityPageComponent,
+    data: { title: 'Research Partners | Opportunities' },
+  },
+  {
+    path: 'opportunities',
+    component: OpportunitiesComponent,
+    data: { title: 'Opportunities' },
   },
   {
     path: 'review-report',

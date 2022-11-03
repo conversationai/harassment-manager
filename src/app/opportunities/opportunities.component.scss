@@ -17,51 +17,81 @@
 
 :host {
   background-color: #eaefff;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 90vh;
 }
 
 .header {
-  align-items: flex-start;
+  align-items: center;
+  color: #fff;
   display: flex;
   flex-direction: column;
   padding: 40px 20px;
   position: relative;
   row-gap: 20px;
+  text-align: center;
 
   h1,
   p {
     margin: 0;
   }
 
-  p {
-    font-size: 20px;
-    line-height: math.div(27, 20);
+  img {
+    display: none;
   }
+}
+.header::before {
+  background: url('/help_center_bg.svg') #1625d9;
+  content: '';
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
 
-  button {
-    background-color: #101bcf;
-    border: 2px solid #101bcf;
-    border-radius: 13px;
-    color: #ffffff;
-    cursor: pointer;
-    font-size: 20px;
-    line-height: math.div(27, 20);
-  }
-  button:focus-visible {
-    outline: none;
-  }
+.content-wrapper {
+  padding: 40px 20px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
 }
 
 @media all and (min-width: 768px) {
   .header {
+    align-items: flex-start;
     height: 232px;
+    justify-content: center;
     margin: 0 auto;
     max-width: 728px;
     padding: 0;
     text-align: left;
+    width: 100%;
+
+    p {
+      max-width: 402px;
+    }
+
+    img {
+      display: block;
+      height: 232px;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  }
+  .header::before {
+    left: calc((728px - 100vw) / 2);
+    right: calc((728px - 100vw) / 2);
+  }
+
+  .content-wrapper {
+    margin: 0 auto;
+    max-width: 728px;
+    padding-left: 0;
+    padding-right: 0;
     width: 100%;
   }
 }
@@ -75,6 +105,22 @@
       font-size: 64px;
       line-height: math.div(92, 64);
     }
+
+    p {
+      max-width: 612px;
+    }
+
+    img {
+      height: 300px;
+    }
+  }
+  .header::before {
+    left: calc((1024px - 100vw) / 2);
+    right: calc((1024px - 100vw) / 2);
+  }
+
+  .content-wrapper {
+    max-width: 1024px;
   }
 }
 
@@ -87,5 +133,21 @@
       font-size: 73px;
       line-height: math.div(92, 73);
     }
+
+    p {
+      max-width: 720px;
+    }
+
+    img {
+      height: 327px;
+    }
+  }
+  .header::before {
+    left: calc((1144px - 100vw) / 2);
+    right: calc((1144px - 100vw) / 2);
+  }
+
+  .content-wrapper {
+    max-width: 1144px;
   }
 }

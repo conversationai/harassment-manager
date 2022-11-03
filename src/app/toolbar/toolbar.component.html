@@ -43,6 +43,11 @@
         <span class="text">Find Support</span>
         <img src="/red_ellipse.svg" />
       </a>
+      <a routerLinkActive="active-router-link" routerLink="/opportunities/" #opportunitiesLink
+        [attr.aria-current]="opportunitiesLink.routerLinkActive ? 'page' : false">
+        <span class="text">Opportunities</span>
+        <img src="/red_ellipse.svg" />
+      </a>
       <a routerLinkActive="active-router-link" routerLink="/request-an-investigation" #requestInvestigationLink
         [attr.aria-current]="requestInvestigationLink.routerLinkActive ? 'page' : false">
         <span class="text">Request an Investigation</span>

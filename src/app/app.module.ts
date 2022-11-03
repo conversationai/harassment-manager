@@ -71,6 +71,7 @@ import {
   DropdownButtonComponent,
   HrefOnlyDownloadDirective,
 } from './dropdown-button/dropdown-button.component';
+import { EarlyAdoptersOpportunityPageComponent } from './opportunities-early-adopters/opportunities-early-adopters-page.component';
 import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
 import { ExitDialogComponent } from './exit-dialog/exit-dialog.component';
 import { ExpansionBoxComponent } from './expansion-box/expansion-box.component';
@@ -85,11 +86,15 @@ import { IntroStepperComponent } from './intro-stepper/intro-stepper.component';
 import { LoadingDialogComponent } from './loading-dialog/loading-dialog.component';
 import { PdfService } from './pdf_service';
 import { PerspectiveApiService } from './perspectiveapi.service';
+import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
+import { OpportunitiesComponent } from './opportunities/opportunities.component';
+import { OpportunityCardComponent } from './opportunity-card/opportunity-card.component';
 import { RecommendedReportCardComponent } from './recommended-report-card/recommended-report-card.component';
 import { RegularExpressionFilterComponent } from './regular-expression-filter/regular-expression-filter.component';
 import { ReportCompleteComponent } from './report-complete/report-complete.component';
 import { ReportPdfComponent } from './report-pdf/report-pdf.component';
 import { ReportProgressBarComponent } from './report-progress-bar/report-progress-bar.component';
+import { ResearchPartnersOpportunityPageComponent } from './opportunities-research-partners/opportunities-research-partners-page.component';
 import { ReviewReportComponent } from './review-report/review-report.component';
 import { ScrollableSideMenuComponent } from './scrollable-side-menu/scrollable-side-menu.component';
 import { SearchBoxComponent } from './search-box/search-box.component';
@@ -117,6 +122,7 @@ import { RequestInvestigationComponent } from './request-investigation/request-i
     DatePickerDialogComponent,
     DateRangePickerComponent,
     DropdownButtonComponent,
+    EarlyAdoptersOpportunityPageComponent,
     ErrorDialogComponent,
     ExitDialogComponent,
     ExpansionBoxComponent,
@@ -130,11 +136,15 @@ import { RequestInvestigationComponent } from './request-investigation/request-i
     HrefOnlyDownloadDirective,
     IntroStepperComponent,
     LoadingDialogComponent,
+    NotFoundPageComponent,
+    OpportunitiesComponent,
+    OpportunityCardComponent,
     RecommendedReportCardComponent,
     RegularExpressionFilterComponent,
     ReportCompleteComponent,
     ReportPdfComponent,
     ReportProgressBarComponent,
+    ResearchPartnersOpportunityPageComponent,
     ReviewReportComponent,
     ScrollableSideMenuComponent,
     SearchBoxComponent,

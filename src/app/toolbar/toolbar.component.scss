@@ -284,6 +284,11 @@
       .find-support {
         display: flex;
       }
+
+      .sign-out-button {
+        margin-right: 0;
+        width: auto;
+      }
     }
   }
   .toolbar-row-signed-in::before {
