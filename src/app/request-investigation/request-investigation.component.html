@@ -1,0 +1,69 @@
+<div class="request-investigation-page">
+    <div class="content">
+        <h2 class="request-title">
+            Let our experts uncover the trolls behind your online harassment.
+        </h2>
+        <div class="request-content">
+            <h3 class="request-subtitle">Apply for investigative support:</h3>
+
+            <p>
+                <!--TODO : Point to correct form-->
+                Fill in this <button class="button" routerLink="/home">form</button> to apply for an
+                investigation into the
+                online abuse you’ve been facing.
+            </p>
+            <ul>
+                <li>
+                    Attach the PDF report you received from harassment manager and the
+                    spreadsheet with all the data.
+                </li>
+                <li>
+                    Add as much detail about why you think this may involve a network of
+                    coordinated attacks.
+                </li>
+                <li>Explain why you think it’s important that you get our support.</li>
+
+                <li>
+                    Add your contact information to allow us to get in touch with you.
+                </li>
+            </ul>
+        </div>
+
+        <div class="request-content">
+            <h3 class="request-subtitle">Behind the team supporting you</h3>
+
+            <p>
+                The iLAB at Code for Africa's African Network of Centres for Investigative Reporting (ANCIR) is the
+                continent’s largest forensic analysis team exposing disinformation and influence operations.
+            </p>
+            <p>
+
+                The team exposes the use of coordinated inauthentic behaviour or amplified hate speech and other toxic
+                content to
+                subvert democratic processes or to seed polarisation, attack persons or amplify extremism.
+                The iLAB regularly briefs key decision makers at international agencies, embassies and development
+                agencies,
+                and in the watchdog media. Its investigative analysis contributes to the takedown/de-platforming of
+                entire
+                networks of inauthentic accounts on social media.
+            </p>
+
+        </div>
+
+        <div class="request-content">
+            <h3 class="request-subtitle">Meet the team</h3>
+
+            <div class="team-members">
+                <div *ngFor="let member of teamMembers" class="team-member">
+                    <div class="profile-image">
+                        <img [src]='member.image' />
+                    </div>
+                    <h3 class="name">{{member.name}}</h3>
+                    <p class="title">{{member.title}}</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>

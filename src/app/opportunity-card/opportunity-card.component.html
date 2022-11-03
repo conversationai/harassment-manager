@@ -14,13 +14,16 @@
  limitations under the License.
 -->
 
-<div class="header">
-  <h1 class="title">404</h1>
-  <p class="subtitle">
-    The page you're looking for doesn't exist or has been moved.
-  </p>
-  <p class="subtitle">
-    There is no place like
-    <button class="button" routerLink="/home">home</button>
-  </p>
-</div>
+<a [routerLink]="url">
+  <div class="card">
+    <div class="image">
+      <img [src]="image">
+    </div>
+
+    <div class="content">
+      <h2>{{title}}</h2>
+      <p class="excerpt">{{excerpt}}</p>
+      <span class="info">{{date}} | {{tags}}</span>
+    </div>
+  </div>
+</a>

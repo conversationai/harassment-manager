@@ -1,0 +1,147 @@
+@use 'sass:math';
+
+h2,
+h3 {
+    font-weight: 700;
+    line-height: math.div(27, 23);
+    color: #000000;
+    font-family: Helvetica;
+    font-style: normal;
+}
+
+h2 {
+    font-size: 24px;
+    line-height: math.div(27, 24);
+}
+
+h3 {
+    font-size: 22px;
+    line-height: math.div(27, 22);
+}
+
+p,
+ul {
+    color: #212121;
+    font-size: 20px;
+    line-height: math.div(27, 20);
+}
+
+.request-investigation-page {
+    background-color: #EAEFFF;
+    padding: 20px 0;
+
+    .content {
+        padding: 0 20px;
+
+        button {
+            background-color: #101bcf;
+            border: 2px solid #101bcf;
+            border-radius: 13px;
+            color: #ffffff;
+            font-size: 20px;
+            line-height: math.div(27, 20);
+        }
+
+        button:focus-visible {
+            outline: none;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            background-image: url('/bullet.svg');
+            background-position: 0.5rem 0.5rem;
+            background-size: 0.5rem 0.5rem;
+            background-repeat: no-repeat;
+            margin-bottom: 27px;
+            margin-left: -0.5rem;
+            padding: 0;
+            padding-left: 2rem;
+        }
+
+        .team-members {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 40px;
+            margin-bottom: 40px;
+            background-color: #D7DCEC;
+
+            .team-member {
+
+                max-width: 176px;
+                width: min-content;
+                padding: 20px 10px;
+
+                .profile-image {
+                    background-color: #EE2534;
+                    width: 176px;
+                    height: 162px;
+                    border-radius: 50%;
+                    display: flex;
+
+                    img {
+                        display: block;
+                        margin: auto;
+                    }
+                }
+
+                .name {
+                    line-height: math.div(27, 22);
+                    color: #212121;
+                }
+
+                .title {
+                    font-size: 18px;
+                    line-height: math.div(27, 23);
+                }
+            }
+        }
+    }
+
+}
+
+@media all and (min-width: 768px) {
+    .request-investigation-page {
+        .content {
+            padding-left: 0;
+            padding-right: 0;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 728px;
+
+            .team-members {
+                justify-content: center;
+
+                .team-member {
+                    padding: 20px 40px;
+                }
+            }
+        }
+    }
+
+
+
+}
+
+@media all and (min-width: 1152px) {
+    .request-investigation-page {
+        .content {
+            max-width: 1024px;
+        }
+    }
+
+}
+
+@media all and (min-width: 1440px) {
+    .request-investigation-page {
+        .content {
+            max-width: 1144px;
+        }
+    }
+}

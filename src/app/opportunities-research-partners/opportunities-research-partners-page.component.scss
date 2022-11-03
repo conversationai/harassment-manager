@@ -13,79 +13,77 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 @use 'sass:math';
 
 :host {
   background-color: #eaefff;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 90vh;
 }
 
-.header {
-  align-items: flex-start;
+.content-wrapper {
+  padding: 40px 20px;
+}
+
+.content {
   display: flex;
   flex-direction: column;
-  padding: 40px 20px;
-  position: relative;
   row-gap: 20px;
 
-  h1,
-  p {
+  h1 {
+    font-size: 34px;
+    font-weight: 700;
+    line-height: math.div(27, 34);
     margin: 0;
   }
 
-  p {
-    font-size: 20px;
-    line-height: math.div(27, 20);
+  .info {
+    font-style: italic;
+    font-size: 15px;
+    line-height: math.div(27, 15);
   }
 
-  button {
-    background-color: #101bcf;
-    border: 2px solid #101bcf;
-    border-radius: 13px;
-    color: #ffffff;
-    cursor: pointer;
-    font-size: 20px;
-    line-height: math.div(27, 20);
+  p {
+    font-size: 16px;
+    line-height: math.div(27, 16);
   }
-  button:focus-visible {
-    outline: none;
+}
+
+.image {
+  width: 100%;
+
+  img {
+    object-fit: contain;
+    width: 100%;
   }
 }
 
 @media all and (min-width: 768px) {
-  .header {
-    height: 232px;
+  .content-wrapper {
     margin: 0 auto;
     max-width: 728px;
-    padding: 0;
-    text-align: left;
+    padding-left: 0;
+    padding-right: 0;
     width: 100%;
   }
 }
 
 @media all and (min-width: 1152px) {
-  .header {
-    height: 300px;
+  .content-wrapper {
     max-width: 1024px;
+  }
+
+  .content {
+    row-gap: 40px;
 
     h1 {
-      font-size: 64px;
-      line-height: math.div(92, 64);
+      font-size: 48px;
+      line-height: math.div(27, 48);
     }
   }
 }
 
 @media all and (min-width: 1440px) {
-  .header {
-    height: 327px;
+  .content-wrapper {
     max-width: 1144px;
-
-    h1 {
-      font-size: 73px;
-      line-height: math.div(92, 73);
-    }
   }
 }
