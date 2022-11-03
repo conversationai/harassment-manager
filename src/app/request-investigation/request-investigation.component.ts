@@ -13,7 +13,6 @@ interface TeamMember {
 })
 export class RequestInvestigationComponent {
 
-
   teamMembers: TeamMember[] = [
     {
       name: 'Allan Cheboi',
@@ -51,9 +50,6 @@ export class RequestInvestigationComponent {
       image: '/anita-igbine.svg'
     }
 
-  ]
-
-  constructor() { }
-
+  ];
 
 }
