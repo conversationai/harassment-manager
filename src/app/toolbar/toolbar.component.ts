@@ -67,6 +67,8 @@ export class ToolbarComponent {
 
   showBuildReportStepper = false;
 
+  isMobileMenuOpen = false;
+
   currentStep = BuildReportStep.NONE;
   // Copy of enum to use in the template.
   readonly BuildReportStep = BuildReportStep;
@@ -123,11 +125,17 @@ export class ToolbarComponent {
     this.iconRegistry.addSvgIcon(
       'report_icon',
       this.sanitizer.bypassSecurityTrustResourceUrl('/report.svg')
-    );
-    this.iconRegistry.addSvgIcon(
+    ).addSvgIcon(
       'report_icon_white',
       this.sanitizer.bypassSecurityTrustResourceUrl('/report_white.svg')
+    ).addSvgIcon(
+      'hamburger_menu',
+      this.sanitizer.bypassSecurityTrustResourceUrl('/hamburger_menu.svg')
+    ).addSvgIcon(
+      'close_menu',
+      this.sanitizer.bypassSecurityTrustResourceUrl('/close-menu.svg')
     );
+
 
     this.reportService.reportLastEditedChanged.subscribe(lastEditedMs => {
       this.reportLastEditedMs = lastEditedMs;
@@ -217,12 +225,12 @@ export class ToolbarComponent {
       const hours =
         msSinceLastReportEdit >= ONE_HOUR_MS
           ? Math.floor(
-              (msSinceLastReportEdit - ONE_DAY_MS * days) / ONE_HOUR_MS
-            )
+            (msSinceLastReportEdit - ONE_DAY_MS * days) / ONE_HOUR_MS
+          )
           : 0;
       const minutes = Math.floor(
         (msSinceLastReportEdit - (ONE_DAY_MS * days + ONE_HOUR_MS * hours)) /
-          ONE_MIN_MS
+        ONE_MIN_MS
       );
       if (days >= 1) {
         const date = moment(this.reportLastEditedMs);
@@ -385,5 +393,9 @@ export class ToolbarComponent {
         'back anytime. Your work will be saved.'
       );
     }
+  }
+
+  toggleMobileMenu(): void {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
   }
 }

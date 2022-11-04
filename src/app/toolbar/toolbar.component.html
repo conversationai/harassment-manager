@@ -20,13 +20,15 @@
       <div class="icon-placeholder"></div>
       <span class="title">SafeNet</span>
     </a>
-    <ng-container *ngIf="!userIsSignedIn">
-      <span class="spacer"></span>
-      <button mat-button class="action-button get-started-button" routerLink="/">Get Started</button>
-    </ng-container>
+
+
+    <button mat-button class="action-button mobile-menu-button" (click)="toggleMobileMenu()">
+      <mat-icon [svgIcon]="isMobileMenuOpen ? 'close_menu': 'hamburger_menu' "></mat-icon>
+    </button>
+
   </mat-toolbar-row>
 
-  <mat-toolbar-row class="toolbar-row toolbar-row-signed-in" *ngIf="userIsSignedIn">
+  <mat-toolbar-row class="toolbar-row main-nav toolbar-row-signed-in" *ngIf="userIsSignedIn">
     <div class="nav-links nav-item">
       <a routerLinkActive="active-router-link" routerLink="/home" #homeLink role="link"
         [attr.aria-current]="homeLink.routerLinkActive ? 'page' : false">
@@ -51,6 +53,32 @@
       <a routerLinkActive="active-router-link" routerLink="/request-an-investigation" #requestInvestigationLink
         [attr.aria-current]="requestInvestigationLink.routerLinkActive ? 'page' : false">
         <span class="text">Request an Investigation</span>
+        <img src="/red_ellipse.svg" />
+      </a>
+    </div>
+    <div class="nav-links nav-item">
+      <button class="sign-out-button" (click)="revokeAuthorization()">
+        <span>Sign out</span>
+      </button>
+    </div>
+  </mat-toolbar-row>
+
+  <mat-toolbar-row class="toolbar-row toolbar-row-signed-in mobile-nav"
+    [ngClass]="isMobileMenuOpen ? 'mobile-menu-open': 'mobile-menu-closed' ">
+    <div class="nav-links nav-item">
+      <a routerLinkActive="active-router-link" routerLink="/help-center" #helpCenterLink
+        [attr.aria-current]="helpCenterLink.routerLinkActive ? 'page' : false">
+        <span class="text">Help Center</span>
+        <img src="/red_ellipse.svg" />
+      </a>
+      <a routerLinkActive="active-router-link" routerLink="/find-support" #findSupportLink
+        [attr.aria-current]="findSupportLink.routerLinkActive ? 'page' : false">
+        <span class="text">Find Support</span>
+        <img src="/red_ellipse.svg" />
+      </a>
+      <a routerLinkActive="active-router-link" routerLink="/opportunities/" #opportunitiesLink
+        [attr.aria-current]="opportunitiesLink.routerLinkActive ? 'page' : false">
+        <span class="text">Opportunities</span>
         <img src="/red_ellipse.svg" />
       </a>
     </div>
