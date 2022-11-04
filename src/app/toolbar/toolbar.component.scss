@@ -184,7 +184,7 @@
   width: 100%;
   align-items: center;
   flex-wrap: nowrap;
-  height: 80px;
+  height: 60px;
   position: relative;
 
   .nav-links {
@@ -201,7 +201,7 @@
       border: none;
       color: #ffffff;
       display: flex;
-      height: 50%;
+      // height: 50%;
       // margin: 0 20px 0 0;
       padding: 0;
       text-decoration: none;
@@ -224,26 +224,7 @@
 
     }
 
-    // .home-link {
-    //   width: 60px;
-    // }
-
-    // .active-router-link {
-    //   .text {
-    //     border-bottom: 5px solid #da2732;
-    //   }
-
-    //   img {
-    //     display: block;
-    //     height: 29px;
-    //     width: 29px;
-    //     align-self: flex-end;
-    //     margin-bottom: -12px;
-    //   }
-    // }
-
     /*Hide find support button on mobile since it already is in footer */
-    // .find-support,
     .opportunities {
       display: none;
     }
@@ -267,24 +248,30 @@
   top: 0;
 }
 
-// .main-nav {
-//   display: none;
-// }
-
 .mobile-nav {
   height: 100vh;
   width: 100vw;
   flex-direction: column;
 
-  // target only first div
+  // target the first child of the mobile nav
   >div:first-child {
+    align-self: flex-start;
+  }
+
+  // target only second div
+  >div:nth-child(2) {
     flex: 2;
   }
 
-  // target second div
-  >div:nth-child(2) {
+  // target third div
+  >div:nth-child(3) {
     flex: 1;
-    justify-content: flex-end;
+    justify-content: center;
+  }
+
+  .close-mobile-menu-button {
+    background-color: transparent;
+    align-self: center;
   }
 
 
@@ -296,6 +283,17 @@
     a {
       height: auto;
       width: 100%;
+      justify-content: center;
+
+    }
+
+    a,
+    button {
+      span {
+        font-size: 22px;
+        font-weight: 700;
+        line-height: math.div(28, 22);
+      }
     }
   }
 
@@ -307,6 +305,10 @@
 
 .mobile-menu-open {
   display: flex;
+}
+
+.hidden-nav {
+  display: none;
 }
 
 .mobile-menu-closed {
@@ -326,6 +328,7 @@
   }
 
   .toolbar-row-signed-in {
+    height: 80px;
 
     // target only first div
     >div:first-child {
@@ -361,7 +364,6 @@
         margin: 0 20px 0 0;
 
         span {
-          font-family: 'Merriweather', serif;
           font-size: 22px;
           font-weight: 700;
           line-height: math.div(28, 22);

@@ -15,7 +15,7 @@
 -->
 
 <mat-toolbar class="toolbar">
-  <mat-toolbar-row class="toolbar-row">
+  <mat-toolbar-row class="toolbar-row" [ngClass]="isMobileMenuOpen ? 'hidden-nav': null  ">
     <a routerLink="/home" class="title-wrapper">
       <div class="icon-placeholder"></div>
       <span class="title">SafeNet</span>
@@ -23,12 +23,13 @@
 
 
     <button mat-button class="action-button mobile-menu-button" (click)="toggleMobileMenu()">
-      <mat-icon [svgIcon]="isMobileMenuOpen ? 'close_menu': 'hamburger_menu' "></mat-icon>
+      <mat-icon svgIcon="hamburger_menu"></mat-icon>
     </button>
 
   </mat-toolbar-row>
 
-  <mat-toolbar-row class="toolbar-row main-nav toolbar-row-signed-in" *ngIf="userIsSignedIn">
+  <mat-toolbar-row class="toolbar-row main-nav toolbar-row-signed-in" *ngIf="userIsSignedIn"
+    [ngClass]="isMobileMenuOpen ? 'hidden-nav': null  ">
     <div class="nav-links nav-item">
       <a routerLinkActive="active-router-link" routerLink="/home" #homeLink role="link"
         [attr.aria-current]="homeLink.routerLinkActive ? 'page' : false" class="home-link">
@@ -65,6 +66,14 @@
 
   <mat-toolbar-row class="toolbar-row toolbar-row-signed-in mobile-nav"
     [ngClass]="isMobileMenuOpen ? 'mobile-menu-open': 'mobile-menu-closed' ">
+
+    <div>
+      <button mat-button class="action-button close-mobile-menu-button" (click)="toggleMobileMenu()">
+        <mat-icon svgIcon="close_menu"></mat-icon>
+      </button>
+    </div>
+
+
     <div class="nav-links nav-item">
       <a routerLinkActive="active-router-link" routerLink="/help-center" #helpCenterLink
         [attr.aria-current]="helpCenterLink.routerLinkActive ? 'page' : false">
