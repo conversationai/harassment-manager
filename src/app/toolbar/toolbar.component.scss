@@ -212,9 +212,9 @@
 
       span {
         font-family: 'Merriweather', serif;
-        font-size: 22px;
+        font-size: 10px;
         font-weight: 700;
-        line-height: math.div(28, 22);
+        line-height: 10px;
       }
     }
 
@@ -222,10 +222,6 @@
       width: 50%;
       align-items: center;
 
-      .text {
-        font-size: 10px;
-        line-height: 13px;
-      }
     }
 
     // .home-link {
@@ -325,6 +321,57 @@
       margin-right: auto;
       padding-left: 0;
       padding-right: 0;
+    }
+
+  }
+
+  .toolbar-row-signed-in {
+
+    // target only first div
+    >div:first-child {
+      flex: 3;
+      flex-wrap: nowrap;
+    }
+
+    // target second div
+    >div:nth-child(2) {
+      display: flex;
+      flex: 1;
+      justify-content: flex-end;
+    }
+
+    .nav-links {
+
+      .active-router-link {
+        .text {
+          border-bottom: 5px solid #da2732;
+        }
+
+        img {
+          display: block;
+          height: 29px;
+          width: 29px;
+          align-self: flex-end;
+          margin-bottom: -12px;
+        }
+      }
+
+      a,
+      button {
+        margin: 0 20px 0 0;
+
+        span {
+          font-family: 'Merriweather', serif;
+          font-size: 22px;
+          font-weight: 700;
+          line-height: math.div(28, 22);
+        }
+      }
+
+      .find-support {
+        display: none;
+      }
+
     }
 
   }
