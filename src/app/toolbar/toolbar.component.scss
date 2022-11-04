@@ -82,7 +82,7 @@
 }
 
 .mobile-menu-button {
-  background-color: #ffffff;
+  background-color: #EAEFFF;
   color: #101bcf;
 }
 
@@ -202,7 +202,6 @@
       margin: 0 20px 0 0;
       padding: 0;
       text-decoration: none;
-      // width: 120px;
 
       img {
         display: none;
@@ -216,8 +215,8 @@
       }
     }
 
-    a:first-of-type {
-      // width: 60px;
+    .home-link {
+      width: 60px;
     }
 
     .active-router-link {
@@ -235,7 +234,8 @@
     }
 
     /*Hide find support button on mobile since it already is in footer */
-    .find-support {
+    .find-support,
+    .opportunities {
       display: none;
     }
   }
@@ -316,6 +316,15 @@
     left: calc((728px - 100vw) / 2);
     right: calc((728px - 100vw) / 2);
   }
+
+  .mobile-menu-button,
+  .mobile-nav {
+    display: none;
+  }
+
+  .main-nav {
+    display: flex;
+  }
 }
 
 @media all and (min-width: 1152px) {
@@ -331,7 +340,8 @@
         margin: 0 40px 0 0;
       }
 
-      .find-support {
+      .find-support,
+      .opportunities {
         display: flex;
       }
 

@@ -31,7 +31,7 @@
   <mat-toolbar-row class="toolbar-row main-nav toolbar-row-signed-in" *ngIf="userIsSignedIn">
     <div class="nav-links nav-item">
       <a routerLinkActive="active-router-link" routerLink="/home" #homeLink role="link"
-        [attr.aria-current]="homeLink.routerLinkActive ? 'page' : false">
+        [attr.aria-current]="homeLink.routerLinkActive ? 'page' : false" class="home-link">
         <span class="text">Home</span>
         <img src="/red_ellipse.svg" />
       </a>
@@ -46,7 +46,7 @@
         <img src="/red_ellipse.svg" />
       </a>
       <a routerLinkActive="active-router-link" routerLink="/opportunities/" #opportunitiesLink
-        [attr.aria-current]="opportunitiesLink.routerLinkActive ? 'page' : false">
+        [attr.aria-current]="opportunitiesLink.routerLinkActive ? 'page' : false" class="opportunities">
         <span class="text">Opportunities</span>
         <img src="/red_ellipse.svg" />
       </a>
