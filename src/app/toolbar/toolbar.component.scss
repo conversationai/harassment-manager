@@ -189,6 +189,7 @@
 
   .nav-links {
     display: flex;
+    width: 100%;
     z-index: 1;
     height: 100%;
     justify-content: space-between;
@@ -201,7 +202,7 @@
       color: #ffffff;
       display: flex;
       height: 50%;
-      margin: 0 20px 0 0;
+      // margin: 0 20px 0 0;
       padding: 0;
       text-decoration: none;
 
@@ -217,29 +218,43 @@
       }
     }
 
-    .home-link {
-      width: 60px;
-    }
+    a {
+      width: 50%;
+      align-items: center;
 
-    .active-router-link {
       .text {
-        border-bottom: 5px solid #da2732;
-      }
-
-      img {
-        display: block;
-        height: 29px;
-        width: 29px;
-        align-self: flex-end;
-        margin-bottom: -12px;
+        font-size: 10px;
+        line-height: 13px;
       }
     }
+
+    // .home-link {
+    //   width: 60px;
+    // }
+
+    // .active-router-link {
+    //   .text {
+    //     border-bottom: 5px solid #da2732;
+    //   }
+
+    //   img {
+    //     display: block;
+    //     height: 29px;
+    //     width: 29px;
+    //     align-self: flex-end;
+    //     margin-bottom: -12px;
+    //   }
+    // }
 
     /*Hide find support button on mobile since it already is in footer */
-    .find-support,
+    // .find-support,
     .opportunities {
       display: none;
     }
+  }
+
+  .sign-out-nav {
+    display: none;
   }
 }
 
