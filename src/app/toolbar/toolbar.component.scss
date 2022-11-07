@@ -262,6 +262,7 @@ app-report-progress-bar {
         display: none;
       }
 
+
       span {
         font-family: 'Merriweather', serif;
         font-size: 10px;
@@ -270,11 +271,22 @@ app-report-progress-bar {
       }
     }
 
+    a:first-of-type {
+      width: 60px;
+    }
 
-    a {
-      width: 50%;
-      align-items: center;
+    .active-router-link {
+      .text {
+        border-bottom: 5px solid #da2732;
+      }
 
+      img {
+        display: block;
+        height: 29px;
+        width: 29px;
+        align-self: flex-end;
+        margin-bottom: -12px;
+      }
     }
 
     /*Hide find support button on mobile since it already is in footer */
@@ -428,6 +440,7 @@ app-report-progress-bar {
 
   .main-nav {
     display: flex;
+  }
 
 
   app-report-progress-bar {
@@ -444,7 +457,6 @@ app-report-progress-bar {
       }
 
     }
-
   }
 }
 
@@ -496,10 +508,12 @@ app-report-progress-bar {
   .mobile-nav {
     display: none;
   }
+
   .last-edited {
     display: block;
   }
 
+}
 
 @media all and (min-width: 1440px) {
   .toolbar {
