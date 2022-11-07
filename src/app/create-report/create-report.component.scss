@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+@use 'sass:math';
 
 :host {
   display: flex;
@@ -25,6 +26,12 @@
   flex: 1;
   flex-direction: column;
 }
+
+.data-filter-section {
+  background-color: #EAEFFF;
+  padding: 0 20px;
+}
+
 
 .tweet-info {
   display: block;
@@ -39,12 +46,14 @@
 .filters-container {
   align-items: flex-start;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   padding: 12px 0 18px 0;
   position: relative;
+  flex-wrap: wrap;
+
 }
 
-.filters-container > * {
+.filters-container>* {
   z-index: inherit;
 }
 
@@ -66,7 +75,7 @@ app-filter-dropdown {
 }
 
 .toxicity-range-dropdown {
-  width: 280px;
+  width: auto;
 }
 
 /*
@@ -132,8 +141,8 @@ app-filter-dropdown {
 }
 
 .vertical-divider {
-  background-color: #e0e0e0;
-  height: 1px;
+  background-color: #D7DCEC;
+  height: 5px;
   width: 100%;
 }
 
@@ -153,33 +162,52 @@ mat-list-option .date-filter {
   background-color: #f3e8fd;
 }
 
+.view-comments-title,
+.view-comments-subtitle {
+  font-family: Helvetica;
+  line-height: math.div(27, 27);
+
+
+}
+
 .view-comments-title {
-  font-size: 30px;
-  margin-bottom: 30px;
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 0;
   margin-top: 50px;
-  text-align: center;
+  text-align: start;
+  color: #000000;
+}
+
+.view-comments-subtitle {
+  text-align: start;
+  font-size: 20px;
 }
 
 .view-comments-title .greeting {
   margin-bottom: 16px;
+  font-weight: 400;
+  font-size: 20px;
+  color: #212121;
 }
 
 .list-header {
-  align-items: center;
   color: #4a4a4a;
   display: flex;
-  flex-direction: row;
-  font-size: 14px;
+  flex-wrap: wrap;
+  flex-direction: column-reverse;
+  font-size: 12px;
   justify-content: space-between;
-  max-width: 1600px;
-  padding-right: 16px;
   padding-top: 20px;
+  white-space: nowrap;
 }
 
 .list-header .view-controls {
   align-items: center;
   display: flex;
   position: relative;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .horizontal-divider {
@@ -192,6 +220,7 @@ mat-list-option .date-filter {
 
 .list-header .view-controls .horizontal-divider {
   height: 1em;
+  display: none;
 }
 
 .options-dropdown {
@@ -219,8 +248,9 @@ mat-list-option .date-filter {
   height: 30px;
   justify-content: space-between;
   margin-left: 10px;
+
   .mat-button-toggle-checked {
-    color: #ad1457;
+    color: #101BCF;
     background-color: rgba(209, 179, 195, 0.2);
   }
 }
@@ -234,22 +264,26 @@ mat-list-option .date-filter {
   display: flex;
   justify-content: center;
   white-space: nowrap;
-  width: 300px;
+  width: auto;
+
 }
 
 .select-all {
   align-items: center;
   display: flex;
-  padding-left: 40px;
+  width: 100%;
+  padding: 0;
 }
 
 .comment-count {
-  color: #ad1457;
+  color: #101BCF;
 }
 
 .comment-count-info {
   align-items: center;
-  display: flex;
+
+  // Hide by default and show in desktop view.
+  display: none;
   position: relative;
 }
 
@@ -329,33 +363,29 @@ mat-list-option .item-metadata,
 }
 
 .selected-comment-actions button {
-  background-color: #b23c66;
+  background-color: #101BCF;
   color: white;
 }
 
 .items-wrapper {
-  background-color: #f9f9f9;
+  background-color: #D7DCEC;
   display: flex;
   flex: 1;
   flex-direction: column;
-  padding: 0 150px 5% 150px;
-}
-
-// Once the text starts to wrap decrease the left/right padding.
-@media screen and (max-width: 1200px) {
-  .items-wrapper {
-    padding: 0 5% 5% 5%;
-  }
+  padding: 0 20px;
+  padding-bottom: 20px + 30;
 }
 
 .list-header {
+
   button,
   mat-icon {
     background-repeat: no-repeat;
     display: inline-block;
-    color: #ad1457;
+    color: #101BCF;
     vertical-align: middle;
   }
+
   .refresh {
     color: #757575;
   }
@@ -457,9 +487,10 @@ mat-paginator {
 }
 
 .page-number-button {
-  color: #a54167;
+  color: #101BCF;
   min-width: 20px;
   width: fit-content;
+  margin-right: 10px;
 }
 
 .page-number-button.selected {
@@ -468,13 +499,86 @@ mat-paginator {
 }
 
 .page-button {
-  background-color: #a54167;
-  border-radius: 52px;
-  color: #fff;
+  border-radius: 13px;
+  border: 1px solid #000000;
+  color: #000000;
+  margin-right: 10px;
 }
 
 .page-button:disabled {
   background-color: transparent;
   border: 2px solid #9da1a3;
   color: #9da1a3;
+}
+
+@media screen and (min-width: 768px) {
+
+  .view-comments-title,
+  .view-comments-subtitle,
+  .filters-container,
+  .list-header,
+  .comments-list,
+  .comments-nav {
+    max-width: 728px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .filters-container {
+    flex-wrap: wrap;
+  }
+
+  .list-header {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+
+    .select-all {
+      width: 100%;
+    }
+
+    .view-controls {
+      flex-wrap: nowrap;
+
+      .horizontal-divider {
+        display: block;
+      }
+    }
+
+  }
+
+
+}
+
+@media screen and (min-width: 1152px) {
+
+
+  .view-comments-title,
+  .view-comments-subtitle,
+  .filters-container,
+  .list-header,
+  .comments-list,
+  .comments-nav {
+    max-width: 1024px;
+  }
+
+  .comment-count-info {
+    display: block;
+  }
+
+}
+
+@media screen and (min-width: 1440px) {
+
+
+  .view-comments-title,
+  .view-comments-subtitle,
+  .filters-container,
+  .list-header,
+  .comments-list,
+  .comments-nav {
+    max-width: 1144px;
+  }
+
 }

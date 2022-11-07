@@ -33,8 +33,40 @@
   }
 }
 
-.spacer {
-  flex: 1;
+app-report-progress-bar {
+  width: 100%;
+
+  // this needs to be styled in isolation
+  ::ng-deep .progress-bar {
+
+    justify-content: space-around;
+
+    .step {
+      color: #000000;
+
+      .step-number-icon {
+        background-color: #585555;
+        color: white;
+      }
+    }
+
+    .step.active {
+      color: #101bcf;
+
+      .step-number-icon {
+        background-color: #101bcf;
+        color: white;
+      }
+    }
+
+    button:not(.selected) {
+      display: none;
+    }
+
+    .divider {
+      display: none;
+    }
+  }
 }
 
 .title {
@@ -67,18 +99,24 @@
 }
 
 .continue-button {
-  background-color: #9da1a3;
+  background-color: #ffffff;
   border-radius: 18px;
-  color: #ffffff;
+  border: none;
+  color: #101bcf;
   z-index: 2; // above the stepper
 }
 
 .continue-button[disabled] {
-  color: #ffffff;
+  color: #c4c4c4;
+
+  .forward-icon {
+    display: none;
+  }
 }
 
 .continue-button.active-router-link {
-  background-color: #bd2c66;
+  color: #101bcf;
+  background-color: #ffffff;
 }
 
 .get-started-button {
@@ -93,7 +131,7 @@
 }
 
 .continue-button .report-draft-comment-count {
-  color: #9da1a3;
+  color: #101bcf;
   font-size: 12px;
   position: absolute;
   text-align: center;
@@ -102,29 +140,44 @@
 }
 
 .continue-button.active-router-link .report-draft-comment-count {
-  color: #bd2c66;
+  color: #101bcf;
 }
 
 .back-button {
-  color: #a54167;
+  color: #101bcf;
   margin-right: 10px;
   z-index: 2; // above the stepper
+  padding: 0;
+  margin: 0;
+
 }
 
 .forward-icon,
 .close-icon,
 .report-icon {
-  color: #ffffff;
+  color: #101bcf;
   display: flex;
+}
+
+.close-button {
+  background-color: #DA2732 !important;
+  color: #ffffff !important;
+
+  .close-icon {
+    color: #ffffff !important;
+  }
+}
+
+
+
+.forward-icon,
+.close-icon {
+  margin-left: 10px;
 }
 
 .close-icon,
 .report-icon {
   margin-right: 4px;
-}
-
-.forward-icon {
-  margin-left: 4px;
 }
 
 .report-icon {
@@ -169,12 +222,13 @@
 }
 
 .last-edited {
-  color: #70757a;
+  color: #000000;
   font-size: 14px;
   font-style: italic;
   line-height: 16px;
   margin-right: 12px;
   text-align: right;
+  display: none;
 }
 
 .toolbar-row-signed-in {
@@ -200,11 +254,11 @@
       margin: 0 20px 0 0;
       padding: 0;
       text-decoration: none;
-      width: 120px;
 
       img {
         display: none;
       }
+
       span {
         font-family: 'Merriweather', serif;
         font-size: 22px;
@@ -212,14 +266,12 @@
         line-height: math.div(28, 22);
       }
     }
-    a:first-of-type {
-      width: 60px;
-    }
 
     .active-router-link {
       .text {
         border-bottom: 5px solid #da2732;
       }
+
       img {
         display: block;
         height: 29px;
@@ -228,12 +280,14 @@
         margin-bottom: -12px;
       }
     }
+
     /*Hide find support button on mobile since it already is in footer */
     .find-support {
       display: none;
     }
   }
 }
+
 .toolbar-row-signed-in::before {
   background-color: #1625d9;
   background-image: url('~src/assets/help_center_bg.svg');
@@ -266,6 +320,23 @@
     left: calc((728px - 100vw) / 2);
     right: calc((728px - 100vw) / 2);
   }
+
+
+  app-report-progress-bar {
+
+    // this needs to be styled in isolation
+    ::ng-deep .progress-bar {
+
+      button {
+        padding: 0 8px;
+      }
+
+      button:not(.selected) {
+        display: block;
+      }
+
+    }
+  }
 }
 
 @media all and (min-width: 1152px) {
@@ -291,10 +362,16 @@
       }
     }
   }
+
   .toolbar-row-signed-in::before {
     left: calc((1024px - 100vw) / 2);
     right: calc((1024px - 100vw) / 2);
   }
+
+  .last-edited {
+    display: block;
+  }
+
 }
 
 @media all and (min-width: 1440px) {

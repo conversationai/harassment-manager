@@ -22,7 +22,7 @@
 
 <mat-card *ngIf="shouldShowWelcomeBackCard" class="welcome-back-card">
   <div>
-    <h1>Welcome back<span *ngIf="name">, {{name}}</span>!</h1>
+    <h1>Welcome back<span *ngIf="name">,<br /> {{name}}</span>!</h1>
     <div class="welcome-back-subtitle">Continue from where you left off.</div>
     <app-report-progress-bar></app-report-progress-bar>
     <button mat-button class="action-button continue-report-button" (click)="continueReport()">
@@ -32,8 +32,11 @@
       Start over
     </button>
   </div>
-  <img class="welcome-back-image" src="/placing_circle.svg" alt="A man steps onto a rectangular block and places a circle shape on top of a stack of
-       geometric shapes with varying textures.">
+  <div>
+    <img class="welcome-back-image" src="/welcome_back.svg" alt="A man steps onto a rectangular block and places a circle shape on top of a stack of
+         geometric shapes with varying textures.">
+  </div>
+
 </mat-card>
 
 <section class="jumbotron">

@@ -14,87 +14,76 @@
  limitations under the License.
 -->
 
-<div class="review-report-container">
-  <div class="report-summary">
-    <h2>Report Summary</h2>
-    <div class="row">
-      <div class="summary-attribute-name">Total</div>
-      <div class="details">{{commentsForReport.length}} Comments</div>
-    </div>
-    <div class="row">
-      <div class="summary-attribute-name">Toxicity Average</div>
-      <div class="details">{{formatScore(averageToxicity)}}</div>
-    </div>
-    <div class="row">
-      <div class="summary-attribute-name">Toxicity types</div>
-      <div class="details">
-        <div *ngFor="let type of toxicityTypes">{{type}}</div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="summary-attribute-name">Users</div>
-      <div class="details">
-        <div class="username" *ngFor="let user of usersInReport | keyvalue">{{user.key}} ({{user.value}})</div>
-      </div>
-    </div>
-  </div>
+<div class="report-content-wrapper">
+  <div class="review-report-container">
 
-  <div class="report-contents">
-    <div class="comment-summary">
-      <h2 *ngIf="commentsForReport.length !== 1">{{commentsForReport.length}} Comments</h2>
-      <h2 *ngIf="commentsForReport.length === 1">1 Comment</h2>
-      <span>We've hidden and summarized the full contents of your report. You can unhide this information at any time.</span>
-      <button mat-button
-              class="show-comments-button"
-              (click)="showFullReport = !showFullReport">
-        <span>{{showFullReport ? 'Hide comments' : 'Show comments'}}</span>
-        <mat-icon>{{showFullReport ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}</mat-icon>
-      </button>
-      <div *ngIf="showFullReport" class="comments-container">
-        <button mat-button
-                class="action-button-stroked remove-all-button"
-                (click)="removeAllCommentsFromReport()">
-          <mat-icon>remove_circle</mat-icon>
-          <span>Remove all</span>
+    <div class="report-summary">
+      <h2>Report Summary</h2>
+      <div class="row">
+        <div class="summary-attribute-name">Total</div>
+        <div class="details">{{commentsForReport.length}} Comments</div>
+      </div>
+      <div class="row">
+        <div class="summary-attribute-name">Toxicity Average</div>
+        <div class="details">{{formatScore(averageToxicity)}}</div>
+      </div>
+      <div class="row">
+        <div class="summary-attribute-name">Toxicity types</div>
+        <div class="details">
+          <div *ngFor="let type of toxicityTypes">{{type}}</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="summary-attribute-name">Users</div>
+        <div class="details">
+          <div class="username" *ngFor="let user of usersInReport | keyvalue">{{user.key}} ({{user.value}})</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="report-contents">
+      <div class="comment-summary">
+        <h2 *ngIf="commentsForReport.length !== 1">{{commentsForReport.length}} Comments</h2>
+        <h2 *ngIf="commentsForReport.length === 1">1 Comment</h2>
+        <span>We've hidden and summarized the full contents of your report. You can unhide this information at any
+          time.</span>
+        <button mat-button class="show-comments-button" (click)="showFullReport = !showFullReport">
+          <span class="comments-text">{{showFullReport ? 'Hide comments' : 'Show comments'}}</span>
+          <mat-icon>{{showFullReport ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}</mat-icon>
         </button>
-        <app-comment-info *ngFor="let item of commentsForReport"
-                        [comment]="item"
-                        [showCheckbox]="false"
-                        [showFullText]="true"
-                        [showDeleteButton]="true"
-                        (deleteClicked)="removeItemFromReport(item)"
-                        class="tweet-info">
-        </app-comment-info>
+        <div *ngIf="showFullReport" class="comments-container">
+          <button mat-button class="action-button-stroked remove-all-button" (click)="removeAllCommentsFromReport()">
+            <mat-icon>remove_circle</mat-icon>
+            <span>Remove all</span>
+          </button>
+          <app-comment-info *ngFor="let item of commentsForReport" [comment]="item" [showCheckbox]="false"
+            [showFullText]="true" [showDeleteButton]="true" (deleteClicked)="removeItemFromReport(item)"
+            class="tweet-info">
+          </app-comment-info>
+        </div>
+      </div>
+
+      <div class="reason-for-reporting">
+        <h2>Type of harassment</h2>
+        <div class="report-reasons">
+          <mat-checkbox *ngFor="let option of reportReasonOptions; index as i" class="checkbox report-reasons-checkbox"
+            [(ngModel)]="hasReportReasons[i]" (change)="updateReportReasons()" color="primary">
+            {{option}}
+          </mat-checkbox>
+        </div>
+      </div>
+
+      <div class="additional-notes">
+        <h2>Additional notes</h2>
+        <div class="additional-notes-text">
+          Add any details or context you want to record or share when you share this report.
+        </div>
+        <mat-form-field appearance="outline">
+          <textarea matInput aria-label="Additional notes" class="context" [(ngModel)]="context" [maxLength]=1200
+            (input)="onContextInputChange()" placeholder="Additional notes (1200 character limit)"></textarea>
+        </mat-form-field>
       </div>
     </div>
 
-    <div class="reason-for-reporting">
-      <h2>Type of harassment</h2>
-      <div class="report-reasons">
-        <mat-checkbox *ngFor="let option of reportReasonOptions; index as i"
-                      class="checkbox report-reasons-checkbox"
-                      [(ngModel)]="hasReportReasons[i]"
-                      (change)="updateReportReasons()"
-                      color="primary">
-          {{option}}
-        </mat-checkbox>
-      </div>
-    </div>
-
-    <div class="additional-notes">
-      <h2>Additional notes</h2>
-      <div>
-        Add any details or context you want to record or share when you share this report.
-      </div>
-      <mat-form-field appearance="outline">
-        <textarea matInput
-                  aria-label="Additional notes"
-                  class="context"
-                  [(ngModel)]="context"
-                  [maxLength]=1200
-                  (input)="onContextInputChange()"
-                  placeholder="Additional notes (1200 character limit)"></textarea>
-      </mat-form-field>
-    </div>
   </div>
 </div>

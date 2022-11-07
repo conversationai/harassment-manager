@@ -299,7 +299,7 @@ app-search-box .mat-form-field-appearance-outline .mat-form-field-outline {
 app-filter-dropdown
   .filter-active.mat-form-field-appearance-outline
   .mat-form-field-outline {
-  background-color: rgba(209, 179, 195, 0.2);
+  background-color: #D7DCEC;
   border-radius: 20px;
 }
 
@@ -390,14 +390,14 @@ button {
   }
 
   &.action-button {
-    background-color: #b23c66;
+    background-color: #101BCF;
     color: #ffffff;
   }
 
   &.action-button-stroked {
     background-color: transparent;
-    border: 1px solid #a54167;
-    color: #a54167;
+    border: 1px solid #101BCF;
+    color: #101BCF;
   }
 }
 

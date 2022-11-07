@@ -18,13 +18,19 @@
   text-align: center;
 }
 
+.pdf-page,
+.report-summary,
+.report-details {
+  background-color: #EAEFFF;
+}
+
 .harassment-title {
   margin-bottom: 0px;
 }
 
 .header {
   color: white;
-  background: #A54167;
+  background: #101BCF;
   display: flex;
   font-family: 'Google Sans', Arial, sans-serif;
   flex-direction: column;
@@ -37,11 +43,11 @@
 }
 
 hr {
- background-color: #A54167;
- color: #A54167;
- height: 2px;
- margin-left: 150px;
- margin-right: 150px;
+  background-color: #101BCF;
+  color: #101BCF;
+  height: 2px;
+  margin-left: 150px;
+  margin-right: 150px;
 }
 
 img {
@@ -66,7 +72,7 @@ img {
 
 // Overrides .mat-cell
 .border-right {
-  border-right: 4px solid #A54167;
+  border-right: 4px solid #101BCF;
 }
 
 .large-col {
@@ -93,6 +99,13 @@ img {
 .report-title {
   display: flex;
   margin-bottom: 0px;
+
+  .text {
+    font-weight: 700;
+    font-size: 40px;
+    font-family: 'FONTSPRING DEMO - Greycliff CF';
+    color: white;
+  }
 }
 
 .report-details {
@@ -138,9 +151,19 @@ img {
 }
 
 .summary-title {
-  font-weight: bold;
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 80px;
+  font-family: 'Merriweather';
   margin-bottom: 5px;
   margin-top: 0px;
+}
+
+.summary-subtitle {
+  font-family: Helvetica;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
 }
 
 table {
@@ -152,7 +175,7 @@ table {
 }
 
 .table-header {
-  background: #A54167;
+  background: #101BCF;
   color: white;
   display: flex;
   flex-direction: column;
@@ -161,9 +184,11 @@ table {
   padding: 10px;
   padding-left: 30px;
   width: 1060px;
+
   h1 {
     font-size: 23px;
   }
+
   h2 {
     font-size: 18px;
     align-self: center;
@@ -171,11 +196,14 @@ table {
 }
 
 th {
-  color: #A54167;
+  color: #101BCF;
   font-weight: bold;
 }
 
-th.mat-header-cell:last-of-type, th.mat-header-cell:first-of-type, td.mat-cell:last-of-type, td.mat-cell:first-of-type {
+th.mat-header-cell:last-of-type,
+th.mat-header-cell:first-of-type,
+td.mat-cell:last-of-type,
+td.mat-cell:first-of-type {
   padding-left: 2px;
   padding-right: 2px;
 }

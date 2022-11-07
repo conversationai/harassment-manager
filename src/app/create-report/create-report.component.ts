@@ -33,11 +33,13 @@ import {
 } from '@angular/core';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { MatDialog } from '@angular/material/dialog';
+import { MatIconRegistry } from '@angular/material/icon';
 import {
   MatPaginator,
   MatPaginatorIntl,
   PageEvent,
 } from '@angular/material/paginator';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { take } from 'rxjs/operators';
 import {
@@ -138,7 +140,7 @@ function getRangeLabel(page: number, pageSize: number, length: number) {
   // just in case.
   const endIndex =
     startIndex < length
-      ? Math.min(startIndex + pageSize, length)
+      ? Math.min(startIndex + pageSize, length) 
       : startIndex + pageSize;
   return `Showing ${startIndex + 1} – ${endIndex} of ${length} comments`;
 }
@@ -315,7 +317,9 @@ export class CreateReportComponent implements OnInit, AfterViewInit {
     private readonly scrollStrategyOptions: ScrollStrategyOptions,
     private onboardingService: OnboardingService,
     private googleAnalyticsService: GoogleAnalyticsService,
-    private liveAnnouncer: LiveAnnouncer
+    private liveAnnouncer: LiveAnnouncer,
+      private iconRegistry: MatIconRegistry,
+    private sanitizer: DomSanitizer,
   ) {
     this.overlayScrollStrategy = this.scrollStrategyOptions.block();
 
@@ -381,6 +385,18 @@ export class CreateReportComponent implements OnInit, AfterViewInit {
         this.commentsLoaded = newCount;
       }
     );
+
+    this.iconRegistry
+      .addSvgIcon(
+        'open_report_icon',
+        this.sanitizer.bypassSecurityTrustResourceUrl('eye-on.svg')
+      )
+      .addSvgIcon(
+        'close_report_icon',
+        this.sanitizer.bypassSecurityTrustResourceUrl(
+          '/eye-off.svg'
+        )
+      )
   }
 
   ngOnInit() {
