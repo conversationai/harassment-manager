@@ -310,15 +310,11 @@
 }
 
 .hidden-nav {
-  display: none;
+  display: none !important;
 }
 
 .mobile-menu-closed {
   display: none;
-}
-
-.signed-out{
-  display:none;
 }
 
 @media all and (min-width: 768px) {
@@ -334,22 +330,9 @@
   }
 
   .toolbar-row-signed-in {
-    height: 80px;
-
-    // target only first div
-    >div:first-child {
-      flex: 3;
-      flex-wrap: nowrap;
-    }
-
-    // target second div
-    >div:nth-child(2) {
-      display: flex;
-      flex: 1;
-      justify-content: flex-end;
-    }
 
     .nav-links {
+      flex-wrap: nowrap;
 
       .active-router-link {
         .text {
@@ -367,8 +350,6 @@
 
       a,
       button {
-        margin: 0 20px 0 0;
-
         span {
           font-size: 22px;
           font-weight: 700;
@@ -376,6 +357,7 @@
         }
       }
 
+      .opportunities,
       .find-support {
         display: none;
       }
@@ -387,11 +369,6 @@
   .toolbar-row-signed-in::before {
     left: calc((728px - 100vw) / 2);
     right: calc((728px - 100vw) / 2);
-  }
-
-  .mobile-menu-button,
-  .mobile-nav {
-    display: none;
   }
 
   .main-nav {
@@ -407,6 +384,20 @@
   }
 
   .toolbar-row-signed-in {
+    height: 80px;
+
+    >div:first-child {
+      flex: 3;
+      flex-wrap: nowrap;
+    }
+
+    // target second div
+    >div:nth-child(2) {
+      display: flex;
+      flex: 1;
+      justify-content: flex-end;
+    }
+
     .nav-links {
       a {
         margin: 0 40px 0 0;
@@ -427,6 +418,11 @@
   .toolbar-row-signed-in::before {
     left: calc((1024px - 100vw) / 2);
     right: calc((1024px - 100vw) / 2);
+  }
+
+  .mobile-menu-button,
+  .mobile-nav {
+    display: none;
   }
 }
 
