@@ -276,10 +276,10 @@ app-report-progress-bar {
       align-items: center;
 
       // 2nd and 5th child justifies content to the right
-      &:nth-child(2),
-      &:nth-child(5) {
-        justify-content: flex-end;
-      }
+      // &:nth-child(2),
+      // &:nth-child(5) {
+      //   justify-content: flex-end;
+      // }
     }
 
     /*Hide find support button on mobile since it already is in footer */
@@ -341,6 +341,22 @@ app-report-progress-bar {
     align-items: center;
     justify-content: space-around;
 
+
+    .active-router-link {
+      .text {
+        border-bottom: 5px solid #da2732;
+      }
+
+      img {
+        display: block;
+        height: 29px;
+        width: 29px;
+        align-self: flex-end;
+        margin-bottom: -12px;
+      }
+    }
+
+
     a {
       height: auto;
       width: 100%;
@@ -352,9 +368,9 @@ app-report-progress-bar {
     a,
     button {
       span {
-        font-size: 22px;
+        font-size: 15px;
+        line-height: 19px;
         font-weight: 700;
-        line-height: math.div(28, 22);
       }
     }
   }
