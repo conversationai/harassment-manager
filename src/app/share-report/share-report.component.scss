@@ -13,22 +13,38 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+@use 'sass:math';
+
+*:not(.mat-icon) {
+  font-family: Helvetica;
+  font-style: normal;
+}
+
+.share-report-wrapper {
+  background-color: #EAEFFF;
+}
+
+// hide pdf view by default
+app-report-pdf {
+  display: none;
+}
 
 .container {
   display: flex;
   height: 100%;
+  padding: 0 20px;
 }
 
 .report-preview {
   background-color: #d0d0d0;
-  display: flex;
+  display: none;
   justify-content: center;
   width: calc(100% - 500px); // 100% - width of actions-container
 }
 
 .actions-container {
-  background-color: #f9f9f9;
-  width: 500px;
+  background-color: #D7DCEC;
+  width: auto;
 }
 
 .image-container {
@@ -39,12 +55,12 @@
   display: flex;
   padding: 20px 24px 18px 25px;
   margin: 24px 28px;
-  width: 375px;
 }
 
 .card-title {
-  color: #4a4a4a;
-  font-size: 16px;
+  color: #000000;
+  font-size: 15px;
+  font-weight: 400;
   line-height: 19px;
   margin-bottom: 4px;
 }
@@ -54,19 +70,45 @@
   font-size: 16px;
   line-height: 21px;
   margin-bottom: 12px;
+
+  a {
+    text-decoration: none;
+  }
 }
 
 .card-body.small-text {
-  color: #70757a;
+  color: #494949;
   font-size: 13px;
+  font-weight: 400;
+  line-height: 19px;
+}
+
+.action-btn {
+  background-color: #101BCF;
+  color: white;
+
+  .prefix-icon {
+    color: white;
+  }
+}
+
+app-dropdown-button {
+
+  // this needs to be styled in isolation
+  ::ng-deep .save-button {
+    background-color: #101BCF;
+    color: white;
+
+    a {
+      color: white;
+    }
+  }
 }
 
 pdf-viewer {
   display: block;
-  height: max(
-    100vh,
-    930px
-  ); // 930px is the height of the action panel on the right for Twitter
+  height: max(100vh,
+      930px); // 930px is the height of the action panel on the right for Twitter
   width: 100%;
 }
 
@@ -112,7 +154,7 @@ pdf-viewer {
 }
 
 .prefix-icon {
-  color: #a54167;
+  color: #101BCF;
   margin-right: 8px;
 }
 
@@ -128,7 +170,17 @@ pdf-viewer {
   margin: 36px 24px 30px 28px;
 
   h2 {
-    font-weight: 500px;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: math.div(27, 20);
+    color: #000000;
+  }
+
+  div {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 20px;
+    color: #212121;
   }
 }
 
@@ -142,4 +194,58 @@ pdf-viewer {
 
 .save-actions-button {
   width: 196px;
+}
+
+app-report-pdf {
+  background-color: #EAEFFF;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 728px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  app-report-pdf {
+    display: block;
+  }
+
+  .actions-container {
+    width: 400px;
+  }
+
+  .report-preview {
+    display: flex;
+    width: calc(100% - 400px); // 100% - width of actions-container
+
+  }
+
+
+}
+
+@media screen and (min-width: 1152px) {
+
+
+  .container {
+    max-width: 1024px;
+  }
+
+  .actions-container {
+    width: 500px;
+  }
+
+  .report-preview {
+    display: flex;
+    width: calc(100% - 500px); // 100% - width of actions-container
+
+  }
+
+}
+
+@media screen and (min-width: 1440px) {
+  .container {
+    max-width: 1144px;
+  }
+
 }

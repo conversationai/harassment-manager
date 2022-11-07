@@ -22,6 +22,8 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
 import { SelectableItem, SocialMediaItem, Tweet } from '../../common-types';
 import { Attributes } from '../../perspectiveapi-types';
 import { getInfluenceScore } from '../common/social_media_item_utils';
@@ -60,6 +62,23 @@ export class CommentInfoComponent implements OnChanges {
   time = 'Time';
 
   timeframe = '';
+
+  constructor(
+    private iconRegistry: MatIconRegistry,
+    private sanitizer: DomSanitizer,
+  ) {
+    this.iconRegistry
+      .addSvgIcon(
+        'show_report_icon',
+        this.sanitizer.bypassSecurityTrustResourceUrl('eye-on.svg')
+      )
+      .addSvgIcon(
+        'hide_report_icon',
+        this.sanitizer.bypassSecurityTrustResourceUrl(
+          '/eye-off.svg'
+        )
+      )
+  }
 
   // The selected state of the component. This variable can be set as an input
   // from the parent component and also from the ngModel on the checkbox.
@@ -196,11 +215,10 @@ export class CommentInfoComponent implements OnChanges {
     if (!this.comment || !this.comment.item) {
       return '';
     } else {
-      return `Comment by ${
-        this.tweet
+      return `Comment by ${this.tweet
           ? this.comment.item.authorScreenName
           : this.comment.item.authorName
-      }
+        }
        ', ' ${this.getFormattedDate(this.comment.item.date.getTime())}`;
     }
   }

@@ -13,6 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+@use 'sass:math';
+
+
+*:not(.mat-icon) {
+  font-family: Helvetica;
+  font-style: normal;
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: math.div(27, 27);
+  color: #000000;
+}
 
 h1 {
   font-size: 24px;
@@ -22,24 +36,15 @@ h1 {
 }
 
 .report-summary {
-  background-color: #fff;
-  border: 1px solid #dadce0;
+  background-color: #D7DCEC;
   color: #202124;
-  flex-basis: 420px;
-  flex-shrink: 0;
-  font-size: 16px;
+  font-size: 14px;
   height: fit-content;
   line-height: 30px;
-  margin-left: 30px;
-  margin-right: 60px;
+  margin-right: 0;
   margin-top: 16px;
   padding-bottom: 24px;
   padding-left: 24px;
-}
-
-.report-summary h2 {
-  font-size: 18px;
-  font-weight: 500;
 }
 
 .report-summary .row {
@@ -50,22 +55,33 @@ h1 {
   flex-basis: 140px;
   flex-shrink: 0;
   font-weight: 500;
+  font-weight: 700;
 }
 
 .report-summary .row .details {
   flex-grow: 1;
+  font-weight: 400;
+  font-size: 15px;
+  color: #212121;
+  line-height: math.div(22, 15);
 }
 
 .report-summary .row .details .username {
   margin-right: 24px;
-  min-width: 116px;
+  white-space: nowrap;
 }
 
 .review-report-container {
-  background-color: #f9f9f9;
-  border-top: 1px solid #dadce0;
   display: flex;
+  justify-content: space-between;
   height: 100%;
+  padding: 0 20px;
+  flex-direction: column;
+}
+
+.report-content-wrapper {
+  background-color: #EAEFFF;
+
 }
 
 .report-contents {
@@ -73,28 +89,49 @@ h1 {
   font-size: 14px;
   margin-right: 32px;
   margin-top: 22px;
+  padding-left: 24px;
 }
 
-.report-contents h2 {
-  color: #202124;
-  font-size: 18px;
-  font-weight: 500;
-}
+
 
 .show-comments-button {
-  color: #b23c66;
-  font-size: 14px;
-  font-weight: 500;
-  padding-left: 8px;
+  background-color: #101BCF;
+  color: white;
+  border-radius: 13px;
+  font-size: 15px;
+  font-weight: 400;
+  margin-left: 8px;
+  line-height: math.div(27, 15);
+
+  .comments-text {
+    color: white;
+  }
 }
 
 .report-reasons mat-checkbox {
   display: block;
   margin-bottom: 8px;
+
+  // this needs to be styled in isolation
+  ::ng-deep .mat-checkbox-label {
+    white-space: break-spaces;
+    font-size: 15px;
+    font-family: Helvetica;
+    font-weight: 400;
+    color: #212121;
+    line-height: math.div(22, 15);
+
+  }
 }
 
 .dependent-checkbox {
   padding-left: 30px;
+}
+
+.additional-notes-text {
+  font-size: 15px;
+  color: #212121;
+  line-height: math.div(22, 15);
 }
 
 .guidelines-link {
@@ -103,7 +140,10 @@ h1 {
 }
 
 .comment-summary span {
-  line-height: 36px;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: math.div(27, 15);
+  color: #212121;
 }
 
 .reason-for-reporting {
@@ -145,7 +185,7 @@ h1 {
 
 .comments-container {
   max-height: 800px;
-  overflow-y: scroll;
+  overflow: scroll;
 }
 
 .remove-all-button {
@@ -156,4 +196,36 @@ h1 {
   mat-icon {
     margin-right: 5px;
   }
+}
+
+@media screen and (min-width: 768px) {
+  .review-report-container {
+    max-width: 728px;
+    margin-left: auto;
+    margin-right: auto;
+    flex-direction: column;
+  }
+
+  .report-summary {
+
+    .details {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+  }
+
+}
+
+@media screen and (min-width: 1152px) {
+  .review-report-container {
+    max-width: 1144px;
+    flex-direction: row;
+  }
+
+  .report-summary {
+    min-width: 280px;
+
+  }
+
 }

@@ -135,6 +135,18 @@ export class ToolbarComponent {
       'close_menu',
       this.sanitizer.bypassSecurityTrustResourceUrl('/close-menu.svg')
     );
+    this.iconRegistry.addSvgIcon(
+      'report_back_icon',
+      this.sanitizer.bypassSecurityTrustResourceUrl('/back-icon.svg')
+    );
+    this.iconRegistry.addSvgIcon(
+      'report_forward_icon',
+      this.sanitizer.bypassSecurityTrustResourceUrl('/forward-icon.svg')
+    );
+    this.iconRegistry.addSvgIcon(
+      'report_close_icon',
+      this.sanitizer.bypassSecurityTrustResourceUrl('/close_icon.svg')
+    );
 
 
     this.reportService.reportLastEditedChanged.subscribe(lastEditedMs => {

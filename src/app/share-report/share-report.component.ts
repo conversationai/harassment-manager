@@ -167,11 +167,17 @@ export class ShareReportComponent implements AfterViewInit {
     this.matIconRegistry.addSvgIcon(
       'csv_icon',
       this.sanitizer.bypassSecurityTrustResourceUrl('/csv_icon.svg')
-    );
-    this.matIconRegistry.addSvgIcon(
-      'pdf_icon',
-      this.sanitizer.bypassSecurityTrustResourceUrl('/pdf_icon.svg')
-    );
+    )
+      .addSvgIcon(
+        'pdf_icon',
+        this.sanitizer.bypassSecurityTrustResourceUrl('/pdf_icon.svg')
+      )
+      .addSvgIcon(
+        'hide_replies_icon',
+        this.sanitizer.bypassSecurityTrustResourceUrl(
+          '/eye-off.svg'
+        )
+      )
 
     // Listen to the service to restore any state.
     this.actions = this.reportService.getReportActions();
@@ -303,9 +309,8 @@ export class ShareReportComponent implements AfterViewInit {
                         'options you\'ll need to wait 15 minutes, remove the ' +
                         'previously submitted users, and select up to 50 ' +
                         'additional new users.',
-                      title: `${numFailures} ${
-                        numFailures === 1 ? 'user' : 'users'
-                      } could not be blocked`,
+                      title: `${numFailures} ${numFailures === 1 ? 'user' : 'users'
+                        } could not be blocked`,
                     },
                   });
                 } else if (numOtherFailures) {
@@ -319,9 +324,8 @@ export class ShareReportComponent implements AfterViewInit {
                           'The following users could not be blocked. These accounts ' +
                           'may no longer be active or an unknown error may have ' +
                           'occurred.',
-                        title: `${failures.length} ${
-                          failures.length === 1 ? 'user' : 'users'
-                        } could not be blocked`,
+                        title: `${failures.length} ${failures.length === 1 ? 'user' : 'users'
+                          } could not be blocked`,
                       },
                     });
                   }
@@ -392,9 +396,8 @@ export class ShareReportComponent implements AfterViewInit {
                         'options you\'ll need to wait 15 minutes, remove the ' +
                         'previously submitted users, and select up to 50 ' +
                         'additional new users.',
-                      title: `${numFailures} ${
-                        numFailures === 1 ? 'user' : 'users'
-                      } could not be muted`,
+                      title: `${numFailures} ${numFailures === 1 ? 'user' : 'users'
+                        } could not be muted`,
                     },
                   });
                 } else if (numOtherFailures) {
@@ -408,9 +411,8 @@ export class ShareReportComponent implements AfterViewInit {
                           'The following users could not be muted. These accounts ' +
                           'may no longer be active or an unknown error may have ' +
                           'occurred.',
-                        title: `${failures.length} ${
-                          failures.length === 1 ? 'user' : 'users'
-                        } could not be muted`,
+                        title: `${failures.length} ${failures.length === 1 ? 'user' : 'users'
+                          } could not be muted`,
                       },
                     });
                   }
@@ -481,9 +483,8 @@ export class ShareReportComponent implements AfterViewInit {
                         'options you\'ll need to wait 15 minutes, remove the ' +
                         'previously submitted replies, and select up to 50 ' +
                         'additional new replies.',
-                      title: `${numFailures} ${
-                        numFailures === 1 ? 'reply' : 'replies'
-                      } could not be hidden`,
+                      title: `${numFailures} ${numFailures === 1 ? 'reply' : 'replies'
+                        } could not be hidden`,
                     },
                   });
                 } else if (numOtherFailures) {
@@ -495,9 +496,8 @@ export class ShareReportComponent implements AfterViewInit {
                         'Some replies could not be hidden. These replies ' +
                         'may no longer exist or an unknown error may have ' +
                         'occurred.',
-                      title: `${numOtherFailures} ${
-                        numOtherFailures === 1 ? 'reply' : 'replies'
-                      } could not be hidden`,
+                      title: `${numOtherFailures} ${numOtherFailures === 1 ? 'reply' : 'replies'
+                        } could not be hidden`,
                     },
                   });
                 }

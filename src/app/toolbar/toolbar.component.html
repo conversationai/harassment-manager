@@ -92,9 +92,9 @@
       </a>
     </div>
     <div class="nav-links nav-item">
-      <button class="sign-out-button" (click)="revokeAuthorization()">
+      <a class="sign-out-button" (click)="revokeAuthorization()">
         <span>Sign out</span>
-      </button>
+      </a>
     </div>
   </mat-toolbar-row>
 
@@ -102,7 +102,7 @@
     <div class="spacer">
       <button mat-button [routerLink]="getBackButtonRouterLink()" class="box back-button"
         *ngIf="currentStep > BuildReportStep.ADD_COMMENTS">
-        <mat-icon class="back-icon">arrow_back</mat-icon>
+        <mat-icon class="back_icon" svgIcon="report_back_icon"></mat-icon>
         {{getBackButtonText()}}
       </button>
     </div>
@@ -113,6 +113,7 @@
       <button mat-stroked-button class="continue-button" [class.elevate]="onboarding" cdkOverlayOrigin
         #anchor="cdkOverlayOrigin" [class.active-router-link]="getStepperButtonActive()"
         [disabled]="!getStepperButtonActive()" (click)="onStepperButtonClick()"
+        [class.close-button]="currentStep === BuildReportStep.TAKE_ACTION"
         [attr.aria-label]="getReportButtonA11yLabel()">
         <span>
           <ng-container *ngIf="currentStep === BuildReportStep.ADD_COMMENTS">
@@ -120,9 +121,12 @@
             <mat-icon svgIcon="report_icon_white" class="report-icon">
             </mat-icon>
           </ng-container>
-          <mat-icon *ngIf="currentStep === BuildReportStep.TAKE_ACTION" class="close-icon">close</mat-icon>
           {{getReportButtonText()}}
-          <mat-icon *ngIf="currentStep < BuildReportStep.TAKE_ACTION" class="forward-icon">arrow_forward</mat-icon>
+          <mat-icon *ngIf="currentStep === BuildReportStep.TAKE_ACTION" class="close-icon" svgIcon="report_close_icon">
+          </mat-icon>
+          <mat-icon *ngIf="currentStep < BuildReportStep.TAKE_ACTION" class="forward-icon"
+            svgIcon="report_forward_icon">
+          </mat-icon>
         </span>
       </button>
     </div>

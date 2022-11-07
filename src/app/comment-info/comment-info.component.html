@@ -14,8 +14,7 @@
  limitations under the License.
 -->
 
-<div class="item-container"
-     [ngClass]="{
+<div class="item-container" [ngClass]="{
                  'show-full-text': showFullText,
                  'show-full-media': showFullMedia,
                  'show-details': showDetails
@@ -25,16 +24,9 @@
        don't trigger the ripple in the UI. We change the value of selected
        instead of using toggle() here because toggle() appears to not take
        effect immediately in this data binding cycle. -->
-  <div class="checkbox"
-       *ngIf="showCheckbox"
-       (click)="handleCheckboxClicked($event)">
-    <mat-checkbox #checkbox
-                  color="primary"
-                  [aria-label]="getAriaLabelForCheckbox()"
-                  [(ngModel)]="selectedInternal"
-                  [disabled]="disabled"
-                  (change)="notifyCheckedStateChange()"
-                  (click)="$event.stopPropagation()">
+  <div class="checkbox" *ngIf="showCheckbox" (click)="handleCheckboxClicked($event)">
+    <mat-checkbox #checkbox color="primary" [aria-label]="getAriaLabelForCheckbox()" [(ngModel)]="selectedInternal"
+      [disabled]="disabled" (change)="notifyCheckedStateChange()" (click)="$event.stopPropagation()">
     </mat-checkbox>
   </div>
   <div class="data-container" *ngIf="comment">
@@ -58,8 +50,7 @@
       </div>
     </div>
     <div class="vertical-divider"></div>
-    <div class="comment-contents"
-         [class.loading]="!comment.item">
+    <div class="comment-contents" [class.loading]="!comment.item">
       <div class="flex-wrapper">
         <div class="column" *ngIf="!comment.item">
           <div class="loading-text loading-animation"></div>
@@ -70,23 +61,19 @@
         </div>
         <div class="column" *ngIf="comment.item">
           <div class="comment-text-row">
-            <button mat-icon-button
-                    class="toggle-visibility-icon"
-                    [attr.aria-label]="shouldBlur ? 'Comment hidden, click to reveal comment' : 'Comment visible, click to hide comment'"
-                    (click)="toggleBlur(); $event.stopPropagation();">
-              <mat-icon>{{shouldBlur ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <button mat-icon-button class="toggle-visibility-icon"
+              [attr.aria-label]="shouldBlur ? 'Comment hidden, click to reveal comment' : 'Comment visible, click to hide comment'"
+              (click)="toggleBlur(); $event.stopPropagation();">
+              <mat-icon [svgIcon]="shouldBlur ? 'hide_report_icon' : 'show_report_icon'"></mat-icon>
             </button>
-            <div class="comment-text"
-                 [class.blur]="shouldBlur">
+            <div class="comment-text" [class.blur]="shouldBlur">
               {{comment.item.text}}
             </div>
           </div>
           <div class="author-and-date">
             <span>
               <a href="{{comment.item.authorUrl}}" target="_blank" rel="noopener noreferrer">
-                <img class="author-avatar"
-                    src="{{comment.item.authorAvatarUrl}}"
-                    [alt]="tweet && tweet.item.authorScreenName ?
+                <img class="author-avatar" src="{{comment.item.authorAvatarUrl}}" [alt]="tweet && tweet.item.authorScreenName ?
                           tweet.item.authorScreenName + '\'s Twitter Account Home' :
                           ''">
               </a>
@@ -97,8 +84,7 @@
             <span *ngIf="tweet && tweet.item.user && tweet.item.user.verified">
               <img class="verified-icon" src="Twitter_Verified_Badge.svg" alt="Verified on Twitter badge.">
             </span>
-            <span *ngIf="tweet && tweet.item.authorScreenName"
-                  class="twitter-handle">
+            <span *ngIf="tweet && tweet.item.authorScreenName" class="twitter-handle">
               @{{tweet.item.authorScreenName}}
             </span>
             <span class="divider-dot"></span>
@@ -108,28 +94,18 @@
           </div>
         </div>
         <div class="column" *ngIf="comment.item">
-          <app-tweet-image *ngIf="tweet && !showFullMedia"
-                           [tweet]="tweet.item"
-                           [thumbnail]="true"
-                           [shouldBlur]="shouldBlur">
+          <app-tweet-image *ngIf="tweet && !showFullMedia" [tweet]="tweet.item" [thumbnail]="true"
+            [shouldBlur]="shouldBlur">
           </app-tweet-image>
         </div>
       </div>
-      <app-tweet-image *ngIf="tweet"
-                       [tweet]="tweet.item"
-                       [thumbnail]="false"
-                       [shouldBlur]="shouldBlur"
-                       [collapsed]="!showFullMedia">
+      <app-tweet-image *ngIf="tweet" [tweet]="tweet.item" [thumbnail]="false" [shouldBlur]="shouldBlur"
+        [collapsed]="!showFullMedia">
       </app-tweet-image>
     </div>
   </div>
-  <div class="delete-button-container"
-       *ngIf="showDeleteButton"
-       (click)="handleDeleteClicked()">
-    <button mat-icon-button
-            color="primary"
-            class="delete-button"
-            aria-label="Remove from report">
+  <div class="delete-button-container" *ngIf="showDeleteButton" (click)="handleDeleteClicked()">
+    <button mat-icon-button color="primary" class="delete-button" aria-label="Remove from report">
       <mat-icon>delete</mat-icon>
     </button>
   </div>

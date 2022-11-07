@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+@use 'sass:math';
 
 .progress-bar {
   align-items: center;
@@ -21,18 +22,20 @@
 
 .step {
   align-items: center;
-  color: #70757a;
+  color: #000000;
   display: inline-flex;
-  font-size: 14px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: math.div(27, 27);
 
   mat-icon {
-    color: #a54167;
+    color: #585555;
     margin-right: 4px;
   }
 }
 
 .step.active {
-  color: #a54167;
+  color: #101BCF;
 }
 
 .divider {
@@ -42,11 +45,11 @@
   width: 86px;
 
   &.half-filled {
-    background: linear-gradient(90deg, #a54167 0%, #a54167 50%, #c0c2c3 50%);
+    background: linear-gradient(90deg, #101BCF 0%, #101BCF 50%, #c0c2c3 50%);
   }
 
   &.filled {
-    background: #a54167;
+    background: #101BCF;
   }
 }
 
@@ -63,7 +66,7 @@
 }
 
 .active .step-number-icon {
-  background-color: #a54167;
+  background-color: #101BCF;
   border: none;
   color: #ffffff;
 }
