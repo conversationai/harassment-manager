@@ -506,10 +506,10 @@ app-report-progress-bar {
     .toolbar-row {
       max-width: 1144px;
     }
-  }
 
-  .toolbar-row-signed-in::before {
-    left: calc((1144px - 100vw) / 2);
-    right: calc((1144px - 100vw) / 2);
+    .toolbar-row-signed-in::before {
+      left: calc((1144px - 100vw) / 2);
+      right: calc((1144px - 100vw) / 2);
+    }
   }
 }
