@@ -271,21 +271,14 @@ app-report-progress-bar {
       }
     }
 
-    a:first-of-type {
-      width: 60px;
-    }
+    a {
+      width: 50%;
+      align-items: center;
 
-    .active-router-link {
-      .text {
-        border-bottom: 5px solid #da2732;
-      }
-
-      img {
-        display: block;
-        height: 29px;
-        width: 29px;
-        align-self: flex-end;
-        margin-bottom: -12px;
+      // 2nd and 5th child justifies content to the right
+      &:nth-child(2),
+      &:nth-child(5) {
+        justify-content: flex-end;
       }
     }
 
@@ -351,7 +344,7 @@ app-report-progress-bar {
     a {
       height: auto;
       width: 100%;
-      justify-content: center;
+      justify-content: center !important;
       margin: 30px 0;
 
     }
@@ -415,6 +408,10 @@ app-report-progress-bar {
         }
       }
 
+      a {
+        justify-content: center !important;
+      }
+
       a,
       button {
         span {
@@ -471,7 +468,7 @@ app-report-progress-bar {
     height: 80px;
 
     >div:first-child {
-      flex: 3;
+      flex: 6;
       flex-wrap: nowrap;
     }
 
@@ -484,7 +481,7 @@ app-report-progress-bar {
 
     .nav-links {
       a {
-        margin: 0 20px 0 0;
+        margin: 0 40px 0 0;
       }
 
       .find-support,
