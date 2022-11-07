@@ -15,7 +15,7 @@
 -->
 
 <mat-toolbar class="toolbar">
-  <mat-toolbar-row class="toolbar-row" [ngClass]="isMobileMenuOpen ? 'hidden-nav': null  ">
+  <mat-toolbar-row class="toolbar-row" [ngClass]="isMobileMenuOpen ? 'hidden-nav': ''  ">
     <a routerLink="/home" class="title-wrapper">
       <div class="icon-placeholder"></div>
       <span class="title">SafeNet</span>
@@ -29,7 +29,7 @@
   </mat-toolbar-row>
 
   <mat-toolbar-row class="toolbar-row main-nav toolbar-row-signed-in" *ngIf="userIsSignedIn"
-    [ngClass]="isMobileMenuOpen ? 'hidden-nav': null  ">
+    [ngClass]="isMobileMenuOpen ? 'hidden-nav': ''  ">
     <div class="nav-links nav-item">
       <a routerLinkActive="active-router-link" routerLink="/home" #homeLink role="link"
         [attr.aria-current]="homeLink.routerLinkActive ? 'page' : false" class="home-link">
@@ -58,7 +58,7 @@
       </a>
     </div>
     <div class="nav-links nav-item sign-out-nav">
-      <button class="sign-out-button" (click)="revokeAuthorization()">
+      <button class="sign-out-button" (click)="revokeAuthorization()" [ngClass]="userIsSignedIn ? 'signed-out' : '' ">
         <span>Sign out</span>
       </button>
     </div>

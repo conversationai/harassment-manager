@@ -223,7 +223,7 @@
     }
 
     /*Hide find support button on mobile since it already is in footer */
-    .opportunities {
+    .find-support {
       display: none;
     }
   }
@@ -254,10 +254,12 @@
   // target the first child of the mobile nav
   >div:first-child {
     align-self: flex-start;
+    flex: .5;
   }
 
   // target only second div
   >div:nth-child(2) {
+    justify-content: center;
     flex: 2;
   }
 
@@ -270,6 +272,7 @@
   .close-mobile-menu-button {
     background-color: transparent;
     align-self: center;
+    top: 40px;
   }
 
 
@@ -282,6 +285,7 @@
       height: auto;
       width: 100%;
       justify-content: center;
+      margin: 30px 0;
 
     }
 
@@ -311,6 +315,10 @@
 
 .mobile-menu-closed {
   display: none;
+}
+
+.signed-out{
+  display:none;
 }
 
 @media all and (min-width: 768px) {
