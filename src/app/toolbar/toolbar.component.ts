@@ -148,7 +148,6 @@ export class ToolbarComponent {
       this.sanitizer.bypassSecurityTrustResourceUrl('/close_icon.svg')
     );
 
-
     this.reportService.reportLastEditedChanged.subscribe(lastEditedMs => {
       this.reportLastEditedMs = lastEditedMs;
     });

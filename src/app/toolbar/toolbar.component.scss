@@ -38,7 +38,6 @@ app-report-progress-bar {
 
   // this needs to be styled in isolation
   ::ng-deep .progress-bar {
-
     justify-content: space-around;
 
     .step {
@@ -120,7 +119,7 @@ app-report-progress-bar {
 }
 
 .mobile-menu-button {
-  background-color: #EAEFFF;
+  background-color: #eaefff;
   color: #101bcf;
 }
 
@@ -149,7 +148,6 @@ app-report-progress-bar {
   z-index: 2; // above the stepper
   padding: 0;
   margin: 0;
-
 }
 
 .forward-icon,
@@ -160,15 +158,13 @@ app-report-progress-bar {
 }
 
 .close-button {
-  background-color: #DA2732 !important;
+  background-color: #da2732 !important;
   color: #ffffff !important;
 
   .close-icon {
     color: #ffffff !important;
   }
 }
-
-
 
 .forward-icon,
 .close-icon {
@@ -231,8 +227,6 @@ app-report-progress-bar {
   display: none;
 }
 
-
-
 .toolbar-row-signed-in {
   display: flex;
   width: 100%;
@@ -262,7 +256,6 @@ app-report-progress-bar {
         display: none;
       }
 
-
       span {
         font-family: 'Merriweather', serif;
         font-size: 10px;
@@ -274,12 +267,6 @@ app-report-progress-bar {
     a {
       width: 50%;
       align-items: center;
-
-      // 2nd and 5th child justifies content to the right
-      // &:nth-child(2),
-      // &:nth-child(5) {
-      //   justify-content: flex-end;
-      // }
     }
 
     /*Hide find support button on mobile since it already is in footer */
@@ -311,20 +298,17 @@ app-report-progress-bar {
   width: 100vw;
   flex-direction: column;
 
-  // target the first child of the mobile nav
-  >div:first-child {
+  > div:first-child {
     align-self: flex-start;
-    flex: .5;
+    flex: 0.5;
   }
 
-  // target only second div
-  >div:nth-child(2) {
+  > div:nth-child(2) {
     justify-content: center;
     flex: 2;
   }
 
-  // target third div
-  >div:nth-child(3) {
+  > div:nth-child(3) {
     flex: 1;
     justify-content: center;
   }
@@ -335,12 +319,10 @@ app-report-progress-bar {
     top: 40px;
   }
 
-
   .nav-links {
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-
 
     .active-router-link {
       .text {
@@ -356,13 +338,11 @@ app-report-progress-bar {
       }
     }
 
-
     a {
       height: auto;
       width: 100%;
       justify-content: center !important;
       margin: 30px 0;
-
     }
 
     a,
@@ -374,7 +354,6 @@ app-report-progress-bar {
       }
     }
   }
-
 }
 
 .mobile-nav::before {
@@ -402,11 +381,9 @@ app-report-progress-bar {
       padding-left: 0;
       padding-right: 0;
     }
-
   }
 
   .toolbar-row-signed-in {
-
     .nav-links {
       flex-wrap: nowrap;
 
@@ -441,9 +418,7 @@ app-report-progress-bar {
       .find-support {
         display: none;
       }
-
     }
-
   }
 
   .toolbar-row-signed-in::before {
@@ -455,12 +430,9 @@ app-report-progress-bar {
     display: flex;
   }
 
-
   app-report-progress-bar {
-
     // this needs to be styled in isolation
     ::ng-deep .progress-bar {
-
       button {
         padding: 0 8px;
       }
@@ -468,7 +440,6 @@ app-report-progress-bar {
       button:not(.selected) {
         display: block;
       }
-
     }
   }
 }
@@ -483,13 +454,12 @@ app-report-progress-bar {
   .toolbar-row-signed-in {
     height: 80px;
 
-    >div:first-child {
+    > div:first-child {
       flex: 6;
       flex-wrap: nowrap;
     }
 
-    // target second div
-    >div:nth-child(2) {
+    > div:nth-child(2) {
       display: flex;
       flex: 1;
       justify-content: flex-end;
@@ -525,7 +495,6 @@ app-report-progress-bar {
   .last-edited {
     display: block;
   }
-
 }
 
 @media all and (min-width: 1440px) {
