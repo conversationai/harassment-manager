@@ -65,6 +65,7 @@ import { CommentInfoExpansionComponent } from './comment-info-expansion/comment-
 import { CommentInfoComponent } from './comment-info/comment-info.component';
 import { CommentLinkComponent } from './comment-link/comment-link.component';
 import { CreateReportComponent } from './create-report/create-report.component';
+import { CrisisHelplineComponent } from './crisis-helpline/crisis-helpline.component';
 import { DatePickerDialogComponent } from './date-picker-dialog/date-picker-dialog.component';
 import { DateRangePickerComponent } from './date-range-picker/date-range-picker.component';
 import {
@@ -115,6 +116,7 @@ import { RequestInvestigationComponent } from './request-investigation/request-i
     ApiErrorDialogComponent,
     AppComponent,
     ClearReportDialogComponent,
+    CrisisHelplineComponent,
     CommentInfoComponent,
     CommentInfoExpansionComponent,
     CommentLinkComponent,
