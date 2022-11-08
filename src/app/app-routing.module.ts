@@ -24,6 +24,7 @@ import {
 } from '@angular/router';
 import { AuthGuardService } from './auth-guard.service';
 import { CreateReportComponent } from './create-report/create-report.component';
+import { CrisisHelplineComponent } from './crisis-helpline/crisis-helpline.component';
 import { FindSupportComponent } from './find-support/find-support.component';
 import { EarlyAdoptersOpportunityPageComponent } from './opportunities-early-adopters/opportunities-early-adopters-page.component';
 import { HelpCenterComponent } from './help-center/help-center.component';
@@ -119,6 +120,11 @@ export class CustomRouteReuseStrategy implements RouteReuseStrategy {
 }
 
 export const routes: Routes = [
+  {
+    path: 'crisis-helpline',
+    component: CrisisHelplineComponent,
+    data: { title: 'Crisis Helpline' },
+  },
   {
     path: 'privacy-policy',
     component: PrivacyPageComponent,
