@@ -33,16 +33,18 @@ ul {
     .content {
         padding: 0 20px;
 
-        button {
+        .button {
             background-color: #101bcf;
             border: 2px solid #101bcf;
             border-radius: 13px;
             color: #ffffff;
             font-size: 20px;
             line-height: math.div(27, 20);
+            padding: 6px;
+            text-decoration: none;
         }
 
-        button:focus-visible {
+        .button:focus-visible {
             outline: none;
         }
 
