@@ -15,18 +15,18 @@
 -->
 
 <mat-toolbar class="toolbar">
-  <mat-toolbar-row class="toolbar-row">
+  <mat-toolbar-row class="toolbar-row" [ngClass]="isMobileMenuOpen ? 'hidden-nav': ''  ">
     <a routerLink="/home" class="title-wrapper">
       <div class="icon-placeholder"></div>
       <span class="title">SafeNet</span>
     </a>
-    <ng-container *ngIf="!userIsSignedIn">
-      <span class="spacer"></span>
-      <button mat-button class="action-button get-started-button" routerLink="/">Get Started</button>
-    </ng-container>
+    <button mat-button class="action-button mobile-menu-button" (click)="toggleMobileMenu()">
+      <mat-icon svgIcon="hamburger_menu"></mat-icon>
+    </button>
   </mat-toolbar-row>
 
-  <mat-toolbar-row class="toolbar-row toolbar-row-signed-in" *ngIf="userIsSignedIn">
+  <mat-toolbar-row class="toolbar-row main-nav toolbar-row-signed-in" *ngIf="userIsSignedIn"
+    [ngClass]="isMobileMenuOpen ? 'hidden-nav': ''  ">
     <div class="nav-links nav-item">
       <a routerLinkActive="active-router-link" routerLink="/home" #homeLink role="link"
         [attr.aria-current]="homeLink.routerLinkActive ? 'page' : false">
@@ -44,13 +44,44 @@
         <img src="/red_ellipse.svg" />
       </a>
       <a routerLinkActive="active-router-link" routerLink="/opportunities/" #opportunitiesLink
-        [attr.aria-current]="opportunitiesLink.routerLinkActive ? 'page' : false">
+        [attr.aria-current]="opportunitiesLink.routerLinkActive ? 'page' : false" class="opportunities">
         <span class="text">Opportunities</span>
         <img src="/red_ellipse.svg" />
       </a>
       <a routerLinkActive="active-router-link" routerLink="/request-an-investigation" #requestInvestigationLink
         [attr.aria-current]="requestInvestigationLink.routerLinkActive ? 'page' : false">
         <span class="text">Request an Investigation</span>
+        <img src="/red_ellipse.svg" />
+      </a>
+    </div>
+    <div class="nav-links nav-item sign-out-nav" *ngIf="userIsSignedIn">
+      <button class="sign-out-button" (click)="revokeAuthorization()">
+        <span>Sign out</span>
+      </button>
+    </div>
+  </mat-toolbar-row>
+
+  <mat-toolbar-row class="toolbar-row toolbar-row-signed-in mobile-nav"
+    [ngClass]="isMobileMenuOpen ? 'mobile-menu-open': 'mobile-menu-closed' ">
+    <div>
+      <button mat-button class="action-button close-mobile-menu-button" (click)="toggleMobileMenu()">
+        <mat-icon svgIcon="close_menu"></mat-icon>
+      </button>
+    </div>
+    <div class="nav-links nav-item">
+      <a routerLinkActive="active-router-link" routerLink="/help-center" #helpCenterLink (click)="toggleMobileMenu()"
+        [attr.aria-current]="helpCenterLink.routerLinkActive ? 'page' : false">
+        <span class="text">Help Center</span>
+        <img src="/red_ellipse.svg" />
+      </a>
+      <a routerLinkActive="active-router-link" routerLink="/find-support" #findSupportLink (click)="toggleMobileMenu()"
+        [attr.aria-current]="findSupportLink.routerLinkActive ? 'page' : false">
+        <span class="text">Find Support</span>
+        <img src="/red_ellipse.svg" />
+      </a>
+      <a routerLinkActive="active-router-link" routerLink="/opportunities/" #opportunitiesLink
+        (click)="toggleMobileMenu()" [attr.aria-current]="opportunitiesLink.routerLinkActive ? 'page' : false">
+        <span class="text">Opportunities</span>
         <img src="/red_ellipse.svg" />
       </a>
     </div>
