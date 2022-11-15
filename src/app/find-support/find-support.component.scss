@@ -67,6 +67,7 @@
   .tile-row {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     row-gap: 30px;
     margin-bottom: 30px;
 

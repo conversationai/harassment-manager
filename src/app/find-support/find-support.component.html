@@ -26,146 +26,34 @@
 <!-- Note: Wrapper div is required to prevent the side menu "sticky" layout
      option from continuing beyond the bounds of the wrapper. -->
 <div class="content-wrapper">
-  <app-scrollable-side-menu
-    class="side-menu"
-    [sideMenuSections]="sideMenuSections"
-  >
+  <app-scrollable-side-menu class="side-menu" [sideMenuSections]="sideMenuSections">
   </app-scrollable-side-menu>
 
   <div class="content">
     <div class="get-informed">
-      <h2>Get Informed</h2>
-
-      <app-find-support-list-item
-        title="OnlineSOS Action Center"
-        url="https://onlinesos.org/action-center"
-        icon="/Online-Sos-logo.svg"
-      >
-      </app-find-support-list-item>
-
-      <app-find-support-list-item
-        title="PEN America Online Harassment Field Manual"
-        url="https://onlineharassmentfieldmanual.pen.org/"
-        icon="/pen_amerrican_logo.svg"
-      >
-      </app-find-support-list-item>
+      <h2>Digital Safety Guides</h2>
+      <div class="tile-row">
+        <app-find-support-tile *ngFor="let item of digitalSafetyGuides" title={{item.name}} url={{item.url}}
+          image={{item.image}}>
+        </app-find-support-tile>
+      </div>
     </div>
 
     <div class="explore-digital-tools">
-      <h2>Explore Digital Tools</h2>
-      <app-find-support-list-item
-        title="Block Party"
-        url="https://www.blockpartyapp.com/"
-        icon="block_party.svg"
-      >
-      </app-find-support-list-item>
+      <h2>Tools</h2>
 
-      <app-find-support-list-item
-        title="HeartMob"
-        url="https://iheartmob.org/"
-        icon="/heart_mob.svg"
-      >
-      </app-find-support-list-item>
-
-      <app-find-support-list-item
-        title="Squadbox"
-        url="https://squadbox.org/"
-        icon="/squad_box.svg"
-      >
-      </app-find-support-list-item>
+      <div class="tile-row">
+        <app-find-support-tile *ngFor="let item of tools" title={{item.name}} url={{item.url}} image={{item.image}}>
+        </app-find-support-tile>
+      </div>
     </div>
 
     <div class="connect-with-organizations">
-      <!-- TODO: Add/remove organizations here. -->
-      <h2>Connect with Organizations</h2>
+      <h2> Organizations</h2>
 
       <div class="tile-row">
-        <app-find-support-tile
-          title="Block Party"
-          url="https://www.blockpartyapp.com/"
-          image="/block_party.svg"
-        >
-        </app-find-support-tile>
-        <app-find-support-tile
-          title="CCRI"
-          url="https://cybercivilrights.org/faqs-usvictims/"
-          image="/ccri.svg"
-        >
-        </app-find-support-tile>
-        <app-find-support-tile
-          title="Coalition Against Online Violence"
-          url="https://onlineviolenceresponsehub.org/"
-          image="caov.svg"
-        >
-        </app-find-support-tile>
-      </div>
-      <div class="tile-row">
-        <app-find-support-tile
-          title="Coalition for Women in Journalism"
-          url="https://www.womeninjournalism.org/"
-          image="cfwij.svg"
-        >
-        </app-find-support-tile>
-        <app-find-support-tile
-          title="CPJ"
-          url="https://cpj.org/campaigns/safety-women-nonbinary-journalists-online-offline/"
-          image="cpj.svg"
-        >
-        </app-find-support-tile>
-        <app-find-support-tile
-          title="Crash Override"
-          url="http://www.crashoverridenetwork.com/"
-          image="crash_override.svg"
-        >
-        </app-find-support-tile>
-      </div>
-
-      <div class="tile-row">
-        <app-find-support-tile
-          title="Glitch"
-          url="https://fixtheglitch.org/"
-          image="glitch.svg"
-        >
-        </app-find-support-tile>
-        <app-find-support-tile
-          title="OnlineSOS"
-          url="https://onlinesos.org/"
-          image="/Online-Sos-logo.svg"
-        >
-        </app-find-support-tile>
-        <app-find-support-tile
-          title="PEN America"
-          url="https://onlineharassmentfieldmanual.pen.org"
-          image="pen_amerrican_logo.svg"
-        >
-        </app-find-support-tile>
-      </div>
-      <div class="tile-row">
-        <app-find-support-tile
-          title="Reporters' Committee for Freedom of Press Hotline"
-          url="https://www.rcfp.org/legal-hotline/"
-          image="reporters_commitee.svg"
-        >
-        </app-find-support-tile>
-        <app-find-support-tile
-          title="Right to Be"
-          url="https://righttobe.org/"
-          image="right_to_be.svg"
-        >
-        </app-find-support-tile>
-        <app-find-support-tile
-          title="Squadbox"
-          url="https://squadbox.org/"
-          image="squad_box.svg"
-        >
-        </app-find-support-tile>
-      </div>
-      <div class="tile-row">
-        <app-find-support-tile
-          title="Tall Poppy"
-          url="https://www.tallpoppy.com/"
-          image="tall_poppy.svg"
-        >
+        <app-find-support-tile *ngFor="let item of organizations" title={{item.name}} url={{item.url}}
+          image={{item.image}}>
         </app-find-support-tile>
       </div>
     </div>
