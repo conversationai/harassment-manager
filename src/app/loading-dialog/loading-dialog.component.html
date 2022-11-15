@@ -15,19 +15,13 @@
 -->
 
 <div class="container loading-dialog">
-  <div class="loading-button-container">
-      <button mat-icon-button
-              class="close-button"
-              [mat-dialog-close]="false"
-              aria-label="close">
-          <mat-icon>close</mat-icon>
-      </button>
-  </div>
   <div class="content-container">
-    <img src="/walking_in_clutter.svg"
-            alt="A woman walks among geometric shapes strewn about the floor. She is holding a
-            large circular shape in her arm.">
-    <div class="title" mat-dialog-title>Loading comments from Twitter...</div>
+    <img src="/loading_comments_banner.svg" alt="A woman walks among geometric shapes strewn about the floor. She is holding a
+            large circular shape in her arm." />
+    <div class="border"></div>
+  </div>
+  <div class="content-text">
+    <div class="title" mat-dialog-title>Loading comments from Twitter</div>
     <div *ngIf="commentCount === 0" class="subtitle">
       Loading times will vary depending on how many comments you have
     </div>
@@ -35,4 +29,5 @@
       {{commentCount}} comments loaded and more to come
     </div>
   </div>
+
 </div>

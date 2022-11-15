@@ -13,6 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+@use 'sass:math';
+
+.title,
+.subtitle {
+  font-family: 'Merriweather';
+  font-style: normal;
+}
 
 .close-button {
   border: none;
@@ -40,7 +47,7 @@
   width: auto;
 
   @media all and (min-width: 768px) {
-    width: 550px;
+    width: 600px;
   }
 }
 
@@ -56,14 +63,29 @@
   margin-right: 15px;
 }
 
+.border {
+  width: 500px;
+  height: 0px;
+  border: 6px solid #000000;
+}
+
 .subtitle {
-  font-size: 18px;
-  padding-bottom: 40px;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: math.div(27, 20);
   text-align: center;
 }
 
 .title {
-  font-size: 24px;
-  font-weight: 500;
-  padding-bottom: 20px;
+  font-weight: 700;
+  font-size: 33px;
+  line-height: 41px;
+  text-align: center;
+}
+
+.content-text {
+  padding: 40px;
+  background-color: #101bcf;
+  color: white;
+  margin-top: 20px;
 }

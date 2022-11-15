@@ -197,6 +197,7 @@ p {
 
 .loading-dialog-container .mat-dialog-container {
   border-radius: 8px;
+  padding: 0;
 }
 
 .clear-report-dialog-container .mat-dialog-container {
@@ -261,11 +262,10 @@ app-help-center .mat-input-element {
 }
 
 app-home-page {
-  *{
-      font-family: 'Helvetica';
-      font-style: normal;
+  * {
+    font-family: 'Helvetica';
+    font-style: normal;
   }
-    
 }
 
 app-filter-dropdown
@@ -299,7 +299,7 @@ app-search-box .mat-form-field-appearance-outline .mat-form-field-outline {
 app-filter-dropdown
   .filter-active.mat-form-field-appearance-outline
   .mat-form-field-outline {
-  background-color: #D7DCEC;
+  background-color: #d7dcec;
   border-radius: 20px;
 }
 
@@ -390,14 +390,14 @@ button {
   }
 
   &.action-button {
-    background-color: #101BCF;
+    background-color: #101bcf;
     color: #ffffff;
   }
 
   &.action-button-stroked {
     background-color: transparent;
-    border: 1px solid #101BCF;
-    color: #101BCF;
+    border: 1px solid #101bcf;
+    color: #101bcf;
   }
 }
 
