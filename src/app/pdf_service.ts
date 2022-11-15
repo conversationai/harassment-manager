@@ -230,7 +230,7 @@ export class PdfService {
       TITLE_DATE_FORMAT_OPTIONS
     );
     return (
-      `${this.username}'s FieldShields Report From ${date} ` +
+      `${this.username}'s FieldShield Report From ${date} ` +
       `[Content Warning- Toxic Language]`
     );
   }
