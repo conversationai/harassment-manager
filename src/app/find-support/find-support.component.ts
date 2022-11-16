@@ -118,6 +118,11 @@ export class FindSupportComponent {
       image: "/african-women-in-media.svg"
     },
     {
+      name: "International Center for Journalism",
+      url: "https://www.icfj.org/",
+      image: "/international-center-for-journalism.svg"
+    },
+    {
       name: "iWatch Africa",
       url: "https://iwatchafrica.org/",
       image: "/iwatch-africa.svg"

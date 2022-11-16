@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+@use 'sass:math';
 
 a {
   text-decoration: none;
@@ -32,8 +33,9 @@ a {
   width: 219px;
 
   img {
-    object-fit: cover;
+    object-fit: contain;
     width: 100%;
+    height: 100%;
   }
 }
 
@@ -46,7 +48,7 @@ a {
   font-weight: 700;
   min-height: 68px;
   justify-content: center;
-  line-height: 24px;
+  line-height: math.div(27, 20);
   text-align: center;
   width: 100%;
 }
