@@ -32,6 +32,7 @@
   flex-direction: column;
   padding-left: 40px;
   padding-right: 40px;
+  display: none;
 }
 
 .image-container {
@@ -45,10 +46,6 @@
   box-shadow: none;
   color: black;
   width: auto;
-
-  @media all and (min-width: 768px) {
-    width: 600px;
-  }
 }
 
 .loading-dialog button {
@@ -71,15 +68,15 @@
 
 .subtitle {
   font-weight: 400;
-  font-size: 20px;
+  font-size: 16px;
   line-height: math.div(27, 20);
   text-align: center;
 }
 
 .title {
   font-weight: 700;
-  font-size: 33px;
-  line-height: 41px;
+  font-size: 27px;
+  line-height: math.div(27, 20);
   text-align: center;
 }
 
@@ -87,5 +84,25 @@
   padding: 40px;
   background-color: #101bcf;
   color: white;
-  margin-top: 20px;
+}
+
+@media all and (min-width: 768px) {
+  .loading-dialog {
+    width: 600px;
+  }
+
+  .content-container {
+    display: block;
+  }
+  .content-text {
+    margin-top: 20px;
+  }
+
+  .subtitle {
+    font-size: 20px;
+  }
+
+  .title {
+    font-size: 33px;
+  }
 }
