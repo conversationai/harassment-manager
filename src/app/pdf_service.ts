@@ -230,7 +230,7 @@ export class PdfService {
       TITLE_DATE_FORMAT_OPTIONS
     );
     return (
-      `${this.username}'s FieldShield Report From ${date} ` +
+      `${this.username}'s FeedShield Report From ${date} ` +
       `[Content Warning- Toxic Language]`
     );
   }
@@ -373,7 +373,7 @@ export class PdfService {
     const columnStyles = COLUMN_STYLES_TWITTER;
     const displayedRowText = tableBodyContent.displayedRowText;
     doc.addPage();
-    doc.addImage('fieldshield_table_header.png', 'PNG', 14, 10, 270, 23);
+    doc.addImage('feedShield_table_header.png', 'PNG', 14, 10, 270, 23);
     autoTable(doc, {
       theme: 'grid',
       // Shift the table down on the first page so the inserted image isn't covered.
