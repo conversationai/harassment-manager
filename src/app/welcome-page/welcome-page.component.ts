@@ -29,7 +29,7 @@ import { OauthApiService } from '../oauth_api.service';
 })
 export class WelcomePageComponent {
 
-  appName: string = "SafeNet"
+  appName: string = "FieldShield"
 
   constructor(
     private firestoreService: FirestoreService,

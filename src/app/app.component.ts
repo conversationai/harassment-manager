@@ -22,7 +22,7 @@ import { CustomRouteReuseStrategy } from './app-routing.module';
 import { OauthApiService } from './oauth_api.service';
 import { focusElement } from './common/a11y_utils';
 
-const APP_TITLE = 'SafeNet';
+const APP_TITLE = 'FieldShield';
 
 @Component({
   selector: 'app-root',

@@ -98,7 +98,7 @@ describe('WelcomePageComponent', () => {
     const componentElement = fixture.debugElement.nativeElement;
     expect(
       componentElement.querySelector('.header-container').textContent
-    ).toContain('Take back control of your online experience with SafeNet');
+    ).toContain('Take back control of your online experience with FieldShield');
   });
 
   it('routes to the home page on successful Twitter authentication', fakeAsync(() => {
