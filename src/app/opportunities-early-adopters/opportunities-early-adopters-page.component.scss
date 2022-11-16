@@ -32,7 +32,7 @@
   h1 {
     font-size: 34px;
     font-weight: 700;
-    line-height: math.div(27, 34);
+    line-height: math.div(27, 27);
     margin: 0;
   }
 
@@ -57,6 +57,10 @@
   }
 }
 
+.faq {
+  font-style: italic;
+}
+
 @media all and (min-width: 768px) {
   .content-wrapper {
     margin: 0 auto;
@@ -77,7 +81,6 @@
 
     h1 {
       font-size: 48px;
-      line-height: math.div(27, 48);
     }
   }
 }
