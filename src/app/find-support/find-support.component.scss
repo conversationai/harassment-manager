@@ -67,6 +67,7 @@
   .tile-row {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     row-gap: 30px;
     margin-bottom: 30px;
 
@@ -84,6 +85,17 @@
 }
 .content > div:last-of-type {
   margin-bottom: 52px;
+}
+.connect-with-organizations {
+  .tile-row {
+    // target only unesco
+    app-find-support-tile:nth-child(12) {
+      ::ng-deep .title {
+        font-size: 12px;
+        line-height: math.div(27, 19);
+      }
+    }
+  }
 }
 
 @media all and (min-width: 768px) {

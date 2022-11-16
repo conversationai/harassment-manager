@@ -13,6 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+@use 'sass:math';
+
+.title,
+.subtitle {
+  font-family: 'Merriweather';
+  font-style: normal;
+}
 
 .close-button {
   border: none;
@@ -25,6 +32,7 @@
   flex-direction: column;
   padding-left: 40px;
   padding-right: 40px;
+  display: none;
 }
 
 .image-container {
@@ -38,10 +46,6 @@
   box-shadow: none;
   color: black;
   width: auto;
-
-  @media all and (min-width: 768px) {
-    width: 550px;
-  }
 }
 
 .loading-dialog button {
@@ -56,14 +60,49 @@
   margin-right: 15px;
 }
 
+.border {
+  width: 500px;
+  height: 0px;
+  border: 6px solid #000000;
+}
+
 .subtitle {
-  font-size: 18px;
-  padding-bottom: 40px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: math.div(27, 20);
   text-align: center;
 }
 
 .title {
-  font-size: 24px;
-  font-weight: 500;
-  padding-bottom: 20px;
+  font-weight: 700;
+  font-size: 27px;
+  line-height: math.div(27, 20);
+  text-align: center;
+}
+
+.content-text {
+  padding: 40px;
+  background-color: #101bcf;
+  color: white;
+}
+
+@media all and (min-width: 768px) {
+  .loading-dialog {
+    width: 600px;
+  }
+
+  .content-container {
+    display: block;
+  }
+  .content-text {
+    margin-top: 20px;
+  }
+
+  .subtitle {
+    font-size: 20px;
+  }
+
+  .title {
+    font-size: 33px;
+  }
 }
