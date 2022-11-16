@@ -29,12 +29,12 @@ export class CrisisHelplineComponent {
 
   sideMenuSections: SideMenuSection[] = [
     {
-      title: 'Item 1',
+      title: 'Virtual Emergency Support',
       anchorSelector: '.item-1',
       selected: false
     },
     {
-      title: "Item 2",
+      title: "Contact Helpline",
       anchorSelector: '.item-2',
       selected: false
     }
