@@ -63,7 +63,33 @@ a:focus {
     font-style: italic;
     font-size: 15px;
     line-height: math.div(27, 15);
-    margin-top: 10px;
+  }
+
+  .button {
+    align-items: center;
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    display: flex;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: math.div(26, 18);
+    margin-top: 20px;
+    padding: 0;
+  }
+  .button:focus-visible {
+    outline: none;
+  }
+  .button span {
+    border-bottom: 5px solid #101bcf;
+    padding-right: 14px;
+    text-transform: none;
+  }
+  .button img {
+    margin-bottom: -22px;
+    margin-left: -3px;
+    width: 44px;
   }
 }
 
@@ -95,8 +121,19 @@ a:focus {
       line-height: math.div(27, 20);
     }
 
-    .info {
-      margin-top: 20px;
+    .button {
+      display: flex;
+      font-size: 24px;
+      line-height: math.div(27.6, 24);
+    }
+    .button span {
+      border-bottom: 7px solid #101bcf;
+      padding-right: 14px;
+    }
+    .button img {
+      margin-bottom: -22px;
+      margin-left: -7px;
+      width: 54px;
     }
   }
 }
