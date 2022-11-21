@@ -29,7 +29,10 @@ a {
 }
 
 .image {
+  display: flex;
+  align-items: center;
   height: 152px;
+  justify-content: center;
   width: 219px;
 
   img {

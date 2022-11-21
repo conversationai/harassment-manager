@@ -26,34 +26,64 @@
 <!-- Note: Wrapper div is required to prevent the side menu "sticky" layout
      option from continuing beyond the bounds of the wrapper. -->
 <div class="content-wrapper">
-  <app-scrollable-side-menu class="side-menu" [sideMenuSections]="sideMenuSections">
+  <app-scrollable-side-menu
+    class="side-menu"
+    [sideMenuSections]="sideMenuSections"
+  >
   </app-scrollable-side-menu>
 
   <div class="content">
-    <div class="get-informed">
-      <h2>Digital Safety Guides</h2>
+    <div class="interactive-lessons">
+      <h2>interactive Lessons</h2>
       <div class="tile-row">
-        <app-find-support-tile *ngFor="let item of digitalSafetyGuides" title={{item.name}} url={{item.url}}
-          image={{item.image}}>
+        <app-find-support-tile
+          *ngFor="let item of interactiveLessons"
+          title="{{ item.name }}"
+          url="{{ item.url }}"
+          image="{{ item.image }}"
+        >
         </app-find-support-tile>
       </div>
     </div>
 
-    <div class="explore-digital-tools">
+    <div class="resource-kits">
+      <h2>Resource kits</h2>
+
+      <div class="tile-row">
+        <app-find-support-tile
+          *ngFor="let item of resourceKits"
+          title="{{ item.name }}"
+          url="{{ item.url }}"
+          image="{{ item.image }}"
+        >
+        </app-find-support-tile>
+      </div>
+    </div>
+
+    <div class="tools">
       <h2>Tools</h2>
 
       <div class="tile-row">
-        <app-find-support-tile *ngFor="let item of tools" title={{item.name}} url={{item.url}} image={{item.image}}>
+        <app-find-support-tile
+          *ngFor="let item of tools"
+          title="{{ item.name }}"
+          url="{{ item.url }}"
+          image="{{ item.image }}"
+        >
         </app-find-support-tile>
       </div>
     </div>
 
-    <div class="connect-with-organizations">
-      <h2> Organizations</h2>
+    <div class="organisations">
+      <h2>Organisations</h2>
 
       <div class="tile-row">
-        <app-find-support-tile *ngFor="let item of organizations" title={{item.name}} url={{item.url}}
-          image={{item.image}}>
+        <app-find-support-tile
+          *ngFor="let item of organisations"
+          title="{{ item.name }}"
+          url="{{ item.url }}"
+          image="{{ item.image }}"
+        >
         </app-find-support-tile>
       </div>
     </div>
