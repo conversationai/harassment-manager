@@ -16,85 +16,126 @@
 
 <div class="header">
   <h1 class="title">Help Center</h1>
-  <p class="subtitle">Get answers and advice on your questions for FeedShield.</p>
+  <p class="subtitle">
+    Get answers and advice on your questions for FeedShield.
+  </p>
   <img src="/Illustration.svg" />
 </div>
 
 <!-- Note: Wrapper div is required to prevent the side menu "sticky" layout
      option from continuing beyond the bounds of the wrapper. -->
 <div class="content-wrapper">
-  <app-scrollable-side-menu class="side-menu" [sideMenuSections]="sideMenuSections">
+  <app-scrollable-side-menu
+    class="side-menu"
+    [sideMenuSections]="sideMenuSections"
+  >
   </app-scrollable-side-menu>
 
   <div class="content">
-    <div class="product-support">
-      <h2>Product Support</h2>
+    <div class="product-description">
+      <h2>Product Description</h2>
 
       <mat-expansion-panel disabled expanded>
-        <mat-expansion-panel-header>
-          <mat-panel-title> Add comments to your report </mat-panel-title>
-        </mat-expansion-panel-header>
-
         <div class="panel-content">
           <div class="text">
-            <ul>
-              <li>
-                Sign into FeedShield with the platform of your choice to document
-                and report online harassment targeted at you on that platform.
-              </li>
-              <li>
-                Not sure where to start? Select from grouped comments that are
-                categorized based on their likeliness of containing harmful
-                content.
-              </li>
-              <li>
-                Already know what you want to include? Explore all comments for
-                a specific timeframe.
-              </li>
-              <li>
-                Add comments and context to your report on the Create Report
-                page.
-              </li>
-              <li>
-                After you complete your report, download or store it online.
-                Keep it for your records or share with others.
-              </li>
-            </ul>
+            <p>
+              FeedShield is a powerful tool that allows you to take back control
+              of your Twitter feed. Once you’ve logged into your dashboard,
+              FeedShield rates each of your mentions with a toxicity score and
+              categorises them based on how likely they are to be harmful.
+              You’re able to view or hide each comment from within FeedShield
+              itself.
+            </p>
+            <p>
+              Once you’ve reviewed all the comments, you can then collate
+              harmful tweets into a single report that can be shared with
+              Twitter or other parties so that you can get the support you need
+              to deal with online abuse.
+            </p>
+            <p>
+              The accounts you include in your reports will not be notified so
+              you will not be at risk of further harassment if you choose to
+              forward your report on. FeedShield will also never post to Twitter
+              on your behalf.
+            </p>
           </div>
         </div>
       </mat-expansion-panel>
 
-      <mat-expansion-panel disabled expanded>
-        <mat-expansion-panel-header>
-          <mat-panel-title>Sharing or saving your report</mat-panel-title>
-        </mat-expansion-panel-header>
+      <div class="product-support">
+        <h2>Product Support</h2>
 
-        <div class="panel-content">
-          <div class="text">
-            <ul>
-              <li>
-                You can export your report and save it locally by downloading a
-                PDF, printing a copy, or saving a CSV file to review later.
-              </li>
-              <li>
-                You can also save your report as a spreadsheet on Google Drive.
-                View, share, download, or print your report with Google Sheets
-                on Drive.<br />
-                <a href="https://www.google.com/sheets/about/" target="_blank" rel="noopener  noreferrer"
-                  class="sheets-link">
-                  Learn More
-                </a>
-              </li>
-            </ul>
+        <mat-expansion-panel disabled expanded>
+          <mat-expansion-panel-header>
+            <mat-panel-title> Add comments to your report </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <div class="panel-content">
+            <div class="text">
+              <ul>
+                <li>
+                  Sign into FeedShield with the platform of your choice to
+                  document and report online harassment targeted at you on that
+                  platform.
+                </li>
+                <li>
+                  Not sure where to start? Select from grouped comments that are
+                  categorized based on their likeliness of containing harmful
+                  content.
+                </li>
+                <li>
+                  Already know what you want to include? Explore all comments
+                  for a specific timeframe.
+                </li>
+                <li>
+                  Add comments and context to your report on the Create Report
+                  page.
+                </li>
+                <li>
+                  After you complete your report, download or store it online.
+                  Keep it for your records or share with others.
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
-      </mat-expansion-panel>
-    </div>
+        </mat-expansion-panel>
 
-    <div class="contact-us">
-      <h2>Contact Us</h2>
+        <mat-expansion-panel disabled expanded>
+          <mat-expansion-panel-header>
+            <mat-panel-title>Sharing or saving your report</mat-panel-title>
+          </mat-expansion-panel-header>
 
-      <!-- TODO: Embeddable form here-->
+          <div class="panel-content">
+            <div class="text">
+              <ul>
+                <li>
+                  You can export your report and save it locally by downloading
+                  a PDF, printing a copy, or saving a CSV file to review later.
+                </li>
+                <li>
+                  You can also save your report as a spreadsheet on Google
+                  Drive. View, share, download, or print your report with Google
+                  Sheets on Drive.<br />
+                  <a
+                    href="https://www.google.com/sheets/about/"
+                    target="_blank"
+                    rel="noopener  noreferrer"
+                    class="sheets-link"
+                  >
+                    Learn More
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </mat-expansion-panel>
+      </div>
+
+      <div class="contact-us">
+        <h2>Contact Us</h2>
+
+        <!-- TODO: Embeddable form here-->
+      </div>
     </div>
   </div>
 </div>
