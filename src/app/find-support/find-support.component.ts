@@ -93,7 +93,7 @@ export class FindSupportComponent {
     {
       name: "Digital Defenders Partnership",
       image: "/ddp.png",
-      url: "https://safetyofjournalistsinafrica.africa/"
+      url: "https://www.digitaldefenders.org/"
     },
     {
       name: "Media Defence",
@@ -115,7 +115,7 @@ export class FindSupportComponent {
     {
       name: "Project Shield",
       image: "/project-shield.png",
-      url: "https://support.projectshield.withgoogle.com",
+      url: "https://projectshield.withgoogle.com",
     },
     {
       name: "Intra",
