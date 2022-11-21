@@ -186,9 +186,8 @@ export const routes: Routes = [
     data: { title: 'Report PDF' },
   },
   {
-    path: 'request-an-investigation',
+    path: 'request-investigation',
     component: RequestInvestigationComponent,
-    canActivate: [AuthGuardService],
     data: { title: 'Request and Investigation' },
   },
   {

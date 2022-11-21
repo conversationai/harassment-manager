@@ -30,6 +30,11 @@ export class HelpCenterComponent {
 
   sideMenuSections: SideMenuSection[] = [
     {
+      title: 'Product Description',
+      anchorSelector: '.product-description',
+      selected: true
+    },
+    {
       title: 'Product Support',
       anchorSelector: '.product-support',
       selected: false

@@ -86,17 +86,6 @@
 .content > div:last-of-type {
   margin-bottom: 52px;
 }
-.connect-with-organizations {
-  .tile-row {
-    // target only unesco
-    app-find-support-tile:nth-child(12) {
-      ::ng-deep .title {
-        font-size: 12px;
-        line-height: math.div(27, 19);
-      }
-    }
-  }
-}
 
 @media all and (min-width: 768px) {
   .header {
@@ -140,6 +129,29 @@
 
       app-find-support-tile {
         flex: unset;
+      }
+    }
+  }
+}
+
+/* OID Text */
+.resource-kits {
+  .tile-row {
+    app-find-support-tile:nth-child(3) {
+      ::ng-deep .title {
+        font-size: 16px;
+        line-height: math.div(27, 16);
+      }
+    }
+  }
+}
+
+/* Outline VPN logo */
+.tools {
+  .tile-row {
+    app-find-support-tile:nth-child(1) {
+      ::ng-deep img {
+        max-height: 68px;
       }
     }
   }

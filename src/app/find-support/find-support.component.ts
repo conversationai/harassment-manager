@@ -33,127 +33,101 @@ interface SupportResource {
 })
 export class FindSupportComponent {
   sideMenuSections: SideMenuSection[] = [
-    { title: 'Digital Safety Guides', anchorSelector: '.get-informed', selected: true },
+    { title: 'Interactive Lessons', anchorSelector: '.interactive-lessons', selected: true },
     {
-      title: 'Tools',
-      anchorSelector: '.explore-digital-tools',
+      title: 'Resource Kits',
+      anchorSelector: '.resource-kits',
       selected: false,
     },
     {
-      title: 'Organizations',
-      anchorSelector: '.connect-with-organizations',
+      title: 'Tools',
+      anchorSelector: '.tools',
+      selected: false,
+    },
+    {
+      title: 'Organisations',
+      anchorSelector: '.organisations',
       selected: false,
     },
   ];
-
-  digitalSafetyGuides: SupportResource[] = [
+  interactiveLessons: SupportResource[] = [
     {
-      name: "Pen America",
-      image: "/pen_amerrican_logo.svg",
-      url: "https://onlineharassmentfieldmanual.pen.org/"
+      name: "Digital Safetea",
+      image: "/digital_safetea.svg",
+      url: "https://digitalsafetea.com/",
     },
     {
-      name: "CPJ",
+      name: "Know Your Trolls",
+      image: "/totem.svg",
+      url: "https://learn.totem-project.org/courses/course-v1:IWMF+IWMF_OH_EN+001/about",
+    },
+    {
+      name: "Ayeta",
+      image: "/ayeta.svg",
+      url: "https://paradigmhq.org/programs/digital-rights/ayeta/",
+    },
+  ];
+  resourceKits: SupportResource[] = [
+    {
+      name: "Data Detox Kit",
+      image: "/ddk.png",
+      url: "https://www.datadetoxkit.org",
+    },
+    {
+      name: "Troll Tracker",
+      image: "/troll-tracker.png",
+      url: "https://trolltracker.investigate.africa/",
+    },
+    {
+      name: "Guideline for Countering Online Abuse",
+      image: "/oid.png",
+      url: "https://openinternet.global/",
+    },
+  ];
+  organisations: SupportResource[] = [
+    {
+      name: "Committee to Project Journalists",
       image: "/cpj.svg",
       url: "https://cpj.org/campaigns/safety-women-nonbinary-journalists-online-offline/"
     },
     {
-      name: "Open Internet for Democracy",
-      image: "/opifd.svg",
-      url: "https://openinternet.global/"
-    }
-  ]
-
+      name: "Digital Defenders Partnership",
+      image: "/ddp.png",
+      url: "https://www.digitaldefenders.org/"
+    },
+    {
+      name: "Media Defence",
+      image: "/media-defence.png",
+      url: "https://mediadefence.org/"
+    },
+    {
+      name: "She Persisted",
+      image: "/she-persisted.png",
+      url: "https://she-persisted.org"
+    },
+  ];
   tools: SupportResource[] = [
     {
-      name: "Digital Safetea",
-      url: "https://digitalsafetea.com/",
-      image: "/digital_safetea.svg"
-    },
-    {
-      name: "Ayeta",
-      url: "https://paradigmhq.org/programs/digital-rights/ayeta/",
-      image: "/ayeta.svg"
-    },
-    {
-      name: "Know Your Trolls",
-      url: "https://learn.totem-project.org/courses/course-v1:IWMF+IWMF_OH_EN+001/about",
-      image: "/totem.svg"
-    },
-    {
       name: "Outline VPN",
+      image: "/outline-vpn.png",
       url: "https://getoutline.org/",
-      image: "/outline_vpn.svg"
+    },
+    {
+      name: "Project Shield",
+      image: "/project-shield.png",
+      url: "https://projectshield.withgoogle.com",
+    },
+    {
+      name: "Intra",
+      image: "/intra.png",
+      url: "https://getintra.org",
+    },
+    {
+      name: "Tune",
+      image: "/tune.png",
+      url: "https://chrome.google.com/webstore/detail/tune-experimental/gdfknffdmmjakmlikbpdngpcpbbfhbnp",
     }
-  ]
-  organizations: SupportResource[] = [
-    {
-      name: "Coalition Against Online Violence",
-      url: "https://onlineviolenceresponsehub.org/",
-      image: "/ccri.svg"
-    },
-    {
-      name: "Pen America",
-      image: "/pen_amerrican_logo.svg",
-      url: "https://onlineharassmentfieldmanual.pen.org/"
-    },
-    {
-      name: "Article 19",
-      url: "https://www.article19.org/",
-      image: "/article_19.svg"
-    },
-    {
-      name: "International Women's Media Foundation",
-      url: "https://www.iwmf.org/",
-      image: "/iwmf.svg"
-    },
-    {
-      name: "African Women Journalism Project",
-      url: "https://theawjp.org/",
-      image: "/awjp.svg"
-    },
-    {
-      name: "African Women In Media",
-      url: "https://africanwomeninmedia.com/",
-      image: "/african-women-in-media.svg"
-    },
-    {
-      name: "International Center for Journalism",
-      url: "https://www.icfj.org/",
-      image: "/international-center-for-journalism.svg"
-    },
-    {
-      name: "iWatch Africa",
-      url: "https://iwatchafrica.org/",
-      image: "/iwatch-africa.svg"
-    },
-    {
-      name: "Open Internet for Democracy",
-      image: "/opifd.svg",
-      url: "https://openinternet.global/"
-    },
-    {
-      name: "The Digital Platform for Safety of Journalists in Africa",
-      image: "/dpfsja.svg",
-      url: "https://safetyofjournalistsinafrica.africa/"
-    },
-    {
-      name: "Center for International Media Assistance",
-      image: "/cfima.svg",
-      url: "https://www.cima.ned.org/"
-    },
-    {
-      name: "UNESCO Multi-Donor Programme on Freedom and Expression and Safety of Journalists",
-      image: "/unesco.svg",
-      url: "https://www.unesco.org/en/multi-donor-programme-freedom-expression-and-safety-journalists"
-    },
-    {
-      name: "International Press Institute",
-      image: "/international-press-institute.svg",
-      url: "https://ipi.media/"
-    },
-
-  ]
+  ];
 
   constructor(
     private iconRegistry: MatIconRegistry,
