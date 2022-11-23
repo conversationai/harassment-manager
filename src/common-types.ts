@@ -79,8 +79,8 @@ export interface CreatePdfResponse {
 export interface GetTweetsRequest {
   credentials?: firebase.auth.UserCredential;
   nextPageToken?: string;
-  fromDate: string; // yyyymmddhhmm format is expected here.
-  toDate: string; // yyyymmddhhmm format is expected here.
+  startDateTimeMs: number;
+  endDateTimeMs: number;
 }
 
 export interface GetTweetsResponse {
@@ -125,14 +125,7 @@ export interface HideRepliesTwitterResponse {
 
 export interface TwitterApiResponse {
   next: string;
-  requestParameters: TwitterApiRequestParams;
   results: TweetObject[];
-}
-
-interface TwitterApiRequestParams {
-  fromDate: string;
-  toDate: string;
-  maxResults: number;
 }
 
 // From twitter documentation: When ingesting Tweet data the main object is the
@@ -174,6 +167,81 @@ export interface TweetObject {
   source?: string;
 }
 
+export interface V2TweetObject {
+  attachments: V2Attachments;
+  author_id: string;
+  created_at: string;
+  entities: V2Entities;
+  id: string;
+  lang: string;
+  public_metrics: V2PublicMetrics;
+  referenced_tweets: V2ReferencedTweet[];
+  source: string;
+  text: string;
+}
+
+interface V2PublicMetrics {
+  like_count: number;
+  quote_count: number;
+  reply_count: number;
+  retweet_count: number;
+}
+
+interface V2ReferencedTweet {
+  id: string;
+  type: string;
+}
+
+interface V2Entities {
+  hashtags?: V2Hashtags[];
+  mentions?: V2Mentions[];
+  referenced_tweets?: V2ReferencedTweet[];
+  urls?: V2Url[];
+}
+
+interface V2Mentions {
+  start: number;
+  end: number;
+  username: string;
+  id: string;
+}
+
+interface V2Hashtags {
+  start: number;
+  end: number;
+  tag: string;
+}
+
+interface V2Url {
+  display_url: string;
+  extended_url: string;
+  start: number;
+  end: number;
+}
+
+export interface V2Includes {
+  media?: V2Media[];
+  users?: V2Users[];
+}
+
+interface V2Media {
+  media_key: string;
+  type: string;
+  url: string;
+}
+
+interface V2Users {
+  profile_image_url: string;
+  name: string;
+  username: string;
+  verified: boolean;
+  id: string;
+}
+interface V2Attachments {
+  media_keys: string[];
+}
+
+// TODO: Maybe remove all unused fields?
 export interface TwitterUser {
   id_str: string;
   screen_name: string;
@@ -206,7 +274,7 @@ interface Symbols {
   text: string;
 }
 
-interface TweetUserMention {
+export interface TweetUserMention {
   id?: number;
   id_str?: string;
   indices: Indices;
@@ -214,7 +282,7 @@ interface TweetUserMention {
   screen_name: string;
 }
 
-interface TweetMedia {
+export interface TweetMedia {
   id_str?: string;
   media_url: string;
   type: string;
@@ -234,7 +302,7 @@ interface TweetMediaDimensions {
   resize: string;
 }
 
-interface TweetUrl {
+export interface TweetUrl {
   display_url?: string;
   expanded_url?: string;
   indices: Indices;

@@ -75,6 +75,7 @@ export interface TwitterApiCredentials {
   accountName: string;
   appKey: string;
   appToken: string;
+  bearerToken?: string;
   password: string;
   username: string;
 }
