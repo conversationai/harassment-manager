@@ -116,6 +116,32 @@ mat-panel-title {
   line-height: math.div(27, 18);
 }
 
+.item-2 {
+  a {
+    text-decoration: none;
+
+    .button {
+      background-color: #101bcf;
+      border: 2px solid #101bcf;
+      border-radius: 13px;
+      color: #ffffff;
+      cursor: pointer;
+      font-size: 20px;
+      line-height: math.div(27, 20);
+      opacity: 1;
+      h2 {
+        color: #fff;
+      }
+    }
+
+    .button:hover {
+      background-color: #1625d9;
+      border: 2px solid #1625d9;
+      opacity: 0.7;
+    }
+  }
+}
+
 @media all and (min-width: 768px) {
   .header {
     align-items: flex-start;
