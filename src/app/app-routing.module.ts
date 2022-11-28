@@ -144,7 +144,7 @@ export const routes: Routes = [
   {
     path: 'faqs',
     component: FAQSComponent,
-    data: { title: 'FAQ\'s' },
+    data: { title: "FAQ's" },
   },
   {
     path: 'opportunities/early-adopters',
