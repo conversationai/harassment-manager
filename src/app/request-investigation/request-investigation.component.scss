@@ -57,6 +57,10 @@
     outline: none;
   }
 
+  a {
+    text-decoration: none;
+  }
+
   h2,
   h3 {
     font-weight: 700;
@@ -124,13 +128,13 @@
       }
 
       .name {
-        line-height: math.div(27, 22);
+        // line-height: math.div(27, 22);
         color: #212121;
       }
 
       .title {
-        font-size: 18px;
-        line-height: math.div(27, 23);
+        font-size: 12px;
+        // line-height: math.div(27, 23);
       }
     }
   }
