@@ -137,9 +137,9 @@ export const routes: Routes = [
     data: { title: 'Create Report' },
   },
   {
-    path: 'find-support',
+    path: 'resources',
     component: FindSupportComponent,
-    data: { title: 'Find Support' },
+    data: { title: 'Resource Kit' },
   },
   {
     path: 'help-center',

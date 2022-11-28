@@ -40,12 +40,12 @@ export class FindSupportComponent {
       selected: false,
     },
     {
-      title: 'Tools',
+      title: 'Self-help Tools',
       anchorSelector: '.tools',
       selected: false,
     },
     {
-      title: 'Organisations',
+      title: 'Support Organisations',
       anchorSelector: '.organisations',
       selected: false,
     },
