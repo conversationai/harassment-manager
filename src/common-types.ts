@@ -128,6 +128,8 @@ export interface TwitterApiResponse {
   results: TweetObject[];
 }
 
+// Tweet object format returned by the Enterprise Twitter API.
+//
 // From twitter documentation: When ingesting Tweet data the main object is the
 // Tweet Object, which is a parent object to several child objects. For
 // example, all Tweets include a User object that describes who authored the
@@ -167,17 +169,29 @@ export interface TweetObject {
   source?: string;
 }
 
+// Tweet object format returned by the v2 Twitter API.
+//
+// See
+// https://developer.twitter.com/en/docs/twitter-api/data-dictionary/introduction
+// for more details.
 export interface V2TweetObject {
-  attachments: V2Attachments;
+  attachments?: V2Attachments;
   author_id: string;
   created_at: string;
-  entities: V2Entities;
+  entities?: V2Entities;
   id: string;
   lang: string;
   public_metrics: V2PublicMetrics;
-  referenced_tweets: V2ReferencedTweet[];
-  source: string;
+  referenced_tweets?: V2ReferencedTweet[];
+  source?: string;
   text: string;
+}
+
+interface V2Entities {
+  hashtags?: V2Hashtags[];
+  mentions?: V2Mentions[];
+  referenced_tweets?: V2ReferencedTweet[];
+  urls?: V2Url[];
 }
 
 interface V2PublicMetrics {
@@ -192,13 +206,6 @@ interface V2ReferencedTweet {
   type: string;
 }
 
-interface V2Entities {
-  hashtags?: V2Hashtags[];
-  mentions?: V2Mentions[];
-  referenced_tweets?: V2ReferencedTweet[];
-  urls?: V2Url[];
-}
-
 interface V2Mentions {
   start: number;
   end: number;
@@ -206,7 +213,7 @@ interface V2Mentions {
   id: string;
 }
 
-interface V2Hashtags {
+export interface V2Hashtags {
   start: number;
   end: number;
   tag: string;
@@ -241,7 +248,6 @@ interface V2Attachments {
   media_keys: string[];
 }
 
-// TODO: Maybe remove all unused fields?
 export interface TwitterUser {
   id_str: string;
   screen_name: string;

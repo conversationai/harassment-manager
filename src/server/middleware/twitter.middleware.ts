@@ -30,6 +30,7 @@ import {
   MuteTwitterUsersRequest,
   MuteTwitterUsersResponse,
   Tweet,
+  TweetEntities,
   TweetHashtag,
   TweetMedia,
   TweetObject,
@@ -60,29 +61,19 @@ export async function getTweets(
 ) {
   let twitterDataPromise: Promise<TwitterApiResponse>;
 
-  // if (fs.existsSync('src/server/twitter_sample_results.json')) {
-  //   twitterDataPromise = loadLocalTwitterData();
-  // } else if (enterpriseSearchCredentialsAreValid(apiCredentials)) {
-  //   twitterDataPromise = loadTwitterData(apiCredentials, req.body);
-  // } else if (v2SearchCredentialsAreValid(apiCredentials)) {
-  //   twitterDataPromise = loadTwitterDataV2(apiCredentials, req.body);
-  // } else {
-  //   res.send(new Error('Invalid Search API credentials'));
-  //   return;
-  // }
-
-  // const enterpriseResults = (
-  //   await loadTwitterData(apiCredentials, req.body)
-  // ).results.map(parseTweet);
-  // const v2Results = (
-  //   await loadTwitterDataV2(apiCredentials, req.body)
-  // ).results.map(parseTweet);
-
-  // console.log(JSON.stringify(enterpriseResults));
-  // console.log(JSON.stringify(v2Results));
+  if (fs.existsSync('src/server/twitter_sample_results.json')) {
+    twitterDataPromise = loadLocalTwitterData();
+  } else if (v2SearchCredentialsAreValid(apiCredentials)) {
+    twitterDataPromise = loadTwitterDataV2(apiCredentials, req.body);
+  } else if (enterpriseSearchCredentialsAreValid(apiCredentials)) {
+    twitterDataPromise = loadTwitterData(apiCredentials, req.body);
+  } else {
+    res.send(new Error('No valid Twitter API credentials'));
+    return;
+  }
 
   try {
-    const twitterData = await loadTwitterData(apiCredentials, req.body);
+    const twitterData = await twitterDataPromise;
     const tweets = twitterData.results.map(parseTweet);
     res.send({ tweets, nextPageToken: twitterData.next } as GetTweetsResponse);
   } catch (e) {
@@ -331,83 +322,48 @@ function loadTwitterDataV2(
   if (!user) {
     throw new Error('No user credentials in GetTweetsRequest');
   }
+
+  const params = {
+    // Include next_token if it's part of the request.
+    ...(request.nextPageToken && { next_token: request.nextPageToken }),
+    ...{
+      query: `(@${user} OR url:twitter.com/${user}) -from:${user} -is:retweet`,
+      max_results: BATCH_SIZE,
+      'user.fields': 'id,name,username,profile_image_url,verified',
+      expansions: 'author_id,attachments.media_keys,referenced_tweets.id',
+      start_time: formatTimestampForV2(request.startDateTimeMs),
+      end_time: formatTimestampForV2(request.endDateTimeMs),
+      'media.fields': 'url,type',
+      'tweet.fields':
+        'attachments,created_at,id,entities,lang,public_metrics,source,text',
+    },
+  };
+
   return axios
     .get<TwitterApiResponse>(requestUrl, {
       headers: {
         authorization: `Bearer ${credentials.bearerToken}`,
       },
-      params: {
-        query: `(@${user} OR url:twitter.com/${user}) -from:${user} -is:retweet`,
-        max_results: BATCH_SIZE,
-        'user.fields': 'id,name,username,profile_image_url,verified',
-        expansions: 'author_id,attachments.media_keys,referenced_tweets.id',
-        start_time: formatTimestampForV2(request.startDateTimeMs),
-        end_time: formatTimestampForV2(request.endDateTimeMs),
-        'media.fields': 'url,type',
-        'tweet.fields':
-          'attachments,created_at,id,entities,lang,public_metrics,source,text',
-      },
+      params,
       transformResponse: [
         (data, _) => {
-          const response = JSON.parse(data);
-          const tweets: V2TweetObject[] = response.data ?? [];
-          const includes: V2Includes = response.includes ?? {};
-          const toReturn = {
+          const parsed = JSON.parse(data);
+          const tweets: V2TweetObject[] = parsed.data ?? [];
+          const includes: V2Includes = parsed.includes ?? {};
+          return <TwitterApiResponse>{
             results: tweets.map((tweet) => packV2Tweet(tweet, includes)),
-            next: response.meta.next_token ?? '',
+            next: parsed.meta.next_token,
           };
-          return toReturn;
         },
       ],
     })
     .then((response) => response.data);
 }
 
-// Packs a Tweet object response from the V2 Search PI into the Enterprise
-// Search API response object format.
+// Packs a Tweet response object from the v2 Search API format into the
+// Enterprise Search API format.
 function packV2Tweet(tweet: V2TweetObject, includes: V2Includes): TweetObject {
-  const entities = {
-    hashtags: tweet.entities?.hashtags?.map(
-      (hashtag) =>
-        <TweetHashtag>{
-          indices: [hashtag.start, hashtag.end],
-          text: hashtag.tag,
-        }
-    ),
-    // TODO: Handle this
-    symbols: [],
-    urls: tweet.entities?.urls?.map(
-      (url) =>
-        <TweetUrl>{
-          display_url: url.display_url,
-          expanded_url: url.extended_url,
-          indices: [url.start, url.end],
-        }
-    ),
-    user_mentions: tweet.entities.mentions?.map(
-      (mention) =>
-        <TweetUserMention>{
-          id_str: mention.id,
-          indices: [mention.start, mention.end],
-          screen_name: mention.username,
-        }
-    ),
-    media: tweet.attachments?.media_keys
-      ?.flatMap((media_key) => {
-        const media = includes.media?.find(
-          (media) => media.media_key === media_key
-        );
-        if (!media) {
-          throw new Error('Unable to find media');
-        }
-        return <TweetMedia>{
-          indices: [0, 0], // Indices not available in V2.
-          media_url: media.url ?? '',
-          type: media.type,
-        };
-      })
-      .filter((media) => media.type === 'photo'),
-  };
+  const entities = packEntities(tweet, includes);
 
   const tweetObject: TweetObject = {
     created_at: tweet.created_at,
@@ -417,10 +373,9 @@ function packV2Tweet(tweet: V2TweetObject, includes: V2Includes): TweetObject {
     // entities field is.
     entities: entities,
     extended_entities: entities,
-    // No display_text_range, truncated, or extended_tweet fields because the
-    // V2 API does not truncate the text.
+    // `display_text_range` omitted because v2 does not truncate the text.
     favorite_count: tweet.public_metrics.like_count,
-    // favorited is not available in V2 API.
+    // `favorited` omitted because it is not available in v2..
     in_reply_to_status_id: tweet.entities?.referenced_tweets?.find(
       (tweet) => tweet.type === 'replied_to'
     )?.id,
@@ -433,8 +388,8 @@ function packV2Tweet(tweet: V2TweetObject, includes: V2Includes): TweetObject {
   };
 
   if (tweetObject.truncated) {
-    // The Enteprise API populates the extended_tweet field if the tweet is
-    // truncated.
+    // Enteprise populates the extended_tweet field if the tweet is truncated,
+    // so we add it manually here for consistency.
     tweetObject.extended_tweet = {
       full_text: tweetObject.text,
       display_text_range: [0, 0], // Indices not available in v2.
@@ -445,7 +400,72 @@ function packV2Tweet(tweet: V2TweetObject, includes: V2Includes): TweetObject {
   return tweetObject;
 }
 
+function packEntities(
+  tweet: V2TweetObject,
+  includes: V2Includes
+): TweetEntities {
+  const entities: TweetEntities = {};
+
+  if (tweet.entities && tweet.entities.hashtags) {
+    entities.hashtags = tweet.entities.hashtags.map(
+      (hashtag) =>
+        <TweetHashtag>{
+          indices: [hashtag.start, hashtag.end],
+          text: hashtag.tag,
+        }
+    );
+  }
+
+  if (tweet.entities && tweet.entities.urls) {
+    entities.urls = tweet.entities.urls.map(
+      (url) =>
+        <TweetUrl>{
+          display_url: url.display_url,
+          expanded_url: url.extended_url,
+          indices: [url.start, url.end],
+        }
+    );
+  }
+
+  if (tweet.entities && tweet.entities.mentions) {
+    entities.user_mentions = tweet.entities.mentions.map(
+      (mention) =>
+        <TweetUserMention>{
+          id_str: mention.id,
+          indices: [mention.start, mention.end],
+          screen_name: mention.username,
+        }
+    );
+  }
+
+  if (tweet.attachments && tweet.attachments.media_keys) {
+    entities.media = tweet.attachments.media_keys
+      .flatMap((media_key) => {
+        // v2 includes the media fields (like media_url) in a separate
+        // `includes` object, so we search there for the media item in question.
+        const media = includes.media?.find(
+          (media) => media.media_key === media_key
+        );
+        // This shouldn't happen, but we throw an error if it does.
+        if (!media) {
+          throw new Error('Unable to find media');
+        }
+        return <TweetMedia>{
+          indices: [0, 0], // Indices not available in v2.
+          media_url: media.url,
+          type: media.type,
+        };
+      })
+      // Filter for photos because that's all we display.
+      .filter((media) => media.type === 'photo');
+  }
+
+  return entities;
+}
+
 function getUser(id: string, includes: V2Includes): TwitterUser {
+  // v2 includes the user fields (like profile_image_url) in a separate
+  // `includes` object, so we search there for the media item in question.
   const user = includes.users?.find((user) => user.id === id);
   if (!user) {
     throw new Error('Unable to find user');
@@ -564,9 +584,6 @@ function parseTweet(tweetObject: TweetObject): Tweet {
   if (tweetObject.extended_entities && tweetObject.extended_entities.media) {
     tweet.hasImage = true;
   }
-  // console.log(tweet.text);
-  // console.log(tweet.text.length);
-  // console.log(tweet.truncated);
   return tweet;
 }
 
@@ -595,8 +612,8 @@ function formatTimestamp(ms: number): string {
   );
 }
 
-// Format a millisecond-based timestamp into the YYYY-MM-DDTHH:mm:ssZ date format
-// suitable for the v2 Twitter API, as defined in:
+// Format a millisecond-based timestamp into the YYYY-MM-DDTHH:mm:ssZ date
+// format suitable for the v2 Twitter API, as defined in:
 // https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-all
 function formatTimestampForV2(ms: number): string {
   const date = new Date(ms);

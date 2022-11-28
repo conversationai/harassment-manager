@@ -127,9 +127,9 @@ export class SocialMediaItemService {
     return from(
       this.twitterApiService.getTweets({
         startDateTimeMs,
-        // Subtract 1 minute from the end time because the Twitter API
-        // sometimes returns an error if we request data for the most recent
-        // minute of time.
+        // Subtract 1 minute from the end time because the Twitter API sometimes
+        // returns an error if we request data for the most recent minute of
+        // time.
         endDateTimeMs: endDateTimeMs - 60000,
       })
     ).pipe(map((response: GetTweetsResponse) => response.tweets));
