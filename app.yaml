@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-runtime: nodejs10
+runtime: nodejs12
 service: default
 instance_class: F4_1G
 
@@ -25,7 +25,7 @@ automatic_scaling:
 
 # Required for min_idle_instances!
 inbound_services:
-- warmup
+  - warmup
 
 env_variables:
   NODE_ENV: production
