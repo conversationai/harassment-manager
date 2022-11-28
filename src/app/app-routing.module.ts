@@ -40,6 +40,7 @@ import { ShareReportComponent } from './share-report/share-report.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
 import { RequestInvestigationComponent } from './request-investigation/request-investigation.component';
+import { FAQSComponent } from './faqs/faqs.component';
 
 /**
  * Custom RouteReuseStrategy that reuses the CreateReportComponent so that the
@@ -142,9 +143,9 @@ export const routes: Routes = [
     data: { title: 'Find Support' },
   },
   {
-    path: 'help-center',
-    component: HelpCenterComponent,
-    data: { title: 'Help Center' },
+    path: 'faqs',
+    component: FAQSComponent,
+    data: { title: 'FAQ\'s' },
   },
   {
     path: 'opportunities/early-adopters',

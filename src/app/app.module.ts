@@ -109,6 +109,7 @@ import { TwitterApiService } from './twitter_api.service';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { PrivacyPageComponent } from './privacy-page/privacy-page.component';
 import { RequestInvestigationComponent } from './request-investigation/request-investigation.component';
+import { FAQSComponent } from './faqs/faqs.component';
 
 @NgModule({
   declarations: [
@@ -158,6 +159,7 @@ import { RequestInvestigationComponent } from './request-investigation/request-i
     WelcomePageComponent,
     PrivacyPageComponent,
     RequestInvestigationComponent,
+    FAQSComponent,
   ],
   imports: [
     A11yModule,
