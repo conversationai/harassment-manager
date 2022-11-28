@@ -31,6 +31,8 @@ export class WelcomePageComponent {
 
   appName: string = "FeedShield"
 
+  userIsSignedIn = false;
+
   constructor(
     private firestoreService: FirestoreService,
     private oauthApiService: OauthApiService,
@@ -45,6 +47,10 @@ export class WelcomePageComponent {
         '/Twitter_Logo_WhiteOnBlue.svg'
       )
     );
+
+    this.oauthApiService.twitterSignInChange.subscribe(signedIn => {
+      this.userIsSignedIn = signedIn;
+    });
   }
 
   loginWithTwitter(): void {
@@ -52,6 +58,11 @@ export class WelcomePageComponent {
       this.liveAnnouncer.announce('Logged in. Exited Twitter login page.');
       await this.firestoreService.createUserDocument();
       this.router.navigate(['/home']);
+    });
+  }
+
+  revokeAuthorization(): void {
+    this.oauthApiService.revokeAuth().then(() => {
     });
   }
 }

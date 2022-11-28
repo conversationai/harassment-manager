@@ -34,12 +34,28 @@
   z-index: -1;
 }
 
+.header-nav {
+  display: flex;
+  justify-content: space-between;
+}
+
 .title {
   align-items: center;
-  cursor: pointer;
   display: flex;
+  justify-content: space-between;
   padding: 20px;
-  text-decoration: none;
+
+  a {
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  button {
+    border: 1px solid #101bcf;
+    color: #101bcf;
+    border-radius: 30px;
+    padding: 8px;
+  }
 }
 .title:focus-visible {
   outline: none;

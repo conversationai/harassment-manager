@@ -15,9 +15,15 @@
 -->
 
 <div class="login-header">
-  <a class="title" routerLink="/">
-    <div class="text">{{ appName }}</div>
-  </a>
+  <div class="title">
+    <a routerLink="/">
+      <div class="text">{{ appName }}</div>
+    </a>
+    <div *ngIf="userIsSignedIn">
+      <button class="button" (click)="revokeAuthorization()">Sign Out</button>
+    </div>
+  </div>
+
 
   <div class="login-section">
     <div class="hero-container right">
