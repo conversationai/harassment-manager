@@ -35,8 +35,7 @@
             <mat-expansion-panel disabled expanded>
                 <div class="panel-content">
                     <div class="text">
-                        <p>
-                            {{faq.content}}
+                        <p [innerHTML]="faq.content">
                         </p>
                     </div>
                 </div>
