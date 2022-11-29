@@ -148,13 +148,12 @@ The required fields are:
 
 The optional fields are:
 
-- `twitterApiCredentials`: Your credentials for the Twitter APIs. The server
-  expect this field to be an object with `accountName`, `username`, and
-  `password` fields for the Enterprise Search API and `appKey` and `appToken`
-  for the Standard API.
+- `twitterApiCredentials`: Your credentials for the Twitter APIs.
 
-All together, your config should look something like the config below, with the
-relevant credentials and key values replaced.
+All together, your config should look something like one of the two configs
+below, with the relevant credentials and key values replaced.
+
+### If using the Enteprise Full-Archive Search API:
 
 ```json
 {
@@ -166,11 +165,26 @@ relevant credentials and key values replaced.
     "accountName": "{TWITTER_API_ACCOUNT_NAME}",
     "username": "{TWITTER_API_USERNAME}",
     "password": "{TWITTER_API_PASSWORD}",
-    "appKey": "{APP_KEY}",
-    "appToken": "{APP_TOKEN}"
+    "appKey": "{TWITTER_APP_KEY}",
+    "appToken": "{TWITTER_APP_TOKEN}"
   }
 }
 ```
+
+### If using the v2 Full-Archive Search endpoint:
+
+````json
+{
+  "port": "3000",
+  "staticPath": "dist/harassment-manager",
+  "googleCloudApiKey": "{YOUR_GOOGLE_CLOUD_API_KEY}",
+  "cloudProjectId": "{YOUR_GOOGLE_CLOUD_PROJECTID}",
+  "twitterApiCredentials": {
+    "appKey": "{TWITTER_APP_KEY}",
+    "appToken": "{TWITTER_APP_TOKEN}",
+    "bearerToken": "{TWITTER_APP_BEARER_TOKEN}"
+  }
+}
 
 ## 7. (Optional) Enable Google Analytics
 
@@ -192,7 +206,7 @@ To build and run the app and a local development server, run
 
 ```shell
 npm run build:all:dev && npm run start:dev-server
-```
+````
 
 To build and run the app and a local production server, run
 
