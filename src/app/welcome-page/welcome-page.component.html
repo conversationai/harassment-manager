@@ -43,7 +43,7 @@
 
       <div class="login-buttons">
         <button class="button twitter-button" (click)="loginWithTwitter()">
-          <span> Start with Twitter </span>
+          <span> {{ userIsSignedIn ? "Visit Dashboard":  "Start with Twitter"}} </span>
           <img src="/red_ellipse.svg" />
         </button>
       </div>
