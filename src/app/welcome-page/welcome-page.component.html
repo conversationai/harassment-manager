@@ -15,9 +15,15 @@
 -->
 
 <div class="login-header">
-  <a class="title" routerLink="/home">
-    <div class="text">{{ appName }}</div>
-  </a>
+  <div class="title">
+    <a routerLink="/">
+      <div class="text">{{ appName }}</div>
+    </a>
+    <div *ngIf="userIsSignedIn">
+      <button class="button" (click)="revokeAuthorization()">Sign Out</button>
+    </div>
+  </div>
+
 
   <div class="login-section">
     <div class="hero-container right">
@@ -37,7 +43,7 @@
 
       <div class="login-buttons">
         <button class="button twitter-button" (click)="loginWithTwitter()">
-          <span> Start with Twitter </span>
+          <span> {{ userIsSignedIn ? "Visit Dashboard":  "Start with Twitter"}} </span>
           <img src="/red_ellipse.svg" />
         </button>
       </div>
