@@ -19,6 +19,9 @@
   background-color: #101bcf;
   border-top: 1px solid #101bcf;
   color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .top-row,
@@ -44,6 +47,10 @@
   flex: 0 0 100%;
   flex-direction: column;
 
+  a {
+    text-align: center;
+  }
+
   .img-link {
     height: 150px;
   }
@@ -63,6 +70,7 @@
 
   .summary {
     margin-top: 25px;
+    text-align: center;
   }
 }
 
@@ -74,6 +82,7 @@
   line-height: math.div(27, 18);
   letter-spacing: 0.03em;
   margin-top: 25px;
+  align-items: center;
 
   .link-column {
     display: flex;
@@ -90,9 +99,13 @@
     }
 
     .social-links {
+      margin-top: 20px;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+      a {
+        margin-right: 10px;
+      }
       img {
         height: 30px;
       }
@@ -138,6 +151,7 @@
 @media all and (min-width: 768px) {
   .top-row,
   .bottom-row {
+    width: 100%;
     padding-left: 0;
     padding-right: 0;
     margin-left: auto;
@@ -145,8 +159,17 @@
     max-width: 728px;
   }
 
+  .summary {
+    text-align: left;
+  }
+
   .links {
     flex: 0 0 50%;
+    align-items: flex-start;
+  }
+
+  .links:last-child {
+    align-items: flex-end;
   }
 
   .initiative-container {
@@ -166,6 +189,10 @@
   .summary-container {
     flex: unset;
     max-width: 680px;
+
+    a {
+      text-align: left;
+    }
 
     .title {
       .text {
