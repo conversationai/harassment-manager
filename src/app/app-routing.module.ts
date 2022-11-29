@@ -121,9 +121,9 @@ export class CustomRouteReuseStrategy implements RouteReuseStrategy {
 
 export const routes: Routes = [
   {
-    path: 'crisis-helpline',
+    path: 'helpline',
     component: CrisisHelplineComponent,
-    data: { title: 'Crisis Helpline' },
+    data: { title: 'Helpline' },
   },
   {
     path: 'privacy-policy',
