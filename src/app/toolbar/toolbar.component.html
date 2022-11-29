@@ -38,9 +38,9 @@
         <span class="text">Create Report</span>
         <img src="/red_ellipse.svg" />
       </a>
-      <a routerLinkActive="active-router-link" routerLink="/find-support" #findSupportLink
-        [attr.aria-current]="findSupportLink.routerLinkActive ? 'page' : false" class="find-support">
-        <span class="text">Find Support</span>
+      <a routerLinkActive="active-router-link" routerLink="/resources" #resourceLink
+        [attr.aria-current]="resourceLink.routerLinkActive ? 'page' : false" class="find-support">
+        <span class="text">Resources</span>
         <img src="/red_ellipse.svg" />
       </a>
       <a routerLinkActive="active-router-link" routerLink="/opportunities/" #opportunitiesLink
@@ -74,9 +74,9 @@
         <span class="text">Help Center</span>
         <img src="/red_ellipse.svg" />
       </a>
-      <a routerLinkActive="active-router-link" routerLink="/find-support" #findSupportLink (click)="toggleMobileMenu()"
-        [attr.aria-current]="findSupportLink.routerLinkActive ? 'page' : false">
-        <span class="text">Find Support</span>
+      <a routerLinkActive="active-router-link" routerLink="/resources" #resourceLink (click)="toggleMobileMenu()"
+        [attr.aria-current]="resourceLink.routerLinkActive ? 'page' : false">
+        <span class="text">Resources</span>
         <img src="/red_ellipse.svg" />
       </a>
       <a routerLinkActive="active-router-link" routerLink="/opportunities/" #opportunitiesLink
