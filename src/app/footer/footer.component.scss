@@ -103,9 +103,7 @@
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      a {
-        margin-right: 10px;
-      }
+
       img {
         height: 30px;
       }
@@ -158,9 +156,10 @@
     margin-right: auto;
     max-width: 728px;
   }
-
-  .summary {
-    text-align: left;
+  .summary-container {
+    .summary {
+      text-align: left;
+    }
   }
 
   .links {
