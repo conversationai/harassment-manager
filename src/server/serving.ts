@@ -72,12 +72,17 @@ export interface Config {
 }
 
 export interface TwitterApiCredentials {
-  accountName: string;
+  // The below three fields are necessary if using Enterprise Full-Archive
+  // Search.
+  accountName?: string;
+  password?: string;
+  username?: string;
+  // The below two fields are necessary for the Blocks, Mutes, and Hide Replies
+  // APIs.
   appKey: string;
   appToken: string;
+  // Necessary if using v2 Full-Archive Search.
   bearerToken?: string;
-  password: string;
-  username: string;
 }
 
 export interface WebAppCredentials {

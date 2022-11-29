@@ -145,9 +145,6 @@ The required fields are:
   be the server-side key created in [setup](1_setup.md) in GCP
   [Credentials](https://console.cloud.google.com/apis/credentials)
 - `cloudProjectId`: Your Google Cloud project ID
-
-The optional fields are:
-
 - `twitterApiCredentials`: Your credentials for the Twitter APIs.
 
 All together, your config should look something like one of the two configs

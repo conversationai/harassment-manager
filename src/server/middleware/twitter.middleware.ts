@@ -298,8 +298,8 @@ function loadTwitterData(
   }
 
   const auth: AxiosBasicCredentials = {
-    username: credentials!.username,
-    password: credentials!.password,
+    username: credentials.username!,
+    password: credentials.password!,
   };
 
   return axios
