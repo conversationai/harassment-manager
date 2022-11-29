@@ -6,6 +6,9 @@
   "twitterApiCredentials": {
     "accountName": "",
     "username": "",
-    "password": ""
+    "password": "",
+    "appKey": "",
+    "appToken": "",
+    "bearerToken": ""
   }
 }
