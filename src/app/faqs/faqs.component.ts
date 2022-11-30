@@ -113,17 +113,17 @@ export class FAQSComponent {
     {
       title: "Is my data private?",
       selector: 'is-my-data-private',
-      content: 'Neither CfA nor Jigsaw will access any of the personal data within your Twitter account or access any data that relates to how you use FeedShield. No personal data is stored within the tool - your dashboard is wiped each time you finish a session. Only draft reports - designed to be downloaded and shared with third parties by you alone – are temporarily stored in the tool. Once downloaded or abandoned, the report will be deleted from FeedShield. Read our detailed privacy policy <a href="/privacy-policy">here</a>.'
+      content: 'Neither CfA nor Jigsaw will access any of the personal data within your Twitter account. No personal data is stored within the tool - your dashboard is wiped each time you finish a session. Only draft reports - designed to be downloaded and shared with third parties by you alone – are temporarily stored in the tool. Once completed, the report will be deleted from FeedShield. Read our detailed privacy policy <a href="/privacy-policy">here</a>.'
     },
     {
       title: "Why does it only work on Twitter?",
       selector: 'why-does-it-only-work-on-twitter',
-      content: 'Google’s Jigsaw and Twitter partnered in 2020 to pioneer ways to tackle the surging tide of online harassment targeting journalists and activists across the world. The resulting technology that underpins FeedShield uses Google’s <a href="https://perspectiveapi.com/" >Perspective API</a> and Twitter’s API to prove it is possible to give social media users ways to manage their exposure to online abuse. CfA and its partners welcome any opportunities to grow this cross-sector collaboration and expand the technology to other platforms, making it more accessible to human rights defenders around the world.'
+      content: 'Google’s Jigsaw and Twitter partnered in 2020 to pioneer ways to tackle the surging tide of online harassment targeting journalists and activists across the world. The resulting technology that underpins FeedShield uses Google’s <a href="https://perspectiveapi.com/" target="_blank" >Perspective API</a> and Twitter’s API to prove it is possible to give social media users ways to manage their exposure to online abuse. CfA and its partners welcome any opportunities to grow this cross-sector collaboration and expand the technology to other platforms, making it more accessible to human rights defenders around the world. Find the open source code <a href="https://github.com/conversationai/harassment-manager" target="_blank" >here</a>.'
     },
     {
       title: "What languages are covered?",
       selector: 'what-languages-are-covered',
-      content: 'FeedShield is initially launching in English, but the underlying Google machine learning tools at <a href="https://perspectiveapi.com">Perspective API</a> can detect harmful content in multiple languages, CfA will launch Arabic and French versions of FeedShield in 2023, and is working with Jigsaw to improve Perspective’s detection in indigenous African languages.'
+      content: 'FeedShield is initially launching in English, but the underlying Google machine learning tools at <a target="_blank" href="https://perspectiveapi.com">Perspective API</a> can detect harmful content in <a href="https://developers.perspectiveapi.com/s/about-the-api-attributes-and-languages" target="_blank" >multiple languages</a>, CfA will launch Arabic and French versions of FeedShield in 2023, and is working with Jigsaw to improve Perspective’s detection in indigenous African languages.'
     },
     {
       title: "Can it detect harmful images and videos?",
