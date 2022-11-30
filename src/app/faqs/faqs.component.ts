@@ -118,12 +118,12 @@ export class FAQSComponent {
     {
       title: "Why does it only work on Twitter?",
       selector: 'why-does-it-only-work-on-twitter',
-      content: 'Google’s Jigsaw and Twitter partnered in 2020 to pioneer ways to tackle the surging tide of online harassment targeting journalists and activists across the world. The resulting technology that underpins FeedShield uses Google’s Perspective API <a href="https://perspectiveapi.com/" >Perspective API</a> and Twitter’s API to prove it is possible to give social media users ways to manage their exposure to online abuse. CfA and its partners welcome any opportunities to grow this cross-sector collaboration and expand the technology to other platforms, making it more accessible to human rights defenders around the world. Find the open source code <a href="https://github.com/conversationai/harassment-manager" target="__blank" >here</a>.'
+      content: 'Google’s Jigsaw and Twitter partnered in 2020 to pioneer ways to tackle the surging tide of online harassment targeting journalists and activists across the world. The resulting technology that underpins FeedShield uses Google’s <a href="https://perspectiveapi.com/" target="_blank" >Perspective API</a> and Twitter’s API to prove it is possible to give social media users ways to manage their exposure to online abuse. CfA and its partners welcome any opportunities to grow this cross-sector collaboration and expand the technology to other platforms, making it more accessible to human rights defenders around the world. Find the open source code <a href="https://github.com/conversationai/harassment-manager" target="_blank" >here</a>.'
     },
     {
       title: "What languages are covered?",
       selector: 'what-languages-are-covered',
-      content: 'FeedShield is initially launching in English, but the underlying Google machine learning tools at <a target="__blank" href="https://perspectiveapi.com">Perspective API</a> can detect harmful content in <a href="https://developers.perspectiveapi.com/s/about-the-api-attributes-and-languages" target="__blank" >multiple languages</a>, CfA will launch Arabic and French versions of FeedShield in 2023, and is working with Jigsaw to improve Perspective’s detection in indigenous African languages.'
+      content: 'FeedShield is initially launching in English, but the underlying Google machine learning tools at <a target="_blank" href="https://perspectiveapi.com">Perspective API</a> can detect harmful content in <a href="https://developers.perspectiveapi.com/s/about-the-api-attributes-and-languages" target="_blank" >multiple languages</a>, CfA will launch Arabic and French versions of FeedShield in 2023, and is working with Jigsaw to improve Perspective’s detection in indigenous African languages.'
     },
     {
       title: "Can it detect harmful images and videos?",
