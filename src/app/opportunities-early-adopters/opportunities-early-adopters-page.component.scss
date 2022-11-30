@@ -43,8 +43,19 @@
   }
 
   p {
-    font-size: 16px;
-    line-height: math.div(27, 16);
+    font-size: 22px;
+    line-height: math.div(27, 22);
+  }
+
+  h4 {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: math.div(27, 24);
+  }
+
+  ul {
+    font-size: 22px;
+    line-height: math.div(27, 22);
   }
 }
 

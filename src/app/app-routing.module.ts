@@ -27,7 +27,6 @@ import { CreateReportComponent } from './create-report/create-report.component';
 import { CrisisHelplineComponent } from './crisis-helpline/crisis-helpline.component';
 import { FindSupportComponent } from './find-support/find-support.component';
 import { EarlyAdoptersOpportunityPageComponent } from './opportunities-early-adopters/opportunities-early-adopters-page.component';
-import { HelpCenterComponent } from './help-center/help-center.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { OauthApiService } from './oauth_api.service';
 import { OpportunitiesComponent } from './opportunities/opportunities.component';
@@ -40,6 +39,7 @@ import { ShareReportComponent } from './share-report/share-report.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
 import { RequestInvestigationComponent } from './request-investigation/request-investigation.component';
+import { FAQSComponent } from './faqs/faqs.component';
 
 /**
  * Custom RouteReuseStrategy that reuses the CreateReportComponent so that the
@@ -121,9 +121,9 @@ export class CustomRouteReuseStrategy implements RouteReuseStrategy {
 
 export const routes: Routes = [
   {
-    path: 'crisis-helpline',
+    path: 'helpline',
     component: CrisisHelplineComponent,
-    data: { title: 'Crisis Helpline' },
+    data: { title: 'Helpline' },
   },
   {
     path: 'privacy-policy',
@@ -137,14 +137,14 @@ export const routes: Routes = [
     data: { title: 'Create Report' },
   },
   {
-    path: 'find-support',
+    path: 'resources',
     component: FindSupportComponent,
-    data: { title: 'Find Support' },
+    data: { title: 'Resource Kit' },
   },
   {
-    path: 'help-center',
-    component: HelpCenterComponent,
-    data: { title: 'Help Center' },
+    path: 'faqs',
+    component: FAQSComponent,
+    data: { title: "FAQ's" },
   },
   {
     path: 'opportunities/early-adopters',

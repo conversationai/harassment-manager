@@ -15,13 +15,11 @@
 -->
 
 <div class="success-message">
-  <img class="mountain-flag-image"
-       src="/mountain_flag.svg"
-       alt="A woman holding a flag standing on top of a mountain of shapes.">
+  <img class="mountain-flag-image" src="/mountain_flag.svg"
+    alt="A woman holding a flag standing on top of a mountain of shapes.">
   <h2>Amazing job! You successfully completed a report.</h2>
   <div class="report-actions">
-    <div class="chip"
-         *ngFor="let action of reportActions">
+    <div class="chip" *ngFor="let action of reportActions">
       <mat-icon>check_circle_filled</mat-icon>
       {{action}}
     </div>
@@ -30,5 +28,6 @@
 
 <div class="resources">
   <h2>View Resources</h2>
-  <h3>Dealing with harmful content can be tough, but you're not alone. <a routerLink="/find-support">These resources can help.</a></h3>
+  <h3>Dealing with harmful content can be tough, but you're not alone. <a routerLink="/resources">These resources can
+      help.</a></h3>
 </div>

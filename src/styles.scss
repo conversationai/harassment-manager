@@ -210,54 +210,49 @@ p {
   align-self: flex-start;
 }
 
-app-help-center
-  .mat-form-field-appearance-outline
-  .mat-form-field-outline-start {
+app-faqs .mat-form-field-appearance-outline .mat-form-field-outline-start {
   border-radius: 0;
-  // min-width: 40px;
-  // border: none;
 }
 
-app-help-center .mat-form-field-appearance-outline .mat-form-field-outline {
+app-faqs .mat-form-field-appearance-outline .mat-form-field-outline {
   background-color: #ffffff;
-  // border-radius: 30px;
 }
 
-app-help-center .mat-form-field-appearance-outline .mat-form-field-outline-end {
+app-faqs .mat-form-field-appearance-outline .mat-form-field-outline-end {
   border-radius: 0;
 }
 
-app-help-center .mat-form-field-flex {
+app-faqs .mat-form-field-flex {
   align-items: center;
 }
 
-app-help-center .mat-form-field-appearance-outline .mat-form-field-infix {
+app-faqs .mat-form-field-appearance-outline .mat-form-field-infix {
   padding-top: 0.5em;
 }
 
-app-help-center .mat-form-field-appearance-outline .mat-form-field-prefix,
-app-help-center .mat-form-field-appearance-outline .mat-form-field-suffix {
+app-faqs .mat-form-field-appearance-outline .mat-form-field-prefix,
+app-faqs .mat-form-field-appearance-outline .mat-form-field-suffix {
   top: 0.1em;
 }
 
-app-help-center .mat-expansion-panel-header,
-app-help-center .mat-expansion-panel-body {
+app-faqs .mat-expansion-panel-header,
+app-faqs .mat-expansion-panel-body {
   padding-left: 32px;
   padding-right: 32px;
 }
 
-app-help-center .mat-form-field-appearance-outline:hover,
-app-help-center .mat-form-field-flex:hover {
+app-faqs .mat-form-field-appearance-outline:hover,
+app-faqs .mat-form-field-flex:hover {
   outline: none;
 }
 
-app-help-center .mat-form-field-outline-start,
-app-help-center .mat-form-field-appearance-outline,
-app-help-center .mat-form-field-outline-end {
+app-faqs .mat-form-field-outline-start,
+app-faqs .mat-form-field-appearance-outline,
+app-faqs .mat-form-field-outline-end {
   border: 0 !important;
 }
 
-app-help-center .mat-input-element {
+app-faqs .mat-input-element {
   caption-side: #101bcf;
 }
 
@@ -469,7 +464,7 @@ app-privacy-page .mat-expansion-panel-body {
   padding: 0 !important;
 }
 
-app-help-center .mat-expansion-panel-body {
+app-faqs .mat-expansion-panel-body {
   padding: 0 !important;
 }
 

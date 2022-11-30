@@ -15,9 +15,15 @@
 -->
 
 <div class="login-header">
-  <a class="title" routerLink="/home">
-    <div class="text">{{ appName }}</div>
-  </a>
+  <div class="title">
+    <a routerLink="/">
+      <div class="text">{{ appName }}</div>
+    </a>
+    <div *ngIf="userIsSignedIn">
+      <button class="button" (click)="revokeAuthorization()">Sign Out</button>
+    </div>
+  </div>
+
 
   <div class="login-section">
     <div class="hero-container right">
@@ -37,7 +43,7 @@
 
       <div class="login-buttons">
         <button class="button twitter-button" (click)="loginWithTwitter()">
-          <span> Start with Twitter </span>
+          <span> {{ userIsSignedIn ? "Visit Dashboard":  "Start with Twitter"}} </span>
           <img src="/red_ellipse.svg" />
         </button>
       </div>
@@ -50,14 +56,14 @@
     <img class="section-img" src="/info_section_1_illustration.svg" />
 
     <div class="box">
-      <h2><span> Document the evidence,</span> unmask the trolls</h2>
+      <h2>Document the evidence, unmask the trolls</h2>
 
       <p>
         Find out how to use FeedShield to flag abusive content targeting you, so you can report the abuse to the
         platforms or get our forensic investigators to track the culprits.
       </p>
 
-      <button class="button" routerLink="/help-center">
+      <button class="button" routerLink="/faqs">
         <span>Find out how</span>
         <img src="/blue_ellipse.svg" />
       </button>
@@ -66,7 +72,7 @@
 
   <div class="panel">
     <div class="box">
-      <h2><span>You're </span> not alone!</h2>
+      <h2>You're not alone!</h2>
       <p>
         FeedShield is building a network of allies. Our fact-checkers (Africa’s
         largest network) and forensic investigators are also on standby to help
@@ -87,14 +93,14 @@
     <img class="section-img" src="/info_section_3_illustration.png" />
 
     <div class="box">
-      <h2><span>Need</span> help?</h2>
+      <h2>Need help?</h2>
 
       <p>
         Contact an expert crisis counselling professional trained to connect you to local appropriate industry bodies or
         support agencies and ensure incidents are appropriately addressed
       </p>
 
-      <button class="button" routerLink="/crisis-helpline">
+      <button class="button" routerLink="/helpline">
         <span>Contact helpline</span>
         <img src="/blue_ellipse.svg" />
       </button>
@@ -105,24 +111,6 @@
 <div class="faq-section">
   <h2>FAQs</h2>
 
-  <mat-expansion-panel>
-    <mat-expansion-panel-header collapsedHeight="82px" expandedHeight="82px">
-      <mat-panel-title>
-        Why do I have to register to use FeedShield?
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-    <p>
-      By registering, you’ll help us understand who is using the tool, so we can
-      constantly improve FeedShield’s capabilities to suit your needs.
-    </p>
-    <p>
-      You can check out our
-      <a class="privacy-policy-link" routerLink="/privacy-policy">privacy policy
-      </a>
-      to learn more about which personal information we collect and how it's
-      protected.
-    </p>
-  </mat-expansion-panel>
   <mat-expansion-panel>
     <mat-expansion-panel-header collapsedHeight="82px" expandedHeight="82px">
       <mat-panel-title>How does FeedShield work?</mat-panel-title>
@@ -164,54 +152,8 @@
       back soon for updates.
     </p>
   </mat-expansion-panel>
-  <mat-expansion-panel>
-    <mat-expansion-panel-header collapsedHeight="82px" expandedHeight="82px">
-      <mat-panel-title>Can FeedShield identify harmful images and videos?</mat-panel-title>
-    </mat-expansion-panel-header>
-    <p>
-      FeedShield is not designed to identify harmful images and videos. However, the tool does allow users to report any
-      inappropriate or offensive content.
-    </p>
-  </mat-expansion-panel>
-  <mat-expansion-panel>
-    <mat-expansion-panel-header collapsedHeight="82px" expandedHeight="82px">
-      <mat-panel-title>Are Direct Messages (DMs) analysed by the tool?</mat-panel-title>
-    </mat-expansion-panel-header>
-    <p>
-      No, the tool only analyses public tweets.
-    </p>
-  </mat-expansion-panel>
-  <mat-expansion-panel>
-    <mat-expansion-panel-header collapsedHeight="82px" expandedHeight="82px">
-      <mat-panel-title>Is FeedShield free to use?</mat-panel-title>
-    </mat-expansion-panel-header>
-    <p>
-      Yes, Feedshield is absolutely free to use.
-    </p>
-  </mat-expansion-panel>
-  <mat-expansion-panel>
-    <mat-expansion-panel-header collapsedHeight="82px" expandedHeight="82px">
-      <mat-panel-title>What are the future development plans for FeedShield?</mat-panel-title>
-    </mat-expansion-panel-header>
-    <p>
-      FeedShield will initially tackle trolling on Twitter, with other social media platforms added as access to the
-      relevant
-      data becomes available. CfA’s initial launch will focus on Kenya, and will expand to offer support to users
-      elsewhere in
-      Africa from 2023. Arabic and Francophone versions of the tool will launch in 2023.
-    </p>
-  </mat-expansion-panel>
-  <mat-expansion-panel>
-    <mat-expansion-panel-header collapsedHeight="82px" expandedHeight="82px">
-      <mat-panel-title>Is FeedShield available on my mobile device?</mat-panel-title>
-    </mat-expansion-panel-header>
-    <p>
-      FeedShield is accessible on your smartphone, but is optimised for desktop use.
-    </p>
-  </mat-expansion-panel>
-
-  <button class="button help-button" routerLink="/help-center">
-    <span>Explore Help Centre</span>
+  <button class="button help-button" routerLink="/faqs">
+    <span>Explore FAQ'S</span>
     <img src="/blue_ellipse.svg" />
   </button>
 </div>

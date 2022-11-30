@@ -34,12 +34,32 @@
   z-index: -1;
 }
 
+.header-nav {
+  display: flex;
+  justify-content: space-between;
+}
+
 .title {
   align-items: center;
-  cursor: pointer;
   display: flex;
+  justify-content: space-between;
   padding: 20px;
-  text-decoration: none;
+
+  a {
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .text:focus-visible,
+  a:focus-visible {
+    outline: none;
+  }
+
+  button {
+    background-color: #101bcf;
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 8px;
+  }
 }
 .title:focus-visible {
   outline: none;
@@ -157,13 +177,6 @@ h2 {
 
     h2 {
       margin: 0;
-
-      span {
-        font-family: inherit;
-        font-weight: 400;
-        font-size: 28px;
-        line-height: math.div(34, 28);
-      }
     }
 
     .button {

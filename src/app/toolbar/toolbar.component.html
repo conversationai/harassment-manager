@@ -16,7 +16,7 @@
 
 <mat-toolbar class="toolbar">
   <mat-toolbar-row class="toolbar-row" [ngClass]="isMobileMenuOpen ? 'hidden-nav': ''  ">
-    <a routerLink="/home" class="title-wrapper">
+    <a routerLink="/" class="title-wrapper">
       <div class="icon-placeholder"></div>
       <span class="title">FeedShield</span>
     </a>
@@ -38,9 +38,9 @@
         <span class="text">Create Report</span>
         <img src="/red_ellipse.svg" />
       </a>
-      <a routerLinkActive="active-router-link" routerLink="/find-support" #findSupportLink
-        [attr.aria-current]="findSupportLink.routerLinkActive ? 'page' : false" class="find-support">
-        <span class="text">Find Support</span>
+      <a routerLinkActive="active-router-link" routerLink="/resources" #resourceLink
+        [attr.aria-current]="resourceLink.routerLinkActive ? 'page' : false" class="find-support">
+        <span class="text">Resources</span>
         <img src="/red_ellipse.svg" />
       </a>
       <a routerLinkActive="active-router-link" routerLink="/opportunities/" #opportunitiesLink
@@ -69,14 +69,14 @@
       </button>
     </div>
     <div class="nav-links nav-item">
-      <a routerLinkActive="active-router-link" routerLink="/help-center" #helpCenterLink (click)="toggleMobileMenu()"
+      <a routerLinkActive="active-router-link" routerLink="/faqs" #helpCenterLink (click)="toggleMobileMenu()"
         [attr.aria-current]="helpCenterLink.routerLinkActive ? 'page' : false">
-        <span class="text">Help Center</span>
+        <span class="text">"FAQ's"</span>
         <img src="/red_ellipse.svg" />
       </a>
-      <a routerLinkActive="active-router-link" routerLink="/find-support" #findSupportLink (click)="toggleMobileMenu()"
-        [attr.aria-current]="findSupportLink.routerLinkActive ? 'page' : false">
-        <span class="text">Find Support</span>
+      <a routerLinkActive="active-router-link" routerLink="/resources" #resourceLink (click)="toggleMobileMenu()"
+        [attr.aria-current]="resourceLink.routerLinkActive ? 'page' : false">
+        <span class="text">Resources</span>
         <img src="/red_ellipse.svg" />
       </a>
       <a routerLinkActive="active-router-link" routerLink="/opportunities/" #opportunitiesLink

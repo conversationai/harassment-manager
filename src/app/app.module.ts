@@ -81,7 +81,6 @@ import { FindSupportListItemComponent } from './find-support-list-item/find-supp
 import { FindSupportTileComponent } from './find-support-tile/find-support-tile.component';
 import { FindSupportComponent } from './find-support/find-support.component';
 import { FooterComponent } from './footer/footer.component';
-import { HelpCenterComponent } from './help-center/help-center.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { IntroStepperComponent } from './intro-stepper/intro-stepper.component';
 import { LoadingDialogComponent } from './loading-dialog/loading-dialog.component';
@@ -109,6 +108,7 @@ import { TwitterApiService } from './twitter_api.service';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { PrivacyPageComponent } from './privacy-page/privacy-page.component';
 import { RequestInvestigationComponent } from './request-investigation/request-investigation.component';
+import { FAQSComponent } from './faqs/faqs.component';
 
 @NgModule({
   declarations: [
@@ -133,7 +133,6 @@ import { RequestInvestigationComponent } from './request-investigation/request-i
     FindSupportListItemComponent,
     FindSupportTileComponent,
     FooterComponent,
-    HelpCenterComponent,
     HomePageComponent,
     HrefOnlyDownloadDirective,
     IntroStepperComponent,
@@ -158,6 +157,7 @@ import { RequestInvestigationComponent } from './request-investigation/request-i
     WelcomePageComponent,
     PrivacyPageComponent,
     RequestInvestigationComponent,
+    FAQSComponent,
   ],
   imports: [
     A11yModule,
