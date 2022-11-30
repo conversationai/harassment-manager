@@ -145,6 +145,11 @@
   .links {
     flex: 0 0 50%;
     align-items: flex-start;
+    .link-column {
+      .header {
+        text-align: left;
+      }
+    }
   }
 
   .links:last-child {
