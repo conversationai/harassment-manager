@@ -70,8 +70,9 @@ for more details. You may also see minute differences in:
   timestamp format each API supports (YYYYMMDD for Enterprise and
   YYYY-MM-DDTHH:mm:ssZ for v2).
 - The order the tweets are displayed when sorted by "Priority". This is due to
-  small differences in how the APIs return the tweet text, which causes some
-  variation in the Perspective API scores for the text.
+  small differences in how we parse out the tweet text, which causes some
+  variation in the Perspective API scores for the text. See issue #19 for more
+  details.
 
 ## 2. Create a Google Cloud Platform (GCP) project
 

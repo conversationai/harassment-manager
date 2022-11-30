@@ -64,8 +64,10 @@ export async function getTweets(
   if (fs.existsSync('src/server/twitter_sample_results.json')) {
     twitterDataPromise = loadLocalTwitterData();
   } else if (v2SearchCredentialsAreValid(apiCredentials)) {
+    console.log('Fetching tweets using the Enterprise Full-Archive Search API');
     twitterDataPromise = loadTwitterDataV2(apiCredentials, req.body);
   } else if (enterpriseSearchCredentialsAreValid(apiCredentials)) {
+    console.log('Fetching tweets using the v2 Full-Archive Search API');
     twitterDataPromise = loadTwitterData(apiCredentials, req.body);
   } else {
     res.send(new Error('No valid Twitter API credentials'));
@@ -351,7 +353,9 @@ function loadTwitterDataV2(
           const tweets: V2TweetObject[] = parsed.data ?? [];
           const includes: V2Includes = parsed.includes ?? {};
           return <TwitterApiResponse>{
-            results: tweets.map((tweet) => packV2Tweet(tweet, includes)),
+            results: tweets.map((tweet) =>
+              packV2TweetAsEnterprise(tweet, includes)
+            ),
             next: parsed.meta.next_token,
           };
         },
@@ -362,7 +366,10 @@ function loadTwitterDataV2(
 
 // Packs a Tweet response object from the v2 Search API format into the
 // Enterprise Search API format.
-function packV2Tweet(tweet: V2TweetObject, includes: V2Includes): TweetObject {
+function packV2TweetAsEnterprise(
+  tweet: V2TweetObject,
+  includes: V2Includes
+): TweetObject {
   const entities = packEntities(tweet, includes);
 
   const tweetObject: TweetObject = {
@@ -373,7 +380,6 @@ function packV2Tweet(tweet: V2TweetObject, includes: V2Includes): TweetObject {
     // entities field is.
     entities: entities,
     extended_entities: entities,
-    // `display_text_range` omitted because v2 does not truncate the text.
     favorite_count: tweet.public_metrics.like_count,
     // `favorited` omitted because it is not available in v2..
     in_reply_to_status_id: tweet.entities?.referenced_tweets?.find(
@@ -392,7 +398,6 @@ function packV2Tweet(tweet: V2TweetObject, includes: V2Includes): TweetObject {
     // so we add it manually here for consistency.
     tweetObject.extended_tweet = {
       full_text: tweetObject.text,
-      display_text_range: [0, 0], // Indices not available in v2.
       entities,
     };
   }
@@ -406,7 +411,7 @@ function packEntities(
 ): TweetEntities {
   const entities: TweetEntities = {};
 
-  if (tweet.entities && tweet.entities.hashtags) {
+  if (tweet.entities?.hashtags) {
     entities.hashtags = tweet.entities.hashtags.map(
       (hashtag) =>
         <TweetHashtag>{
@@ -416,7 +421,7 @@ function packEntities(
     );
   }
 
-  if (tweet.entities && tweet.entities.urls) {
+  if (tweet.entities?.urls) {
     entities.urls = tweet.entities.urls.map(
       (url) =>
         <TweetUrl>{
@@ -427,7 +432,7 @@ function packEntities(
     );
   }
 
-  if (tweet.entities && tweet.entities.mentions) {
+  if (tweet.entities?.mentions) {
     entities.user_mentions = tweet.entities.mentions.map(
       (mention) =>
         <TweetUserMention>{
@@ -438,7 +443,7 @@ function packEntities(
     );
   }
 
-  if (tweet.attachments && tweet.attachments.media_keys) {
+  if (tweet.attachments?.media_keys) {
     entities.media = tweet.attachments.media_keys
       .flatMap((media_key) => {
         // v2 includes the media fields (like media_url) in a separate
@@ -471,11 +476,11 @@ function getUser(id: string, includes: V2Includes): TwitterUser {
     throw new Error('Unable to find user');
   }
   return {
-    id_str: user?.id,
-    profile_image_url: user?.profile_image_url,
-    name: user?.name,
-    screen_name: user?.username,
-    verified: user?.verified,
+    id_str: user.id,
+    profile_image_url: user.profile_image_url,
+    name: user.name,
+    screen_name: user.username,
+    verified: user.verified,
   };
 }
 
@@ -549,7 +554,6 @@ function parseTweet(tweetObject: TweetObject): Tweet {
   const tweet: Tweet = {
     created_at: tweetObject.created_at,
     date: new Date(),
-    display_text_range: tweetObject.display_text_range,
     entities: tweetObject.entities,
     extended_entities: tweetObject.extended_entities,
     extended_tweet: tweetObject.extended_tweet,
@@ -598,17 +602,17 @@ function getUserIdFromCredential(credential: firebase.auth.OAuthCredential) {
 // https://developer.twitter.com/en/docs/tweets/search/api-reference/enterprise-search
 function formatTimestamp(ms: number): string {
   const date = new Date(ms);
-  const MM = date.getUTCMonth() + 1; // getMonth() is zero-based
-  const dd = date.getUTCDate();
-  const hh = date.getUTCHours();
-  const mm = date.getUTCMinutes();
+  const month = date.getUTCMonth() + 1; // getMonth() is zero-based
+  const day = date.getUTCDate();
+  const hours = date.getUTCHours();
+  const minutes = date.getUTCMinutes();
 
   return (
     `${date.getFullYear()}` +
-    `${(MM > 9 ? '' : '0') + MM}` +
-    `${(dd > 9 ? '' : '0') + dd}` +
-    `${(hh > 9 ? '' : '0') + hh}` +
-    `${(mm > 9 ? '' : '0') + mm}`
+    `${(month > 9 ? '' : '0') + month}` +
+    `${(day > 9 ? '' : '0') + day}` +
+    `${(hours > 9 ? '' : '0') + hours}` +
+    `${(minutes > 9 ? '' : '0') + minutes}`
   );
 }
 

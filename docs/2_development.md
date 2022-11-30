@@ -145,7 +145,11 @@ The required fields are:
   be the server-side key created in [setup](1_setup.md) in GCP
   [Credentials](https://console.cloud.google.com/apis/credentials)
 - `cloudProjectId`: Your Google Cloud project ID
-- `twitterApiCredentials`: Your credentials for the Twitter APIs.
+- `twitterApiCredentials`: Your credentials for the Twitter APIs. For Enterprise
+  Full-Archive search, Twitter will provide you with the credentials. All other
+  API credentials should be available on the Twitter [Developer
+  Portal](https://developer.twitter.com/portal) under "Keys and Tokens" for your
+  app and project.
 
 All together, your config should look something like one of the two configs
 below, with the relevant credentials and key values replaced.
@@ -170,7 +174,7 @@ below, with the relevant credentials and key values replaced.
 
 ### If using the v2 Full-Archive Search endpoint:
 
-````json
+```json
 {
   "port": "3000",
   "staticPath": "dist/harassment-manager",
@@ -182,6 +186,7 @@ below, with the relevant credentials and key values replaced.
     "bearerToken": "{TWITTER_APP_BEARER_TOKEN}"
   }
 }
+```
 
 ## 7. (Optional) Enable Google Analytics
 
@@ -203,7 +208,7 @@ To build and run the app and a local development server, run
 
 ```shell
 npm run build:all:dev && npm run start:dev-server
-````
+```
 
 To build and run the app and a local production server, run
 
@@ -237,3 +242,7 @@ We maintain a [CircleCI](https://circleci.com/) configuration in
 is pushed to this GitHub repository. You can choose to use the same
 configuration for your own CircleCI setup if you'd like or remove the
 configuration in favor of another CI solution or none at all.
+
+```
+
+```

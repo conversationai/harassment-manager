@@ -153,7 +153,6 @@ export interface TweetObject {
   // directed to the extended_entities section.
   entities?: TweetEntities;
 
-  display_text_range?: number[];
   truncated?: boolean;
   extended_tweet?: ExtendedTweet;
 
@@ -323,7 +322,6 @@ export interface TweetHashtag {
 // For tweets above 140 characters.
 interface ExtendedTweet {
   full_text: string;
-  display_text_range: number[];
   entities: TweetEntities;
 }
 
