@@ -29,14 +29,9 @@ export class CrisisHelplineComponent {
 
   sideMenuSections: SideMenuSection[] = [
     {
-      title: 'Virtual Emergency Support',
+      title: 'Virtual Helpline',
       anchorSelector: '.item-1',
       selected: false
     },
-    {
-      title: "Contact Helpline",
-      anchorSelector: '.item-2',
-      selected: false
-    }
   ];
 }

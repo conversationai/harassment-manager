@@ -57,6 +57,10 @@
     line-height: math.div(27, 22);
     margin-bottom: 18px;
   }
+
+  .warning {
+    font-style: italic;
+  }
 }
 
 .content > div {

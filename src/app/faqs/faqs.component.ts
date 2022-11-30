@@ -98,7 +98,7 @@ export class FAQSComponent {
     {
       title: "Who is behind it?",
       selector: 'who-is-behind-it',
-      content: 'FeedShield is an initiative of Africa’s largest network of civic technology and digital democracy labs, Code for Africa. CfA has full-time staff/labs in 21 African countries that work in support of networks of watchdog media, human rights defending CSOs, and progressive development agencies. CfA has partnered with Google’s Jigsaw lab to customise its Harassment Manager toolkit for African conditions. The toolkit also includes resources created by a global coalition of other civic organisations who have developed support materials, ranging from tipsheets and training courses, to campaign materials and other complementary tools. Read more about the resources <a href="/find-support">here</a>.'
+      content: 'FeedShield is an initiative of Africa’s largest network of civic technology and digital democracy labs, Code for Africa. CfA has full-time staff/labs in 21 African countries that work in support of networks of watchdog media, human rights defending CSOs, and progressive development agencies. CfA has partnered with Google’s Jigsaw lab to customise its Harassment Manager toolkit for African conditions. The toolkit also includes resources created by a global coalition of other civic organisations who have developed support materials, ranging from tipsheets and training courses, to campaign materials and other complementary tools. Read more about the resources <a href="/resources">here</a>.'
     },
     {
       title: "Who can use it?",
