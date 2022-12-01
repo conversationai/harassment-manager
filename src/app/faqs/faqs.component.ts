@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { Component, ViewEncapsulation } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { SideMenuSection } from '../scrollable-side-menu/scrollable-side-menu.component';
 
 interface FaqContent {
@@ -11,7 +11,8 @@ interface FaqContent {
 @Component({
   selector: 'app-faqs',
   templateUrl: './faqs.component.html',
-  styleUrls: ['./faqs.component.scss']
+  styleUrls: ['./faqs.component.scss'],
+  encapsulation: ViewEncapsulation.None // allow styles to apply to innerHTML
 })
 export class FAQSComponent {
 
@@ -113,7 +114,7 @@ export class FAQSComponent {
     {
       title: "Is my data private?",
       selector: 'is-my-data-private',
-      content: 'Neither CfA nor Jigsaw will access any of the personal data within your Twitter account. No personal data is stored within the tool - your dashboard is wiped each time you finish a session. Only draft reports - designed to be downloaded and shared with third parties by you alone – are temporarily stored in the tool. Once completed, the report will be deleted from FeedShield. Read our detailed privacy policy <a href="/privacy-policy">here</a>.'
+      content: '<span>Neither CfA nor Jigsaw will access any of the personal data within your Twitter account. No personal data is stored within the tool - your dashboard is wiped each time you finish a session. Only draft reports - designed to be downloaded and shared with third parties by you alone – are temporarily stored in the tool. Once completed, the report will be deleted from FeedShield. Read our detailed privacy policy <a class="link" href="/privacy-policy">here</a>.</span>'
     },
     {
       title: "Why does it only work on Twitter?",
@@ -138,12 +139,12 @@ export class FAQSComponent {
     {
       title: "How do I give feedback?",
       selector: 'how-do-i-give-feedback',
-      content: 'FeedShield is a pilot project. We would therefore love to hear your feedback, and answer any questions not covered by these FAQs. Please email feedshield@codeforafrica.org and our team will get back to you as quickly as possible. This email address is not monitored 24/7 and should not be used to contact CfA for urgent assistance with any harassment. If you need urgent help, use the helpline <a>here</a>'
+      content: 'FeedShield is a pilot project. We would therefore love to hear your feedback, and answer any questions not covered by these FAQs. Please email <a class="email" href="mailto:feedshield@codeforafrica.org">feedshield@codeforafrica.org</a> and our team will get back to you as quickly as possible. This email address is not monitored 24/7 and should not be used to contact CfA for urgent assistance with any harassment. If you need urgent help, use the helpline <a>here</a>'
     },
     {
       title: "How do I learn about future opportunities?",
       selector: 'how-do-i-learn-about-future-opportunities',
-      content: 'The FeedShield team will be offering regular training, and other material and technical support to institutional partners. We will be also offering research fellowships to better understand how online trolls are coordinating their harassment of women in particular.If you are interested in keeping updated, email feedshield@codeforafrica.org with a request to be added to our community list.'
+      content: 'The FeedShield team will be offering regular training, and other material and technical support to institutional partners. We will be also offering research fellowships to better understand how online trolls are coordinating their harassment of women in particular.If you are interested in keeping updated, email <a class="email" href="mailto:feedshield@codeforafrica.org">feedshield@codeforafrica.org</a>  with a request to be added to our community list.'
     }
   ]
 
