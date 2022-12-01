@@ -110,10 +110,6 @@ mat-expansion-panel {
         font-weight: 700;
         text-decoration: none;
       }
-
-      a {
-        text-decoration: none;
-      }
     }
 
     .image img {
@@ -147,10 +143,6 @@ app-scrollable-side-menu {
       }
     }
   }
-}
-
-.email {
-  text-decoration: none;
 }
 
 @media all and (min-width: 768px) {

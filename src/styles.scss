@@ -133,6 +133,9 @@ p {
   font-size: 18px;
   line-height: math.div(27, 18);
 }
+a {
+  text-decoration: none;
+}
 
 @media all and (min-width: 768px) {
 }
