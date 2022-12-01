@@ -13,7 +13,6 @@ interface FaqContent {
   templateUrl: './faqs.component.html',
   styleUrls: ['./faqs.component.scss'],
   encapsulation: ViewEncapsulation.None // allow styles to apply to innerHTML,
-  encapsulation: ViewEncapsulation.None // allow styles to apply to innerHTML
 })
 export class FAQSComponent {
 
@@ -115,7 +114,7 @@ export class FAQSComponent {
     {
       title: "Is my data private?",
       selector: 'is-my-data-private',
-      content: '<span>Neither CfA nor Jigsaw will access any of the personal data within your Twitter account. No personal data is stored within the tool - your dashboard is wiped each time you finish a session. Only draft reports - designed to be downloaded and shared with third parties by you alone – are temporarily stored in the tool. Once completed, the report will be deleted from FeedShield. Read our detailed privacy policy <a class="link" href="/privacy-policy">here</a>.</span>'
+      content: 'Neither CfA nor Jigsaw will access any of the personal data within your Twitter account. No personal data is stored within the tool - your dashboard is wiped each time you finish a session. Only draft reports - designed to be downloaded and shared with third parties by you alone – are temporarily stored in the tool. Once completed, the report will be deleted from FeedShield. Read our detailed privacy policy <a href="/privacy-policy">here</a>.'
     },
     {
       title: "Why does it only work on Twitter?",
