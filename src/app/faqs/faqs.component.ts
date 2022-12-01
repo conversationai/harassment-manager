@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { SideMenuSection } from '../scrollable-side-menu/scrollable-side-menu.component';
 
@@ -11,8 +11,7 @@ interface FaqContent {
 @Component({
   selector: 'app-faqs',
   templateUrl: './faqs.component.html',
-  styleUrls: ['./faqs.component.scss'],
-  encapsulation: ViewEncapsulation.None // allow styles to apply to innerHTML,
+  styleUrls: ['./faqs.component.scss']
 })
 export class FAQSComponent {
 
