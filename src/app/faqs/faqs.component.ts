@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { SideMenuSection } from '../scrollable-side-menu/scrollable-side-menu.component';
 
 interface FaqContent {
@@ -118,12 +118,12 @@ export class FAQSComponent {
     {
       title: "Why does it only work on Twitter?",
       selector: 'why-does-it-only-work-on-twitter',
-      content: 'Google’s Jigsaw and Twitter partnered in 2020 to pioneer ways to tackle the surging tide of online harassment targeting journalists and activists across the world. The resulting technology that underpins FeedShield uses Google’s <a href="https://perspectiveapi.com/" target="_blank" >Perspective API</a> and Twitter’s API to prove it is possible to give social media users ways to manage their exposure to online abuse. CfA and its partners welcome any opportunities to grow this cross-sector collaboration and expand the technology to other platforms, making it more accessible to human rights defenders around the world. Find the open source code <a href="https://github.com/conversationai/harassment-manager" target="_blank" >here</a>.'
+      content: 'Google’s Jigsaw and Twitter partnered in 2020 to pioneer ways to tackle the surging tide of online harassment targeting journalists and activists across the world. The resulting technology that underpins FeedShield uses Google’s <a href="https://perspectiveapi.com/" target="_blank" rel="noopener" >Perspective API</a> and Twitter’s API to prove it is possible to give social media users ways to manage their exposure to online abuse. CfA and its partners welcome any opportunities to grow this cross-sector collaboration and expand the technology to other platforms, making it more accessible to human rights defenders around the world. Find the open source code <a href="https://github.com/conversationai/harassment-manager" target="_blank" rel="noopener">here</a>.'
     },
     {
       title: "What languages are covered?",
       selector: 'what-languages-are-covered',
-      content: 'FeedShield is initially launching in English, but the underlying Google machine learning tools at <a target="_blank" href="https://perspectiveapi.com">Perspective API</a> can detect harmful content in <a href="https://developers.perspectiveapi.com/s/about-the-api-attributes-and-languages" target="_blank" >multiple languages</a>, CfA will launch Arabic and French versions of FeedShield in 2023, and is working with Jigsaw to improve Perspective’s detection in indigenous African languages.'
+      content: 'FeedShield is initially launching in English, but the underlying Google machine learning tools at <a target="_blank" href="https://perspectiveapi.com" rel="noopener">Perspective API</a> can detect harmful content in <a href="https://developers.perspectiveapi.com/s/about-the-api-attributes-and-languages" target="_blank" rel="noopener" >multiple languages</a>, CfA will launch Arabic and French versions of FeedShield in 2023, and is working with Jigsaw to improve Perspective’s detection in indigenous African languages.'
     },
     {
       title: "Can it detect harmful images and videos?",
@@ -138,12 +138,12 @@ export class FAQSComponent {
     {
       title: "How do I give feedback?",
       selector: 'how-do-i-give-feedback',
-      content: 'FeedShield is a pilot project. We would therefore love to hear your feedback, and answer any questions not covered by these FAQs. Please email feedshield@codeforafrica.org and our team will get back to you as quickly as possible. This email address is not monitored 24/7 and should not be used to contact CfA for urgent assistance with any harassment. If you need urgent help, use the helpline <a>here</a>'
+      content: 'FeedShield is a pilot project. We would therefore love to hear your feedback, and answer any questions not covered by these FAQs. Please email <a href="mailto:feedshield@codeforafrica.org">feedshield@codeforafrica.org</a> and our team will get back to you as quickly as possible. This email address is not monitored 24/7 and should not be used to contact CfA for urgent assistance with any harassment. If you need urgent help, use the helpline <a>here</a>'
     },
     {
       title: "How do I learn about future opportunities?",
       selector: 'how-do-i-learn-about-future-opportunities',
-      content: 'The FeedShield team will be offering regular training, and other material and technical support to institutional partners. We will be also offering research fellowships to better understand how online trolls are coordinating their harassment of women in particular.If you are interested in keeping updated, email feedshield@codeforafrica.org with a request to be added to our community list.'
+      content: 'The FeedShield team will be offering regular training, and other material and technical support to institutional partners. We will be also offering research fellowships to better understand how online trolls are coordinating their harassment of women in particular.If you are interested in keeping updated, email <a href="mailto:feedshield@codeforafrica.org">feedshield@codeforafrica.org</a>  with a request to be added to our community list.'
     }
   ]
 
