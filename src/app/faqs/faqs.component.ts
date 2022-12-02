@@ -123,7 +123,7 @@ export class FAQSComponent {
     {
       title: "What languages are covered?",
       selector: 'what-languages-are-covered',
-      content: 'FeedShield is initially launching in English, but the underlying Google machine learning tools at <a target="_blank" href="https://perspectiveapi.com" rel="noopener">Perspective API</a> can detect harmful content in <a href="https://developers.perspectiveapi.com/s/about-the-api-attributes-and-languages" target="_blank" rel="noopener" >multiple languages</a>, CfA will launch Arabic and French versions of FeedShield in 2023, and is working with Jigsaw to improve Perspective’s detection in indigenous African languages.'
+      content: 'FeedShield is initially launching in English, but the underlying Google machine learning tools at <a target="_blank" href="https://perspectiveapi.com" rel="noopener">Perspective API</a> can detect harmful content in <a href="https://developers.perspectiveapi.com/s/about-the-api-attributes-and-languages" target="_blank" rel="noopener" >multiple languages</a>. CfA will launch Arabic and French versions of FeedShield in 2023, and is working with Jigsaw to improve Perspective’s detection in indigenous African languages.'
     },
     {
       title: "Can it detect harmful images and videos?",
