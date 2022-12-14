@@ -177,6 +177,13 @@ h2 {
 
     h2 {
       margin: 0;
+
+      span {
+        font-family: inherit;
+        font-weight: 400;
+        font-size: 28px;
+        line-height: math.div(34, 28);
+      }
     }
 
     .button {
