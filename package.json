@@ -4,7 +4,7 @@
   "scripts": {
     "build:all:dev": "npm run build:app:dev && npm run build:server",
     "build:all:prod": "npm run build:app:prod && npm run build:server",
-    "build:app:dev": "ng build",
+    "build:app:dev": "ng build --configuration development",
     "build:app:prod": "ng build --configuration production",
     "build:server": "tsc -p src/tsconfig.server.json",
     "check-format": "gts check",

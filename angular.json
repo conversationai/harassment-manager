@@ -40,6 +40,14 @@
             "scripts": []
           },
           "configurations": {
+            "development": {
+              "optimization": false,
+              "sourceMap": true,
+              "namedChunks": true,
+              "extractLicenses": false,
+              "vendorChunk": true,
+              "buildOptimizer": false
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -65,10 +73,14 @@
             "proxyConfig": "proxy.conf.js"
           },
           "configurations": {
+            "development": {
+              "browserTarget": "harassment-manager:build:development"
+            },
             "production": {
               "browserTarget": "harassment-manager:build:production"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
