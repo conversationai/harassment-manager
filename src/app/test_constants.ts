@@ -37,7 +37,6 @@ export const TWITTER_ENTRIES: Array<ScoredItem<Tweet>> = [
         user_mentions: [],
       },
       extended_tweet: {
-        display_text_range: [0, 279],
         entities: {
           hashtags: [
             {
@@ -110,7 +109,6 @@ export const TWITTER_ENTRIES: Array<ScoredItem<Tweet>> = [
         user_mentions: [],
       },
       extended_tweet: {
-        display_text_range: [0, 213],
         entities: {
           hashtags: [
             {
@@ -189,7 +187,6 @@ export const TWITTER_ENTRIES: Array<ScoredItem<Tweet>> = [
         ],
       },
       extended_tweet: {
-        display_text_range: [0, 203],
         entities: {
           hashtags: [],
           symbols: [],
@@ -274,7 +271,6 @@ export const TWITTER_ENTRIES: Array<ScoredItem<Tweet>> = [
         user_mentions: [],
       },
       extended_tweet: {
-        display_text_range: [0, 274],
         entities: {
           hashtags: [],
           symbols: [],

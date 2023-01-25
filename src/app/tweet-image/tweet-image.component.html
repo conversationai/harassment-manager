@@ -15,18 +15,14 @@
 -->
 
 <ng-container *ngIf="tweet && thumbnail">
-  <span class="image-thumbnail"
-        *ngIf="tweet.extended_entities && tweet.extended_entities.media">
-    <img [class.blur]="shouldBlur"
-         [src]="tweet.extended_entities.media[0].media_url" [alt]="shouldBlur ? 'Blurred image from tweet.' : 'Image from tweet.'">
+  <span class="image-thumbnail" *ngIf="tweet.extended_entities?.media?.length">
+    <img [class.blur]="shouldBlur" [src]="tweet.extended_entities.media[0].media_url"
+      [alt]="shouldBlur ? 'Blurred image from tweet.' : 'Image from tweet.'">
   </span>
 </ng-container>
 <ng-container *ngIf="tweet && !thumbnail">
-  <div class="full-image"
-       [class.collapsed]="collapsed"
-       *ngIf="tweet.extended_entities && tweet.extended_entities.media">
-    <img *ngFor="let media of tweet.extended_entities.media"
-        [class.blur]="shouldBlur" 
-        [src]="media.media_url" [alt]="shouldBlur ? 'Blurred image from tweet.' : 'Image from tweet.'">
+  <div class="full-image" [class.collapsed]="collapsed" *ngIf="tweet.extended_entities?.media?.length">
+    <img *ngFor="let media of tweet.extended_entities.media" [class.blur]="shouldBlur" [src]="media.media_url"
+      [alt]="shouldBlur ? 'Blurred image from tweet.' : 'Image from tweet.'">
   </div>
 </ng-container>
