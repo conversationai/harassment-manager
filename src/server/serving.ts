@@ -132,7 +132,7 @@ export class Server {
 
   constructor(public config: Config) {
     if (this.config.isProduction) {
-      this.log = { write: (_s: string): void => { } };
+      this.log = { write: (_s: string): void => {} };
     } else {
       this.log = {
         write: (s: string): void => {
