@@ -79,8 +79,8 @@ export interface CreatePdfResponse {
 export interface GetTweetsRequest {
   credentials?: firebase.auth.UserCredential;
   nextPageToken?: string;
-  fromDate: string; // yyyymmddhhmm format is expected here.
-  toDate: string; // yyyymmddhhmm format is expected here.
+  startDateTimeMs: number;
+  endDateTimeMs: number;
 }
 
 export interface GetTweetsResponse {
@@ -125,16 +125,11 @@ export interface HideRepliesTwitterResponse {
 
 export interface TwitterApiResponse {
   next: string;
-  requestParameters: TwitterApiRequestParams;
   results: TweetObject[];
 }
 
-interface TwitterApiRequestParams {
-  fromDate: string;
-  toDate: string;
-  maxResults: number;
-}
-
+// Tweet object format returned by the Enterprise Twitter API.
+//
 // From twitter documentation: When ingesting Tweet data the main object is the
 // Tweet Object, which is a parent object to several child objects. For
 // example, all Tweets include a User object that describes who authored the
@@ -158,7 +153,6 @@ export interface TweetObject {
   // directed to the extended_entities section.
   entities?: TweetEntities;
 
-  display_text_range?: number[];
   truncated?: boolean;
   extended_tweet?: ExtendedTweet;
 
@@ -172,6 +166,85 @@ export interface TweetObject {
   retweet_count?: number;
   retweeted_status?: TweetObject;
   source?: string;
+}
+
+// Tweet object format returned by the v2 Twitter API.
+//
+// See
+// https://developer.twitter.com/en/docs/twitter-api/data-dictionary/introduction
+// for more details.
+export interface V2TweetObject {
+  attachments?: V2Attachments;
+  author_id: string;
+  created_at: string;
+  entities?: V2Entities;
+  id: string;
+  lang: string;
+  public_metrics: V2PublicMetrics;
+  referenced_tweets?: V2ReferencedTweet[];
+  source?: string;
+  text: string;
+}
+
+interface V2Entities {
+  hashtags?: V2Hashtags[];
+  mentions?: V2Mentions[];
+  referenced_tweets?: V2ReferencedTweet[];
+  urls?: V2Url[];
+}
+
+interface V2PublicMetrics {
+  like_count: number;
+  quote_count: number;
+  reply_count: number;
+  retweet_count: number;
+}
+
+interface V2ReferencedTweet {
+  id: string;
+  type: string;
+}
+
+interface V2Mentions {
+  start: number;
+  end: number;
+  username: string;
+  id: string;
+}
+
+export interface V2Hashtags {
+  start: number;
+  end: number;
+  tag: string;
+}
+
+interface V2Url {
+  display_url: string;
+  extended_url: string;
+  start: number;
+  end: number;
+}
+
+export interface V2Includes {
+  media?: V2Media[];
+  users?: V2Users[];
+}
+
+interface V2Media {
+  media_key: string;
+  type: string;
+  url: string;
+}
+
+interface V2Users {
+  profile_image_url: string;
+  name: string;
+  username: string;
+  verified: boolean;
+  id: string;
+}
+interface V2Attachments {
+  media_keys: string[];
 }
 
 export interface TwitterUser {
@@ -206,7 +279,7 @@ interface Symbols {
   text: string;
 }
 
-interface TweetUserMention {
+export interface TweetUserMention {
   id?: number;
   id_str?: string;
   indices: Indices;
@@ -214,7 +287,7 @@ interface TweetUserMention {
   screen_name: string;
 }
 
-interface TweetMedia {
+export interface TweetMedia {
   id_str?: string;
   media_url: string;
   type: string;
@@ -234,7 +307,7 @@ interface TweetMediaDimensions {
   resize: string;
 }
 
-interface TweetUrl {
+export interface TweetUrl {
   display_url?: string;
   expanded_url?: string;
   indices: Indices;
@@ -249,7 +322,6 @@ export interface TweetHashtag {
 // For tweets above 140 characters.
 interface ExtendedTweet {
   full_text: string;
-  display_text_range: number[];
   entities: TweetEntities;
 }
 
