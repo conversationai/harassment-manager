@@ -44,7 +44,7 @@ import {
 import { TwitterApiCredentials } from '../serving';
 
 // Max results per twitter call.
-const BATCH_SIZE = 500;
+const BATCH_SIZE = 100;
 
 interface TwitterApiRequest {
   query: string;
