@@ -715,6 +715,8 @@ export class CreateReportComponent implements OnInit, AfterViewInit {
       return;
     }
 
+    this.now = new Date();
+
     if (selection.customOption) {
       this.getCustomDateFilter();
     } else if (selection.numDays) {
