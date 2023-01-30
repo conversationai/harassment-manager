@@ -44,7 +44,7 @@ import {
 import { TwitterApiCredentials } from '../serving';
 
 // Max results per twitter call.
-const BATCH_SIZE = 500;
+const BATCH_SIZE = 100;
 
 interface TwitterApiRequest {
   query: string;
@@ -319,7 +319,7 @@ function loadTwitterDataV2(
   credentials: TwitterApiCredentials,
   request: GetTweetsRequest
 ): Promise<TwitterApiResponse> {
-  const requestUrl = 'https://api.twitter.com/2/tweets/search/all';
+  const requestUrl = 'https://api.twitter.com/2/tweets/search/recent';
   const user = request.credentials?.additionalUserInfo?.username;
   if (!user) {
     throw new Error('No user credentials in GetTweetsRequest');
