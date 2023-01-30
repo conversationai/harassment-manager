@@ -83,10 +83,6 @@ import { ToxicityRangeSelectorDialogComponent } from '../toxicity-range-selector
 enum DateFilterName {
   YESTERDAY = 'Since yesterday',
   LAST_TWO_DAYS = 'Last two days',
-  LAST_THREE_DAYS = 'Last three days',
-  LAST_FOUR_DAYS = 'Last four days',
-  LAST_FIVE_DAYS = 'Last five days',
-  LAST_SIX_DAYS = 'Last six days',
   LAST_WEEK = 'Last week',
 }
 
@@ -257,10 +253,6 @@ export class CreateReportComponent implements OnInit, AfterViewInit {
   dateDropdownOptions: DateFilterDropdownOption[] = [
     { displayText: DateFilterName.YESTERDAY, numDays: 1 },
     { displayText: DateFilterName.LAST_TWO_DAYS, numDays: 2 },
-    { displayText: DateFilterName.LAST_THREE_DAYS, numDays: 3 },
-    { displayText: DateFilterName.LAST_FOUR_DAYS, numDays: 4 },
-    { displayText: DateFilterName.LAST_FIVE_DAYS, numDays: 5 },
-    { displayText: DateFilterName.LAST_SIX_DAYS, numDays: 6 },
     { displayText: DateFilterName.LAST_WEEK, numDays: 7 },
   ];
   dateFilter: DateFilter;
