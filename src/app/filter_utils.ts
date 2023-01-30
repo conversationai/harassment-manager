@@ -145,6 +145,14 @@ export function buildDateFilterForNDays(now: Date, days: number): DateFilter {
   };
 }
 
+export function buildDateFilterForNDaysFromNow(days: number): DateFilter {
+  const now = new Date().getTime();
+  return {
+    startDateTimeMs: now - days * MILLISECONDS_PER_DAY,
+    endDateTimeMs: now,
+  }
+}
+
 // Returns whether the tweet contains the specified regex, either in the
 // tweet text, the author's name, or the author's screen name.
 function itemHasRegex(

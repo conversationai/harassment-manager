@@ -60,6 +60,7 @@ import {
 import {
   applyCommentFilters,
   buildDateFilterForNDays,
+  buildDateFilterForNDaysFromNow,
   DateFilter,
   ToxicityRangeFilter,
 } from '../filter_utils';
@@ -725,8 +726,8 @@ export class CreateReportComponent implements OnInit, AfterViewInit {
     if (selection.customOption) {
       this.getCustomDateFilter();
     } else if (selection.numDays) {
-      this.dateFilterService.updateFilter(
-        buildDateFilterForNDays(this.now, selection.numDays)
+      this.dateFilterService.updateFilter( 
+        buildDateFilterForNDaysFromNow( selection.numDays)
       );
     }
   }
