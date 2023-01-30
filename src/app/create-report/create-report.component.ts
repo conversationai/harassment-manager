@@ -255,7 +255,7 @@ export class CreateReportComponent implements OnInit, AfterViewInit {
   pageSize = PAGE_SIZE;
 
   dateDropdownOptions: DateFilterDropdownOption[] = [
-    { displayText: DateFilterName.YESTERDAY, numDays: 1 }, 
+    { displayText: DateFilterName.YESTERDAY, numDays: 1 },
     { displayText: DateFilterName.LAST_TWO_DAYS, numDays: 2 },
     { displayText: DateFilterName.LAST_THREE_DAYS, numDays: 3 },
     { displayText: DateFilterName.LAST_FOUR_DAYS, numDays: 4 },
