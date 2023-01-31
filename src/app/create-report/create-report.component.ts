@@ -61,6 +61,7 @@ import {
   applyCommentFilters,
   buildDateFilterForNDays,
   DateFilter,
+  DayFilterType,
   ToxicityRangeFilter,
 } from '../filter_utils';
 import {
@@ -83,8 +84,6 @@ enum DateFilterName {
   YESTERDAY = 'Since yesterday',
   LAST_TWO_DAYS = 'Last two days',
   LAST_WEEK = 'Last week',
-  LAST_MONTH = 'Last month',
-  CUSTOM = 'Custom range',
 }
 
 enum OnboardingStep {
@@ -255,8 +254,6 @@ export class CreateReportComponent implements OnInit, AfterViewInit {
     { displayText: DateFilterName.YESTERDAY, numDays: 1 },
     { displayText: DateFilterName.LAST_TWO_DAYS, numDays: 2 },
     { displayText: DateFilterName.LAST_WEEK, numDays: 7 },
-    { displayText: DateFilterName.LAST_MONTH, numDays: 31 },
-    { displayText: DateFilterName.CUSTOM, customOption: true },
   ];
   dateFilter: DateFilter;
 
@@ -718,11 +715,13 @@ export class CreateReportComponent implements OnInit, AfterViewInit {
       return;
     }
 
+    this.now = new Date();
+
     if (selection.customOption) {
       this.getCustomDateFilter();
     } else if (selection.numDays) {
-      this.dateFilterService.updateFilter(
-        buildDateFilterForNDays(this.now, selection.numDays)
+      this.dateFilterService.updateFilter( 
+        buildDateFilterForNDays(this.now, selection.numDays, DayFilterType.NOW)
       );
     }
   }
