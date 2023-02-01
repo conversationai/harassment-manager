@@ -9,6 +9,7 @@
     "password": "",
     "appKey": "",
     "appToken": "",
-    "bearerToken": ""
+    "bearerToken": "",
+    "useEssentialOrElevatedV2": true
   }
 }

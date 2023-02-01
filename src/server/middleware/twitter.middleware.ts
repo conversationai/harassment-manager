@@ -43,8 +43,6 @@ import {
 } from '../../common-types';
 import { TwitterApiCredentials } from '../serving';
 
-// Max results per twitter call.
-const BATCH_SIZE = 100;
 
 interface TwitterApiRequest {
   query: string;
@@ -64,10 +62,10 @@ export async function getTweets(
   if (fs.existsSync('src/server/twitter_sample_results.json')) {
     twitterDataPromise = loadLocalTwitterData();
   } else if (v2SearchCredentialsAreValid(apiCredentials)) {
-    console.log('Fetching tweets using the Enterprise Full-Archive Search API');
+    console.log('Fetching tweets using the v2 Full-Archive Search API');
     twitterDataPromise = loadTwitterDataV2(apiCredentials, req.body);
   } else if (enterpriseSearchCredentialsAreValid(apiCredentials)) {
-    console.log('Fetching tweets using the v2 Full-Archive Search API');
+    console.log('Fetching tweets using the Enterprise Full-Archive Search API');
     twitterDataPromise = loadTwitterData(apiCredentials, req.body);
   } else {
     res.send(new Error('No valid Twitter API credentials'));
@@ -286,7 +284,7 @@ function loadTwitterData(
 
   const twitterApiRequest: TwitterApiRequest = {
     query: `(@${user} OR url:twitter.com/${user}) -from:${user} -is:retweet`,
-    maxResults: BATCH_SIZE,
+    maxResults: 500,
   };
 
   if (request.startDateTimeMs) {
@@ -319,7 +317,8 @@ function loadTwitterDataV2(
   credentials: TwitterApiCredentials,
   request: GetTweetsRequest
 ): Promise<TwitterApiResponse> {
-  const requestUrl = 'https://api.twitter.com/2/tweets/search/recent';
+  const requestUrl = credentials.useEssentialOrElevatedV2 ? 'https://api.twitter.com/2/tweets/search/recent': "https://api.twitter.com/2/tweets/search/all";
+
   const user = request.credentials?.additionalUserInfo?.username;
   if (!user) {
     throw new Error('No user credentials in GetTweetsRequest');
@@ -330,7 +329,7 @@ function loadTwitterDataV2(
     ...(request.nextPageToken && { next_token: request.nextPageToken }),
     ...{
       query: `(@${user} OR url:twitter.com/${user}) -from:${user} -is:retweet`,
-      max_results: BATCH_SIZE,
+      max_results: 100,
       'user.fields': 'id,name,username,profile_image_url,verified',
       expansions: 'author_id,attachments.media_keys,referenced_tweets.id',
       start_time: formatTimestampForV2(request.startDateTimeMs),
