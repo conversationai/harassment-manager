@@ -42,6 +42,7 @@ import {
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { take } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import {
   ScoredItem,
   SelectableItem,
@@ -84,6 +85,8 @@ enum DateFilterName {
   YESTERDAY = 'Since yesterday',
   LAST_TWO_DAYS = 'Last two days',
   LAST_WEEK = 'Last week',
+  LAST_MONTH = 'Last month',
+  CUSTOM = 'Custom range',
 }
 
 enum OnboardingStep {
@@ -162,6 +165,10 @@ export class CreateReportComponent implements OnInit, AfterViewInit {
   currentOnboardingStep = OnboardingStep.NONE;
 
   overlayScrollStrategy: ScrollStrategy;
+
+  // Twitter Api Version
+  useEssentialOrElevated = environment.useEssentialOrElevatedV2
+  
 
   // This describes how the overlay should be connected to the origin element.
   highlightViewSettingsConnectedOverlayPositions: ConnectedPosition[] = [
@@ -254,7 +261,16 @@ export class CreateReportComponent implements OnInit, AfterViewInit {
     { displayText: DateFilterName.YESTERDAY, numDays: 1 },
     { displayText: DateFilterName.LAST_TWO_DAYS, numDays: 2 },
     { displayText: DateFilterName.LAST_WEEK, numDays: 7 },
+    { displayText: DateFilterName.LAST_MONTH, numDays: 31 },
+    { displayText: DateFilterName.CUSTOM, customOption: true },
   ];
+
+  twitterEssentialDateDropdownOptions: DateFilterDropdownOption[] = [
+    { displayText: DateFilterName.YESTERDAY, numDays: 1 },
+    { displayText: DateFilterName.LAST_TWO_DAYS, numDays: 2 },
+    { displayText: DateFilterName.LAST_WEEK, numDays: 7 },
+  ]
+
   dateFilter: DateFilter;
 
   recommendedDropdownOptions = [

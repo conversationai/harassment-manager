@@ -37,7 +37,7 @@
       <!-- These are not disabled while comments are loading. -->
       <app-search-box (regexFiltersChange)="handleRegexFiltersChanged($event)">
       </app-search-box>
-      <app-filter-dropdown #dateFilterDropdown class="date-filter-dropdown" label="Time" [options]="dateDropdownOptions"
+      <app-filter-dropdown #dateFilterDropdown class="date-filter-dropdown" label="Time" [options]="useEssentialOrElevated ? twitterEssentialDateDropdownOptions : dateDropdownOptions"
         [selectFirstOption]="true" (customOptionSelected)="getCustomDateFilter()"
         (selectedOptionChange)="dateFilterSelectionChanged($event)">
       </app-filter-dropdown>
