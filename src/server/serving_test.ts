@@ -117,7 +117,7 @@ describe('Server', () => {
         appToken: 'fake token',
         password: 'fake password',
         username: 'fake username',
-        useEssentialOrElevatedV2: true,
+        useEssentialOrElevatedV2: false,
       },
     };
     server = new serving.Server(config);

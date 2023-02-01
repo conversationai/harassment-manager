@@ -317,7 +317,7 @@ function loadTwitterDataV2(
   credentials: TwitterApiCredentials,
   request: GetTweetsRequest
 ): Promise<TwitterApiResponse> {
-  const requestUrl = credentials.useEssentialOrElevatedV2 ? 'https://api.twitter.com/2/tweets/search/recent': "https://api.twitter.com/2/tweets/search/all";
+  const requestUrl = credentials.useEssentialOrElevatedV2 ? 'https://api.twitter.com/2/tweets/search/recent': 'https://api.twitter.com/2/tweets/search/all';
 
   const user = request.credentials?.additionalUserInfo?.username;
   if (!user) {
