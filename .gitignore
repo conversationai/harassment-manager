@@ -63,4 +63,4 @@ service_account_key.json
 # NOTE: these files may need to be checked in once in a blue moon
 src/app/gapi.service.ts
 src/app/oauth_api.service.ts
-# src/environments
+src/environments
