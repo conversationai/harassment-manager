@@ -30,6 +30,7 @@ import {
   CreateSpreadsheetRequest,
   isFirebaseCredential,
   Tweet,
+  TwitterApiVersion
 } from '../common-types';
 import * as dev from '../environments/environment';
 import * as prod from '../environments/environment.prod';
@@ -170,6 +171,14 @@ export class Server {
     // Google AppEngine and ComputeEngine
     this.app.get('/_ah/health', (_req, res) => {
       res.status(200).send('ok');
+    });
+
+    // get Twitter API Version
+    this.app.get('/get_twitter_api_version', (_req, res) => {
+      res.status(200).send({
+        version:this.config.twitterApiCredentials.useEssentialOrElevatedV2 ? TwitterApiVersion.essentialOrElevatedV2 : TwitterApiVersion.enterprise
+      });
+
     });
 
     this.app.post('/check', (req, res) => {

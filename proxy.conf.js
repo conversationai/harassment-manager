@@ -25,6 +25,7 @@ const PROXY_CONFIG = [
       '/hide_replies_twitter',
       '/mute_twitter_users',
       '/save_twitter_report_csv',
+      '/get_twitter_api_version',
     ],
     target: 'http://localhost:3000',
     secure: false,

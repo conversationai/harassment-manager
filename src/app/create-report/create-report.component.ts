@@ -47,6 +47,7 @@ import {
   ScoredItem,
   SelectableItem,
   SocialMediaItem,
+  TwitterApiVersion,
 } from '../../common-types';
 import { Attributes } from '../../perspectiveapi-types';
 import { CommentInfoComponent } from '../comment-info/comment-info.component';
@@ -166,7 +167,7 @@ export class CreateReportComponent implements OnInit, AfterViewInit {
   overlayScrollStrategy: ScrollStrategy;
 
   // Twitter Api Version
-  useEssentialOrElevated = environment.useEssentialOrElevatedV2
+  useEssentialOrElevated = false
   
 
   // This describes how the overlay should be connected to the origin element.
@@ -414,6 +415,7 @@ export class CreateReportComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.initialToxicityFilterNames = this.getInitialToxicityFilterNames();
     this.getComments();
+    this.getTwitterApiVersion();
   }
 
   ngAfterViewInit() {
@@ -517,6 +519,16 @@ export class CreateReportComponent implements OnInit, AfterViewInit {
           );
         }
       );
+  }
+
+  private getTwitterApiVersion() {
+    this.socialMediaItemsService.getTwitterApiVersion().subscribe((version:TwitterApiVersion) => {
+      if(version === TwitterApiVersion.essentialOrElevatedV2) {
+        this.useEssentialOrElevated = true;
+      } else {
+        this.useEssentialOrElevated = true;
+      }
+    })
   }
 
   private shouldSelectOption(

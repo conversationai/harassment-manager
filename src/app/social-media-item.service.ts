@@ -30,6 +30,7 @@ import {
   ScoredItem,
   SocialMediaItem,
   Tweet,
+  TwitterApiVersion,
 } from 'src/common-types';
 import { stripOutEntitiesFromItemText } from './common/social_media_item_utils';
 import { OauthApiService } from './oauth_api.service';
@@ -133,6 +134,10 @@ export class SocialMediaItemService {
         endDateTimeMs: endDateTimeMs - 60000,
       })
     ).pipe(map((response: GetTweetsResponse) => response.tweets));
+  }
+
+  getTwitterApiVersion(): Observable<TwitterApiVersion>{
+    return this.twitterApiService.getTwitterApiVersion().pipe(map(response=>response.version));
   }
 
   private scoreItems(
