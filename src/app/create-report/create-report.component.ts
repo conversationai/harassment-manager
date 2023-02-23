@@ -42,7 +42,6 @@ import {
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { take } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
 import {
   ScoredItem,
   SelectableItem,
