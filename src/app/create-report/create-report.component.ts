@@ -62,6 +62,7 @@ import {
   applyCommentFilters,
   buildDateFilterForNDays,
   DateFilter,
+  DayFilterType,
   ToxicityRangeFilter,
 } from '../filter_utils';
 import {
@@ -166,7 +167,7 @@ export class CreateReportComponent implements OnInit, AfterViewInit {
   overlayScrollStrategy: ScrollStrategy;
 
   // Twitter Api Version
-  useEssentialOrElevated = false
+  useEssentialOrElevatedV2 = false
   
 
   // This describes how the overlay should be connected to the origin element.
@@ -256,7 +257,7 @@ export class CreateReportComponent implements OnInit, AfterViewInit {
 
   pageSize = PAGE_SIZE;
 
-  dateDropdownOptions: DateFilterDropdownOption[] = [
+  fullDateDropdownOptions: DateFilterDropdownOption[] = [
     { displayText: DateFilterName.YESTERDAY, numDays: 1 },
     { displayText: DateFilterName.LAST_TWO_DAYS, numDays: 2 },
     { displayText: DateFilterName.LAST_WEEK, numDays: 7 },
@@ -264,11 +265,13 @@ export class CreateReportComponent implements OnInit, AfterViewInit {
     { displayText: DateFilterName.CUSTOM, customOption: true },
   ];
 
-  twitterEssentialDateDropdownOptions: DateFilterDropdownOption[] = [
+  essentialDateDropdownOptions: DateFilterDropdownOption[] = [
     { displayText: DateFilterName.YESTERDAY, numDays: 1 },
     { displayText: DateFilterName.LAST_TWO_DAYS, numDays: 2 },
     { displayText: DateFilterName.LAST_WEEK, numDays: 7 },
   ]
+
+  dateDropdownOptions: DateFilterDropdownOption[] = this.useEssentialOrElevatedV2 ?  this.essentialDateDropdownOptions : this.fullDateDropdownOptions
 
   dateFilter: DateFilter;
 
@@ -523,11 +526,16 @@ export class CreateReportComponent implements OnInit, AfterViewInit {
   private getTwitterApiVersion() {
     this.socialMediaItemsService.getTwitterApiVersion().subscribe((version:TwitterApiVersion) => {
       if(version === TwitterApiVersion.ESSENTIAL_OR_ELEVATED_V2) {
-        this.useEssentialOrElevated = true;
+        this.useEssentialOrElevatedV2 = true;
       } else {
-        this.useEssentialOrElevated = true;
+        this.useEssentialOrElevatedV2 = true;
       }
-    })
+    },
+      _error => {
+        this.useEssentialOrElevatedV2 = false;
+      }
+    )
+    this.dateDropdownOptions = this.useEssentialOrElevatedV2 ?  this.essentialDateDropdownOptions : this.fullDateDropdownOptions
   }
 
   private shouldSelectOption(
@@ -747,7 +755,7 @@ export class CreateReportComponent implements OnInit, AfterViewInit {
       this.getCustomDateFilter();
     } else if (selection.numDays) {
       this.dateFilterService.updateFilter( 
-        buildDateFilterForNDays(this.now, selection.numDays, this.useEssentialOrElevated )
+        buildDateFilterForNDays(this.now, selection.numDays, this.useEssentialOrElevatedV2? DayFilterType.NOW : DayFilterType.MIDNIGHT )
       );
     }
   }

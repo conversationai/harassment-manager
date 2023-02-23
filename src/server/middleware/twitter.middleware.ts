@@ -43,7 +43,8 @@ import {
 } from '../../common-types';
 import { TwitterApiCredentials } from '../serving';
 
-
+const ESSENTIAL_OR_ELEVATED_V2_BATCH_SIZE = 100;
+const ENTERPRISE_BATCH_SIZE = 500;
 interface TwitterApiRequest {
   query: string;
   maxResults?: number;
@@ -284,7 +285,7 @@ function loadTwitterData(
 
   const twitterApiRequest: TwitterApiRequest = {
     query: `(@${user} OR url:twitter.com/${user}) -from:${user} -is:retweet`,
-    maxResults: 500,
+    maxResults: ENTERPRISE_BATCH_SIZE,
   };
 
   if (request.startDateTimeMs) {
@@ -317,7 +318,8 @@ function loadTwitterDataV2(
   credentials: TwitterApiCredentials,
   request: GetTweetsRequest
 ): Promise<TwitterApiResponse> {
-  const requestUrl = credentials.useEssentialOrElevatedV2 ? 'https://api.twitter.com/2/tweets/search/recent': 'https://api.twitter.com/2/tweets/search/all';
+  const searchPath = credentials.useEssentialOrElevatedV2 ? 'recent' : 'all';
+  const requestUrl =`https://api.twitter.com/2/tweets/search/${searchPath}`;
 
   const user = request.credentials?.additionalUserInfo?.username;
   if (!user) {
@@ -329,7 +331,7 @@ function loadTwitterDataV2(
     ...(request.nextPageToken && { next_token: request.nextPageToken }),
     ...{
       query: `(@${user} OR url:twitter.com/${user}) -from:${user} -is:retweet`,
-      max_results: 100,
+      max_results: ESSENTIAL_OR_ELEVATED_V2_BATCH_SIZE,
       'user.fields': 'id,name,username,profile_image_url,verified',
       expansions: 'author_id,attachments.media_keys,referenced_tweets.id',
       start_time: formatTimestampForV2(request.startDateTimeMs),

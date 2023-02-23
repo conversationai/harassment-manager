@@ -37,6 +37,10 @@ export interface ToxicityRangeFilter {
   includeUnscored: boolean;
 }
 
+export enum DayFilterType {
+  NOW,
+  MIDNIGHT
+}
 /**
  * Applies the regex, date, and threshold filters to the specified comments, and
  * returns the subset of comments that match the filters.
@@ -138,9 +142,9 @@ const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
 // differently. We're also interpreting weeks and months relative to today, 
 // but these could also be determined based on where we are in the month.
 // Added an optional filterType parameter to allow for the option of using the current time as the start time instead of midnight.
-export function buildDateFilterForNDays(now: Date, days: number,fromNow: boolean = false): DateFilter {
+export function buildDateFilterForNDays(now: Date, days: number,from:DayFilterType=DayFilterType.MIDNIGHT): DateFilter {
 
-  const fromTime = fromNow ? now.getTime() : new Date(now).setHours(0, 0, 0, 0);
+  const fromTime = from === DayFilterType.NOW  ? now.getTime() : new Date(now).setHours(0, 0, 0, 0);
 
   return {
     startDateTimeMs: fromTime - days * MILLISECONDS_PER_DAY,
