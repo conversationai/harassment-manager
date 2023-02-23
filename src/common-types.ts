@@ -362,8 +362,8 @@ export interface ClearReportRequest {
 }
 
 export enum TwitterApiVersion {
-  essentialOrElevatedV2 = 'essentialOrElevatedV2',
-  enterprise = 'enterprise',
+  ESSENTIAL_OR_ELEVATED_V2 = 'essentialOrElevatedV2',
+  ENTERPRISE = 'enterprise',
 }
 
 export interface TwitterApiVersionResponse {

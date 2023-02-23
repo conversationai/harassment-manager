@@ -522,7 +522,7 @@ export class CreateReportComponent implements OnInit, AfterViewInit {
 
   private getTwitterApiVersion() {
     this.socialMediaItemsService.getTwitterApiVersion().subscribe((version:TwitterApiVersion) => {
-      if(version === TwitterApiVersion.essentialOrElevatedV2) {
+      if(version === TwitterApiVersion.ESSENTIAL_OR_ELEVATED_V2) {
         this.useEssentialOrElevated = true;
       } else {
         this.useEssentialOrElevated = true;
