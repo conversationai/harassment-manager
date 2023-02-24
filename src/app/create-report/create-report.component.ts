@@ -525,11 +525,7 @@ export class CreateReportComponent implements OnInit, AfterViewInit {
 
   private getTwitterApiVersion() {
     this.socialMediaItemsService.getTwitterApiVersion().subscribe((version:TwitterApiVersion) => {
-      if(version === TwitterApiVersion.ESSENTIAL_OR_ELEVATED_V2) {
-        this.useEssentialOrElevatedV2 = true;
-      } else {
-        this.useEssentialOrElevatedV2 = true;
-      }
+      this.useEssentialOrElevatedV2 = version === TwitterApiVersion.ESSENTIAL_OR_ELEVATED_V2;
     },
       _error => {
         this.useEssentialOrElevatedV2 = false;
@@ -754,8 +750,9 @@ export class CreateReportComponent implements OnInit, AfterViewInit {
     if (selection.customOption) {
       this.getCustomDateFilter();
     } else if (selection.numDays) {
+      const  filterType:DayFilterType = this.useEssentialOrElevatedV2? DayFilterType.NOW : DayFilterType.MIDNIGHT;
       this.dateFilterService.updateFilter( 
-        buildDateFilterForNDays(this.now, selection.numDays, this.useEssentialOrElevatedV2? DayFilterType.NOW : DayFilterType.MIDNIGHT )
+        buildDateFilterForNDays(this.now, selection.numDays, filterType )
       );
     }
   }
