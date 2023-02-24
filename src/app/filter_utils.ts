@@ -142,7 +142,7 @@ const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
 // differently. We're also interpreting weeks and months relative to today, 
 // but these could also be determined based on where we are in the month.
 // Added an optional filterType parameter to allow for the option of using the current time as the start time instead of midnight.
-export function buildDateFilterForNDays(now: Date, days: number,fromFilter:DayFilterType=DayFilterType.MIDNIGHT): DateFilter {
+export function buildDateFilterForNDays(now: Date, days: number, fromFilter:DayFilterType=DayFilterType.MIDNIGHT): DateFilter {
 
   const fromTime = fromFilter === DayFilterType.NOW  ? now.getTime() : new Date(now).setHours(0, 0, 0, 0);
 
