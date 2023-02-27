@@ -30,7 +30,8 @@ import {
   CreateSpreadsheetRequest,
   isFirebaseCredential,
   Tweet,
-  TwitterApiVersion
+  TwitterApiVersion,
+  TwitterApiVersionResponse
 } from '../common-types';
 import * as dev from '../environments/environment';
 import * as prod from '../environments/environment.prod';
@@ -176,7 +177,10 @@ export class Server {
     // get Twitter API Version
     this.app.get('/get_twitter_api_version', (_req, res) => {
       const version = this.config.twitterApiCredentials.useEssentialOrElevatedV2 ? TwitterApiVersion.ESSENTIAL_OR_ELEVATED_V2 : TwitterApiVersion.ENTERPRISE;
-      res.status(200).send(version);
+      const response:TwitterApiVersionResponse = {
+        version: version
+      }
+      res.status(200).send(response);
     });
 
     this.app.post('/check', (req, res) => {

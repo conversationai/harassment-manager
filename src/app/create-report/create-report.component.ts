@@ -526,12 +526,9 @@ export class CreateReportComponent implements OnInit, AfterViewInit {
   private getTwitterApiVersion() {
     this.socialMediaItemsService.getTwitterApiVersion().subscribe((version:TwitterApiVersion) => {
       this.useEssentialOrElevatedV2 = version === TwitterApiVersion.ESSENTIAL_OR_ELEVATED_V2;
-    },
-      _error => {
-        this.useEssentialOrElevatedV2 = false;
+      this.dateDropdownOptions = this.useEssentialOrElevatedV2 ?  this.essentialDateDropdownOptions : this.fullDateDropdownOptions
       }
     )
-    this.dateDropdownOptions = this.useEssentialOrElevatedV2 ?  this.essentialDateDropdownOptions : this.fullDateDropdownOptions
   }
 
   private shouldSelectOption(
