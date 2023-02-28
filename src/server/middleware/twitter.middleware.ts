@@ -331,7 +331,7 @@ function loadTwitterDataV2(
     ...(request.nextPageToken && { next_token: request.nextPageToken }),
     ...{
       query: `(@${user} OR url:twitter.com/${user}) -from:${user} -is:retweet`,
-      max_results: ESSENTIAL_OR_ELEVATED_V2_BATCH_SIZE,
+      max_results: credentials.useEssentialOrElevatedV2 ? ESSENTIAL_OR_ELEVATED_V2_BATCH_SIZE : ENTERPRISE_BATCH_SIZE,
       'user.fields': 'id,name,username,profile_image_url,verified',
       expansions: 'author_id,attachments.media_keys,referenced_tweets.id',
       start_time: formatTimestampForV2(request.startDateTimeMs),
