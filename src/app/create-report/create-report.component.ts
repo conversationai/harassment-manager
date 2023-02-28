@@ -60,6 +60,7 @@ import {
   applyCommentFilters,
   buildDateFilterForNDays,
   DateFilter,
+  DayFilterType,
   ToxicityRangeFilter,
 } from '../filter_utils';
 import {
