@@ -360,3 +360,13 @@ export interface ClearReportRequest {
   idToken: string;
   platform: Platform;
 }
+
+export enum TwitterApiVersion {
+  ESSENTIAL_OR_ELEVATED_V2 = 'essentialOrElevatedV2',
+  ENTERPRISE = 'enterprise',
+}
+
+export interface TwitterApiVersionResponse {
+  version: TwitterApiVersion;
+}
+

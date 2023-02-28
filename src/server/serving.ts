@@ -30,6 +30,8 @@ import {
   CreateSpreadsheetRequest,
   isFirebaseCredential,
   Tweet,
+  TwitterApiVersion,
+  TwitterApiVersionResponse
 } from '../common-types';
 import * as dev from '../environments/environment';
 import * as prod from '../environments/environment.prod';
@@ -83,6 +85,9 @@ export interface TwitterApiCredentials {
   appToken: string;
   // Necessary if using v2 Full-Archive Search.
   bearerToken?: string;
+
+  // Flag to indicate whether to use the  Essential or Academic v2 Full-Archive Search API
+  useEssentialOrElevatedV2?: boolean;
 }
 
 export interface WebAppCredentials {
@@ -167,6 +172,15 @@ export class Server {
     // Google AppEngine and ComputeEngine
     this.app.get('/_ah/health', (_req, res) => {
       res.status(200).send('ok');
+    });
+
+    // get Twitter API Version
+    this.app.get('/get_twitter_api_version', (_req, res) => {
+      const version = this.config.twitterApiCredentials.useEssentialOrElevatedV2 ? TwitterApiVersion.ESSENTIAL_OR_ELEVATED_V2 : TwitterApiVersion.ENTERPRISE;
+      const response:TwitterApiVersionResponse = {
+        version: version
+      }
+      res.status(200).send(response);
     });
 
     this.app.post('/check', (req, res) => {
