@@ -30,6 +30,8 @@ import {
   CreateSpreadsheetRequest,
   isFirebaseCredential,
   Tweet,
+  TwitterApiVersion,
+  TwitterApiVersionResponse
 } from '../common-types';
 import * as dev from '../environments/environment';
 import * as prod from '../environments/environment.prod';
@@ -72,17 +74,25 @@ export interface Config {
 }
 
 export interface TwitterApiCredentials {
-  accountName: string;
+  // The below three fields are necessary if using Enterprise Full-Archive
+  // Search.
+  accountName?: string;
+  password?: string;
+  username?: string;
+  // The below two fields are necessary for the Blocks, Mutes, and Hide Replies
+  // APIs.
   appKey: string;
   appToken: string;
-  password: string;
-  username: string;
+  // Necessary if using v2 Full-Archive Search.
+  bearerToken?: string;
+
+  // Flag to indicate whether to use the  Essential or Academic v2 Full-Archive Search API
+  useEssentialOrElevatedV2?: boolean;
 }
 
 export interface WebAppCredentials {
   client_secret: string;
   client_id: string;
-  redirect_uris: string[];
 }
 
 function loadAppCredentials(): Promise<WebAppCredentials> {
@@ -120,9 +130,6 @@ export class Server {
   analyzeApiClient?: NodeAnalyzeApiClient;
   port: number;
   staticPath?: string;
-
-  // Redirect URL to use for building App Credentials.
-  private clientProvidedRedirectUrl = '';
 
   private appCredentials: WebAppCredentials | null = null;
 
@@ -165,6 +172,15 @@ export class Server {
     // Google AppEngine and ComputeEngine
     this.app.get('/_ah/health', (_req, res) => {
       res.status(200).send('ok');
+    });
+
+    // get Twitter API Version
+    this.app.get('/get_twitter_api_version', (_req, res) => {
+      const version = this.config.twitterApiCredentials.useEssentialOrElevatedV2 ? TwitterApiVersion.ESSENTIAL_OR_ELEVATED_V2 : TwitterApiVersion.ENTERPRISE;
+      const response:TwitterApiVersionResponse = {
+        version: version
+      }
+      res.status(200).send(response);
     });
 
     this.app.post('/check', (req, res) => {
@@ -364,30 +380,11 @@ export class Server {
   }
 
   createOAuthClient(
-    credentials: firebase.auth.OAuthCredential | Credentials,
-    clientProvidedRedirectUrl = ''
+    credentials: firebase.auth.OAuthCredential | Credentials
   ): OAuth2Client {
-    let redirectUrlToUse = '';
-
-    for (const uri of this.appCredentials!.redirect_uris) {
-      if (
-        clientProvidedRedirectUrl === uri ||
-        clientProvidedRedirectUrl === `${uri}/`
-      ) {
-        redirectUrlToUse = uri;
-      }
-    }
-    if (!redirectUrlToUse) {
-      console.error(
-        'No matching redirect uris for client provided redirect URL:',
-        clientProvidedRedirectUrl
-      );
-    }
-
     const oauthClient = new googleapis.auth.OAuth2(
       this.appCredentials!.client_id,
-      this.appCredentials!.client_secret,
-      redirectUrlToUse
+      this.appCredentials!.client_secret
     );
 
     if (isFirebaseCredential(credentials)) {

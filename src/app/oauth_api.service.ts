@@ -19,35 +19,36 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import firebase from 'firebase/compat/app';
 import { Credentials } from 'google-auth-library';
 import { Observable, ReplaySubject } from 'rxjs';
-import { GapiService } from './gapi.service';
+
+// OAuth 2.0 Client ID for your cloud project.
+// See https://console.cloud.google.com/apis/credentials
+const CLIENT_ID = '<YOUR_CLIENT_ID_PREFIX>.apps.googleusercontent.com';
 
 @Injectable({
   providedIn: 'root',
 })
 export class OauthApiService {
+  // Google credentials obtained with the Google Identity Services library.
+  private googleCredentials?: Credentials;
   private twitterCredentials?: firebase.auth.UserCredential;
   private twitterProvider: firebase.auth.TwitterAuthProvider;
-  // Alternative Google credentials obtained with the gapi auth lib.
-  private gapiGoogleCredentials?: Credentials;
+
   private signedInWithTwitterSubject = new ReplaySubject<boolean>(1);
   twitterSignInChange = this.signedInWithTwitterSubject.asObservable();
 
-  constructor(
-    private angularFireAuth: AngularFireAuth,
-    private gapiService: GapiService
-  ) {
+  constructor(private angularFireAuth: AngularFireAuth) {
     this.twitterProvider = new firebase.auth.TwitterAuthProvider();
   }
 
-  // Returns Google credentials obtained via gapi that can be used for Sheets
-  // authentication when the user is signed in with Twitter.
-  getGapiGoogleCredentials(): Credentials | undefined {
-    return this.gapiGoogleCredentials;
+  // Returns Google credentials that can be used for Sheets authentication
+  // when the user is signed in with Twitter.
+  getGoogleCredentials(): Credentials | undefined {
+    return this.googleCredentials;
   }
 
   async authenticateGoogleSheets(): Promise<void> {
     if (this.twitterCredentials) {
-      this.gapiGoogleCredentials = await this.gapiService.getGoogleSheetsAuth();
+      this.googleCredentials = await this.getGoogleSheetsAuth();
     } else {
       throw new Error(
         'Trying to authenticate with Google Sheets, but no credentials found'
@@ -94,5 +95,22 @@ export class OauthApiService {
     if (this.twitterCredentials) {
       await this.signOutOfTwitter();
     }
+  }
+
+  private getGoogleSheetsAuth(): Promise<Credentials> {
+    return new Promise((resolve, reject) => {
+      const client = google.accounts.oauth2.initTokenClient({
+        client_id: CLIENT_ID,
+        scope: 'https://www.googleapis.com/auth/spreadsheets',
+        callback: (response) => {
+          const access_token = response.access_token;
+          if (!!response.error || !access_token) {
+            reject('Failed to authenticate with Google');
+          }
+          resolve({ access_token });
+        },
+      });
+      client.requestAccessToken();
+    });
   }
 }

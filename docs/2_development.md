@@ -50,10 +50,10 @@ The file will look something like
 ```
 
 4. If you or another developer on your team has not yet updated the `CLIENT_ID`
-   field in [GapiService](../src/app/gapi.service.ts), copy the value from the
-   `client_id` in the `credentials.json` file above into the `CLIENT_ID` field.
-   It will look something like
-   <long string of characters>.apps.googleusercontent.com.
+   field in [OauthApiService](../src/app/oauth_api.service.ts), copy the value
+   from the `client_id` in the `credentials.json` file above into the
+   `CLIENT_ID` field. It will look something like <long string of
+   characters>.apps.googleusercontent.com.
 
 ## 4. Create a Firebase service account key
 
@@ -145,16 +145,16 @@ The required fields are:
   be the server-side key created in [setup](1_setup.md) in GCP
   [Credentials](https://console.cloud.google.com/apis/credentials)
 - `cloudProjectId`: Your Google Cloud project ID
+- `twitterApiCredentials`: Your credentials for the Twitter APIs. For Enterprise
+  Full-Archive search, Twitter will provide you with the credentials. All other
+  API credentials should be available on the Twitter [Developer
+  Portal](https://developer.twitter.com/portal) under "Keys and Tokens" for your
+  app and project.
 
-The optional fields are:
+All together, your config should look something like one of the two configs
+below, with the relevant credentials and key values replaced.
 
-- `twitterApiCredentials`: Your credentials for the Twitter APIs. The server
-  expect this field to be an object with `accountName`, `username`, and
-  `password` fields for the Enterprise Search API and `appKey` and `appToken`
-  for the Standard API.
-
-All together, your config should look something like the config below, with the
-relevant credentials and key values replaced.
+### If using the Enteprise Full-Archive Search API:
 
 ```json
 {
@@ -166,8 +166,24 @@ relevant credentials and key values replaced.
     "accountName": "{TWITTER_API_ACCOUNT_NAME}",
     "username": "{TWITTER_API_USERNAME}",
     "password": "{TWITTER_API_PASSWORD}",
-    "appKey": "{APP_KEY}",
-    "appToken": "{APP_TOKEN}"
+    "appKey": "{TWITTER_APP_KEY}",
+    "appToken": "{TWITTER_APP_TOKEN}"
+  }
+}
+```
+
+### If using the v2 Full-Archive Search endpoint:
+
+```json
+{
+  "port": "3000",
+  "staticPath": "dist/harassment-manager",
+  "googleCloudApiKey": "{YOUR_GOOGLE_CLOUD_API_KEY}",
+  "cloudProjectId": "{YOUR_GOOGLE_CLOUD_PROJECTID}",
+  "twitterApiCredentials": {
+    "appKey": "{TWITTER_APP_KEY}",
+    "appToken": "{TWITTER_APP_TOKEN}",
+    "bearerToken": "{TWITTER_APP_BEARER_TOKEN}"
   }
 }
 ```
@@ -226,3 +242,7 @@ We maintain a [CircleCI](https://circleci.com/) configuration in
 is pushed to this GitHub repository. You can choose to use the same
 configuration for your own CircleCI setup if you'd like or remove the
 configuration in favor of another CI solution or none at all.
+
+```
+
+```

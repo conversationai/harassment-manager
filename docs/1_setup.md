@@ -18,40 +18,61 @@ of developers.
 
 ## 1. Get access to Twitter APIs
 
-**NOTE: The full suite of Twitter APIs the app uses require additional access
-beyond the default Twitter API [Essential access
-level](https://developer.twitter.com/en/docs/twitter-api/getting-started/about-twitter-api).
-The [Enterprise
-search](https://developer.twitter.com/en/docs/twitter-api/enterprise/search-api/overview)
-additionally requires an [enterprise
-account](https://developer.twitter.com/en/docs/twitter-api/enterprise/search-api/overview).**
-
-**NOTE: We plan to migrate the Enterprise Full-Archive Search API to the v2 Search Tweets
-in the future. We will update this documentation accordingly.**
-
 The app makes use of several Twitter APIs, including:
 
-- [The Enterprise Full-Archive Search
-  API](https://developer.twitter.com/en/docs/twitter-api/enterprise/search-api/overview) to fetch
-  tweets directed at the logged in user
-- The v2 [blocks](https://developer.twitter.com/en/docs/twitter-api/users/blocks/introduction)
+- The [Enterprise Full-Archive Search
+  API](https://developer.twitter.com/en/docs/twitter-api/enterprise/search-api/overview)
+  **or** the [v2 Full-Archive Search
+  endpoint](https://developer.twitter.com/en/docs/twitter-api/tweets/search/quick-start/full-archive-search)
+  to fetch tweets directed at the logged in user
+- The v2
+  [blocks](https://developer.twitter.com/en/docs/twitter-api/users/blocks/introduction)
   endpoint to block users on behalf of the authenticated user
-- The v2 [mutes](https://developer.twitter.com/en/docs/twitter-api/users/mutes/introduction)
+- The v2
+  [mutes](https://developer.twitter.com/en/docs/twitter-api/users/mutes/introduction)
   endpoint to mute users on behalf of the authenticated user
 - The v2 [hide
   replies](https://developer.twitter.com/en/docs/twitter-api/tweets/hide-replies/introduction)
   endpoint to hide replies on behalf of the authenticated user
 
 To support all this functionality, you'll need to [get access to the Twitter
-API](https://developer.twitter.com/en/docs/twitter-api/getting-started/getting-access-to-the-twitter-api)
-and the Enterprise Full-Archive Search API.
+API](https://developer.twitter.com/en/docs/twitter-api/getting-started/getting-access-to-the-twitter-api).
 
-Once granted, take note of the:
+**NOTE: The full suite of Twitter APIs the app uses require additional access
+beyond the default Twitter API [Essential access
+level](https://developer.twitter.com/en/docs/twitter-api/getting-started/about-twitter-api).
+The [Enterprise
+search](https://developer.twitter.com/en/docs/twitter-api/enterprise/search-api/overview)
+API requires an [enterprise
+account](https://developer.twitter.com/en/docs/twitter-api/enterprise/search-api/overview),
+while v2 Full-Archive Search requires [academic
+access](https://developer.twitter.com/en/products/twitter-api/academic-research).**
+
+Once granted access, take note of the:
 
 - Account name, app key, and app secret for your Twitter API developer account
-- Username and password for your Enterpise Full-Archive Search API account
+- If using the Enterprise Full-Archive Search API, the Username and password for
+  your enterprise account
+- If using the v2 Full-Archive Search endpoint, the Twitter bearer token for
+  your app
 
-You'll need both sets of credentials later on.
+You'll need these credentials later on.
+
+### Enterprise Full-Archive Search vs. v2 Full-Archive Search
+
+The tool is implemented in a way that either API can be used. While both APIs
+offer similar functionality, there are key differences in rate limits. We refer
+users to [Twitter's
+comparison](https://developer.twitter.com/en/docs/twitter-api/tweets/search/migrate)
+for more details. You may also see minute differences in:
+
+- Which tweets are fetched. This is due to differences in granularity for
+  timestamp format each API supports (YYYYMMDD for Enterprise and
+  YYYY-MM-DDTHH:mm:ssZ for v2).
+- The order the tweets are displayed when sorted by "Priority". This is due to
+  small differences in how we parse out the tweet text, which causes some
+  variation in the Perspective API scores for the text. See issue #19 for more
+  details.
 
 ## 2. Create a Google Cloud Platform (GCP) project
 

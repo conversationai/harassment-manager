@@ -28,6 +28,7 @@ import {
   HideRepliesTwitterResponse,
   MuteTwitterUsersRequest,
   MuteTwitterUsersResponse,
+  TwitterApiVersionResponse,
   TwitterUser,
 } from '../common-types';
 import { OauthApiService } from './oauth_api.service';
@@ -155,5 +156,13 @@ export class TwitterApiService {
         headers,
       })
       .pipe(take(1));
+  }
+
+  getTwitterApiVersion(): Observable<TwitterApiVersionResponse> {
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    return this.httpClient.get<TwitterApiVersionResponse>('/get_twitter_api_version', {
+      headers,
+    }).pipe(take(1));
   }
 }

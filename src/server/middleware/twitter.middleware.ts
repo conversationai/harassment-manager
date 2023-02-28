@@ -30,14 +30,21 @@ import {
   MuteTwitterUsersRequest,
   MuteTwitterUsersResponse,
   Tweet,
+  TweetEntities,
+  TweetHashtag,
+  TweetMedia,
   TweetObject,
+  TweetUrl,
+  TweetUserMention,
   TwitterApiResponse,
+  TwitterUser,
+  V2Includes,
+  V2TweetObject,
 } from '../../common-types';
 import { TwitterApiCredentials } from '../serving';
 
-// Max results per twitter call.
-const BATCH_SIZE = 500;
-
+const ESSENTIAL_OR_ELEVATED_V2_BATCH_SIZE = 100;
+const ENTERPRISE_BATCH_SIZE = 500;
 interface TwitterApiRequest {
   query: string;
   maxResults?: number;
@@ -55,12 +62,15 @@ export async function getTweets(
 
   if (fs.existsSync('src/server/twitter_sample_results.json')) {
     twitterDataPromise = loadLocalTwitterData();
-  } else {
-    if (!enterpriseSearchCredentialsAreValid(apiCredentials)) {
-      res.send(new Error('Invalid Twitter Enterprise Search API credentials'));
-      return;
-    }
+  } else if (v2SearchCredentialsAreValid(apiCredentials)) {
+    console.log('Fetching tweets using the v2 Full-Archive Search API');
+    twitterDataPromise = loadTwitterDataV2(apiCredentials, req.body);
+  } else if (enterpriseSearchCredentialsAreValid(apiCredentials)) {
+    console.log('Fetching tweets using the Enterprise Full-Archive Search API');
     twitterDataPromise = loadTwitterData(apiCredentials, req.body);
+  } else {
+    res.send(new Error('No valid Twitter API credentials'));
+    return;
   }
 
   try {
@@ -275,22 +285,22 @@ function loadTwitterData(
 
   const twitterApiRequest: TwitterApiRequest = {
     query: `(@${user} OR url:twitter.com/${user}) -from:${user} -is:retweet`,
-    maxResults: BATCH_SIZE,
+    maxResults: ENTERPRISE_BATCH_SIZE,
   };
 
-  if (request.fromDate) {
-    twitterApiRequest.fromDate = request.fromDate;
+  if (request.startDateTimeMs) {
+    twitterApiRequest.fromDate = formatTimestamp(request.startDateTimeMs);
   }
-  if (request.toDate) {
-    twitterApiRequest.toDate = request.toDate;
+  if (request.endDateTimeMs) {
+    twitterApiRequest.toDate = formatTimestamp(request.endDateTimeMs);
   }
   if (request.nextPageToken) {
     twitterApiRequest.next = request.nextPageToken;
   }
 
   const auth: AxiosBasicCredentials = {
-    username: credentials!.username,
-    password: credentials!.password,
+    username: credentials.username!,
+    password: credentials.password!,
   };
 
   return axios
@@ -302,6 +312,177 @@ function loadTwitterData(
         `${JSON.stringify(request)}: ${error}`;
       throw new Error(errorStr);
     });
+}
+
+function loadTwitterDataV2(
+  credentials: TwitterApiCredentials,
+  request: GetTweetsRequest
+): Promise<TwitterApiResponse> {
+  const searchPath = credentials.useEssentialOrElevatedV2 ? 'recent' : 'all';
+  const requestUrl =`https://api.twitter.com/2/tweets/search/${searchPath}`;
+
+  const user = request.credentials?.additionalUserInfo?.username;
+  if (!user) {
+    throw new Error('No user credentials in GetTweetsRequest');
+  }
+
+  const params = {
+    // Include next_token if it's part of the request.
+    ...(request.nextPageToken && { next_token: request.nextPageToken }),
+    ...{
+      query: `(@${user} OR url:twitter.com/${user}) -from:${user} -is:retweet`,
+      max_results: credentials.useEssentialOrElevatedV2 ? ESSENTIAL_OR_ELEVATED_V2_BATCH_SIZE : ENTERPRISE_BATCH_SIZE,
+      'user.fields': 'id,name,username,profile_image_url,verified',
+      expansions: 'author_id,attachments.media_keys,referenced_tweets.id',
+      start_time: formatTimestampForV2(request.startDateTimeMs),
+      end_time: formatTimestampForV2(request.endDateTimeMs),
+      'media.fields': 'url,type',
+      'tweet.fields':
+        'attachments,created_at,id,entities,lang,public_metrics,source,text',
+    },
+  };
+
+  return axios
+    .get<TwitterApiResponse>(requestUrl, {
+      headers: {
+        authorization: `Bearer ${credentials.bearerToken}`,
+      },
+      params,
+      transformResponse: [
+        (data, _) => {
+          const parsed = JSON.parse(data);
+          const tweets: V2TweetObject[] = parsed.data ?? [];
+          const includes: V2Includes = parsed.includes ?? {};
+          return <TwitterApiResponse>{
+            results: tweets.map((tweet) =>
+              packV2TweetAsEnterprise(tweet, includes)
+            ),
+            next: parsed.meta.next_token,
+          };
+        },
+      ],
+    })
+    .then((response) => response.data);
+}
+
+// Packs a Tweet response object from the v2 Search API format into the
+// Enterprise Search API format.
+function packV2TweetAsEnterprise(
+  tweet: V2TweetObject,
+  includes: V2Includes
+): TweetObject {
+  const entities = packEntities(tweet, includes);
+
+  const tweetObject: TweetObject = {
+    created_at: tweet.created_at,
+    id_str: tweet.id,
+    text: tweet.text,
+    // The Enterprise API entities field is not always complete, but the v2
+    // entities field is.
+    entities: entities,
+    extended_entities: entities,
+    favorite_count: tweet.public_metrics.like_count,
+    // `favorited` omitted because it is not available in v2..
+    in_reply_to_status_id: tweet.entities?.referenced_tweets?.find(
+      (tweet) => tweet.type === 'replied_to'
+    )?.id,
+    lang: tweet.lang,
+    reply_count: tweet.public_metrics.reply_count,
+    retweet_count: tweet.public_metrics.retweet_count,
+    source: tweet.source,
+    truncated: tweet.text.length > 140,
+    user: getUser(tweet.author_id, includes),
+  };
+
+  if (tweetObject.truncated) {
+    // Enteprise populates the extended_tweet field if the tweet is truncated,
+    // so we add it manually here for consistency.
+    tweetObject.extended_tweet = {
+      full_text: tweetObject.text,
+      entities,
+    };
+  }
+
+  return tweetObject;
+}
+
+function packEntities(
+  tweet: V2TweetObject,
+  includes: V2Includes
+): TweetEntities {
+  const entities: TweetEntities = {};
+
+  if (tweet.entities?.hashtags) {
+    entities.hashtags = tweet.entities.hashtags.map(
+      (hashtag) =>
+        <TweetHashtag>{
+          indices: [hashtag.start, hashtag.end],
+          text: hashtag.tag,
+        }
+    );
+  }
+
+  if (tweet.entities?.urls) {
+    entities.urls = tweet.entities.urls.map(
+      (url) =>
+        <TweetUrl>{
+          display_url: url.display_url,
+          expanded_url: url.extended_url,
+          indices: [url.start, url.end],
+        }
+    );
+  }
+
+  if (tweet.entities?.mentions) {
+    entities.user_mentions = tweet.entities.mentions.map(
+      (mention) =>
+        <TweetUserMention>{
+          id_str: mention.id,
+          indices: [mention.start, mention.end],
+          screen_name: mention.username,
+        }
+    );
+  }
+
+  if (tweet.attachments?.media_keys) {
+    entities.media = tweet.attachments.media_keys
+      .flatMap((media_key) => {
+        // v2 includes the media fields (like media_url) in a separate
+        // `includes` object, so we search there for the media item in question.
+        const media = includes.media?.find(
+          (media) => media.media_key === media_key
+        );
+        // This shouldn't happen, but we throw an error if it does.
+        if (!media) {
+          throw new Error('Unable to find media');
+        }
+        return <TweetMedia>{
+          indices: [0, 0], // Indices not available in v2.
+          media_url: media.url,
+          type: media.type,
+        };
+      })
+      // Filter for photos because that's all we display.
+      .filter((media) => media.type === 'photo');
+  }
+
+  return entities;
+}
+
+function getUser(id: string, includes: V2Includes): TwitterUser {
+  // v2 includes the user fields (like profile_image_url) in a separate
+  // `includes` object, so we search there for the media item in question.
+  const user = includes.users?.find((user) => user.id === id);
+  if (!user) {
+    throw new Error('Unable to find user');
+  }
+  return {
+    id_str: user.id,
+    profile_image_url: user.profile_image_url,
+    name: user.name,
+    screen_name: user.username,
+    verified: user.verified,
+  };
 }
 
 function loadLocalTwitterData(): Promise<TwitterApiResponse> {
@@ -324,6 +505,12 @@ function enterpriseSearchCredentialsAreValid(
     !!credentials.username &&
     !!credentials.password
   );
+}
+
+function v2SearchCredentialsAreValid(
+  credentials: TwitterApiCredentials
+): boolean {
+  return !!credentials.bearerToken;
 }
 
 function standardApiCredentialsAreValid(
@@ -368,7 +555,6 @@ function parseTweet(tweetObject: TweetObject): Tweet {
   const tweet: Tweet = {
     created_at: tweetObject.created_at,
     date: new Date(),
-    display_text_range: tweetObject.display_text_range,
     entities: tweetObject.entities,
     extended_entities: tweetObject.extended_entities,
     extended_tweet: tweetObject.extended_tweet,
@@ -410,4 +596,33 @@ function getUserIdFromCredential(credential: firebase.auth.OAuthCredential) {
   // The numeric part of the Twitter Access Token is the user ID.
   const match = credential.accessToken?.match('[0-9]+');
   return match && match.length ? match[0] : null;
+}
+
+// Format a millisecond-based timestamp into the yyyymmddhhmm date format
+// suitable for the Enteprise Twitter API, as defined in:
+// https://developer.twitter.com/en/docs/tweets/search/api-reference/enterprise-search
+function formatTimestamp(ms: number): string {
+  const date = new Date(ms);
+  const month = date.getUTCMonth() + 1; // getMonth() is zero-based
+  const day = date.getUTCDate();
+  const hours = date.getUTCHours();
+  const minutes = date.getUTCMinutes();
+
+  return (
+    `${date.getFullYear()}` +
+    `${(month > 9 ? '' : '0') + month}` +
+    `${(day > 9 ? '' : '0') + day}` +
+    `${(hours > 9 ? '' : '0') + hours}` +
+    `${(minutes > 9 ? '' : '0') + minutes}`
+  );
+}
+
+// Format a millisecond-based timestamp into the YYYY-MM-DDTHH:mm:ssZ date
+// format suitable for the v2 Twitter API, as defined in:
+// https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-all
+function formatTimestampForV2(ms: number): string {
+  const date = new Date(ms);
+  // Remove milliseconds from the ISO string (e.g.
+  // from 2022-10-12T23:09:43.430Z to 2022-10-12T23:09:43Z.
+  return date.toISOString().substring(0, 19) + 'Z';
 }

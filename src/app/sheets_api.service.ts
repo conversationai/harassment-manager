@@ -90,7 +90,7 @@ export class SheetsApiService {
     if (!twitterCredentials) {
       throw new Error('Twitter credentials not found');
     }
-    const googleCredentials = this.oauthApiService.getGapiGoogleCredentials();
+    const googleCredentials = this.oauthApiService.getGoogleCredentials();
     if (!googleCredentials) {
       throw new Error('Missing Google credentials in createSpreadsheet()');
     }

@@ -30,6 +30,7 @@ import {
   ScoredItem,
   SocialMediaItem,
   Tweet,
+  TwitterApiVersion,
 } from 'src/common-types';
 import { stripOutEntitiesFromItemText } from './common/social_media_item_utils';
 import { OauthApiService } from './oauth_api.service';
@@ -126,13 +127,17 @@ export class SocialMediaItemService {
   ): Observable<Tweet[]> {
     return from(
       this.twitterApiService.getTweets({
-        fromDate: formatTimestamp(startDateTimeMs),
-        // Subtract 1 minute from the end time because the Twitter API
-        // sometimes returns an error if we request data for the most recent
-        // minute of time.
-        toDate: formatTimestamp(endDateTimeMs - 60000),
+        startDateTimeMs,
+        // Subtract 1 minute from the end time because the Twitter API sometimes
+        // returns an error if we request data for the most recent minute of
+        // time.
+        endDateTimeMs: endDateTimeMs - 60000,
       })
     ).pipe(map((response: GetTweetsResponse) => response.tweets));
+  }
+
+  getTwitterApiVersion(): Observable<TwitterApiVersion>{
+    return this.twitterApiService.getTwitterApiVersion().pipe(map(response=>response.version));
   }
 
   private scoreItems(
@@ -165,23 +170,4 @@ export class SocialMediaItemService {
       )
       .pipe(map(scores => ({ item, scores })));
   }
-}
-
-// Format a millisecond-based timestamp into a date format suitable for the
-// Twitter API, as defined in:
-// https://developer.twitter.com/en/docs/tweets/search/api-reference/enterprise-search
-function formatTimestamp(ms: number): string {
-  const date = new Date(ms);
-  const MM = date.getUTCMonth() + 1; // getMonth() is zero-based
-  const dd = date.getUTCDate();
-  const hh = date.getUTCHours();
-  const mm = date.getUTCMinutes();
-
-  return (
-    `${date.getFullYear()}` +
-    `${(MM > 9 ? '' : '0') + MM}` +
-    `${(dd > 9 ? '' : '0') + dd}` +
-    `${(hh > 9 ? '' : '0') + hh}` +
-    `${(mm > 9 ? '' : '0') + mm}`
-  );
 }
