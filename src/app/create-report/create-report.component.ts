@@ -731,7 +731,7 @@ export class CreateReportComponent implements OnInit, AfterViewInit {
     if (selection.customOption) {
       this.getCustomDateFilter();
     } else if (selection.numDays) {
-      const  filterType:DayFilterType = this.useEssentialOrElevatedV2? DayFilterType.NOW : DayFilterType.MIDNIGHT;
+      const  filterType: DayFilterType = this.useEssentialOrElevatedV2? DayFilterType.NOW : DayFilterType.MIDNIGHT;
       this.dateFilterService.updateFilter( 
         buildDateFilterForNDays(this.now, selection.numDays, filterType )
       );

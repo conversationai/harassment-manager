@@ -17,13 +17,16 @@
 export const environment = {
   production: true,
   firebase: {
-    apiKey: '{YOUR_API_KEY}',
-    authDomain: 'yourproject.firebaseapp.com',
-    databaseURL: 'https://yourproject.firebaseio.com',
-    projectId: '{YOUR_PROJECT_ID}',
-    storageBucket: 'undefined',
-    messagingSenderId: '{YOUR_MESSAGING_SENDER_ID}',
-    appId: '{YOUR_APP_ID}',
-    measurementId: '{YOUR_MEASUREMENT_ID}',
+    apiKey: "AIzaSyC2aGQFpSD6f3cAZF5zNEOyaT67TkATEKU",
+
+    authDomain: "cfa-p-jigsaw.firebaseapp.com",
+
+    projectId: "cfa-p-jigsaw",
+
+    storageBucket: "cfa-p-jigsaw.appspot.com",
+
+    messagingSenderId: "201317601635",
+
+    appId: "1:201317601635:web:95a28f99599f5561570356"
   },
 };
