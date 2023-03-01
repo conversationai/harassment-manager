@@ -185,6 +185,22 @@ below, with the relevant credentials and key values replaced.
     "appKey": "{TWITTER_APP_KEY}",
     "appToken": "{TWITTER_APP_TOKEN}",
     "bearerToken": "{TWITTER_APP_BEARER_TOKEN}",
+    "useEssentialOrElevatedV2": false
+  }
+}
+```
+### If using the v2 Essential or Elevated API:
+
+```json
+{
+  "port": "3000",
+  "staticPath": "dist/harassment-manager",
+  "googleCloudApiKey": "{YOUR_GOOGLE_CLOUD_API_KEY}",
+  "cloudProjectId": "{YOUR_GOOGLE_CLOUD_PROJECTID}",
+  "twitterApiCredentials": {
+    "appKey": "{TWITTER_APP_KEY}",
+    "appToken": "{TWITTER_APP_TOKEN}",
+    "bearerToken": "{TWITTER_APP_BEARER_TOKEN}",
     "useEssentialOrElevatedV2": true
   }
 }
