@@ -189,6 +189,7 @@ below, with the relevant credentials and key values replaced.
   }
 }
 ```
+
 ### If using the v2 Essential or Elevated API:
 
 ```json
