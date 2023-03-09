@@ -85,7 +85,9 @@ export interface TwitterApiCredentials {
   appToken: string;
   // Necessary if using v2 Full-Archive Search.
   bearerToken?: string;
-  // Flag to indicate whether to use the  Essential or Academic v2 Full-Archive Search API
+// Flag to indicate whether to use the Essential/Elevated v2 API
+// (/2/tweets/search/recent) or Academic v2 Full-Archive Search API
+// (/2/tweets/search/all).
   useEssentialOrElevatedV2?: boolean;
 }
 

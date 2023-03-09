@@ -164,8 +164,8 @@ export class CreateReportComponent implements OnInit, AfterViewInit {
 
   overlayScrollStrategy: ScrollStrategy;
 
-  // Twitter Api Version
-  useEssentialOrElevatedV2 = false
+  // Twitter API Version
+  useEssentialOrElevatedV2 = false;
   
 
   // This describes how the overlay should be connected to the origin element.
@@ -731,9 +731,9 @@ export class CreateReportComponent implements OnInit, AfterViewInit {
     if (selection.customOption) {
       this.getCustomDateFilter();
     } else if (selection.numDays) {
-      const  filterType: DayFilterType = this.useEssentialOrElevatedV2? DayFilterType.NOW : DayFilterType.MIDNIGHT;
+      const filterType: DayFilterType = this.useEssentialOrElevatedV2 ? DayFilterType.NOW : DayFilterType.MIDNIGHT;
       this.dateFilterService.updateFilter( 
-        buildDateFilterForNDays(this.now, selection.numDays, filterType )
+        buildDateFilterForNDays(this.now, selection.numDays, filterType)
       );
     }
   }
