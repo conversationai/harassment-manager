@@ -175,7 +175,6 @@ export class Server {
       res.status(200).send('ok');
     });
 
-    // get Twitter API Version
     this.app.get('/get_twitter_api_version', (_req, res) => {
       const version = this.config.twitterApiCredentials.useEssentialOrElevatedV2 ? TwitterApiVersion.ESSENTIAL_OR_ELEVATED_V2 : TwitterApiVersion.ENTERPRISE;
       const response:TwitterApiVersionResponse = {

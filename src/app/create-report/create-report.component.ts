@@ -261,8 +261,6 @@ export class CreateReportComponent implements OnInit, AfterViewInit {
     { displayText: DateFilterName.LAST_WEEK, numDays: 7 },
     { displayText: DateFilterName.LAST_MONTH, numDays: 31 },
     { displayText: DateFilterName.CUSTOM, customOption: true },
-    { displayText: DateFilterName.LAST_MONTH, numDays: 31 },
-    { displayText: DateFilterName.CUSTOM, customOption: true },
   ];
 
   essentialDateDropdownOptions: DateFilterDropdownOption[] = [
