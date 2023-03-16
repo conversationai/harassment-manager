@@ -44,6 +44,7 @@ import {
   ScoredItem,
   SelectableItem,
   SocialMediaItem,
+  TwitterApiVersion,
 } from '../../common-types';
 import { Attributes } from '../../perspectiveapi-types';
 import { CommentInfoComponent } from '../comment-info/comment-info.component';
@@ -59,6 +60,7 @@ import {
   applyCommentFilters,
   buildDateFilterForNDays,
   DateFilter,
+  DayFilterType,
   ToxicityRangeFilter,
 } from '../filter_utils';
 import {
@@ -162,6 +164,10 @@ export class CreateReportComponent implements OnInit, AfterViewInit {
 
   overlayScrollStrategy: ScrollStrategy;
 
+  // Twitter API Version
+  useEssentialOrElevatedV2 = false;
+  
+
   // This describes how the overlay should be connected to the origin element.
   highlightViewSettingsConnectedOverlayPositions: ConnectedPosition[] = [
     {
@@ -249,13 +255,22 @@ export class CreateReportComponent implements OnInit, AfterViewInit {
 
   pageSize = PAGE_SIZE;
 
-  dateDropdownOptions: DateFilterDropdownOption[] = [
+  fullDateDropdownOptions: DateFilterDropdownOption[] = [
     { displayText: DateFilterName.YESTERDAY, numDays: 1 },
     { displayText: DateFilterName.LAST_TWO_DAYS, numDays: 2 },
     { displayText: DateFilterName.LAST_WEEK, numDays: 7 },
     { displayText: DateFilterName.LAST_MONTH, numDays: 31 },
     { displayText: DateFilterName.CUSTOM, customOption: true },
   ];
+
+  essentialDateDropdownOptions: DateFilterDropdownOption[] = [
+    { displayText: DateFilterName.YESTERDAY, numDays: 1 },
+    { displayText: DateFilterName.LAST_TWO_DAYS, numDays: 2 },
+    { displayText: DateFilterName.LAST_WEEK, numDays: 7 },
+  ]
+
+  dateDropdownOptions: DateFilterDropdownOption[] = this.useEssentialOrElevatedV2 ?  this.essentialDateDropdownOptions : this.fullDateDropdownOptions
+
   dateFilter: DateFilter;
 
   recommendedDropdownOptions = [
@@ -386,6 +401,7 @@ export class CreateReportComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.initialToxicityFilterNames = this.getInitialToxicityFilterNames();
     this.getComments();
+    this.getTwitterApiVersion();
   }
 
   ngAfterViewInit() {
@@ -489,6 +505,14 @@ export class CreateReportComponent implements OnInit, AfterViewInit {
           );
         }
       );
+  }
+
+  private getTwitterApiVersion() {
+    this.socialMediaItemsService.getTwitterApiVersion().subscribe((version:TwitterApiVersion) => {
+      this.useEssentialOrElevatedV2 = version === TwitterApiVersion.ESSENTIAL_OR_ELEVATED_V2;
+      this.dateDropdownOptions = this.useEssentialOrElevatedV2 ?  this.essentialDateDropdownOptions : this.fullDateDropdownOptions
+      }
+    )
   }
 
   private shouldSelectOption(
@@ -705,8 +729,9 @@ export class CreateReportComponent implements OnInit, AfterViewInit {
     if (selection.customOption) {
       this.getCustomDateFilter();
     } else if (selection.numDays) {
-      this.dateFilterService.updateFilter(
-        buildDateFilterForNDays(this.now, selection.numDays)
+      const filterType: DayFilterType = this.useEssentialOrElevatedV2 ? DayFilterType.NOW : DayFilterType.MIDNIGHT;
+      this.dateFilterService.updateFilter( 
+        buildDateFilterForNDays(this.now, selection.numDays, filterType)
       );
     }
   }
