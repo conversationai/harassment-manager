@@ -62,6 +62,7 @@ import {
   SelectableItem,
   SocialMediaItem,
   Tweet,
+  TwitterApiVersion,
 } from '../../common-types';
 import { environment } from '../../environments/environment';
 import { CommentInfoExpansionComponent } from '../comment-info-expansion/comment-info-expansion.component';
@@ -157,10 +158,10 @@ describe('CreateReportComponent', () => {
   const socialMediaItemsLoadedSubject = new ReplaySubject<number>(0);
   const mockSocialMediaItemsService = jasmine.createSpyObj<
     SocialMediaItemService
-  >('socialMediaItemsService', ['fetchItems', 'getTotalCommentFetchCount'], {
+  >('socialMediaItemsService', ['fetchItems', 'getTotalCommentFetchCount', 'getTwitterApiVersion'], {
     onSocialMediaItemsLoaded: socialMediaItemsLoadedSubject,
   });
-  mockSocialMediaItemsService.fetchItems.and.returnValue(of([]));
+  mockSocialMediaItemsService.getTwitterApiVersion.and.returnValue(of(TwitterApiVersion.ENTERPRISE));
   let reportCommentsSubject: BehaviorSubject<Array<
     ScoredItem<SocialMediaItem>
   >>;
@@ -1055,7 +1056,7 @@ describe('CreateReportComponent', () => {
     // Select a custom range, but then cancel the dialog.
     const customToxicityRangeOption =
       component.toxicityRangeDropdownOptions[
-        component.toxicityRangeDropdownOptions.length - 1
+      component.toxicityRangeDropdownOptions.length - 1
       ];
     component.toxicityRangeDropdown.selectedOptions.setValue([
       customToxicityRangeOption,
