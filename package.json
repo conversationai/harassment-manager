@@ -65,7 +65,7 @@
     "express-recaptcha": "^5.1.0",
     "express-session": "^1.17.2",
     "firebase": "^9.6.8",
-    "firebase-admin": "^10.0.2",
+    "firebase-admin": "^11.11.1",
     "form-data": "^4.0.0",
     "gaxios": "^4.3.2",
     "googleapis": "^95.0.0",
