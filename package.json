@@ -50,7 +50,7 @@
     "@types/nouislider": "^9.0.10",
     "@types/passport": "^1.0.7",
     "@types/puppeteer": "^5.4.5",
-    "axios": "^0.24.0",
+    "axios": "^0.28.0",
     "axios-oauth-1.0a": "^0.3.4",
     "body-parser": "^1.19.2",
     "buffer": "^6.0.3",
